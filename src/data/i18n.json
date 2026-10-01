@@ -689,36 +689,36 @@
       "story_promenade_summary": "Cuentos infantiles y esculturas de madera diseñados por los niños de Canéjan junto a un escultor y cuentacuentos local.",
       "story_promenade_narrative": "En este sendero, los dibujos y cuentos de los niños cobraron vida. Duendecillos del musgo, pájaros parlanchines y piedras que cantan aguardan a toda la familia en una aventura llena de ternura.",
       "story_promenade_mission": "Seguir las pistas rimadas de los alumnos, descubrir los animalitos del arroyo y hacer reír al bosque en familia.",
-      "poi_moulin_rouillac_name": "Molino de Rouillac",
-      "poi_moulin_rouillac_description": "Molino harinero del siglo XIX junto al río Eau Bourde. Antiguo enclave de la Resistencia y de la molienda tradicional.",
-      "poi_moulin_rouillac_clue": "Busca la gran rueda de paletas y el canal donde el agua cobraba fuerza.",
-      "ar_moulin_rouillac_title": "Rueda Hidráulica en Movimiento",
-      "ar_moulin_rouillac_description": "Reconstrucción 3D animada del engranaje y las paletas de madera del siglo XIX.",
-      "poi_ruisseau_moulin_name": "Arroyo del Molino (Eau Bourde)",
-      "poi_ruisseau_moulin_description": "Cauce fluvial serpenteante con alisos, libélulas y cantos rodados que guardan secretos centenarios.",
-      "poi_ruisseau_moulin_clue": "Acércate al murmullo del agua donde los sauces tocan la corriente.",
-      "ar_ruisseau_moulin_title": "Cofre Sumergido del Rouillac",
-      "ar_ruisseau_moulin_description": "Cofre de madera y hierro oculto bajo las aguas del arroyo que revela un mensaje secreto al abrirse.",
-      "poi_chene_soupirs_name": "Roble de los Suspiros",
-      "poi_chene_soupirs_description": "Majestuoso roble centenario que ha sido testigo de historias de amor, citas clandestinas del maquis y fábulas del bosque.",
-      "poi_chene_soupirs_clue": "Alza la vista hacia la copa más frondosa que domina este claro.",
-      "ar_chene_soupirs_title": "Espíritu Guardián del Roble",
-      "ar_chene_soupirs_description": "Holograma 3D de una dríade etérea que emerge del tronco saludando al explorador.",
-      "poi_pont_sorciere_name": "Puente de la Bruja",
-      "poi_pont_sorciere_description": "Antigua pasarela de piedra sobre el Eau Bourde envuelta en brumas matinales y leyendas de sortilegios.",
-      "poi_pont_sorciere_clue": "Cruza la pasarela y observa las marcas esculpidas en el pretil de piedra.",
-      "ar_pont_sorciere_title": "Caldero Mágico de Vapor",
-      "ar_pont_sorciere_description": "Caldero animado que emite vapores mágicos y burbujas brillantes sobre el arco del puente.",
-      "poi_cabane_forestier_name": "Cabaña del Guardabosques",
-      "poi_cabane_forestier_description": "Refugio tradicional de troncos utilizado para el cuidado de los senderos y el avistamiento de aves.",
-      "poi_cabane_forestier_clue": "Sigue el sendero auxiliar hasta el claro donde descansan los leñadores.",
-      "ar_cabane_forestier_title": "Farol y Cuaderno de Campo",
-      "ar_cabane_forestier_description": "Bodegón interactivo con el diario botánico del guarda y una lámpara de queroseno encendida.",
-      "poi_belvedere_canejan_name": "Mirador de Canéjan",
-      "poi_belvedere_canejan_description": "Punto panorámico sobre la cuenca del Eau Bourde con vistas a los viñedos de Pessac-Léognan y el bosque bordelés.",
-      "poi_belvedere_canejan_clue": "Sube a la plataforma elevada y orienta tu mirada hacia el horizonte sur.",
-      "ar_belvedere_canejan_title": "Catalejo Náutico Histórico",
-      "ar_belvedere_canejan_description": "Catalejo de latón dorado en 3D que permite enfocar hitos lejanos con realidad aumentada.",
+      "poi_moulin_rouillac_name": "Moulin de Rouillac",
+      "poi_moulin_rouillac_description": "Antiguo molino del s. XIX a orillas del río Eau Bourde. Sus muelas trituraban trigo y centeno impulsadas por la corriente.",
+      "poi_moulin_rouillac_clue": "Busca los viejos engranajes de hierro y las compuertas de madera que regulaban la fuerza del agua.",
+      "ar_moulin_rouillac_title": "Rueda Hidráulica de Madera y Bronce",
+      "ar_moulin_rouillac_description": "La réplica etérea de la gran rueda dentada gira impulsada por el agua del río Eau Bourde.",
+      "poi_ruisseau_moulin_name": "Ruisseau du Moulin",
+      "poi_ruisseau_moulin_description": "Arroyo cantarín cubierto de musgo que alimenta el caz del molino, donde nadan pequeños peces de río.",
+      "poi_ruisseau_moulin_clue": "El susurro de la corriente oculta el secreto de las piedras redondeadas por los siglos.",
+      "ar_ruisseau_moulin_title": "Cofre Sumergido de la Resistencia",
+      "ar_ruisseau_moulin_description": "Un cofre de campaña estanco que guardaba mapas de evacuación y códigos cifrados de 1944.",
+      "poi_chene_soupirs_name": "Chêne des Soupirs",
+      "poi_chene_soupirs_description": "Roble bicentenario con ramas arqueadas como brazos protectores. El viento murmura confidencias entre sus hojas.",
+      "poi_chene_soupirs_clue": "En la corteza rugosa del lado norte se aprecian las marcas que dejaron antiguos viajeros.",
+      "ar_chene_soupirs_title": "Espíritu Guardián del Bosque",
+      "ar_chene_soupirs_description": "Un orbe luminoso con filamentos dorados que pulsa al compás del viento entre las ramas del roble.",
+      "poi_pont_sorciere_name": "Pont de la Sorcière",
+      "poi_pont_sorciere_description": "Puente rústico de piedra sobre una curva cerrada del sendero, envuelto en leyendas de pociones y fuego fatuo.",
+      "poi_pont_sorciere_clue": "Bajo el arco de piedra, el reflejo del agua dibuja símbolos sólo visibles con buena luz.",
+      "ar_pont_sorciere_title": "Caldero Mágico de Piedra",
+      "ar_pont_sorciere_description": "Caldero de la bruja Sylvaine del que emanan partículas brillantes de vapor azul y verde.",
+      "poi_cabane_forestier_name": "Cabane du Forestier",
+      "poi_cabane_forestier_description": "Refugio tradicional de resineros construido con troncos de pino marítimo de las Landas.",
+      "poi_cabane_forestier_clue": "El dintel de madera lleva grabado un año y un símbolo de resina.",
+      "ar_cabane_forestier_title": "Farol y Cuaderno de Resinero",
+      "ar_cabane_forestier_description": "Un farol de queroseno encendido junto al diario de campo de los antiguos leñadores.",
+      "poi_belvedere_canejan_name": "Belvédère de Canéjan",
+      "poi_belvedere_canejan_description": "Mirador sobre el dosel de pinos que ofrece una vista despejada sobre la ribera arbolada del valle del Eau Bourde.",
+      "poi_belvedere_canejan_clue": "Desde aquí se observa el horizonte donde las copas verdes se funden con el cielo.",
+      "ar_belvedere_canejan_title": "Catalejo Náutico de Bronce",
+      "ar_belvedere_canejan_description": "Instrumento óptico apuntando hacia las copas de los pinos y las coordenadas del valle.",
       "story_guerra_title": "Sombras de la Guerra",
       "guide_jean_name": "Jean \"Le Silence\"",
       "guide_jean_role": "Enlace veterano de la Resistencia",
@@ -1764,35 +1764,35 @@
       "story_promenade_narrative": "Sur ce sentier, les dessins et contes des enfants ont pris vie. Des petits lutins de mousse, des oiseaux bavards et des pierres qui chantent attendent toute la famille dans une aventure pleine de tendresse.",
       "story_promenade_mission": "Suivre les indices rimés des élèves, découvrir les petits animaux du ruisseau et faire rire la forêt en famille.",
       "poi_moulin_rouillac_name": "Moulin de Rouillac",
-      "poi_moulin_rouillac_description": "Moulin à farine du XIXe siècle au bord de l'Eau Bourde. Ancien bastion de la Résistance et de la meunerie traditionnelle.",
-      "poi_moulin_rouillac_clue": "Cherche la grande roue à aubes et le bief où l'eau prenait sa force.",
-      "ar_moulin_rouillac_title": "Roue Hydraulique en Mouvement",
-      "ar_moulin_rouillac_description": "Reconstitution 3D animée de l'engrenage et des aubes en bois du XIXe siècle.",
-      "poi_ruisseau_moulin_name": "Ruisseau du Moulin (Eau Bourde)",
-      "poi_ruisseau_moulin_description": "Cours d'eau sinueux aux aulnes, libellules et galets abritant des secrets centenaires.",
-      "poi_ruisseau_moulin_clue": "Approche-toi du murmure de l'eau là où les saules effleurent le courant.",
-      "ar_ruisseau_moulin_title": "Coffre Immergé de Rouillac",
-      "ar_ruisseau_moulin_description": "Coffre en bois et fer caché sous les eaux du ruisseau révélant un message secret à l'ouverture.",
+      "poi_moulin_rouillac_description": "Ancien moulin du XIXe siècle au bord de l'Eau Bourde. Ses meules broyaient blé et seigle sous l'impulsion du courant.",
+      "poi_moulin_rouillac_clue": "Cherche les vieux engrenages en fer et les vannes en bois qui régulaient la force de l'eau.",
+      "ar_moulin_rouillac_title": "Roue Hydraulique en Bois et Bronze",
+      "ar_moulin_rouillac_description": "La réplique éthérée de la grande roue dentée tourne actionnée par l'eau de l'Eau Bourde.",
+      "poi_ruisseau_moulin_name": "Ruisseau du Moulin",
+      "poi_ruisseau_moulin_description": "Ruisseau chantant recouvert de mousse qui alimente le bief du moulin, où nagent de petits poissons de rivière.",
+      "poi_ruisseau_moulin_clue": "Le murmure du courant cache le secret des pierres polies par les siècles.",
+      "ar_ruisseau_moulin_title": "Coffre Immergé de la Résistance",
+      "ar_ruisseau_moulin_description": "Un coffre de campagne étanche qui abritait des cartes d'évacuation et des codes chiffrés de 1944.",
       "poi_chene_soupirs_name": "Chêne des Soupirs",
-      "poi_chene_soupirs_description": "Majestueux chêne centenaire témoin d'histoires d'amour, de rendez-vous clandestins du maquis et de fables sylvestres.",
-      "poi_chene_soupirs_clue": "Lève les yeux vers la cime la plus feuillue dominant cette clairière.",
-      "ar_chene_soupirs_title": "Esprit Gardien du Chêne",
-      "ar_chene_soupirs_description": "Hologramme 3D d'une dryade éthérée émergeant du tronc pour saluer l'explorateur.",
+      "poi_chene_soupirs_description": "Chêne bicentenaire aux branches arquées comme des bras protecteurs. Le vent murmure des confidences entre ses feuilles.",
+      "poi_chene_soupirs_clue": "Sur l'écorce rugueuse du côté nord, on distingue les marques laissées par d'anciens voyageurs.",
+      "ar_chene_soupirs_title": "Esprit Gardien de la Forêt",
+      "ar_chene_soupirs_description": "Un orbe lumineux aux filaments dorés qui palpite au rythme du vent entre les branches du chêne.",
       "poi_pont_sorciere_name": "Pont de la Sorcière",
-      "poi_pont_sorciere_description": "Ancienne passerelle en pierre sur l'Eau Bourde enveloppée de brumes matinales et de légendes de sortilèges.",
-      "poi_pont_sorciere_clue": "Franchis la passerelle et observe les marques sculptées sur le parapet de pierre.",
-      "ar_pont_sorciere_title": "Chaudron Magique à Vapeur",
-      "ar_pont_sorciere_description": "Chaudron animé émettant des vapeurs magiques et des bulles scintillantes sur l'arche du pont.",
+      "poi_pont_sorciere_description": "Pont rustique en pierre sur un virage serré du sentier, enveloppé de légendes de potions et de feux follets.",
+      "poi_pont_sorciere_clue": "Sous l'arche de pierre, le reflet de l'eau dessine des symboles visibles seulement par bonne lumière.",
+      "ar_pont_sorciere_title": "Chaudron Magique en Pierre",
+      "ar_pont_sorciere_description": "Chaudron de la sorcière Sylvaine d'où émanent des particules scintillantes de vapeur bleue et verte.",
       "poi_cabane_forestier_name": "Cabane du Forestier",
-      "poi_cabane_forestier_description": "Refuge traditionnel en rondins utilisé pour l'entretien des sentiers et l'observation des oiseaux.",
-      "poi_cabane_forestier_clue": "Suis le sentier secondaire jusqu'à la clairière où se reposent les bûcherons.",
-      "ar_cabane_forestier_title": "Lanterne et Carnet de Terrain",
-      "ar_cabane_forestier_description": "Nature morte interactive avec le journal botanique du garde et une lampe à pétrole allumée.",
+      "poi_cabane_forestier_description": "Abri traditionnel de résiniers bâti en troncs de pin maritime des Landes.",
+      "poi_cabane_forestier_clue": "Le linteau de bois porte gravé une année et un symbole de résine.",
+      "ar_cabane_forestier_title": "Lanterne et Carnet de Résinier",
+      "ar_cabane_forestier_description": "Une lanterne à pétrole allumée à côté du journal de bord des anciens bûcherons.",
       "poi_belvedere_canejan_name": "Belvédère de Canéjan",
-      "poi_belvedere_canejan_description": "Point panoramique sur le bassin de l'Eau Bourde avec vue sur les vignobles de Pessac-Léognan et la forêt bordelaise.",
-      "poi_belvedere_canejan_clue": "Monte sur la plateforme surélevée et oriente ton regard vers l'horizon sud.",
-      "ar_belvedere_canejan_title": "Longue-vue Nautique Historique",
-      "ar_belvedere_canejan_description": "Longue-vue en laiton doré 3D permettant de cibler les points lointains en réalité augmentée.",
+      "poi_belvedere_canejan_description": "Belvédère au-dessus de la canopée de pins offrant une vue dégagée sur la rive boisée de la vallée de l'Eau Bourde.",
+      "poi_belvedere_canejan_clue": "D'ici, on observe l'horizon où les cimes vertes se fondent avec le ciel.",
+      "ar_belvedere_canejan_title": "Longue-vue Nautique en Bronze",
+      "ar_belvedere_canejan_description": "Instrument optique pointé vers la cime des pins et les coordonnées de la vallée.",
       "story_guerra_title": "Ombres de la Guerre",
       "guide_jean_name": "Jean « Le Silence »",
       "guide_jean_role": "Agent de liaison vétéran de la Résistance",
@@ -2837,36 +2837,36 @@
       "story_promenade_summary": "Children's tales and wooden sculptures imagined by the children of Canéjan with a local sculptor and storyteller.",
       "story_promenade_narrative": "On this trail, the children's drawings and tales came to life. Moss sprites, chatty birds and singing stones await the whole family in an adventure full of tenderness.",
       "story_promenade_mission": "Follow the pupils' rhyming clues, discover the brook's little animals and make the forest laugh as a family.",
-      "poi_moulin_rouillac_name": "Rouillac Mill",
-      "poi_moulin_rouillac_description": "19th-century flour mill along the Eau Bourde river. Former Resistance enclave and traditional milling site.",
-      "poi_moulin_rouillac_clue": "Look for the large paddle wheel and the millrace where the water gathered force.",
-      "ar_moulin_rouillac_title": "Moving Hydraulic Wheel",
-      "ar_moulin_rouillac_description": "Animated 3D reconstruction of the 19th-century gear and wooden paddles.",
-      "poi_ruisseau_moulin_name": "Mill Stream (Eau Bourde)",
-      "poi_ruisseau_moulin_description": "Winding stream flanked by alders, dragonflies and pebbles holding century-old secrets.",
-      "poi_ruisseau_moulin_clue": "Approach the whisper of the water where the willows touch the current.",
-      "ar_ruisseau_moulin_title": "Submerged Rouillac Chest",
-      "ar_ruisseau_moulin_description": "Wood and iron chest hidden under the brook waters revealing a secret message when opened.",
-      "poi_chene_soupirs_name": "Oak of Sighs",
-      "poi_chene_soupirs_description": "Majestic century-old oak tree witness to romances, secret Maquis rendezvous and woodland fables.",
-      "poi_chene_soupirs_clue": "Look up toward the leafiest canopy commanding this clearing.",
-      "ar_chene_soupirs_title": "Guardian Spirit of the Oak",
-      "ar_chene_soupirs_description": "3D hologram of an ethereal dryad emerging from the trunk to greet the explorer.",
-      "poi_pont_sorciere_name": "Witch's Bridge",
-      "poi_pont_sorciere_description": "Ancient stone footbridge over the Eau Bourde shrouded in morning mist and tales of sorcery.",
-      "poi_pont_sorciere_clue": "Cross the footbridge and notice the marks carved into the stone parapet.",
-      "ar_pont_sorciere_title": "Steaming Magic Cauldron",
-      "ar_pont_sorciere_description": "Animated cauldron emitting magical vapor and shimmering bubbles above the bridge arch.",
-      "poi_cabane_forestier_name": "Forester's Cabin",
-      "poi_cabane_forestier_description": "Traditional log cabin used for trail maintenance and birdwatching.",
-      "poi_cabane_forestier_clue": "Follow the side trail to the clearing where woodcutters rest.",
-      "ar_cabane_forestier_title": "Lantern and Field Notebook",
-      "ar_cabane_forestier_description": "Interactive still life featuring the forester's botanical diary and a lit kerosene lamp.",
-      "poi_belvedere_canejan_name": "Canéjan Viewpoint",
-      "poi_belvedere_canejan_description": "Panoramic overlook across the Eau Bourde basin with views toward Pessac-Léognan vineyards and Bordeaux woodland.",
-      "poi_belvedere_canejan_clue": "Step onto the raised platform and orient your gaze toward the southern horizon.",
-      "ar_belvedere_canejan_title": "Historic Nautical Telescope",
-      "ar_belvedere_canejan_description": "3D golden brass telescope allowing you to focus on distant landmarks in augmented reality.",
+      "poi_moulin_rouillac_name": "Moulin de Rouillac",
+      "poi_moulin_rouillac_description": "Ancient 19th-century mill on the banks of the Eau Bourde river. Its millstones crushed wheat and rye driven by the current.",
+      "poi_moulin_rouillac_clue": "Look for the old iron gears and wooden floodgates that regulated the water's force.",
+      "ar_moulin_rouillac_title": "Wooden and Bronze Water Wheel",
+      "ar_moulin_rouillac_description": "The ethereal replica of the large cogged wheel turns powered by the water of the Eau Bourde river.",
+      "poi_ruisseau_moulin_name": "Ruisseau du Moulin",
+      "poi_ruisseau_moulin_description": "Babbling moss-covered brook feeding the millrace, where small river fish swim.",
+      "poi_ruisseau_moulin_clue": "The whisper of the current hides the secret of stones rounded over the centuries.",
+      "ar_ruisseau_moulin_title": "Submerged Resistance Chest",
+      "ar_ruisseau_moulin_description": "A watertight field chest that held evacuation maps and encrypted codes from 1944.",
+      "poi_chene_soupirs_name": "Chêne des Soupirs",
+      "poi_chene_soupirs_description": "Two-hundred-year-old oak with branches arched like protecting arms. The wind whispers confidences among its leaves.",
+      "poi_chene_soupirs_clue": "On the rough bark on the north side, marks left by ancient travelers can be seen.",
+      "ar_chene_soupirs_title": "Guardian Spirit of the Forest",
+      "ar_chene_soupirs_description": "A luminous orb with golden filaments pulsing to the rhythm of the wind among the oak's branches.",
+      "poi_pont_sorciere_name": "Pont de la Sorcière",
+      "poi_pont_sorciere_description": "Rustic stone bridge over a sharp bend in the path, wrapped in legends of potions and will-o'-the-wisps.",
+      "poi_pont_sorciere_clue": "Under the stone arch, the reflection of the water traces symbols only visible in good light.",
+      "ar_pont_sorciere_title": "Stone Magic Cauldron",
+      "ar_pont_sorciere_description": "Witch Sylvaine's cauldron emitting shimmering particles of blue and green vapor.",
+      "poi_cabane_forestier_name": "Cabane du Forestier",
+      "poi_cabane_forestier_description": "Traditional resin tappers' shelter built from maritime pine logs of the Landes.",
+      "poi_cabane_forestier_clue": "The wooden lintel has a year and a resin symbol carved into it.",
+      "ar_cabane_forestier_title": "Resin Tapper's Lantern and Notebook",
+      "ar_cabane_forestier_description": "A lit kerosene lantern next to the field journal of the old woodcutters.",
+      "poi_belvedere_canejan_name": "Belvédère de Canéjan",
+      "poi_belvedere_canejan_description": "Viewpoint above the pine canopy offering an unobstructed vista over the wooded banks of the Eau Bourde valley.",
+      "poi_belvedere_canejan_clue": "From here you can observe the horizon where the green treetops merge with the sky.",
+      "ar_belvedere_canejan_title": "Bronze Nautical Spyglass",
+      "ar_belvedere_canejan_description": "Optical instrument pointed towards the pine treetops and the coordinates of the valley.",
       "story_guerra_title": "Shadows of War",
       "guide_jean_name": "Jean \"The Silence\"",
       "guide_jean_role": "Veteran Resistance liaison",
@@ -5822,154 +5822,154 @@
       "en": "Follow the pupils' rhyming clues, discover the brook's little animals and make the forest laugh as a family."
     },
     "poi_moulin_rouillac_name": {
-      "es": "Molino de Rouillac",
+      "es": "Moulin de Rouillac",
       "fr": "Moulin de Rouillac",
-      "en": "Rouillac Mill"
+      "en": "Moulin de Rouillac"
     },
     "poi_moulin_rouillac_description": {
-      "es": "Molino harinero del siglo XIX junto al río Eau Bourde. Antiguo enclave de la Resistencia y de la molienda tradicional.",
-      "fr": "Moulin à farine du XIXe siècle au bord de l'Eau Bourde. Ancien bastion de la Résistance et de la meunerie traditionnelle.",
-      "en": "19th-century flour mill along the Eau Bourde river. Former Resistance enclave and traditional milling site."
+      "es": "Antiguo molino del s. XIX a orillas del río Eau Bourde. Sus muelas trituraban trigo y centeno impulsadas por la corriente.",
+      "fr": "Ancien moulin du XIXe siècle au bord de l'Eau Bourde. Ses meules broyaient blé et seigle sous l'impulsion du courant.",
+      "en": "Ancient 19th-century mill on the banks of the Eau Bourde river. Its millstones crushed wheat and rye driven by the current."
     },
     "poi_moulin_rouillac_clue": {
-      "es": "Busca la gran rueda de paletas y el canal donde el agua cobraba fuerza.",
-      "fr": "Cherche la grande roue à aubes et le bief où l'eau prenait sa force.",
-      "en": "Look for the large paddle wheel and the millrace where the water gathered force."
+      "es": "Busca los viejos engranajes de hierro y las compuertas de madera que regulaban la fuerza del agua.",
+      "fr": "Cherche les vieux engrenages en fer et les vannes en bois qui régulaient la force de l'eau.",
+      "en": "Look for the old iron gears and wooden floodgates that regulated the water's force."
     },
     "ar_moulin_rouillac_title": {
-      "es": "Rueda Hidráulica en Movimiento",
-      "fr": "Roue Hydraulique en Mouvement",
-      "en": "Moving Hydraulic Wheel"
+      "es": "Rueda Hidráulica de Madera y Bronce",
+      "fr": "Roue Hydraulique en Bois et Bronze",
+      "en": "Wooden and Bronze Water Wheel"
     },
     "ar_moulin_rouillac_description": {
-      "es": "Reconstrucción 3D animada del engranaje y las paletas de madera del siglo XIX.",
-      "fr": "Reconstitution 3D animée de l'engrenage et des aubes en bois du XIXe siècle.",
-      "en": "Animated 3D reconstruction of the 19th-century gear and wooden paddles."
+      "es": "La réplica etérea de la gran rueda dentada gira impulsada por el agua del río Eau Bourde.",
+      "fr": "La réplique éthérée de la grande roue dentée tourne actionnée par l'eau de l'Eau Bourde.",
+      "en": "The ethereal replica of the large cogged wheel turns powered by the water of the Eau Bourde river."
     },
     "poi_ruisseau_moulin_name": {
-      "es": "Arroyo del Molino (Eau Bourde)",
-      "fr": "Ruisseau du Moulin (Eau Bourde)",
-      "en": "Mill Stream (Eau Bourde)"
+      "es": "Ruisseau du Moulin",
+      "fr": "Ruisseau du Moulin",
+      "en": "Ruisseau du Moulin"
     },
     "poi_ruisseau_moulin_description": {
-      "es": "Cauce fluvial serpenteante con alisos, libélulas y cantos rodados que guardan secretos centenarios.",
-      "fr": "Cours d'eau sinueux aux aulnes, libellules et galets abritant des secrets centenaires.",
-      "en": "Winding stream flanked by alders, dragonflies and pebbles holding century-old secrets."
+      "es": "Arroyo cantarín cubierto de musgo que alimenta el caz del molino, donde nadan pequeños peces de río.",
+      "fr": "Ruisseau chantant recouvert de mousse qui alimente le bief du moulin, où nagent de petits poissons de rivière.",
+      "en": "Babbling moss-covered brook feeding the millrace, where small river fish swim."
     },
     "poi_ruisseau_moulin_clue": {
-      "es": "Acércate al murmullo del agua donde los sauces tocan la corriente.",
-      "fr": "Approche-toi du murmure de l'eau là où les saules effleurent le courant.",
-      "en": "Approach the whisper of the water where the willows touch the current."
+      "es": "El susurro de la corriente oculta el secreto de las piedras redondeadas por los siglos.",
+      "fr": "Le murmure du courant cache le secret des pierres polies par les siècles.",
+      "en": "The whisper of the current hides the secret of stones rounded over the centuries."
     },
     "ar_ruisseau_moulin_title": {
-      "es": "Cofre Sumergido del Rouillac",
-      "fr": "Coffre Immergé de Rouillac",
-      "en": "Submerged Rouillac Chest"
+      "es": "Cofre Sumergido de la Resistencia",
+      "fr": "Coffre Immergé de la Résistance",
+      "en": "Submerged Resistance Chest"
     },
     "ar_ruisseau_moulin_description": {
-      "es": "Cofre de madera y hierro oculto bajo las aguas del arroyo que revela un mensaje secreto al abrirse.",
-      "fr": "Coffre en bois et fer caché sous les eaux du ruisseau révélant un message secret à l'ouverture.",
-      "en": "Wood and iron chest hidden under the brook waters revealing a secret message when opened."
+      "es": "Un cofre de campaña estanco que guardaba mapas de evacuación y códigos cifrados de 1944.",
+      "fr": "Un coffre de campagne étanche qui abritait des cartes d'évacuation et des codes chiffrés de 1944.",
+      "en": "A watertight field chest that held evacuation maps and encrypted codes from 1944."
     },
     "poi_chene_soupirs_name": {
-      "es": "Roble de los Suspiros",
+      "es": "Chêne des Soupirs",
       "fr": "Chêne des Soupirs",
-      "en": "Oak of Sighs"
+      "en": "Chêne des Soupirs"
     },
     "poi_chene_soupirs_description": {
-      "es": "Majestuoso roble centenario que ha sido testigo de historias de amor, citas clandestinas del maquis y fábulas del bosque.",
-      "fr": "Majestueux chêne centenaire témoin d'histoires d'amour, de rendez-vous clandestins du maquis et de fables sylvestres.",
-      "en": "Majestic century-old oak tree witness to romances, secret Maquis rendezvous and woodland fables."
+      "es": "Roble bicentenario con ramas arqueadas como brazos protectores. El viento murmura confidencias entre sus hojas.",
+      "fr": "Chêne bicentenaire aux branches arquées comme des bras protecteurs. Le vent murmure des confidences entre ses feuilles.",
+      "en": "Two-hundred-year-old oak with branches arched like protecting arms. The wind whispers confidences among its leaves."
     },
     "poi_chene_soupirs_clue": {
-      "es": "Alza la vista hacia la copa más frondosa que domina este claro.",
-      "fr": "Lève les yeux vers la cime la plus feuillue dominant cette clairière.",
-      "en": "Look up toward the leafiest canopy commanding this clearing."
+      "es": "En la corteza rugosa del lado norte se aprecian las marcas que dejaron antiguos viajeros.",
+      "fr": "Sur l'écorce rugueuse du côté nord, on distingue les marques laissées par d'anciens voyageurs.",
+      "en": "On the rough bark on the north side, marks left by ancient travelers can be seen."
     },
     "ar_chene_soupirs_title": {
-      "es": "Espíritu Guardián del Roble",
-      "fr": "Esprit Gardien du Chêne",
-      "en": "Guardian Spirit of the Oak"
+      "es": "Espíritu Guardián del Bosque",
+      "fr": "Esprit Gardien de la Forêt",
+      "en": "Guardian Spirit of the Forest"
     },
     "ar_chene_soupirs_description": {
-      "es": "Holograma 3D de una dríade etérea que emerge del tronco saludando al explorador.",
-      "fr": "Hologramme 3D d'une dryade éthérée émergeant du tronc pour saluer l'explorateur.",
-      "en": "3D hologram of an ethereal dryad emerging from the trunk to greet the explorer."
+      "es": "Un orbe luminoso con filamentos dorados que pulsa al compás del viento entre las ramas del roble.",
+      "fr": "Un orbe lumineux aux filaments dorés qui palpite au rythme du vent entre les branches du chêne.",
+      "en": "A luminous orb with golden filaments pulsing to the rhythm of the wind among the oak's branches."
     },
     "poi_pont_sorciere_name": {
-      "es": "Puente de la Bruja",
+      "es": "Pont de la Sorcière",
       "fr": "Pont de la Sorcière",
-      "en": "Witch's Bridge"
+      "en": "Pont de la Sorcière"
     },
     "poi_pont_sorciere_description": {
-      "es": "Antigua pasarela de piedra sobre el Eau Bourde envuelta en brumas matinales y leyendas de sortilegios.",
-      "fr": "Ancienne passerelle en pierre sur l'Eau Bourde enveloppée de brumes matinales et de légendes de sortilèges.",
-      "en": "Ancient stone footbridge over the Eau Bourde shrouded in morning mist and tales of sorcery."
+      "es": "Puente rústico de piedra sobre una curva cerrada del sendero, envuelto en leyendas de pociones y fuego fatuo.",
+      "fr": "Pont rustique en pierre sur un virage serré du sentier, enveloppé de légendes de potions et de feux follets.",
+      "en": "Rustic stone bridge over a sharp bend in the path, wrapped in legends of potions and will-o'-the-wisps."
     },
     "poi_pont_sorciere_clue": {
-      "es": "Cruza la pasarela y observa las marcas esculpidas en el pretil de piedra.",
-      "fr": "Franchis la passerelle et observe les marques sculptées sur le parapet de pierre.",
-      "en": "Cross the footbridge and notice the marks carved into the stone parapet."
+      "es": "Bajo el arco de piedra, el reflejo del agua dibuja símbolos sólo visibles con buena luz.",
+      "fr": "Sous l'arche de pierre, le reflet de l'eau dessine des symboles visibles seulement par bonne lumière.",
+      "en": "Under the stone arch, the reflection of the water traces symbols only visible in good light."
     },
     "ar_pont_sorciere_title": {
-      "es": "Caldero Mágico de Vapor",
-      "fr": "Chaudron Magique à Vapeur",
-      "en": "Steaming Magic Cauldron"
+      "es": "Caldero Mágico de Piedra",
+      "fr": "Chaudron Magique en Pierre",
+      "en": "Stone Magic Cauldron"
     },
     "ar_pont_sorciere_description": {
-      "es": "Caldero animado que emite vapores mágicos y burbujas brillantes sobre el arco del puente.",
-      "fr": "Chaudron animé émettant des vapeurs magiques et des bulles scintillantes sur l'arche du pont.",
-      "en": "Animated cauldron emitting magical vapor and shimmering bubbles above the bridge arch."
+      "es": "Caldero de la bruja Sylvaine del que emanan partículas brillantes de vapor azul y verde.",
+      "fr": "Chaudron de la sorcière Sylvaine d'où émanent des particules scintillantes de vapeur bleue et verte.",
+      "en": "Witch Sylvaine's cauldron emitting shimmering particles of blue and green vapor."
     },
     "poi_cabane_forestier_name": {
-      "es": "Cabaña del Guardabosques",
+      "es": "Cabane du Forestier",
       "fr": "Cabane du Forestier",
-      "en": "Forester's Cabin"
+      "en": "Cabane du Forestier"
     },
     "poi_cabane_forestier_description": {
-      "es": "Refugio tradicional de troncos utilizado para el cuidado de los senderos y el avistamiento de aves.",
-      "fr": "Refuge traditionnel en rondins utilisé pour l'entretien des sentiers et l'observation des oiseaux.",
-      "en": "Traditional log cabin used for trail maintenance and birdwatching."
+      "es": "Refugio tradicional de resineros construido con troncos de pino marítimo de las Landas.",
+      "fr": "Abri traditionnel de résiniers bâti en troncs de pin maritime des Landes.",
+      "en": "Traditional resin tappers' shelter built from maritime pine logs of the Landes."
     },
     "poi_cabane_forestier_clue": {
-      "es": "Sigue el sendero auxiliar hasta el claro donde descansan los leñadores.",
-      "fr": "Suis le sentier secondaire jusqu'à la clairière où se reposent les bûcherons.",
-      "en": "Follow the side trail to the clearing where woodcutters rest."
+      "es": "El dintel de madera lleva grabado un año y un símbolo de resina.",
+      "fr": "Le linteau de bois porte gravé une année et un symbole de résine.",
+      "en": "The wooden lintel has a year and a resin symbol carved into it."
     },
     "ar_cabane_forestier_title": {
-      "es": "Farol y Cuaderno de Campo",
-      "fr": "Lanterne et Carnet de Terrain",
-      "en": "Lantern and Field Notebook"
+      "es": "Farol y Cuaderno de Resinero",
+      "fr": "Lanterne et Carnet de Résinier",
+      "en": "Resin Tapper's Lantern and Notebook"
     },
     "ar_cabane_forestier_description": {
-      "es": "Bodegón interactivo con el diario botánico del guarda y una lámpara de queroseno encendida.",
-      "fr": "Nature morte interactive avec le journal botanique du garde et une lampe à pétrole allumée.",
-      "en": "Interactive still life featuring the forester's botanical diary and a lit kerosene lamp."
+      "es": "Un farol de queroseno encendido junto al diario de campo de los antiguos leñadores.",
+      "fr": "Une lanterne à pétrole allumée à côté du journal de bord des anciens bûcherons.",
+      "en": "A lit kerosene lantern next to the field journal of the old woodcutters."
     },
     "poi_belvedere_canejan_name": {
-      "es": "Mirador de Canéjan",
+      "es": "Belvédère de Canéjan",
       "fr": "Belvédère de Canéjan",
-      "en": "Canéjan Viewpoint"
+      "en": "Belvédère de Canéjan"
     },
     "poi_belvedere_canejan_description": {
-      "es": "Punto panorámico sobre la cuenca del Eau Bourde con vistas a los viñedos de Pessac-Léognan y el bosque bordelés.",
-      "fr": "Point panoramique sur le bassin de l'Eau Bourde avec vue sur les vignobles de Pessac-Léognan et la forêt bordelaise.",
-      "en": "Panoramic overlook across the Eau Bourde basin with views toward Pessac-Léognan vineyards and Bordeaux woodland."
+      "es": "Mirador sobre el dosel de pinos que ofrece una vista despejada sobre la ribera arbolada del valle del Eau Bourde.",
+      "fr": "Belvédère au-dessus de la canopée de pins offrant une vue dégagée sur la rive boisée de la vallée de l'Eau Bourde.",
+      "en": "Viewpoint above the pine canopy offering an unobstructed vista over the wooded banks of the Eau Bourde valley."
     },
     "poi_belvedere_canejan_clue": {
-      "es": "Sube a la plataforma elevada y orienta tu mirada hacia el horizonte sur.",
-      "fr": "Monte sur la plateforme surélevée et oriente ton regard vers l'horizon sud.",
-      "en": "Step onto the raised platform and orient your gaze toward the southern horizon."
+      "es": "Desde aquí se observa el horizonte donde las copas verdes se funden con el cielo.",
+      "fr": "D'ici, on observe l'horizon où les cimes vertes se fondent avec le ciel.",
+      "en": "From here you can observe the horizon where the green treetops merge with the sky."
     },
     "ar_belvedere_canejan_title": {
-      "es": "Catalejo Náutico Histórico",
-      "fr": "Longue-vue Nautique Historique",
-      "en": "Historic Nautical Telescope"
+      "es": "Catalejo Náutico de Bronce",
+      "fr": "Longue-vue Nautique en Bronze",
+      "en": "Bronze Nautical Spyglass"
     },
     "ar_belvedere_canejan_description": {
-      "es": "Catalejo de latón dorado en 3D que permite enfocar hitos lejanos con realidad aumentada.",
-      "fr": "Longue-vue en laiton doré 3D permettant de cibler les points lointains en réalité augmentée.",
-      "en": "3D golden brass telescope allowing you to focus on distant landmarks in augmented reality."
+      "es": "Instrumento óptico apuntando hacia las copas de los pinos y las coordenadas del valle.",
+      "fr": "Instrument optique pointé vers la cime des pins et les coordonnées de la vallée.",
+      "en": "Optical instrument pointed towards the pine treetops and the coordinates of the valley."
     },
     "story_guerra_title": {
       "es": "Sombras de la Guerra",

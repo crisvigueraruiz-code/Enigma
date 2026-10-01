@@ -33,8 +33,14 @@
           "heightOffsetMeters": 1.2,
           "revealTrigger": "onArrival",
           "titleKey": "ar_moulin_rouillac_title",
-          "descriptionKey": "ar_moulin_rouillac_description"
-        }
+          "descriptionKey": "ar_moulin_rouillac_description",
+          "title": "Rueda Hidráulica de Madera y Bronce",
+          "description": "La réplica etérea de la gran rueda dentada gira impulsada por el agua del río Eau Bourde.",
+          "label": "Rueda Hidráulica de Madera y Bronce"
+        },
+        "name": "Moulin de Rouillac",
+        "description": "Antiguo molino del s. XIX a orillas del río Eau Bourde. Sus muelas trituraban trigo y centeno impulsadas por la corriente.",
+        "clueSnippet": "Busca los viejos engranajes de hierro y las compuertas de madera que regulaban la fuerza del agua."
       },
       {
         "id": "ruisseau_moulin",
@@ -52,8 +58,14 @@
           "heightOffsetMeters": 0.7,
           "revealTrigger": "onRiddleSolved",
           "titleKey": "ar_ruisseau_moulin_title",
-          "descriptionKey": "ar_ruisseau_moulin_description"
-        }
+          "descriptionKey": "ar_ruisseau_moulin_description",
+          "title": "Cofre Sumergido de la Resistencia",
+          "description": "Un cofre de campaña estanco que guardaba mapas de evacuación y códigos cifrados de 1944.",
+          "label": "Cofre Sumergido de la Resistencia"
+        },
+        "name": "Ruisseau du Moulin",
+        "description": "Arroyo cantarín cubierto de musgo que alimenta el caz del molino, donde nadan pequeños peces de río.",
+        "clueSnippet": "El susurro de la corriente oculta el secreto de las piedras redondeadas por los siglos."
       },
       {
         "id": "chene_soupirs",
@@ -71,8 +83,14 @@
           "heightOffsetMeters": 1.8,
           "revealTrigger": "onArrival",
           "titleKey": "ar_chene_soupirs_title",
-          "descriptionKey": "ar_chene_soupirs_description"
-        }
+          "descriptionKey": "ar_chene_soupirs_description",
+          "title": "Espíritu Guardián del Bosque",
+          "description": "Un orbe luminoso con filamentos dorados que pulsa al compás del viento entre las ramas del roble.",
+          "label": "Espíritu Guardián del Bosque"
+        },
+        "name": "Chêne des Soupirs",
+        "description": "Roble bicentenario con ramas arqueadas como brazos protectores. El viento murmura confidencias entre sus hojas.",
+        "clueSnippet": "En la corteza rugosa del lado norte se aprecian las marcas que dejaron antiguos viajeros."
       },
       {
         "id": "pont_sorciere",
@@ -90,8 +108,14 @@
           "heightOffsetMeters": 1,
           "revealTrigger": "onRiddleSolved",
           "titleKey": "ar_pont_sorciere_title",
-          "descriptionKey": "ar_pont_sorciere_description"
-        }
+          "descriptionKey": "ar_pont_sorciere_description",
+          "title": "Caldero Mágico de Piedra",
+          "description": "Caldero de la bruja Sylvaine del que emanan partículas brillantes de vapor azul y verde.",
+          "label": "Caldero Mágico de Piedra"
+        },
+        "name": "Pont de la Sorcière",
+        "description": "Puente rústico de piedra sobre una curva cerrada del sendero, envuelto en leyendas de pociones y fuego fatuo.",
+        "clueSnippet": "Bajo el arco de piedra, el reflejo del agua dibuja símbolos sólo visibles con buena luz."
       },
       {
         "id": "cabane_forestier",
@@ -110,8 +134,14 @@
           "heightOffsetMeters": 1.1,
           "revealTrigger": "onArrival",
           "titleKey": "ar_cabane_forestier_title",
-          "descriptionKey": "ar_cabane_forestier_description"
-        }
+          "descriptionKey": "ar_cabane_forestier_description",
+          "title": "Farol y Cuaderno de Resinero",
+          "description": "Un farol de queroseno encendido junto al diario de campo de los antiguos leñadores.",
+          "label": "Farol y Cuaderno de Resinero"
+        },
+        "name": "Cabane du Forestier",
+        "description": "Refugio tradicional de resineros construido con troncos de pino marítimo de las Landas.",
+        "clueSnippet": "El dintel de madera lleva grabado un año y un símbolo de resina."
       },
       {
         "id": "belvedere_canejan",
@@ -129,8 +159,14 @@
           "heightOffsetMeters": 1.3,
           "revealTrigger": "onRiddleSolved",
           "titleKey": "ar_belvedere_canejan_title",
-          "descriptionKey": "ar_belvedere_canejan_description"
-        }
+          "descriptionKey": "ar_belvedere_canejan_description",
+          "title": "Catalejo Náutico de Bronce",
+          "description": "Instrumento óptico apuntando hacia las copas de los pinos y las coordenadas del valle.",
+          "label": "Catalejo Náutico de Bronce"
+        },
+        "name": "Belvédère de Canéjan",
+        "description": "Mirador sobre el dosel de pinos que ofrece una vista despejada sobre la ribera arbolada del valle del Eau Bourde.",
+        "clueSnippet": "Desde aquí se observa el horizonte donde las copas verdes se funden con el cielo."
       }
     ],
     "stories": [
@@ -159,6 +195,22 @@
           ],
           "voiceName": "Fenrir",
           "greetingKey": "guide_jean_greeting"
+        },
+        "title": "Sombras de la Guerra",
+        "summary": "Verano de 1944. Las patrullas ocupantes vigilan los caminos; la red maquis ha escondido claves a lo largo del río Eau Bourde.",
+        "narrative": "Las tropas de ocupación patrullan las carreteras principales. En la espesura del bosque de Canéjan, la red maquis ha escondido cilindros con coordenadas y nombres en clave. Eres el enlace del maquis.",
+        "mission": "Actuar como enlace de la Resistencia, seguir las señales ocultas en los árboles y descifrar las claves para abrir paso seguro hacia Burdeos.",
+        "narratorName": "Jean \"Le Silence\"",
+        "narratorRole": "Enlace veterano de la Resistencia",
+        "narratorTone": "Prudente, firme, susurrante",
+        "characterBio": "Miembro veterano de la red clandestina bordelesa en 1944. Conoce cada raíz, cueva y recodo del Eau Bourde. Te hablará con cautela para no llamar la atención de las patrullas.",
+        "characterGreeting": "Camarada... acércate despacio. No llames la atención. ¿Has localizado la siguiente señal entre los árboles?",
+        "narrator": {
+          "name": "Jean \"Le Silence\"",
+          "role": "Enlace veterano de la Resistencia",
+          "tone": "Prudente, firme, susurrante",
+          "avatarEmoji": "🕵️‍♂️",
+          "ttsVoice": "Fenrir"
         }
       },
       {
@@ -186,6 +238,22 @@
           ],
           "voiceName": "Charon",
           "greetingKey": "guide_pierre_greeting"
+        },
+        "title": "El Secreto del Molino Perdido",
+        "summary": "Año 1878. Maître Pierre ideó un mecanismo hidráulico para triplicar la fuerza motriz del molino y ocultó sus bocetos a lo largo de la cuenca.",
+        "narrative": "En 1878, Maître Pierre ideó un sistema de esclusas capaz de triplicar la fuerza motriz del molino sin desbordar el río. Ante las disputas entre terratenientes, ocultó sus planos en puntos clave de la ribera.",
+        "mission": "Reconstruir las medidas del caudal, examinar la cantería de las acequias y encontrar la combinación del cofre del Rouillac.",
+        "narratorName": "Maître Pierre",
+        "narratorRole": "Último maestro molinero",
+        "narratorTone": "Orgulloso, metódico, apasionado de la artesanía",
+        "characterBio": "Artesano apasionado del siglo XIX que dedicó su vida a domesticar la fuerza del río. Te enseñará a leer la corriente, los engranajes de madera y las muelas de piedra.",
+        "characterGreeting": "¡Ah, bien hallado, joven aprendiz! Escucha el rumor del caz... las muelas tienen secretos que sólo los oídos pacientes entienden. ¿Qué duda te asalta?",
+        "narrator": {
+          "name": "Maître Pierre",
+          "role": "Último maestro molinero",
+          "tone": "Orgulloso, metódico, apasionado de la artesanía",
+          "avatarEmoji": "👨‍🔧",
+          "ttsVoice": "Charon"
         }
       },
       {
@@ -213,6 +281,22 @@
           ],
           "voiceName": "Kore",
           "greetingKey": "guide_sylvaine_greeting"
+        },
+        "title": "El Hechizo del Moulin Encantado",
+        "summary": "Un sortilegio de niebla ha congelado la melodía del arroyo y las flores no despiertan.",
+        "narrative": "Un viejo sortilegio de niebla ha congelado la melodía del arroyo y las flores de ribera han cerrado sus pétalos. Sylvaine, espíritu del agua dulce, busca exploradores puros de corazón para devolver la luz.",
+        "mission": "Ayudar a la dríade Sylvaine a conectar con los árboles centenarios, purificar las aguas y romper el maleficio.",
+        "narratorName": "Sylvaine",
+        "narratorRole": "Dríade protectora del río Eau Bourde",
+        "narratorTone": "Etérea, poética, habla en metáforas de agua y hojas",
+        "characterBio": "Espíritu milenario de las aguas claras y los helechos. Habla con delicadeza, como el murmullo de un manantial, y te revelará los secretos invisibles a ojos comunes.",
+        "characterGreeting": "Siento tu presencia entre las hojas... La niebla aún pesa sobre mis aguas. Cuéntame, caminante de corazón noble, ¿qué buscas en este claro?",
+        "narrator": {
+          "name": "Sylvaine",
+          "role": "Dríade protectora del río Eau Bourde",
+          "tone": "Etérea, poética, habla en metáforas de agua y hojas",
+          "avatarEmoji": "🧚‍♀️",
+          "ttsVoice": "Kore"
         }
       },
       {
@@ -240,6 +324,22 @@
           ],
           "voiceName": "Puck",
           "greetingKey": "guide_lutin_greeting"
+        },
+        "title": "La Promenade Enchantée",
+        "summary": "Cuentos infantiles y esculturas de madera diseñados por los niños de Canéjan junto a un escultor y cuentacuentos local.",
+        "narrative": "En este sendero, los dibujos y cuentos de los niños cobraron vida. Duendecillos del musgo, pájaros parlanchines y piedras que cantan aguardan a toda la familia en una aventura llena de ternura.",
+        "mission": "Seguir las pistas rimadas de los alumnos, descubrir los animalitos del arroyo y hacer reír al bosque en familia.",
+        "narratorName": "Duendecillo Roble",
+        "narratorRole": "Cronista de los cuentos de la escuela",
+        "narratorTone": "Alegre, travieso, rimador",
+        "characterBio": "Pequeño duende nacido de los dibujos y la imaginación de los escolares de Canéjan. Le encantan los acertijos alegres, saltar por las raíces y coleccionar bellotas.",
+        "characterGreeting": "¡Hoooola explorador! ¡Qué alegría verte por aquí! ¿Tienes preparado tu gorrito de duende o necesitas que te cante una rimilla?",
+        "narrator": {
+          "name": "Duendecillo Roble",
+          "role": "Cronista de los cuentos de la escuela",
+          "tone": "Alegre, travieso, rimador",
+          "avatarEmoji": "🧝‍♂️",
+          "ttsVoice": "Puck"
         }
       }
     ],
@@ -264,6 +364,28 @@
           "r_guerra_moulin_1_hint1",
           "r_guerra_moulin_1_hint2",
           "r_guerra_moulin_1_hint3"
+        ],
+        "name": "La Clave del Eje",
+        "question": "¿Qué elemento fundamental del molino servía a la Resistencia para esconder mensajes impermeabilizados bajo el torrente?",
+        "options": [
+          "La rueda hidráulica",
+          "La veleta del tejado",
+          "El saco de harina",
+          "El reloj de pared"
+        ],
+        "answer": "La rueda hidráulica",
+        "acceptedAnswers": [
+          "La rueda hidráulica"
+        ],
+        "hints": [
+          "Está en contacto constante con el agua que baja del cauce.",
+          "Gira sin cesar cuando las compuertas están abiertas.",
+          "Es la gran rueda hidráulica de madera y hierro que mueve el mecanismo."
+        ],
+        "staticHints": [
+          "Está en contacto constante con el agua que baja del cauce.",
+          "Gira sin cesar cuando las compuertas están abiertas.",
+          "Es la gran rueda hidráulica de madera y hierro que mueve el mecanismo."
         ]
       },
       {
@@ -285,6 +407,25 @@
           "r_guerra_moulin_2_hint1",
           "r_guerra_moulin_2_hint2",
           "r_guerra_moulin_2_hint3"
+        ],
+        "name": "El Código de las Muelas",
+        "question": "Un mensaje en clave dice: «Tres sacos de trigo, dos vueltas de eje, un silencio al alba». Si cada saco representa 10 km y cada vuelta 5 horas, ¿cuántos km recorrió el mensajero antes de detenerse?",
+        "answer": "30",
+        "acceptedAnswers": [
+          "30",
+          "30 km",
+          "30km",
+          "treinta"
+        ],
+        "hints": [
+          "Fíjate únicamente en los sacos de trigo que marcan la distancia.",
+          "Son 3 sacos y cada uno vale 10.",
+          "Multiplica 3 por 10: el resultado es 30."
+        ],
+        "staticHints": [
+          "Fíjate únicamente en los sacos de trigo que marcan la distancia.",
+          "Son 3 sacos y cada uno vale 10.",
+          "Multiplica 3 por 10: el resultado es 30."
         ]
       },
       {
@@ -304,6 +445,23 @@
           "r_guerra_moulin_3_hint1",
           "r_guerra_moulin_3_hint2",
           "r_guerra_moulin_3_hint3"
+        ],
+        "name": "Cifrado de Rouillac",
+        "question": "La contraseña maquis es el anagrama de «MOLINO» sustituyendo la última vocal por la inicial de la red «RESISTENCIA». ¿Cuál es la clave final?",
+        "answer": "MOLINR",
+        "acceptedAnswers": [
+          "MOLINR",
+          "molinr"
+        ],
+        "hints": [
+          "Toma la palabra MOLINO.",
+          "Quita la última letra 'O' y añade la inicial de Resistencia ('R').",
+          "La palabra clave es MOLINR."
+        ],
+        "staticHints": [
+          "Toma la palabra MOLINO.",
+          "Quita la última letra 'O' y añade la inicial de Resistencia ('R').",
+          "La palabra clave es MOLINR."
         ]
       },
       {
@@ -325,6 +483,27 @@
           "r_guerra_ruisseau_1_hint1",
           "r_guerra_ruisseau_1_hint2",
           "r_guerra_ruisseau_1_hint3"
+        ],
+        "name": "Vadeando el Arroyo",
+        "question": "Para cruzar el arroyo sin dejar huellas visibles en el barro, ¿por dónde indicó el sargento caminar?",
+        "options": [
+          "Pisando las piedras del lecho",
+          "Corriendo por el camino de arena",
+          "Saltando con botas pesadas"
+        ],
+        "answer": "Pisando las piedras del lecho",
+        "acceptedAnswers": [
+          "Pisando las piedras del lecho"
+        ],
+        "hints": [
+          "El agua limpia el rastro inmediatamente.",
+          "Busca las superficies duras y húmedas que sobresalen de la corriente.",
+          "Debes caminar sobre las piedras del lecho del río."
+        ],
+        "staticHints": [
+          "El agua limpia el rastro inmediatamente.",
+          "Busca las superficies duras y húmedas que sobresalen de la corriente.",
+          "Debes caminar sobre las piedras del lecho del río."
         ]
       },
       {
@@ -346,6 +525,25 @@
           "r_guerra_ruisseau_2_hint1",
           "r_guerra_ruisseau_2_hint2",
           "r_guerra_ruisseau_2_hint3"
+        ],
+        "name": "La Hora del Vado",
+        "question": "Si la patrulla enemiga pasa cada 45 minutos y la última pasó a las 14:15, ¿a qué hora exacta (HH:MM) pasará la siguiente si no hay retrasos?",
+        "answer": "15:00",
+        "acceptedAnswers": [
+          "15:00",
+          "15h00",
+          "15:00h",
+          "15:00h"
+        ],
+        "hints": [
+          "Suma 45 minutos a las 14:15.",
+          "15 + 45 minutos da exactamente 60 minutos.",
+          "Por tanto la hora en punto es 15:00."
+        ],
+        "staticHints": [
+          "Suma 45 minutos a las 14:15.",
+          "15 + 45 minutos da exactamente 60 minutos.",
+          "Por tanto la hora en punto es 15:00."
         ]
       },
       {
@@ -368,6 +566,28 @@
           "r_guerra_chene_1_hint1",
           "r_guerra_chene_1_hint2",
           "r_guerra_chene_1_hint3"
+        ],
+        "name": "El Buzón Silencioso",
+        "question": "¿Qué fruto característico produce este centenario roble, que servía a los enlaces como contraseña al llevar uno en el bolsillo?",
+        "options": [
+          "Bellota",
+          "Piña",
+          "Castaña",
+          "Nuez"
+        ],
+        "answer": "Bellota",
+        "acceptedAnswers": [
+          "Bellota"
+        ],
+        "hints": [
+          "Es el fruto tradicional de los robles y encinas.",
+          "Tiene una pequeña cúpula o sombrerito leñoso.",
+          "Es la bellota."
+        ],
+        "staticHints": [
+          "Es el fruto tradicional de los robles y encinas.",
+          "Tiene una pequeña cúpula o sombrerito leñoso.",
+          "Es la bellota."
         ]
       },
       {
@@ -390,6 +610,28 @@
           "r_guerra_chene_2_hint1",
           "r_guerra_chene_2_hint2",
           "r_guerra_chene_2_hint3"
+        ],
+        "name": "Orientación Maquis",
+        "question": "¿En qué lado del tronco del roble suele crecer el musgo más espeso en este hemisferio, indicando hacia dónde está el Norte?",
+        "options": [
+          "Cara Norte",
+          "Cara Sur",
+          "Cara Este",
+          "Cualquier lado por igual"
+        ],
+        "answer": "Cara Norte",
+        "acceptedAnswers": [
+          "Cara Norte"
+        ],
+        "hints": [
+          "Es el lado más sombrío y húmedo al no recibir sol directo.",
+          "En Europa es la dirección boreal.",
+          "Es la cara Norte."
+        ],
+        "staticHints": [
+          "Es el lado más sombrío y húmedo al no recibir sol directo.",
+          "En Europa es la dirección boreal.",
+          "Es la cara Norte."
         ]
       },
       {
@@ -411,6 +653,27 @@
           "r_guerra_belvedere_1_hint1",
           "r_guerra_belvedere_1_hint2",
           "r_guerra_belvedere_1_hint3"
+        ],
+        "name": "El Vigía del Horizonte",
+        "question": "Desde este mirador, ¿qué señal visual de humo blanco pactaron para confirmar que la ruta estaba despejada?",
+        "options": [
+          "Tres columnas cortas de humo",
+          "Un cohete de bengala roja",
+          "Una bandera amarilla"
+        ],
+        "answer": "Tres columnas cortas de humo",
+        "acceptedAnswers": [
+          "Tres columnas cortas de humo"
+        ],
+        "hints": [
+          "Columnas discretas generadas con ramas verdes.",
+          "Eran tres señales repetidas.",
+          "Tres columnas cortas de humo."
+        ],
+        "staticHints": [
+          "Columnas discretas generadas con ramas verdes.",
+          "Eran tres señales repetidas.",
+          "Tres columnas cortas de humo."
         ]
       },
       {
@@ -431,6 +694,24 @@
           "r_molino_moulin_1_hint1",
           "r_molino_moulin_1_hint2",
           "r_molino_moulin_1_hint3"
+        ],
+        "name": "La Rueda de Piedra",
+        "question": "¿Cómo se llama la piedra circular pesada que tritura el grano contra la piedra fija?",
+        "answer": "Muela",
+        "acceptedAnswers": [
+          "Muela",
+          "la muela",
+          "muela de molino"
+        ],
+        "hints": [
+          "Palabra de 5 letras que también nombra un tipo de diente.",
+          "Gira accionada por el eje del molino.",
+          "Es la «Muela»."
+        ],
+        "staticHints": [
+          "Palabra de 5 letras que también nombra un tipo de diente.",
+          "Gira accionada por el eje del molino.",
+          "Es la «Muela»."
         ]
       },
       {
@@ -452,6 +733,25 @@
           "r_molino_moulin_2_hint1",
           "r_molino_moulin_2_hint2",
           "r_molino_moulin_2_hint3"
+        ],
+        "name": "El Caudal Secreto",
+        "question": "Maître Pierre anotó: «Por cada metro cúbico por segundo, la rueda gira 12 veces por minuto». Si hoy el río lleva 3 m³/s, ¿a cuántas revoluciones por minuto gira la rueda?",
+        "answer": "36",
+        "acceptedAnswers": [
+          "36",
+          "36 rpm",
+          "36rpm",
+          "treinta y seis"
+        ],
+        "hints": [
+          "Multiplica el caudal en m³/s por las revoluciones por unidad.",
+          "3 multiplicado por 12.",
+          "El resultado es 36."
+        ],
+        "staticHints": [
+          "Multiplica el caudal en m³/s por las revoluciones por unidad.",
+          "3 multiplicado por 12.",
+          "El resultado es 36."
         ]
       },
       {
@@ -475,6 +775,26 @@
           "r_molino_moulin_3_hint1",
           "r_molino_moulin_3_hint2",
           "r_molino_moulin_3_hint3"
+        ],
+        "name": "El Engranaje de Maître Pierre",
+        "question": "Maître Pierre dejó sus dibujos desordenados. Ordena el recorrido de la fuerza del agua, desde que entra en la acequia hasta que la harina llega al saco.",
+        "options": [
+          "El agua desciende por la acequia y pasa por la esclusa",
+          "El agua empuja las palas de la rueda hidráulica",
+          "La rueda hace girar el eje de madera",
+          "Los engranajes de roble transmiten el giro",
+          "La muela superior gira sobre la muela fija",
+          "La harina cae por el canal hasta el saco"
+        ],
+        "hints": [
+          "Empieza por donde entra el agua, no por donde sale la harina.",
+          "La fuerza va de la rueda al eje, del eje a los engranajes y de los engranajes a las muelas.",
+          "Orden: acequia y esclusa, palas de la rueda, eje, engranajes, muelas, saco."
+        ],
+        "staticHints": [
+          "Empieza por donde entra el agua, no por donde sale la harina.",
+          "La fuerza va de la rueda al eje, del eje a los engranajes y de los engranajes a las muelas.",
+          "Orden: acequia y esclusa, palas de la rueda, eje, engranajes, muelas, saco."
         ]
       },
       {
@@ -496,6 +816,27 @@
           "r_molino_ruisseau_1_hint1",
           "r_molino_ruisseau_1_hint2",
           "r_molino_ruisseau_1_hint3"
+        ],
+        "name": "El Canal de Derivación",
+        "question": "¿Cómo se llama la compuerta de madera que regula el paso de agua hacia el molino?",
+        "options": [
+          "Esclusa o compuerta",
+          "Dique seco",
+          "Pozo de tormentas"
+        ],
+        "answer": "Esclusa o compuerta",
+        "acceptedAnswers": [
+          "Esclusa o compuerta"
+        ],
+        "hints": [
+          "Se levanta o baja verticalmente mediante una cremallera o manivela.",
+          "Permite aislar el molino cuando hay crecidas.",
+          "Esclusa o compuerta."
+        ],
+        "staticHints": [
+          "Se levanta o baja verticalmente mediante una cremallera o manivela.",
+          "Permite aislar el molino cuando hay crecidas.",
+          "Esclusa o compuerta."
         ]
       },
       {
@@ -517,6 +858,27 @@
           "r_molino_chene_1_hint1",
           "r_molino_chene_1_hint2",
           "r_molino_chene_1_hint3"
+        ],
+        "name": "La Madera del Eje",
+        "question": "¿Qué propiedad del roble lo hacía el árbol favorito para fabricar los dientes y engranajes del molino?",
+        "options": [
+          "Dureza y resistencia al agua",
+          "Ligereza extrema como el corcho",
+          "Flexibilidad para doblarse en espiral"
+        ],
+        "answer": "Dureza y resistencia al agua",
+        "acceptedAnswers": [
+          "Dureza y resistencia al agua"
+        ],
+        "hints": [
+          "Los engranajes deben soportar toneladas de fricción.",
+          "No debe pudrirse fácilmente en humedad constante.",
+          "Dureza y resistencia al agua."
+        ],
+        "staticHints": [
+          "Los engranajes deben soportar toneladas de fricción.",
+          "No debe pudrirse fácilmente en humedad constante.",
+          "Dureza y resistencia al agua."
         ]
       },
       {
@@ -538,6 +900,27 @@
           "r_molino_belvedere_1_hint1",
           "r_molino_belvedere_1_hint2",
           "r_molino_belvedere_1_hint3"
+        ],
+        "name": "El Nivel de Caída",
+        "question": "Para que un molino funcione con fuerza, ¿qué necesita tener el agua entre el inicio y el final de la acequia?",
+        "options": [
+          "Un desnivel o pendiente",
+          "Aguas termales calientes",
+          "Arena blanca"
+        ],
+        "answer": "Un desnivel o pendiente",
+        "acceptedAnswers": [
+          "Un desnivel o pendiente"
+        ],
+        "hints": [
+          "La gravedad es la fuente de energía del agua.",
+          "Sin altura que caer, el agua se estanca.",
+          "Un desnivel o pendiente."
+        ],
+        "staticHints": [
+          "La gravedad es la fuente de energía del agua.",
+          "Sin altura que caer, el agua se estanca.",
+          "Un desnivel o pendiente."
         ]
       },
       {
@@ -559,6 +942,27 @@
           "r_hechizo_moulin_1_hint1",
           "r_hechizo_moulin_1_hint2",
           "r_hechizo_moulin_1_hint3"
+        ],
+        "name": "La Voz del Agua",
+        "question": "Sylvaine te susurra: «No soy piedra ni soy viento, muevo maderas sin mover un brazo y canto canciones sin tener boca». ¿Qué elemento soy?",
+        "options": [
+          "El agua del río",
+          "El rayo del sol",
+          "La sombra de la tarde"
+        ],
+        "answer": "El agua del río",
+        "acceptedAnswers": [
+          "El agua del río"
+        ],
+        "hints": [
+          "Fluye eternamente hacia el océano.",
+          "Llena los cauces del bosque.",
+          "Es el agua del río."
+        ],
+        "staticHints": [
+          "Fluye eternamente hacia el océano.",
+          "Llena los cauces del bosque.",
+          "Es el agua del río."
         ]
       },
       {
@@ -580,6 +984,27 @@
           "r_hechizo_ruisseau_1_hint1",
           "r_hechizo_ruisseau_1_hint2",
           "r_hechizo_ruisseau_1_hint3"
+        ],
+        "name": "Las Lágrimas de Sylvaine",
+        "question": "¿Qué pequeñas plantas milenarias sin flores cubren las piedras a la orilla del arroyo como una alfombra verde brillante?",
+        "options": [
+          "Musgo y helechos",
+          "Cáctus y espinas",
+          "Rosas silvestres"
+        ],
+        "answer": "Musgo y helechos",
+        "acceptedAnswers": [
+          "Musgo y helechos"
+        ],
+        "hints": [
+          "Crecen en la penumbra húmeda.",
+          "Tienen un tacto suave y esponjoso.",
+          "Son el musgo y los helechos."
+        ],
+        "staticHints": [
+          "Crecen en la penumbra húmeda.",
+          "Tienen un tacto suave y esponjoso.",
+          "Son el musgo y los helechos."
         ]
       },
       {
@@ -603,6 +1028,26 @@
           "r_hechizo_ruisseau_2_hint1",
           "r_hechizo_ruisseau_2_hint2",
           "r_hechizo_ruisseau_2_hint3"
+        ],
+        "name": "El Viaje de la Gota",
+        "question": "Sylvaine te pide devolver la melodía al arroyo. Ordena el viaje de una gota de agua, de la lluvia a la nube.",
+        "options": [
+          "La gota cae como lluvia sobre el bosque",
+          "Se filtra entre el musgo y la tierra",
+          "Brota de nuevo en el arroyo",
+          "Corre río abajo hacia el mar",
+          "El sol la evapora",
+          "Sube y se convierte en nube"
+        ],
+        "hints": [
+          "El viaje empieza en el cielo y termina en el cielo.",
+          "Antes de correr por el arroyo, la gota tiene que atravesar el suelo.",
+          "Orden: lluvia, filtración, arroyo, río hacia el mar, evaporación, nube."
+        ],
+        "staticHints": [
+          "El viaje empieza en el cielo y termina en el cielo.",
+          "Antes de correr por el arroyo, la gota tiene que atravesar el suelo.",
+          "Orden: lluvia, filtración, arroyo, río hacia el mar, evaporación, nube."
         ]
       },
       {
@@ -624,6 +1069,27 @@
           "r_hechizo_chene_1_hint1",
           "r_hechizo_chene_1_hint2",
           "r_hechizo_chene_1_hint3"
+        ],
+        "name": "El Abrazo de la Dríade",
+        "question": "¿Cuántas vidas humanas dicen las leyendas que puede llegar a vivir un roble milenario sano en este bosque?",
+        "options": [
+          "Más de 10 vidas (800-1000 años)",
+          "Apenas 1 vida (30 años)",
+          "Solo 5 años"
+        ],
+        "answer": "Más de 10 vidas (800-1000 años)",
+        "acceptedAnswers": [
+          "Más de 10 vidas (800-1000 años)"
+        ],
+        "hints": [
+          "Un roble tarda siglos en crecer, madurar y declinar.",
+          "Es uno de los árboles más longevos de Europa.",
+          "Más de 10 vidas (800-1000 años)."
+        ],
+        "staticHints": [
+          "Un roble tarda siglos en crecer, madurar y declinar.",
+          "Es uno de los árboles más longevos de Europa.",
+          "Más de 10 vidas (800-1000 años)."
         ]
       },
       {
@@ -645,6 +1111,27 @@
           "r_hechizo_pont_1_hint1",
           "r_hechizo_pont_1_hint2",
           "r_hechizo_pont_1_hint3"
+        ],
+        "name": "El Puente de las Brumas",
+        "question": "Para cruzar el puente sin alertar a los espíritus de la niebla, ¿qué tributo vegetal exige la leyenda arrojar al agua?",
+        "options": [
+          "Una hoja seca de roble",
+          "Una moneda de oro",
+          "Un pedazo de pan"
+        ],
+        "answer": "Una hoja seca de roble",
+        "acceptedAnswers": [
+          "Una hoja seca de roble"
+        ],
+        "hints": [
+          "Es un elemento natural del suelo del bosque.",
+          "Procede del árbol sagrado de la arboleda.",
+          "Una hoja seca de roble."
+        ],
+        "staticHints": [
+          "Es un elemento natural del suelo del bosque.",
+          "Procede del árbol sagrado de la arboleda.",
+          "Una hoja seca de roble."
         ]
       },
       {
@@ -665,6 +1152,24 @@
           "r_hechizo_belvedere_1_hint1",
           "r_hechizo_belvedere_1_hint2",
           "r_hechizo_belvedere_1_hint3"
+        ],
+        "name": "El Despertar del Bosque",
+        "question": "Al llegar a lo más alto del mirador, Sylvaine te pide pronunciar la palabra que une a todos los seres vivos del bosque: «A _ _ _ N _ A». ¿Qué palabra es?",
+        "answer": "ARMONIA",
+        "acceptedAnswers": [
+          "ARMONIA",
+          "armonía",
+          "armonia"
+        ],
+        "hints": [
+          "Significa concordia, equilibrio y belleza en conjunto.",
+          "Empieza por AR y termina por IA.",
+          "La palabra es ARMONIA."
+        ],
+        "staticHints": [
+          "Significa concordia, equilibrio y belleza en conjunto.",
+          "Empieza por AR y termina por IA.",
+          "La palabra es ARMONIA."
         ]
       },
       {
@@ -686,6 +1191,27 @@
           "r_promenade_ruisseau_1_hint1",
           "r_promenade_ruisseau_1_hint2",
           "r_promenade_ruisseau_1_hint3"
+        ],
+        "name": "La Rima del Renacuajo",
+        "question": "Cuento de los niños: «Tengo cola pero no soy pez, cuando crezca daré brincos sin parar». ¿Quién soy?",
+        "options": [
+          "Renacuajo o ranita",
+          "Libélula veloz",
+          "Caracol de agua"
+        ],
+        "answer": "Renacuajo o ranita",
+        "acceptedAnswers": [
+          "Renacuajo o ranita"
+        ],
+        "hints": [
+          "Vive en los remansos del arroyo.",
+          "Perderá su colita y le saldrán cuatro patas para croar.",
+          "Renacuajo o ranita."
+        ],
+        "staticHints": [
+          "Vive en los remansos del arroyo.",
+          "Perderá su colita y le saldrán cuatro patas para croar.",
+          "Renacuajo o ranita."
         ]
       },
       {
@@ -706,6 +1232,24 @@
           "r_promenade_chene_1_hint1",
           "r_promenade_chene_1_hint2",
           "r_promenade_chene_1_hint3"
+        ],
+        "name": "El Sombrero del Duende",
+        "question": "Los niños imaginaron que las bellotas caídas eran gorritos de duendes. Si cuentas los duendecillos de un nido y ves 4 gorritos y 3 ramitas, ¿cuántos duendecillos tienen sombrero?",
+        "answer": "4",
+        "acceptedAnswers": [
+          "4",
+          "cuatro",
+          "4 duendes"
+        ],
+        "hints": [
+          "Cada duendecillo con sombrero usa un gorrito de bellota.",
+          "Había 4 gorritos en total.",
+          "La respuesta es 4."
+        ],
+        "staticHints": [
+          "Cada duendecillo con sombrero usa un gorrito de bellota.",
+          "Había 4 gorritos en total.",
+          "La respuesta es 4."
         ]
       },
       {
@@ -727,6 +1271,27 @@
           "r_promenade_pont_1_hint1",
           "r_promenade_pont_1_hint2",
           "r_promenade_pont_1_hint3"
+        ],
+        "name": "La Escultura Mágica",
+        "question": "En el proyecto Divercités 'FOR[Ê]VEUR', el escultor talló figuras de madera para acompañar los cuentos. ¿De qué material noble están hechas estas obras?",
+        "options": [
+          "Madera recuperada del propio bosque",
+          "Plástico reciclado de colores",
+          "Acero inoxidable pulido"
+        ],
+        "answer": "Madera recuperada del propio bosque",
+        "acceptedAnswers": [
+          "Madera recuperada del propio bosque"
+        ],
+        "hints": [
+          "Respeta la naturaleza viva sin talar árboles sanos.",
+          "Es un material cálido que envejece con el musgo.",
+          "Madera recuperada del propio bosque."
+        ],
+        "staticHints": [
+          "Respeta la naturaleza viva sin talar árboles sanos.",
+          "Es un material cálido que envejece con el musgo.",
+          "Madera recuperada del propio bosque."
         ]
       },
       {
@@ -748,6 +1313,27 @@
           "r_promenade_moulin_1_hint1",
           "r_promenade_moulin_1_hint2",
           "r_promenade_moulin_1_hint3"
+        ],
+        "name": "El Pastel del Molinero Duende",
+        "question": "Para cerrar el cuento de la clase, el duendecillo prepara una tarta con harina recién molida. ¿Cuál es el ingrediente que cae de los árboles que le da el toque dulce?",
+        "options": [
+          "Miel de abejas del bosque",
+          "Pimienta picante",
+          "Sal marina"
+        ],
+        "answer": "Miel de abejas del bosque",
+        "acceptedAnswers": [
+          "Miel de abejas del bosque"
+        ],
+        "hints": [
+          "La producen insectos laboriosos que polinizan las flores silvestres.",
+          "Es dorada y muy dulce.",
+          "Miel de abejas del bosque."
+        ],
+        "staticHints": [
+          "La producen insectos laboriosos que polinizan las flores silvestres.",
+          "Es dorada y muy dulce.",
+          "Miel de abejas del bosque."
         ]
       },
       {
@@ -763,7 +1349,9 @@
         "questionKey": "b_chene_foto_question",
         "config": {
           "validation": "trust"
-        }
+        },
+        "name": "El Tesoro del Roble",
+        "question": "Busca en el suelo una hoja de roble o la cúpula de una bellota y fotografíala. Déjala donde está: en el bosque no se recoge nada."
       },
       {
         "id": "b_ruisseau_escucha",
@@ -786,7 +1374,17 @@
         ],
         "config": {
           "holdSeconds": 30
-        }
+        },
+        "name": "El Concierto del Arroyo",
+        "question": "Quédate quieto 30 segundos con el móvil bajado y marca todos los sonidos que oigas.",
+        "options": [
+          "Agua corriendo",
+          "Pájaros",
+          "Viento entre los árboles",
+          "Insectos",
+          "Ramas que crujen",
+          "Voces o motores lejanos"
+        ]
       },
       {
         "id": "b_ruisseau_orden_promenade",
@@ -809,6 +1407,24 @@
           "b_ruisseau_orden_promenade_hint1",
           "b_ruisseau_orden_promenade_hint2",
           "b_ruisseau_orden_promenade_hint3"
+        ],
+        "name": "La Ranita en Cuatro Viñetas",
+        "question": "Los niños dibujaron la vida de la ranita en cuatro viñetas, pero se han mezclado. Ordénalas de principio a fin.",
+        "options": [
+          "Los huevos flotan en el agua",
+          "Nace un renacuajo con cola",
+          "Le salen las patas y pierde la cola",
+          "La ranita adulta salta fuera del arroyo"
+        ],
+        "hints": [
+          "Todo empieza con huevos.",
+          "La cola desaparece casi al final.",
+          "Huevos, renacuajo, patas y sin cola, rana adulta."
+        ],
+        "staticHints": [
+          "Todo empieza con huevos.",
+          "La cola desaparece casi al final.",
+          "Huevos, renacuajo, patas y sin cola, rana adulta."
         ]
       }
     ],
