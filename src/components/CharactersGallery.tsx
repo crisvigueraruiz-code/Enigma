@@ -100,7 +100,7 @@ export const CharactersGallery: React.FC<CharactersGalleryProps> = ({
                 : 'text-stone-400 hover:text-stone-200'
             }`}
           >
-            Todos ({allCharacters.length})
+            {t('characters.allFilter', { count: allCharacters.length })}
           </button>
           {forests.map((f) => {
             const count = f.stories.length;
@@ -210,13 +210,13 @@ export const CharactersGallery: React.FC<CharactersGalleryProps> = ({
                     className="flex-1 py-3 px-3 rounded-xl bg-gradient-to-r from-emerald-700 to-green-600 hover:from-emerald-600 hover:to-green-500 text-white font-adventure text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition-all min-h-[46px]"
                   >
                     <Mic className="w-4 h-4 text-amber-300" />
-                    <span>Hablar por Voz / Chat</span>
+                    <span>{t('characters.talkBtn')}</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={() => handlePlayGreeting(char)}
-                    title={isPlaying ? 'Detener voz' : 'Escuchar saludo con voz'}
+                    title={isPlaying ? t('characters.stopVoice') : t('characters.listenGreeting')}
                     className={`p-3 rounded-xl border text-xs font-semibold flex items-center justify-center transition-colors min-h-[46px] min-w-[46px] ${
                       isPlaying
                         ? 'bg-amber-900/80 border-amber-400 text-amber-200'
@@ -232,7 +232,7 @@ export const CharactersGallery: React.FC<CharactersGalleryProps> = ({
                   onClick={() => onStartRouteWithStory(char.forest, char.story.id)}
                   className="w-full py-2.5 px-3 rounded-xl bg-[#121F14] hover:bg-emerald-950 border border-emerald-800/60 hover:border-emerald-500 text-emerald-300 hover:text-white text-xs sm:text-sm font-medium flex items-center justify-center gap-1.5 transition-all active:scale-95 min-h-[42px]"
                 >
-                  <span>Jugar con este personaje en su historia</span>
+                  <span>{t('characters.playWithChar')}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>

@@ -19,6 +19,7 @@ import {
   Radio,
   Layers,
   CheckCircle2,
+  HelpCircle,
 } from 'lucide-react';
 import { CharactersGallery } from './CharactersGallery';
 
@@ -33,6 +34,7 @@ interface ForestSelectorProps {
   selectedForest?: ForestPack | null;
   onContinueSavedGame?: () => void;
   onOpenPauseOrAbandon?: () => void;
+  onOpenHowToPlay?: () => void;
 }
 
 export const ForestSelector: React.FC<ForestSelectorProps> = ({
@@ -46,6 +48,7 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
   selectedForest,
   onContinueSavedGame,
   onOpenPauseOrAbandon,
+  onOpenHowToPlay,
 }) => {
   const { t } = useI18n();
 
@@ -78,14 +81,14 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
                 <span>{t('home.savedGameBanner') || 'Partida en Curso'}</span>
               </span>
               <span className="font-mono text-xs text-stone-300 font-semibold bg-black/40 px-2 py-0.5 rounded-md border border-white/10">
-                Código: <strong className="text-amber-200 tracking-wider">{activeSession.code}</strong>
+                {t('resume.codeLabel')}: <strong className="text-amber-200 tracking-wider">{activeSession.code}</strong>
               </span>
             </div>
             <h3 className="font-adventure text-lg sm:text-xl font-bold text-amber-100">
-              {selectedForest.name} — Hito {activeSession.currentPoiIndex + 1} de {activeSession.routePoiIds.length}
+              {selectedForest.name} — {t('reward.poiStep', { current: activeSession.currentPoiIndex + 1, total: activeSession.routePoiIds.length })}
             </h3>
             <p className="text-xs text-stone-300 max-w-xl leading-relaxed">
-              Tienes una expedición activa con <strong>{activeSession.points} puntos</strong> acumulados. Puedes retomarla exactamente donde la dejaste.
+              {t('home.savedExpeditionNotice', { points: activeSession.points }) || `Expedición activa con ${activeSession.points} puntos.`}
             </p>
           </div>
 
@@ -109,7 +112,7 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
                 title={t('home.manageOrAbandon') || 'Gestionar'}
               >
                 <LogOut className="w-3.5 h-3.5 text-stone-400" />
-                <span>Abandonar</span>
+                <span>{t('pause.buttonAbandon')}</span>
               </button>
             )}
           </div>
@@ -122,26 +125,26 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
         <div className="relative z-10 max-w-3xl space-y-5">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/90 border border-emerald-500/40 text-xs font-semibold text-emerald-300">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Side Quest de Rastreo Narrativo al Aire Libre</span>
+            <span>{t('home.heroBadge')}</span>
           </div>
 
           <h1 className="font-adventure text-3xl sm:text-5xl lg:text-6xl font-extrabold text-amber-100 tracking-tight leading-[1.1]">
-            Enigma del Bosque
+            {t('app.title')}
           </h1>
 
           <p className="text-stone-300 text-sm sm:text-base leading-relaxed max-w-2xl font-sans">
-            Recorre parajes naturales reales con geolocalización GPS, resuelve enigmas sobre hitos patrimoniales y conversa en tiempo real por voz con personajes históricos y fantásticos impulsados por IA.
+            {t('home.heroDesc')}
           </p>
 
           {/* Quick Metrics Bar */}
           <div className="flex flex-wrap items-center gap-y-2 gap-x-4 text-xs text-stone-300 pt-1">
-            <span className="font-medium text-emerald-400">{displayForests.length} Bosques Georreferenciados</span>
+            <span className="font-medium text-emerald-400">{t('home.statForests', { count: displayForests.length })}</span>
             <span aria-hidden="true" className="text-stone-600">·</span>
-            <span className="font-medium text-amber-300">{totalStories} Historias Diferentes</span>
+            <span className="font-medium text-amber-300">{t('home.statStories', { count: totalStories })}</span>
             <span aria-hidden="true" className="text-stone-600">·</span>
-            <span className="font-medium text-teal-300">{totalPois} Hitos Patrimoniales</span>
+            <span className="font-medium text-teal-300">{t('home.statPois', { count: totalPois })}</span>
             <span aria-hidden="true" className="text-stone-600">·</span>
-            <span className="font-medium text-stone-300">Gemini 3.8 Live & Realidad Aumentada</span>
+            <span className="font-medium text-stone-300">{t('home.statTech')}</span>
           </div>
 
           {/* Hero Action Buttons */}
@@ -151,7 +154,7 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
               className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-green-500 hover:from-emerald-500 hover:to-green-400 text-white font-adventure text-sm font-bold tracking-wider shadow-lg shadow-emerald-950/80 active:scale-95 transition-all min-h-[48px]"
             >
               <Compass className="w-5 h-5 text-white" />
-              <span>Explorar Bosques Disponibles</span>
+              <span>{t('home.exploreBtn')}</span>
             </a>
 
             <button
@@ -160,8 +163,19 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
               className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-stone-900/90 hover:bg-stone-800 border border-stone-700 text-amber-200 hover:text-white font-semibold text-sm transition-all shadow-md active:scale-95 min-h-[48px]"
             >
               <KeyRound className="w-5 h-5 text-amber-400" />
-              <span>Reanudar con Código</span>
+              <span>{t('home.resumeBtn')}</span>
             </button>
+
+            {onOpenHowToPlay && (
+              <button
+                type="button"
+                onClick={onOpenHowToPlay}
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-emerald-950/70 hover:bg-emerald-900/90 border border-emerald-600/50 text-emerald-200 hover:text-white font-semibold text-sm transition-all shadow-md active:scale-95 min-h-[48px]"
+              >
+                <HelpCircle className="w-5 h-5 text-amber-300" />
+                <span>{t('howToPlay_title')}</span>
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -173,15 +187,15 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
             <div className="flex items-center gap-2">
               <Compass className="w-5 h-5 text-emerald-400" />
               <h2 className="font-adventure text-2xl font-bold text-amber-100">
-                Bosques y Territorios
+                {t('home.territoriesTitle')}
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-stone-400">
-              Selecciona tu destino para elegir historia, duración (30min - 2h) y dificultad.
+              {t('home.territoriesSubtitle')}
             </p>
           </div>
           <span className="text-xs text-stone-400 self-start sm:self-auto font-mono">
-            {displayForests.length} territorios listos
+            {t('home.territoriesReady', { count: displayForests.length })}
           </span>
         </div>
 
@@ -241,17 +255,17 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
                   <div className="py-2.5 border-y border-emerald-900/50 flex items-center justify-between text-center text-xs">
                     <div>
                       <div className="font-adventure font-bold text-emerald-400 text-sm">{poiCount}</div>
-                      <div className="text-[10px] text-stone-400 uppercase tracking-wider">Hitos POI</div>
+                      <div className="text-[10px] text-stone-400 uppercase tracking-wider">{t('home.statPoisCount')}</div>
                     </div>
                     <div className="h-6 w-px bg-emerald-900/50" />
                     <div>
                       <div className="font-adventure font-bold text-amber-400 text-sm">{storyCount}</div>
-                      <div className="text-[10px] text-stone-400 uppercase tracking-wider">Historias</div>
+                      <div className="text-[10px] text-stone-400 uppercase tracking-wider">{t('home.statStoriesCount')}</div>
                     </div>
                     <div className="h-6 w-px bg-emerald-900/50" />
                     <div>
                       <div className="font-adventure font-bold text-teal-400 text-sm">{riddleCount}</div>
-                      <div className="text-[10px] text-stone-400 uppercase tracking-wider">Enigmas</div>
+                      <div className="text-[10px] text-stone-400 uppercase tracking-wider">{t('home.statRiddlesCount')}</div>
                     </div>
                   </div>
 
@@ -259,7 +273,7 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
                   <div className="space-y-1.5">
                     <span className="text-[11px] font-semibold text-emerald-400 uppercase tracking-wider flex items-center gap-1">
                       <BookOpen className="w-3 h-3" />
-                      <span>Historias ({storyCount}):</span>
+                      <span>{t('home.storiesListTitle', { count: storyCount })}</span>
                     </span>
                     <div className="space-y-1">
                       {forest.stories?.map((st) => (
@@ -272,7 +286,7 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
                             <span className="truncate">{st.title}</span>
                           </div>
                           <span className="text-[10px] text-stone-400 shrink-0 font-medium ml-2">
-                            {st.narratorName?.split(' ')[0] || 'Guía'}
+                            {st.narratorName?.split(' ')[0] || t('nav.guide')}
                           </span>
                         </div>
                       ))}
@@ -286,7 +300,7 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
                       onClick={() => onSelectForest(forest)}
                       className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-800 to-green-700 hover:from-emerald-700 hover:to-green-600 text-white font-adventure font-bold text-sm tracking-wider flex items-center justify-center gap-2 shadow-md active:scale-[0.98] transition-all min-h-[46px]"
                     >
-                      <span>Entrar al Bosque</span>
+                      <span>{t('home.enterForestBtn')}</span>
                       <ArrowRight className="w-4 h-4 text-amber-300" />
                     </button>
                   </div>
@@ -310,10 +324,10 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
       <section className="rounded-3xl border border-emerald-900/60 bg-[#142017] p-6 sm:p-8 space-y-6">
         <div className="text-center max-w-xl mx-auto space-y-1">
           <h3 className="font-adventure text-xl sm:text-2xl font-bold text-amber-100">
-            ¿Cómo se juega a Enigma del Bosque?
+            {t('home.howTitle')}
           </h3>
           <p className="text-xs text-stone-400">
-            Una experiencia pensada para disfrutar al aire libre en familia, con amigos o en solitario.
+            {t('home.howSubtitle')}
           </p>
         </div>
 
@@ -322,9 +336,9 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
             <div className="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-700/50 flex items-center justify-center text-amber-300 font-adventure font-bold">
               1
             </div>
-            <h4 className="font-adventure text-sm font-bold text-amber-100">Elige Bosque e Historia</h4>
+            <h4 className="font-adventure text-sm font-bold text-amber-100">{t('home.howStep1Title')}</h4>
             <p className="text-xs text-stone-300 leading-relaxed">
-              Selecciona tu sendero favorito, la duración del paseo (30min a 2h) y tu nivel de desafío.
+              {t('home.howStep1Desc')}
             </p>
           </div>
 
@@ -332,9 +346,9 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
             <div className="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-700/50 flex items-center justify-center text-amber-300 font-adventure font-bold">
               2
             </div>
-            <h4 className="font-adventure text-sm font-bold text-amber-100">Camina con GPS Real</h4>
+            <h4 className="font-adventure text-sm font-bold text-amber-100">{t('home.howStep2Title')}</h4>
             <p className="text-xs text-stone-300 leading-relaxed">
-              Sigue la brújula y el mapa interactivo. Los hitos se desbloquean al aproximarte físicamente.
+              {t('home.howStep2Desc')}
             </p>
           </div>
 
@@ -342,9 +356,9 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
             <div className="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-700/50 flex items-center justify-center text-amber-300 font-adventure font-bold">
               3
             </div>
-            <h4 className="font-adventure text-sm font-bold text-amber-100">Habla con tu Guía IA</h4>
+            <h4 className="font-adventure text-sm font-bold text-amber-100">{t('home.howStep3Title')}</h4>
             <p className="text-xs text-stone-300 leading-relaxed">
-              Conversa por voz o chat en vivo con tu personaje, pide pistas sensoriales y admira reliquias en RA.
+              {t('home.howStep3Desc')}
             </p>
           </div>
 
@@ -352,9 +366,9 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
             <div className="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-700/50 flex items-center justify-center text-amber-300 font-adventure font-bold">
               4
             </div>
-            <h4 className="font-adventure text-sm font-bold text-amber-100">Meta-Enigma Final</h4>
+            <h4 className="font-adventure text-sm font-bold text-amber-100">{t('home.howStep4Title')}</h4>
             <p className="text-xs text-stone-300 leading-relaxed">
-              Reúne las letras o runas místicas de cada hito para descifrar la clave final y obtener tu diploma.
+              {t('home.howStep4Desc')}
             </p>
           </div>
         </div>

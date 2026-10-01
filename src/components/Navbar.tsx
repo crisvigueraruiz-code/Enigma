@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trees, Compass, ArrowLeft, PauseCircle } from 'lucide-react';
+import { Trees, Compass, ArrowLeft, PauseCircle, HelpCircle } from 'lucide-react';
 import { AmbientAudioControl } from './AmbientAudioControl';
 import { LanguageSelector } from './LanguageSelector';
 import { useI18n } from '../context/I18nContext';
@@ -15,6 +15,7 @@ interface NavbarProps {
   simulatedGps: boolean;
   onToggleSimulatedGps: () => void;
   onOpenPauseModal?: () => void;
+  onOpenHowToPlay?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -28,6 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   simulatedGps,
   onToggleSimulatedGps,
   onOpenPauseModal,
+  onOpenHowToPlay,
 }) => {
   const { t } = useI18n();
 
@@ -53,6 +55,19 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center space-x-1.5 sm:space-x-2.5">
           {/* FR · ES · EN Language Selector Always Visible */}
           <LanguageSelector />
+
+          {/* How to Play Guide Modal Trigger */}
+          {onOpenHowToPlay && (
+            <button
+              type="button"
+              onClick={onOpenHowToPlay}
+              title={t('howToPlay_title')}
+              className="flex items-center gap-1 px-2 py-1 text-xs rounded-lg border border-emerald-700/50 bg-emerald-950/60 hover:bg-emerald-900/80 text-emerald-200 hover:text-white font-medium transition-all shadow-sm active:scale-95 min-h-[32px]"
+            >
+              <HelpCircle className="w-3.5 h-3.5 text-amber-300" />
+              <span className="hidden sm:inline">{t('howToPlay_navButton')}</span>
+            </button>
+          )}
 
           {currentView === 'game' && sessionCode && (
             <div className="hidden xs:flex items-center space-x-1.5 bg-emerald-950/60 border border-emerald-800/40 rounded-lg px-2 py-1">

@@ -1591,7 +1591,9 @@
       "promenade_enchantee_pont_sorciere": "Las esculturas de madera de Divercités cobran vida bajo el puente con historias de brujitas buenas.",
       "promenade_enchantee_cabane_forestier": "La cabaña huele a piñas secas y resina dulce. Un lugar perfecto para merendar y contar cuentos.",
       "promenade_enchantee_belvedere_canejan": "¡Desde aquí arriba los árboles parecen un mar de brócolis gigantes! A ver quién descubre primero el río."
-    }
+    },
+    "nameKey": "forest_canejan_name",
+    "descriptionKey": "forest_canejan_description"
   },
   {
     "id": "nalda",
@@ -1634,7 +1636,10 @@
           "description": "Reconstrucción 3D de la torre del homenaje superpuesta sobre las ruinas actuales.",
           "descriptionKey": "ar_castillo_description",
           "titleKey": "ar_castillo_title"
-        }
+        },
+        "nameKey": "poi_castillo_name",
+        "descriptionKey": "poi_castillo_description",
+        "clueSnippetKey": "poi_castillo_clue"
       },
       {
         "id": "arco-villa",
@@ -1658,7 +1663,10 @@
           "description": "Al cruzar el arco, aparecen figuras de vigías medievales.",
           "descriptionKey": "ar_arco_description",
           "titleKey": "ar_arco_title"
-        }
+        },
+        "nameKey": "poi_arco_name",
+        "descriptionKey": "poi_arco_description",
+        "clueSnippetKey": "poi_arco_clue"
       },
       {
         "id": "mirador-cameros",
@@ -1682,7 +1690,10 @@
           "description": "Etiquetas flotantes de los pueblos del valle y la ruta romana.",
           "descriptionKey": "ar_mirador_description",
           "titleKey": "ar_mirador_title"
-        }
+        },
+        "nameKey": "poi_mirador_name",
+        "descriptionKey": "poi_mirador_description",
+        "clueSnippetKey": "poi_mirador_clue"
       },
       {
         "id": "cuevas-palomares",
@@ -1706,7 +1717,10 @@
           "description": "Paloma 3D animada que vuela hacia las hornacinas. Al tocarla, da una pista.",
           "descriptionKey": "ar_cuevas_description",
           "titleKey": "ar_cuevas_title"
-        }
+        },
+        "nameKey": "poi_cuevas_name",
+        "descriptionKey": "poi_cuevas_description",
+        "clueSnippetKey": "poi_cuevas_clue"
       },
       {
         "id": "ermita-villavieja",
@@ -1730,7 +1744,10 @@
           "description": "Cesta de vendimia 3D con uvas de la Rioja. Al tocarla, reproduce audio de campanas.",
           "descriptionKey": "ar_ermita_description",
           "titleKey": "ar_ermita_title"
-        }
+        },
+        "nameKey": "poi_ermita_name",
+        "descriptionKey": "poi_ermita_description",
+        "clueSnippetKey": "poi_ermita_clue"
       }
     ],
     "routePresets": {
@@ -1852,7 +1869,10 @@
         },
         "summaryKey": "story_guardian_summary",
         "narrativeKey": "story_guardian_narrative",
-        "missionKey": "story_guardian_mission"
+        "missionKey": "story_guardian_mission",
+        "titleKey": "story_guardian_title",
+        "narratorNameKey": "guide_cronicon_name",
+        "narratorRoleKey": "guide_cronicon_role"
       },
       {
         "id": "fraile-botijo",
@@ -1945,7 +1965,10 @@
         },
         "summaryKey": "story_fray_summary",
         "narrativeKey": "story_fray_narrative",
-        "missionKey": "story_fray_mission"
+        "missionKey": "story_fray_mission",
+        "titleKey": "story_fray_title",
+        "narratorNameKey": "guide_fray_name",
+        "narratorRoleKey": "guide_fray_role"
       },
       {
         "id": "banda-palomar",
@@ -2034,7 +2057,10 @@
         },
         "summaryKey": "story_palomar_summary",
         "narrativeKey": "story_palomar_narrative",
-        "missionKey": "story_palomar_mission"
+        "missionKey": "story_palomar_mission",
+        "titleKey": "story_palomar_title",
+        "narratorNameKey": "guide_chucho_name",
+        "narratorRoleKey": "guide_chucho_role"
       },
       {
         "id": "expediente-zorbo",
@@ -2123,7 +2149,10 @@
         },
         "summaryKey": "story_zorbo_summary",
         "narrativeKey": "story_zorbo_narrative",
-        "missionKey": "story_zorbo_mission"
+        "missionKey": "story_zorbo_mission",
+        "titleKey": "story_zorbo_title",
+        "narratorNameKey": "guide_zorbo_name",
+        "narratorRoleKey": "guide_zorbo_role"
       }
     ],
     "riddles": [
@@ -3719,6 +3748,8 @@
         "D",
         "A"
       ]
-    }
+    },
+    "nameKey": "forest_nalda_name",
+    "descriptionKey": "forest_nalda_description"
   }
 ]

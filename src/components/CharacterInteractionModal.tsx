@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { StoryIntro, PlayerSession, WindmillPOI, ForestPack, LiveMessage } from '../types';
 import { LiveAudioSession } from '../utils/liveAudio';
 import { sounds } from '../utils/audio';
+import { useI18n } from '../context/I18nContext';
 import {
   X,
   Mic,
@@ -42,6 +43,7 @@ export const CharacterInteractionModal: React.FC<CharacterInteractionModalProps>
   textMessages = [],
   onSelectOtherCharacter,
 }) => {
+  const { t, currentLanguage } = useI18n();
   const [mode, setMode] = useState<'voice' | 'chat'>('voice');
   const [isMicActive, setIsMicActive] = useState(false);
   const [liveWsStatus, setLiveWsStatus] = useState<'disconnected' | 'connecting' | 'connected' | 'error' | 'simulated'>('disconnected');

@@ -18,6 +18,7 @@ import { CharacterInteractionModal } from './components/CharacterInteractionModa
 import { AdminAuthModal } from './components/AdminAuthModal';
 import { BriefingModal } from './components/BriefingModal';
 import { PauseOrAbandonModal } from './components/PauseOrAbandonModal';
+import { HowToPlayModal } from './components/HowToPlayModal';
 import { ambientAudio } from './utils/audio';
 import { useI18n } from './context/I18nContext';
 
@@ -34,6 +35,7 @@ export default function App() {
   const [isCompletionOpen, setIsCompletionOpen] = useState(false);
   const [isBriefingOpen, setIsBriefingOpen] = useState(false);
   const [isPauseModalOpen, setIsPauseModalOpen] = useState(false);
+  const [isHowToPlayOpen, setIsHowToPlayOpen] = useState(false);
   const [isAdminAuthOpen, setIsAdminAuthOpen] = useState(false);
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(true);
   const [activeCharacterStory, setActiveCharacterStory] = useState<StoryIntro | null>(null);
@@ -338,6 +340,7 @@ export default function App() {
         simulatedGps={simulatedGps}
         onToggleSimulatedGps={() => setSimulatedGps(!simulatedGps)}
         onOpenPauseModal={() => setIsPauseModalOpen(true)}
+        onOpenHowToPlay={() => setIsHowToPlayOpen(true)}
       />
 
       {/* Main Viewport */}
@@ -369,6 +372,7 @@ export default function App() {
             selectedForest={localizedSelectedForest}
             onContinueSavedGame={() => setCurrentView('game')}
             onOpenPauseOrAbandon={() => setIsPauseModalOpen(true)}
+            onOpenHowToPlay={() => setIsHowToPlayOpen(true)}
           />
         )}
 
@@ -482,6 +486,12 @@ export default function App() {
           onAbandonPermanently={handleAbandonPermanently}
         />
       )}
+
+      {/* How To Play Guide Modal */}
+      <HowToPlayModal
+        isOpen={isHowToPlayOpen}
+        onClose={() => setIsHowToPlayOpen(false)}
+      />
       {/* Discreet Footer with subtle copyright & organizer trigger */}
       {currentView !== 'admin' && (
         <footer className="py-6 px-4 text-center text-[11px] text-stone-500 border-t border-emerald-950/80 bg-[#0E150F]">

@@ -20,13 +20,13 @@ export function t(
 ): string {
   const ui = (i18nData as any).ui || {};
   const keys = (i18nData as any).keys || {};
-  const targetDict = ui[lang] || ui[defaultLangFallback] || ui['es'] || {};
   
   let text =
-    targetDict[key] ||
-    ui['es']?.[key] ||
+    ui[lang]?.[key] ||
     keys[key]?.[lang] ||
+    ui[defaultLangFallback]?.[key] ||
     keys[key]?.[defaultLangFallback] ||
+    ui['es']?.[key] ||
     keys[key]?.['es'] ||
     key;
 
@@ -175,7 +175,24 @@ export function getLocalizedForest(forest: ForestPack, lang: string): ForestPack
 
   const forestName = forestI18n?.[targetLang]?.name || (forest.nameKey ? translateKey(forest.nameKey, forest.name) : forest.name);
   const forestDesc = forestI18n?.[targetLang]?.description || (forest.descriptionKey ? translateKey(forest.descriptionKey, forest.description) : forest.description);
-  const forestCountry = forestI18n?.[targetLang]?.country || forest.country;
+  
+  let forestCountry = forestI18n?.[targetLang]?.country || (forest.countryKey ? translateKey(forest.countryKey, forest.country) : undefined);
+  if (!forestCountry) {
+    if (forest.id === 'bosque-canejan-cestas') {
+      forestCountry = targetLang === 'es' ? 'Francia (Gironde)' : 'France (Gironde)';
+    } else if (forest.id === 'nalda') {
+      forestCountry = targetLang === 'fr' ? 'Espagne (La Rioja)' : targetLang === 'en' ? 'Spain (La Rioja)' : 'España (La Rioja)';
+    } else {
+      forestCountry = forest.country;
+    }
+  }
+
+  const localizedSceneNarratives: Record<string, string> = {};
+  if (forest.sceneNarratives) {
+    for (const [k, val] of Object.entries(forest.sceneNarratives)) {
+      localizedSceneNarratives[k] = translateKey(k, val) || val;
+    }
+  }
 
   return {
     ...forest,
@@ -185,7 +202,7 @@ export function getLocalizedForest(forest: ForestPack, lang: string): ForestPack
     pois: localizedPois,
     stories: localizedStories,
     riddles: localizedRiddles,
-    sceneNarratives: forest.sceneNarratives || {},
+    sceneNarratives: localizedSceneNarratives,
     metaEnigma: forest.metaEnigma
       ? {
           ...forest.metaEnigma,

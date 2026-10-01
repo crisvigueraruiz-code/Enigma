@@ -74,7 +74,7 @@ export const BriefingModal: React.FC<BriefingModalProps> = ({
             <div className="p-3.5 rounded-xl bg-red-950/60 border border-red-500/70 text-xs text-red-200 space-y-1 shadow-md">
               <div className="font-bold text-red-300 flex items-center gap-1.5">
                 <ShieldAlert className="w-4 h-4 text-red-400 shrink-0" />
-                <span>Aviso de Contenido Adulto (+18)</span>
+                <span>{t('briefing.adultWarningTitle')}</span>
               </div>
               <p className="text-stone-200 font-medium leading-snug">
                 "{story?.contentWarning || forest?.contentWarning || t('game.contentRatingAdultWarning')}"
