@@ -182,7 +182,7 @@ export interface ForestPack {
   };
   stories: StoryIntro[];
   riddles: Riddle[];
-  sceneNarratives: Record<string, string>; // clave `${storyId}_${poiId}`
+  sceneNarratives?: Record<string, string>; // clave `${storyId}_${poiId}`
   waypointImages?: Record<string, string>; // clave `${storyId}_${poiId}` -> url imagen
   bridgePhrases?: Record<string, string>;  // Frases puente entre hitos `${fromPoiId}_to_${toPoiId}`
   metaEnigma?: MetaEnigmaConfig;          // Meta-enigma final de la senda

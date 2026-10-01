@@ -206,7 +206,7 @@ export const GameView: React.FC<GameViewProps> = ({
   // Scene narrative
   const sceneNarrativeKey = `${session.storyId}_${currentPoiId}`;
   const sceneText =
-    forest.sceneNarratives[sceneNarrativeKey] ||
+    forest.sceneNarratives?.[sceneNarrativeKey] ||
     currentPoi?.description ||
     'Observa detenidamente lo que te rodea en este rincón del bosque.';
 

@@ -185,6 +185,7 @@ export function getLocalizedForest(forest: ForestPack, lang: string): ForestPack
     pois: localizedPois,
     stories: localizedStories,
     riddles: localizedRiddles,
+    sceneNarratives: forest.sceneNarratives || {},
     metaEnigma: forest.metaEnigma
       ? {
           ...forest.metaEnigma,
