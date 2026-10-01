@@ -1,0 +1,3077 @@
+[
+  {
+    "id": "bosque-canejan-cestas",
+    "name": "Bosque de Canéjan-Cestas",
+    "country": "Francia (Gironde)",
+    "description": "Senda boscosa a lo largo del río Eau Bourde entre molinos centenarios, robles mágicos y leyendas de la resistencia bordelesa.",
+    "centerLat": 44.7645,
+    "centerLng": -0.6358,
+    "coverImageUrl": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80",
+    "attribution": "Historia «La Promenade Enchantée» basada en el proyecto real Divercités «FOR[Ê]VEUR» (2026), cuentos y esculturas de niños de Canéjan junto a un escultor y cuentacuentos local.",
+    "credits": "Historia «La Promenade Enchantée» basada en el proyecto real Divercités «FOR[Ê]VEUR» (2026), cuentos y esculturas de niños de Canéjan junto a un escultor y cuentacuentos local.",
+    "defaultLanguage": "fr",
+    "languages": [
+      "fr",
+      "es",
+      "en"
+    ],
+    "isPublished": true,
+    "pois": [
+      {
+        "id": "moulin_rouillac",
+        "nameKey": "poi_moulin_rouillac_name",
+        "descriptionKey": "poi_moulin_rouillac_description",
+        "lat": 44.7641,
+        "lng": -0.6352,
+        "emoji": "⚙️",
+        "clueSnippetKey": "poi_moulin_rouillac_clue",
+        "arAsset": {
+          "preset": "rueda_hidraulica",
+          "type": "3d_reconstruction",
+          "modelUrl": "rueda_hidraulica_v1.glb",
+          "scale": 1.4,
+          "heightOffsetMeters": 1.2,
+          "revealTrigger": "onArrival",
+          "titleKey": "ar_moulin_rouillac_title",
+          "descriptionKey": "ar_moulin_rouillac_description"
+        }
+      },
+      {
+        "id": "ruisseau_moulin",
+        "nameKey": "poi_ruisseau_moulin_name",
+        "descriptionKey": "poi_ruisseau_moulin_description",
+        "lat": 44.7652,
+        "lng": -0.6368,
+        "emoji": "💧",
+        "clueSnippetKey": "poi_ruisseau_moulin_clue",
+        "arAsset": {
+          "preset": "cofre_sumergido",
+          "type": "3d_reconstruction",
+          "modelUrl": "cofre_sumergido_v1.glb",
+          "scale": 1.2,
+          "heightOffsetMeters": 0.7,
+          "revealTrigger": "onRiddleSolved",
+          "titleKey": "ar_ruisseau_moulin_title",
+          "descriptionKey": "ar_ruisseau_moulin_description"
+        }
+      },
+      {
+        "id": "chene_soupirs",
+        "nameKey": "poi_chene_soupirs_name",
+        "descriptionKey": "poi_chene_soupirs_description",
+        "lat": 44.7668,
+        "lng": -0.6341,
+        "emoji": "🌳",
+        "clueSnippetKey": "poi_chene_soupirs_clue",
+        "arAsset": {
+          "preset": "espiritu_guardian",
+          "type": "animated_character",
+          "modelUrl": "espiritu_guardian_v1.glb",
+          "scale": 1.5,
+          "heightOffsetMeters": 1.8,
+          "revealTrigger": "onArrival",
+          "titleKey": "ar_chene_soupirs_title",
+          "descriptionKey": "ar_chene_soupirs_description"
+        }
+      },
+      {
+        "id": "pont_sorciere",
+        "nameKey": "poi_pont_sorciere_name",
+        "descriptionKey": "poi_pont_sorciere_description",
+        "lat": 44.7684,
+        "lng": -0.6375,
+        "emoji": "🌉",
+        "clueSnippetKey": "poi_pont_sorciere_clue",
+        "arAsset": {
+          "preset": "caldero_vapor",
+          "type": "animated_character",
+          "modelUrl": "caldero_vapor_v1.glb",
+          "scale": 1.3,
+          "heightOffsetMeters": 1,
+          "revealTrigger": "onRiddleSolved",
+          "titleKey": "ar_pont_sorciere_title",
+          "descriptionKey": "ar_pont_sorciere_description"
+        }
+      },
+      {
+        "id": "cabane_forestier",
+        "nameKey": "poi_cabane_forestier_name",
+        "descriptionKey": "poi_cabane_forestier_description",
+        "lat": 44.7671,
+        "lng": -0.6399,
+        "emoji": "🛖",
+        "clueSnippetKey": "poi_cabane_forestier_clue",
+        "_todo": "Sin acertijos asignados en ninguna historia. Excluido de las rutas.",
+        "arAsset": {
+          "preset": "farol_cuaderno",
+          "type": "virtual_still_life",
+          "modelUrl": "farol_cuaderno_v1.glb",
+          "scale": 1.2,
+          "heightOffsetMeters": 1.1,
+          "revealTrigger": "onArrival",
+          "titleKey": "ar_cabane_forestier_title",
+          "descriptionKey": "ar_cabane_forestier_description"
+        }
+      },
+      {
+        "id": "belvedere_canejan",
+        "nameKey": "poi_belvedere_canejan_name",
+        "descriptionKey": "poi_belvedere_canejan_description",
+        "lat": 44.7632,
+        "lng": -0.6385,
+        "emoji": "🔭",
+        "clueSnippetKey": "poi_belvedere_canejan_clue",
+        "arAsset": {
+          "preset": "catalejo_nautico",
+          "type": "virtual_still_life",
+          "modelUrl": "catalejo_nautico_v1.glb",
+          "scale": 1.3,
+          "heightOffsetMeters": 1.3,
+          "revealTrigger": "onRiddleSolved",
+          "titleKey": "ar_belvedere_canejan_title",
+          "descriptionKey": "ar_belvedere_canejan_description"
+        }
+      }
+    ],
+    "stories": [
+      {
+        "id": "guerra",
+        "titleKey": "story_guerra_title",
+        "icon": "⚔️",
+        "summaryKey": "story_guerra_summary",
+        "narrativeKey": "story_guerra_narrative",
+        "missionKey": "story_guerra_mission",
+        "narratorNameKey": "guide_jean_name",
+        "narratorRoleKey": "guide_jean_role",
+        "narratorToneKey": "guide_jean_tone",
+        "narratorAvatar": "🕵️‍♂️",
+        "characterBioKey": "guide_jean_bio",
+        "characterGreetingKey": "guide_jean_greeting",
+        "guide": {
+          "id": "jean-silence",
+          "nameKey": "guide_jean_name",
+          "personaKey": "guide_jean_persona",
+          "systemPromptKey": "guide_jean_system_prompt",
+          "knowledgeBase": [
+            "resistencia_burdeos_1944.json",
+            "eau_bourde_rio.json",
+            "maquis_gironde.json"
+          ],
+          "voiceName": "Fenrir",
+          "greetingKey": "guide_jean_greeting"
+        }
+      },
+      {
+        "id": "molino_perdido",
+        "titleKey": "story_molino_title",
+        "icon": "⚙️",
+        "summaryKey": "story_molino_summary",
+        "narrativeKey": "story_molino_narrative",
+        "missionKey": "story_molino_mission",
+        "narratorNameKey": "guide_pierre_name",
+        "narratorRoleKey": "guide_pierre_role",
+        "narratorToneKey": "guide_pierre_tone",
+        "narratorAvatar": "👨‍🔧",
+        "characterBioKey": "guide_pierre_bio",
+        "characterGreetingKey": "guide_pierre_greeting",
+        "guide": {
+          "id": "maitre-pierre",
+          "nameKey": "guide_pierre_name",
+          "personaKey": "guide_pierre_persona",
+          "systemPromptKey": "guide_pierre_system_prompt",
+          "knowledgeBase": [
+            "moulin_rouillac_histoire.json",
+            "mecanique_hydraulique_xix.json",
+            "eau_bourde_rio.json"
+          ],
+          "voiceName": "Charon",
+          "greetingKey": "guide_pierre_greeting"
+        }
+      },
+      {
+        "id": "hechizo_encantado",
+        "titleKey": "story_hechizo_title",
+        "icon": "✨",
+        "summaryKey": "story_hechizo_summary",
+        "narrativeKey": "story_hechizo_narrative",
+        "missionKey": "story_hechizo_mission",
+        "narratorNameKey": "guide_sylvaine_name",
+        "narratorRoleKey": "guide_sylvaine_role",
+        "narratorToneKey": "guide_sylvaine_tone",
+        "narratorAvatar": "🧚‍♀️",
+        "characterBioKey": "guide_sylvaine_bio",
+        "characterGreetingKey": "guide_sylvaine_greeting",
+        "guide": {
+          "id": "sylvaine",
+          "nameKey": "guide_sylvaine_name",
+          "personaKey": "guide_sylvaine_persona",
+          "systemPromptKey": "guide_sylvaine_system_prompt",
+          "knowledgeBase": [
+            "eau_bourde_rio.json",
+            "flora_ribera_gironde.json",
+            "leyendas_agua_gironda.json"
+          ],
+          "voiceName": "Kore",
+          "greetingKey": "guide_sylvaine_greeting"
+        }
+      },
+      {
+        "id": "promenade_enchantee",
+        "titleKey": "story_promenade_title",
+        "icon": "🎨",
+        "summaryKey": "story_promenade_summary",
+        "narrativeKey": "story_promenade_narrative",
+        "missionKey": "story_promenade_mission",
+        "narratorNameKey": "guide_lutin_name",
+        "narratorRoleKey": "guide_lutin_role",
+        "narratorToneKey": "guide_lutin_tone",
+        "narratorAvatar": "🧝‍♂️",
+        "characterBioKey": "guide_lutin_bio",
+        "characterGreetingKey": "guide_lutin_greeting",
+        "guide": {
+          "id": "duendecillo-roble",
+          "nameKey": "guide_lutin_name",
+          "personaKey": "guide_lutin_persona",
+          "systemPromptKey": "guide_lutin_system_prompt",
+          "knowledgeBase": [
+            "projet_divercites_foreveur.json",
+            "cuentos_escuela_canejan.json",
+            "esculturas_madera_canejan.json"
+          ],
+          "voiceName": "Puck",
+          "greetingKey": "guide_lutin_greeting"
+        }
+      }
+    ],
+    "riddles": [
+      {
+        "id": "r_guerra_moulin_1",
+        "poiId": "moulin_rouillac",
+        "storyId": "guerra",
+        "nameKey": "r_guerra_moulin_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_guerra_moulin_1_question",
+        "type": "multiple_choice",
+        "optionsKeys": [
+          "r_guerra_moulin_1_opt_a",
+          "r_guerra_moulin_1_opt_b",
+          "r_guerra_moulin_1_opt_c",
+          "r_guerra_moulin_1_opt_d"
+        ],
+        "correctIndex": 0,
+        "hintsKeys": [
+          "r_guerra_moulin_1_hint1",
+          "r_guerra_moulin_1_hint2",
+          "r_guerra_moulin_1_hint3"
+        ]
+      },
+      {
+        "id": "r_guerra_moulin_2",
+        "poiId": "moulin_rouillac",
+        "storyId": "guerra",
+        "nameKey": "r_guerra_moulin_2_name",
+        "difficulty": "explorador",
+        "points": 150,
+        "questionKey": "r_guerra_moulin_2_question",
+        "type": "open_text",
+        "answersKeys": [
+          "r_guerra_moulin_2_ans1",
+          "r_guerra_moulin_2_ans2",
+          "r_guerra_moulin_2_ans3",
+          "r_guerra_moulin_2_ans4"
+        ],
+        "hintsKeys": [
+          "r_guerra_moulin_2_hint1",
+          "r_guerra_moulin_2_hint2",
+          "r_guerra_moulin_2_hint3"
+        ]
+      },
+      {
+        "id": "r_guerra_moulin_3",
+        "poiId": "moulin_rouillac",
+        "storyId": "guerra",
+        "nameKey": "r_guerra_moulin_3_name",
+        "difficulty": "maestro",
+        "points": 250,
+        "questionKey": "r_guerra_moulin_3_question",
+        "type": "open_text",
+        "answersKeys": [
+          "r_guerra_moulin_3_ans1",
+          "r_guerra_moulin_3_ans2"
+        ],
+        "hintsKeys": [
+          "r_guerra_moulin_3_hint1",
+          "r_guerra_moulin_3_hint2",
+          "r_guerra_moulin_3_hint3"
+        ]
+      },
+      {
+        "id": "r_guerra_ruisseau_1",
+        "poiId": "ruisseau_moulin",
+        "storyId": "guerra",
+        "nameKey": "r_guerra_ruisseau_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_guerra_ruisseau_1_question",
+        "type": "multiple_choice",
+        "optionsKeys": [
+          "r_guerra_ruisseau_1_opt_a",
+          "r_guerra_ruisseau_1_opt_b",
+          "r_guerra_ruisseau_1_opt_c"
+        ],
+        "correctIndex": 0,
+        "hintsKeys": [
+          "r_guerra_ruisseau_1_hint1",
+          "r_guerra_ruisseau_1_hint2",
+          "r_guerra_ruisseau_1_hint3"
+        ]
+      },
+      {
+        "id": "r_guerra_ruisseau_2",
+        "poiId": "ruisseau_moulin",
+        "storyId": "guerra",
+        "nameKey": "r_guerra_ruisseau_2_name",
+        "difficulty": "explorador",
+        "points": 150,
+        "questionKey": "r_guerra_ruisseau_2_question",
+        "type": "open_text",
+        "answersKeys": [
+          "r_guerra_ruisseau_2_ans1",
+          "r_guerra_ruisseau_2_ans2",
+          "r_guerra_ruisseau_2_ans3",
+          "r_guerra_ruisseau_2_ans4"
+        ],
+        "hintsKeys": [
+          "r_guerra_ruisseau_2_hint1",
+          "r_guerra_ruisseau_2_hint2",
+          "r_guerra_ruisseau_2_hint3"
+        ]
+      },
+      {
+        "id": "r_guerra_chene_1",
+        "poiId": "chene_soupirs",
+        "storyId": "guerra",
+        "nameKey": "r_guerra_chene_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_guerra_chene_1_question",
+        "type": "multiple_choice",
+        "optionsKeys": [
+          "r_guerra_chene_1_opt_a",
+          "r_guerra_chene_1_opt_b",
+          "r_guerra_chene_1_opt_c",
+          "r_guerra_chene_1_opt_d"
+        ],
+        "correctIndex": 0,
+        "hintsKeys": [
+          "r_guerra_chene_1_hint1",
+          "r_guerra_chene_1_hint2",
+          "r_guerra_chene_1_hint3"
+        ]
+      },
+      {
+        "id": "r_guerra_chene_2",
+        "poiId": "chene_soupirs",
+        "storyId": "guerra",
+        "nameKey": "r_guerra_chene_2_name",
+        "difficulty": "explorador",
+        "points": 150,
+        "questionKey": "r_guerra_chene_2_question",
+        "type": "multiple_choice",
+        "optionsKeys": [
+          "r_guerra_chene_2_opt_a",
+          "r_guerra_chene_2_opt_b",
+          "r_guerra_chene_2_opt_c",
+          "r_guerra_chene_2_opt_d"
+        ],
+        "correctIndex": 0,
+        "hintsKeys": [
+          "r_guerra_chene_2_hint1",
+          "r_guerra_chene_2_hint2",
+          "r_guerra_chene_2_hint3"
+        ]
+      },
+      {
+        "id": "r_guerra_belvedere_1",
+        "poiId": "belvedere_canejan",
+        "storyId": "guerra",
+        "nameKey": "r_guerra_belvedere_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_guerra_belvedere_1_question",
+        "type": "multiple_choice",
+        "optionsKeys": [
+          "r_guerra_belvedere_1_opt_a",
+          "r_guerra_belvedere_1_opt_b",
+          "r_guerra_belvedere_1_opt_c"
+        ],
+        "correctIndex": 0,
+        "hintsKeys": [
+          "r_guerra_belvedere_1_hint1",
+          "r_guerra_belvedere_1_hint2",
+          "r_guerra_belvedere_1_hint3"
+        ]
+      },
+      {
+        "id": "r_molino_moulin_1",
+        "poiId": "moulin_rouillac",
+        "storyId": "molino_perdido",
+        "nameKey": "r_molino_moulin_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_molino_moulin_1_question",
+        "type": "open_text",
+        "answersKeys": [
+          "r_molino_moulin_1_ans1",
+          "r_molino_moulin_1_ans2",
+          "r_molino_moulin_1_ans3"
+        ],
+        "hintsKeys": [
+          "r_molino_moulin_1_hint1",
+          "r_molino_moulin_1_hint2",
+          "r_molino_moulin_1_hint3"
+        ]
+      },
+      {
+        "id": "r_molino_moulin_2",
+        "poiId": "moulin_rouillac",
+        "storyId": "molino_perdido",
+        "nameKey": "r_molino_moulin_2_name",
+        "difficulty": "explorador",
+        "points": 150,
+        "questionKey": "r_molino_moulin_2_question",
+        "type": "open_text",
+        "answersKeys": [
+          "r_molino_moulin_2_ans1",
+          "r_molino_moulin_2_ans2",
+          "r_molino_moulin_2_ans3",
+          "r_molino_moulin_2_ans4"
+        ],
+        "hintsKeys": [
+          "r_molino_moulin_2_hint1",
+          "r_molino_moulin_2_hint2",
+          "r_molino_moulin_2_hint3"
+        ]
+      },
+      {
+        "id": "r_molino_moulin_3",
+        "poiId": "moulin_rouillac",
+        "storyId": "molino_perdido",
+        "nameKey": "r_molino_moulin_3_name",
+        "difficulty": "maestro",
+        "points": 250,
+        "type": "order",
+        "questionKey": "r_molino_moulin_3_question",
+        "optionsKeys": [
+          "r_molino_moulin_3_opt_1",
+          "r_molino_moulin_3_opt_2",
+          "r_molino_moulin_3_opt_3",
+          "r_molino_moulin_3_opt_4",
+          "r_molino_moulin_3_opt_5",
+          "r_molino_moulin_3_opt_6"
+        ],
+        "hintsKeys": [
+          "r_molino_moulin_3_hint1",
+          "r_molino_moulin_3_hint2",
+          "r_molino_moulin_3_hint3"
+        ]
+      },
+      {
+        "id": "r_molino_ruisseau_1",
+        "poiId": "ruisseau_moulin",
+        "storyId": "molino_perdido",
+        "nameKey": "r_molino_ruisseau_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_molino_ruisseau_1_question",
+        "type": "multiple_choice",
+        "optionsKeys": [
+          "r_molino_ruisseau_1_opt_a",
+          "r_molino_ruisseau_1_opt_b",
+          "r_molino_ruisseau_1_opt_c"
+        ],
+        "correctIndex": 0,
+        "hintsKeys": [
+          "r_molino_ruisseau_1_hint1",
+          "r_molino_ruisseau_1_hint2",
+          "r_molino_ruisseau_1_hint3"
+        ]
+      },
+      {
+        "id": "r_molino_chene_1",
+        "poiId": "chene_soupirs",
+        "storyId": "molino_perdido",
+        "nameKey": "r_molino_chene_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_molino_chene_1_question",
+        "type": "multiple_choice",
+        "optionsKeys": [
+          "r_molino_chene_1_opt_a",
+          "r_molino_chene_1_opt_b",
+          "r_molino_chene_1_opt_c"
+        ],
+        "correctIndex": 0,
+        "hintsKeys": [
+          "r_molino_chene_1_hint1",
+          "r_molino_chene_1_hint2",
+          "r_molino_chene_1_hint3"
+        ]
+      },
+      {
+        "id": "r_molino_belvedere_1",
+        "poiId": "belvedere_canejan",
+        "storyId": "molino_perdido",
+        "nameKey": "r_molino_belvedere_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_molino_belvedere_1_question",
+        "type": "multiple_choice",
+        "optionsKeys": [
+          "r_molino_belvedere_1_opt_a",
+          "r_molino_belvedere_1_opt_b",
+          "r_molino_belvedere_1_opt_c"
+        ],
+        "correctIndex": 0,
+        "hintsKeys": [
+          "r_molino_belvedere_1_hint1",
+          "r_molino_belvedere_1_hint2",
+          "r_molino_belvedere_1_hint3"
+        ]
+      },
+      {
+        "id": "r_hechizo_moulin_1",
+        "poiId": "moulin_rouillac",
+        "storyId": "hechizo_encantado",
+        "nameKey": "r_hechizo_moulin_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_hechizo_moulin_1_question",
+        "type": "multiple_choice",
+        "optionsKeys": [
+          "r_hechizo_moulin_1_opt_a",
+          "r_hechizo_moulin_1_opt_b",
+          "r_hechizo_moulin_1_opt_c"
+        ],
+        "correctIndex": 0,
+        "hintsKeys": [
+          "r_hechizo_moulin_1_hint1",
+          "r_hechizo_moulin_1_hint2",
+          "r_hechizo_moulin_1_hint3"
+        ]
+      },
+      {
+        "id": "r_hechizo_ruisseau_1",
+        "poiId": "ruisseau_moulin",
+        "storyId": "hechizo_encantado",
+        "nameKey": "r_hechizo_ruisseau_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_hechizo_ruisseau_1_question",
+        "type": "multiple_choice",
+        "optionsKeys": [
+          "r_hechizo_ruisseau_1_opt_a",
+          "r_hechizo_ruisseau_1_opt_b",
+          "r_hechizo_ruisseau_1_opt_c"
+        ],
+        "correctIndex": 0,
+        "hintsKeys": [
+          "r_hechizo_ruisseau_1_hint1",
+          "r_hechizo_ruisseau_1_hint2",
+          "r_hechizo_ruisseau_1_hint3"
+        ]
+      },
+      {
+        "id": "r_hechizo_ruisseau_2",
+        "poiId": "ruisseau_moulin",
+        "storyId": "hechizo_encantado",
+        "nameKey": "r_hechizo_ruisseau_2_name",
+        "difficulty": "explorador",
+        "points": 150,
+        "type": "order",
+        "questionKey": "r_hechizo_ruisseau_2_question",
+        "optionsKeys": [
+          "r_hechizo_ruisseau_2_opt_1",
+          "r_hechizo_ruisseau_2_opt_2",
+          "r_hechizo_ruisseau_2_opt_3",
+          "r_hechizo_ruisseau_2_opt_4",
+          "r_hechizo_ruisseau_2_opt_5",
+          "r_hechizo_ruisseau_2_opt_6"
+        ],
+        "hintsKeys": [
+          "r_hechizo_ruisseau_2_hint1",
+          "r_hechizo_ruisseau_2_hint2",
+          "r_hechizo_ruisseau_2_hint3"
+        ]
+      },
+      {
+        "id": "r_hechizo_chene_1",
+        "poiId": "chene_soupirs",
+        "storyId": "hechizo_encantado",
+        "nameKey": "r_hechizo_chene_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_hechizo_chene_1_question",
+        "type": "multiple_choice",
+        "optionsKeys": [
+          "r_hechizo_chene_1_opt_a",
+          "r_hechizo_chene_1_opt_b",
+          "r_hechizo_chene_1_opt_c"
+        ],
+        "correctIndex": 0,
+        "hintsKeys": [
+          "r_hechizo_chene_1_hint1",
+          "r_hechizo_chene_1_hint2",
+          "r_hechizo_chene_1_hint3"
+        ]
+      },
+      {
+        "id": "r_hechizo_pont_1",
+        "poiId": "pont_sorciere",
+        "storyId": "hechizo_encantado",
+        "nameKey": "r_hechizo_pont_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_hechizo_pont_1_question",
+        "type": "multiple_choice",
+        "optionsKeys": [
+          "r_hechizo_pont_1_opt_a",
+          "r_hechizo_pont_1_opt_b",
+          "r_hechizo_pont_1_opt_c"
+        ],
+        "correctIndex": 0,
+        "hintsKeys": [
+          "r_hechizo_pont_1_hint1",
+          "r_hechizo_pont_1_hint2",
+          "r_hechizo_pont_1_hint3"
+        ]
+      },
+      {
+        "id": "r_hechizo_belvedere_1",
+        "poiId": "belvedere_canejan",
+        "storyId": "hechizo_encantado",
+        "nameKey": "r_hechizo_belvedere_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_hechizo_belvedere_1_question",
+        "type": "open_text",
+        "answersKeys": [
+          "r_hechizo_belvedere_1_ans1",
+          "r_hechizo_belvedere_1_ans2",
+          "r_hechizo_belvedere_1_ans3"
+        ],
+        "hintsKeys": [
+          "r_hechizo_belvedere_1_hint1",
+          "r_hechizo_belvedere_1_hint2",
+          "r_hechizo_belvedere_1_hint3"
+        ]
+      },
+      {
+        "id": "r_promenade_ruisseau_1",
+        "poiId": "ruisseau_moulin",
+        "storyId": "promenade_enchantee",
+        "nameKey": "r_promenade_ruisseau_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_promenade_ruisseau_1_question",
+        "type": "multiple_choice",
+        "optionsKeys": [
+          "r_promenade_ruisseau_1_opt_a",
+          "r_promenade_ruisseau_1_opt_b",
+          "r_promenade_ruisseau_1_opt_c"
+        ],
+        "correctIndex": 0,
+        "hintsKeys": [
+          "r_promenade_ruisseau_1_hint1",
+          "r_promenade_ruisseau_1_hint2",
+          "r_promenade_ruisseau_1_hint3"
+        ]
+      },
+      {
+        "id": "r_promenade_chene_1",
+        "poiId": "chene_soupirs",
+        "storyId": "promenade_enchantee",
+        "nameKey": "r_promenade_chene_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_promenade_chene_1_question",
+        "type": "open_text",
+        "answersKeys": [
+          "r_promenade_chene_1_ans1",
+          "r_promenade_chene_1_ans2",
+          "r_promenade_chene_1_ans3"
+        ],
+        "hintsKeys": [
+          "r_promenade_chene_1_hint1",
+          "r_promenade_chene_1_hint2",
+          "r_promenade_chene_1_hint3"
+        ]
+      },
+      {
+        "id": "r_promenade_pont_1",
+        "poiId": "pont_sorciere",
+        "storyId": "promenade_enchantee",
+        "nameKey": "r_promenade_pont_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_promenade_pont_1_question",
+        "type": "multiple_choice",
+        "optionsKeys": [
+          "r_promenade_pont_1_opt_a",
+          "r_promenade_pont_1_opt_b",
+          "r_promenade_pont_1_opt_c"
+        ],
+        "correctIndex": 0,
+        "hintsKeys": [
+          "r_promenade_pont_1_hint1",
+          "r_promenade_pont_1_hint2",
+          "r_promenade_pont_1_hint3"
+        ]
+      },
+      {
+        "id": "r_promenade_moulin_1",
+        "poiId": "moulin_rouillac",
+        "storyId": "promenade_enchantee",
+        "nameKey": "r_promenade_moulin_1_name",
+        "difficulty": "novato",
+        "points": 100,
+        "questionKey": "r_promenade_moulin_1_question",
+        "type": "multiple_choice",
+        "optionsKeys": [
+          "r_promenade_moulin_1_opt_a",
+          "r_promenade_moulin_1_opt_b",
+          "r_promenade_moulin_1_opt_c"
+        ],
+        "correctIndex": 0,
+        "hintsKeys": [
+          "r_promenade_moulin_1_hint1",
+          "r_promenade_moulin_1_hint2",
+          "r_promenade_moulin_1_hint3"
+        ]
+      },
+      {
+        "id": "b_chene_foto",
+        "poiId": "chene_soupirs",
+        "storyId": "*",
+        "nameKey": "b_chene_foto_name",
+        "difficulty": "*",
+        "points": 50,
+        "optional": true,
+        "isBonus": true,
+        "type": "photo",
+        "questionKey": "b_chene_foto_question",
+        "config": {
+          "validation": "trust"
+        }
+      },
+      {
+        "id": "b_ruisseau_escucha",
+        "poiId": "ruisseau_moulin",
+        "storyId": "*",
+        "nameKey": "b_ruisseau_escucha_name",
+        "difficulty": "*",
+        "points": 50,
+        "optional": true,
+        "isBonus": true,
+        "type": "listen",
+        "questionKey": "b_ruisseau_escucha_question",
+        "optionsKeys": [
+          "b_ruisseau_escucha_opt_1",
+          "b_ruisseau_escucha_opt_2",
+          "b_ruisseau_escucha_opt_3",
+          "b_ruisseau_escucha_opt_4",
+          "b_ruisseau_escucha_opt_5",
+          "b_ruisseau_escucha_opt_6"
+        ],
+        "config": {
+          "holdSeconds": 30
+        }
+      },
+      {
+        "id": "b_ruisseau_orden_promenade",
+        "poiId": "ruisseau_moulin",
+        "storyId": "promenade_enchantee",
+        "nameKey": "b_ruisseau_orden_promenade_name",
+        "difficulty": "*",
+        "points": 50,
+        "optional": true,
+        "isBonus": true,
+        "type": "order",
+        "questionKey": "b_ruisseau_orden_promenade_question",
+        "optionsKeys": [
+          "b_ruisseau_orden_promenade_opt_1",
+          "b_ruisseau_orden_promenade_opt_2",
+          "b_ruisseau_orden_promenade_opt_3",
+          "b_ruisseau_orden_promenade_opt_4"
+        ],
+        "hintsKeys": [
+          "b_ruisseau_orden_promenade_hint1",
+          "b_ruisseau_orden_promenade_hint2",
+          "b_ruisseau_orden_promenade_hint3"
+        ]
+      }
+    ],
+    "routePresets": {
+      "30min": [
+        "moulin_rouillac",
+        "ruisseau_moulin"
+      ],
+      "1h": [
+        "moulin_rouillac",
+        "ruisseau_moulin",
+        "chene_soupirs"
+      ],
+      "1.5h": [
+        "moulin_rouillac",
+        "ruisseau_moulin",
+        "chene_soupirs",
+        "belvedere_canejan"
+      ],
+      "2h": [
+        "moulin_rouillac",
+        "ruisseau_moulin",
+        "chene_soupirs",
+        "belvedere_canejan"
+      ],
+      "guerra": {
+        "30min": [
+          "moulin_rouillac",
+          "ruisseau_moulin"
+        ],
+        "1h": [
+          "moulin_rouillac",
+          "ruisseau_moulin",
+          "chene_soupirs"
+        ],
+        "1.5h": [
+          "moulin_rouillac",
+          "ruisseau_moulin",
+          "chene_soupirs",
+          "belvedere_canejan"
+        ],
+        "2h": [
+          "moulin_rouillac",
+          "ruisseau_moulin",
+          "chene_soupirs",
+          "belvedere_canejan"
+        ]
+      },
+      "molino_perdido": {
+        "30min": [
+          "moulin_rouillac",
+          "ruisseau_moulin"
+        ],
+        "1h": [
+          "moulin_rouillac",
+          "ruisseau_moulin",
+          "chene_soupirs"
+        ],
+        "1.5h": [
+          "moulin_rouillac",
+          "ruisseau_moulin",
+          "chene_soupirs",
+          "belvedere_canejan"
+        ],
+        "2h": [
+          "moulin_rouillac",
+          "ruisseau_moulin",
+          "chene_soupirs",
+          "belvedere_canejan"
+        ]
+      },
+      "hechizo_encantado": {
+        "30min": [
+          "moulin_rouillac",
+          "ruisseau_moulin"
+        ],
+        "1h": [
+          "moulin_rouillac",
+          "ruisseau_moulin",
+          "chene_soupirs"
+        ],
+        "1.5h": [
+          "moulin_rouillac",
+          "ruisseau_moulin",
+          "chene_soupirs",
+          "pont_sorciere"
+        ],
+        "2h": [
+          "moulin_rouillac",
+          "ruisseau_moulin",
+          "chene_soupirs",
+          "pont_sorciere",
+          "belvedere_canejan"
+        ]
+      },
+      "promenade_enchantee": {
+        "30min": [
+          "ruisseau_moulin",
+          "chene_soupirs"
+        ],
+        "1h": [
+          "ruisseau_moulin",
+          "chene_soupirs",
+          "pont_sorciere"
+        ],
+        "1.5h": [
+          "ruisseau_moulin",
+          "chene_soupirs",
+          "pont_sorciere",
+          "moulin_rouillac"
+        ],
+        "2h": [
+          "ruisseau_moulin",
+          "chene_soupirs",
+          "pont_sorciere",
+          "moulin_rouillac"
+        ]
+      }
+    },
+    "bridgePhrases": {
+      "moulin_rouillac_to_ruisseau_moulin": "bridge_moulin_ruisseau",
+      "ruisseau_moulin_to_chene_soupirs": "bridge_ruisseau_chene",
+      "chene_soupirs_to_pont_sorciere": "bridge_chene_pont",
+      "chene_soupirs_to_belvedere_canejan": "bridge_chene_belvedere",
+      "pont_sorciere_to_belvedere_canejan": "bridge_pont_belvedere",
+      "pont_sorciere_to_moulin_rouillac": "bridge_pont_moulin"
+    },
+    "metaEnigma": {
+      "keyword": "ROBLE",
+      "titleKey": "meta_enigma_canejan_title",
+      "descriptionKey": "meta_enigma_canejan_description",
+      "hintKey": "meta_enigma_canejan_hint",
+      "successNarrativeKey": "meta_enigma_canejan_success",
+      "fragments": [
+        "R",
+        "O",
+        "B",
+        "L",
+        "E"
+      ]
+    }
+  },
+  {
+    "id": "nalda",
+    "name": "Nalda (La Rioja)",
+    "country": "España (La Rioja)",
+    "region": "La Rioja, España",
+    "description": "Un bosque de historia, piedra y río en el Valle del Iregua (La Rioja). Descubre el castillo medieval, las cuevas rupestres de Los Palomares y la Ermita de Villavieja a través de 4 fascinantes historias.",
+    "centerLat": 42.3351,
+    "centerLng": -2.4883,
+    "coverImageUrl": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "attribution": "Basado en la historia real y patrimonio de Nalda (La Rioja). Textos históricos y personajes narrativos integrados.",
+    "credits": "Basado en la historia real y patrimonio de Nalda (La Rioja). Textos históricos y personajes narrativos integrados.",
+    "defaultLanguage": "es",
+    "languages": [
+      "es",
+      "fr",
+      "en"
+    ],
+    "isPublished": true,
+    "pois": [
+      {
+        "id": "castillo-nalda",
+        "name": "Castillo de Nalda",
+        "description": "Reconstrucción 3D de la torre del homenaje superpuesta sobre las ruinas actuales.",
+        "lat": 42.3351,
+        "lng": -2.4883,
+        "emoji": "🏰",
+        "clueSnippet": "Observa con atención el entorno de Castillo de Nalda y escucha la voz del guía.",
+        "arAsset": {
+          "preset": "torre_homenaje",
+          "type": "3d_reconstruction",
+          "label": "Torre del Homenaje Reconstruida",
+          "title": "Torre del Homenaje Reconstruida",
+          "modelUrl": "torre_homenaje_v1.glb",
+          "model": "torre_homenaje_v1.glb",
+          "scale": 1.3,
+          "heightOffsetMeters": 1.1,
+          "revealTrigger": "onArrival",
+          "trigger": "camera_poi",
+          "description": "Reconstrucción 3D de la torre del homenaje superpuesta sobre las ruinas actuales.",
+          "descriptionKey": "ar_castillo_description",
+          "titleKey": "ar_castillo_title"
+        }
+      },
+      {
+        "id": "arco-villa",
+        "name": "Arco de la Villa",
+        "description": "Al cruzar el arco, aparecen figuras de vigías medievales.",
+        "lat": 42.3342,
+        "lng": -2.4869,
+        "emoji": "⛪",
+        "clueSnippet": "Observa con atención el entorno de Arco de la Villa y escucha la voz del guía.",
+        "arAsset": {
+          "preset": "portal_temporal",
+          "type": "temporal_portal",
+          "label": "Vigías Medievales en el Arco",
+          "title": "Vigías Medievales en el Arco",
+          "modelUrl": "vigias_medievales_v1.glb",
+          "model": "vigias_medievales_v1.glb",
+          "scale": 1.3,
+          "heightOffsetMeters": 1.1,
+          "revealTrigger": "onArrival",
+          "trigger": "cross_arch",
+          "description": "Al cruzar el arco, aparecen figuras de vigías medievales.",
+          "descriptionKey": "ar_arco_description",
+          "titleKey": "ar_arco_title"
+        }
+      },
+      {
+        "id": "mirador-cameros",
+        "name": "Mirador Puerta de Cameros",
+        "description": "Etiquetas flotantes de los pueblos del valle y la ruta romana.",
+        "lat": 42.3215,
+        "lng": -2.491,
+        "emoji": "🌄",
+        "clueSnippet": "Observa con atención el entorno de Mirador Puerta de Cameros y escucha la voz del guía.",
+        "arAsset": {
+          "preset": "etiquetas_valle",
+          "type": "overlay_labels",
+          "label": "Etiquetas del Valle del Iregua",
+          "title": "Etiquetas del Valle del Iregua",
+          "modelUrl": "valle_labels_v1.json",
+          "model": "valle_labels_v1.json",
+          "scale": 1.3,
+          "heightOffsetMeters": 1.1,
+          "revealTrigger": "onArrival",
+          "trigger": "camera_horizon",
+          "description": "Etiquetas flotantes de los pueblos del valle y la ruta romana.",
+          "descriptionKey": "ar_mirador_description",
+          "titleKey": "ar_mirador_title"
+        }
+      },
+      {
+        "id": "cuevas-palomares",
+        "name": "Cuevas de Los Palomares",
+        "description": "Paloma 3D animada que vuela hacia las hornacinas. Al tocarla, da una pista.",
+        "lat": 42.3373,
+        "lng": -2.4788,
+        "emoji": "🕳️",
+        "clueSnippet": "Observa con atención el entorno de Cuevas de Los Palomares y escucha la voz del guía.",
+        "arAsset": {
+          "preset": "paloma_3d",
+          "type": "animated_character",
+          "label": "Paloma Mensajera 3D",
+          "title": "Paloma Mensajera 3D",
+          "modelUrl": "paloma_3d_v1.glb",
+          "model": "paloma_3d_v1.glb",
+          "scale": 1.3,
+          "heightOffsetMeters": 1.1,
+          "revealTrigger": "onArrival",
+          "trigger": "camera_cave_entrance",
+          "description": "Paloma 3D animada que vuela hacia las hornacinas. Al tocarla, da una pista.",
+          "descriptionKey": "ar_cuevas_description",
+          "titleKey": "ar_cuevas_title"
+        }
+      },
+      {
+        "id": "ermita-villavieja",
+        "name": "Ermita de Nuestra Señora de Villavieja",
+        "description": "Cesta de vendimia 3D con uvas de la Rioja. Al tocarla, reproduce audio de campanas.",
+        "lat": 42.327,
+        "lng": -2.477,
+        "emoji": "🌳",
+        "clueSnippet": "Observa con atención el entorno de Ermita de Nuestra Señora de Villavieja y escucha la voz del guía.",
+        "arAsset": {
+          "preset": "cesta_vendimia",
+          "type": "virtual_still_life",
+          "label": "Cesta de Vendimia Riojana",
+          "title": "Cesta de Vendimia Riojana",
+          "modelUrl": "cesta_vendimia_v1.glb",
+          "model": "cesta_vendimia_v1.glb",
+          "scale": 1.3,
+          "heightOffsetMeters": 1.1,
+          "revealTrigger": "onArrival",
+          "trigger": "camera_ermita",
+          "description": "Cesta de vendimia 3D con uvas de la Rioja. Al tocarla, reproduce audio de campanas.",
+          "descriptionKey": "ar_ermita_description",
+          "titleKey": "ar_ermita_title"
+        }
+      }
+    ],
+    "routePresets": {
+      "30min": [
+        "castillo-nalda",
+        "arco-villa"
+      ],
+      "1h": [
+        "castillo-nalda",
+        "arco-villa",
+        "mirador-cameros"
+      ],
+      "1.5h": [
+        "castillo-nalda",
+        "arco-villa",
+        "mirador-cameros",
+        "cuevas-palomares"
+      ],
+      "1h30": [
+        "castillo-nalda",
+        "arco-villa",
+        "mirador-cameros",
+        "cuevas-palomares"
+      ],
+      "2h": [
+        "castillo-nalda",
+        "arco-villa",
+        "mirador-cameros",
+        "cuevas-palomares",
+        "ermita-villavieja"
+      ]
+    },
+    "stories": [
+      {
+        "id": "guardian-iregua",
+        "title": "El Guardián del Iregua",
+        "icon": "📜",
+        "summary": "Un bosque de historia, piedra y río en el Valle del Iregua. El Cronicón te guía por castillo, arco, cuevas y ermita para recomponer el sello NALDA.",
+        "narrative": "Bienvenido, aprendiz. Soy el Cronicón, y estas piedras guardan memoria. Cada hito que visites te entregará una runa; al final, todas juntas formarán el nombre que el Iregua susurra desde hace siglos: NALDA.",
+        "mission": "Recorrer Nalda junto al sabio Cronicón, descifrar los enigmas medievales de cada hito y recomponer el sello sagrado NALDA.",
+        "narratorName": "El Cronicón",
+        "narratorRole": "Monje copista del siglo XIV (San Millán de la Cogolla)",
+        "narratorTone": "Respetuoso, sabio, sereno y amante de refranes antiguos",
+        "narratorAvatar": "📜",
+        "voiceName": "Fenrir",
+        "characterBio": "Monje copista del siglo XIV del Monasterio de San Millán de la Cogolla. Habla con respeto y usa refranes antiguos.",
+        "characterGreeting": "Bienvenido, aprendiz. Soy el Cronicón, y estas piedras guardan memoria.",
+        "guide": {
+          "id": "cronicon",
+          "nameKey": "guide_cronicon_name",
+          "personaKey": "guide_cronicon_persona",
+          "systemPromptKey": "guide_cronicon_system_prompt",
+          "knowledgeBase": [
+            "castillo_nalda_historia.json",
+            "cuevas_palomares.json",
+            "iregua_rio.json",
+            "senorio_cameros.json",
+            "vinedos_rioja.json"
+          ],
+          "voice": "es-ES-Wavenet-M",
+          "greetingKey": "guide_cronicon_greeting"
+        },
+        "durations": {
+          "30min": {
+            "pois": [
+              "castillo-nalda",
+              "arco-villa"
+            ],
+            "distance_km": 0.8,
+            "descriptionKey": "duration_30min_description"
+          },
+          "1h": {
+            "pois": [
+              "castillo-nalda",
+              "arco-villa",
+              "mirador-cameros"
+            ],
+            "distance_km": 2.5,
+            "descriptionKey": "duration_1h_description"
+          },
+          "1h30": {
+            "pois": [
+              "castillo-nalda",
+              "arco-villa",
+              "mirador-cameros",
+              "cuevas-palomares"
+            ],
+            "distance_km": 4.5,
+            "descriptionKey": "duration_1h30_description"
+          },
+          "2h": {
+            "pois": [
+              "castillo-nalda",
+              "arco-villa",
+              "mirador-cameros",
+              "cuevas-palomares",
+              "ermita-villavieja"
+            ],
+            "distance_km": 6.5,
+            "descriptionKey": "duration_2h_description"
+          }
+        },
+        "difficulties": {
+          "novato": {
+            "points_per_test": 100,
+            "free_hints": 2,
+            "easy_mode_geofence_m": 50
+          },
+          "explorador": {
+            "points_per_test": 150,
+            "free_hints": 1,
+            "easy_mode_geofence_m": 25
+          },
+          "maestro": {
+            "points_per_test": 250,
+            "free_hints": 0,
+            "easy_mode_geofence_m": 0
+          }
+        },
+        "summaryKey": "story_guardian_summary",
+        "narrativeKey": "story_guardian_narrative",
+        "missionKey": "story_guardian_mission"
+      },
+      {
+        "id": "fraile-botijo",
+        "title": "El Fraile que Bebió Demasiado",
+        "icon": "🍺",
+        "summary": "El fantasma de un monje borracho te guía por Nalda contando chistes verdes y soltando la historia real entre eructo y eructo. No apto para niños ni para gente sin sentido del humor.",
+        "narrative": "¡Ehhhh, chaval! ¡Bienvenido a mi taberna! Bueno, a mi pueblo. Bueno, a lo que queda de él, porque yo llevo muerto desde 1387, ¡ja, ja, ja! ¿Tú sabes lo que es morirse ahogado en un barril de vino? ¡Una muerte digna, coño! Oye, ¿me ayudas a encontrar mi alma? La perdí en una apuesta contra el diablo. O eso, o se la dejé al obispo. No me acuerdo. ¡Ay, perdón! *eructo* ¡Eso ha sido el Espíritu Santo! Venga, vamos, que te voy contando la historia de Nalda. Pero si me ofreces un trago, mejor que mejor.",
+        "mission": "Acompañar al fantasma de Fray Botijo por Nalda, descifrar los enigmas históricos entre trago y trago, y reconstruir la palabra BOTIJO.",
+        "narratorName": "Fray Botijo",
+        "narratorRole": "Fantasma de monje copista borracho (1387)",
+        "narratorTone": "Tabernero medieval cachondo, irreverente y sabio",
+        "narratorAvatar": "🍺",
+        "voiceName": "Fenrir",
+        "characterBio": "Fantasma de un monje copista del Monasterio de San Millán que en 1387 se cayó dentro de un barril de vino y se ahogó. Desde entonces vaga por Nalda medio borracho, contando chistes verdes, insultando a los santos con cariño y soltando la historia real del pueblo entre eructo y eructo. Le encanta el vino de Rioja, odia a los obispos y no ha ido a misa en 600 años. Trata al jugador como a un compinche de taberna.",
+        "characterGreeting": "¡Ehhhh, chaval! ¡Bienvenido a mi taberna! Bueno, a mi pueblo. Bueno, a lo que queda de él, porque yo llevo muerto desde 1387, ¡ja, ja, ja! ¿Tú sabes lo que es morirse ahogado en un barril de vino? ¡Una muerte digna, coño! Oye, ¿me ayudas a encontrar mi alma? La perdí en una apuesta contra el diablo. O eso, o se la dejé al obispo. No me acuerdo. ¡Ay, perdón! *eructo* ¡Eso ha sido el Espíritu Santo! Venga, vamos, que te voy contando la historia de Nalda. Pero si me ofreces un trago, mejor que mejor.",
+        "guide": {
+          "id": "fray-botijo",
+          "nameKey": "guide_fray_name",
+          "personaKey": "guide_fray_persona",
+          "systemPromptKey": "guide_fray_system_prompt",
+          "knowledgeBase": [
+            "castillo_nalda_historia.json",
+            "cuevas_palomares.json",
+            "iregua_rio.json",
+            "senorio_cameros.json",
+            "vinedos_rioja.json",
+            "chistes_verdes_medievales.json"
+          ],
+          "voice": "es-ES-Wavenet-B",
+          "greetingKey": "guide_fray_greeting"
+        },
+        "contentRating": "adult",
+        "contentWarning": "Contenido picante con humor irreverente. No apto para niños ni para gente sin sentido del humor.",
+        "durations": {
+          "30min": {
+            "pois": [
+              "castillo-nalda-f",
+              "arco-villa-f"
+            ],
+            "distance_km": 0.8,
+            "descriptionKey": "duration_f_30min_description"
+          },
+          "1h": {
+            "pois": [
+              "castillo-nalda-f",
+              "arco-villa-f",
+              "mirador-cameros-f"
+            ],
+            "distance_km": 2.5,
+            "descriptionKey": "duration_f_1h_description"
+          },
+          "1h30": {
+            "pois": [
+              "castillo-nalda-f",
+              "arco-villa-f",
+              "mirador-cameros-f",
+              "cuevas-palomares-f"
+            ],
+            "distance_km": 4.5,
+            "descriptionKey": "duration_f_1h30_description"
+          },
+          "2h": {
+            "pois": [
+              "castillo-nalda-f",
+              "arco-villa-f",
+              "mirador-cameros-f",
+              "cuevas-palomares-f",
+              "ermita-villavieja-f"
+            ],
+            "distance_km": 6.5,
+            "descriptionKey": "duration_f_2h_description"
+          }
+        },
+        "difficulties": {
+          "novato": {
+            "points_per_test": 100,
+            "free_hints": 4,
+            "easy_mode_geofence_m": 100
+          },
+          "explorador": {
+            "points_per_test": 150,
+            "free_hints": 2,
+            "easy_mode_geofence_m": 50
+          },
+          "maestro": {
+            "points_per_test": 250,
+            "free_hints": 0,
+            "easy_mode_geofence_m": 0
+          }
+        },
+        "summaryKey": "story_fray_summary",
+        "narrativeKey": "story_fray_narrative",
+        "missionKey": "story_fray_mission"
+      },
+      {
+        "id": "banda-palomar",
+        "title": "La Banda del Palomar",
+        "icon": "🕊️",
+        "summary": "Una aventura gamberra y canalla por Nalda guiada por Chucho el Palomo, el rey de las palomas de Los Palomares.",
+        "narrative": "¡Epa, plumas! Soy Chucho el Palomo. Aquí en Nalda mando yo y mi bandada de Los Palomares. ¿Vienes a curiosear o a volar con la banda? ¡Al loro con las pistas, que las piedras hablan si sabes mirar desde arriba!",
+        "mission": "Explorar Nalda desde la perspectiva de la bandada callejera, sortear los desafíos de las alturas y conseguir el título honorífico de 'Pichón Jefe de Nalda'.",
+        "narratorName": "Chucho el Palomo",
+        "narratorRole": "Líder callejero de la bandada de Los Palomares",
+        "narratorTone": "Gamberro, pícaro, canalla callejero y protector de su bandada",
+        "narratorAvatar": "🕊️",
+        "voiceName": "Puck",
+        "characterBio": "Paloma líder de la bandada que anida en las oquedades medievales de Los Palomares. Conoce cada cornisa, teja y rincón secreto de Nalda a vista de pájaro.",
+        "characterGreeting": "¡Epa, plumas! Soy Chucho el Palomo. ¿Vienes a caminar o a que te eche una pata la mejor paloma de La Rioja? ¡Vuelo rasante y al lío!",
+        "guide": {
+          "id": "chucho-palomo",
+          "nameKey": "guide_chucho_name",
+          "personaKey": "guide_chucho_persona",
+          "systemPromptKey": "guide_chucho_system_prompt",
+          "knowledgeBase": [
+            "cuevas_palomares_palomas.json",
+            "castillo_nalda_azoteas.json",
+            "iregua_bano_aves.json",
+            "calles_nalda_migas.json"
+          ],
+          "voice": "Puck",
+          "greetingKey": "guide_chucho_greeting"
+        },
+        "durations": {
+          "30min": {
+            "pois": [
+              "castillo-nalda",
+              "arco-villa"
+            ],
+            "distance_km": 0.8,
+            "descriptionKey": "duration_30min_description"
+          },
+          "1h": {
+            "pois": [
+              "castillo-nalda",
+              "arco-villa",
+              "mirador-cameros"
+            ],
+            "distance_km": 2.5,
+            "descriptionKey": "duration_1h_description"
+          },
+          "1h30": {
+            "pois": [
+              "castillo-nalda",
+              "arco-villa",
+              "mirador-cameros",
+              "cuevas-palomares"
+            ],
+            "distance_km": 4.5,
+            "descriptionKey": "duration_1h30_description"
+          },
+          "2h": {
+            "pois": [
+              "castillo-nalda",
+              "arco-villa",
+              "mirador-cameros",
+              "cuevas-palomares",
+              "ermita-villavieja"
+            ],
+            "distance_km": 6.5,
+            "descriptionKey": "duration_2h_description"
+          }
+        },
+        "difficulties": {
+          "novato": {
+            "points_per_test": 100,
+            "free_hints": 2,
+            "easy_mode_geofence_m": 50
+          },
+          "explorador": {
+            "points_per_test": 150,
+            "free_hints": 1,
+            "easy_mode_geofence_m": 25
+          },
+          "maestro": {
+            "points_per_test": 250,
+            "free_hints": 0,
+            "easy_mode_geofence_m": 0
+          }
+        },
+        "summaryKey": "story_palomar_summary",
+        "narrativeKey": "story_palomar_narrative",
+        "missionKey": "story_palomar_mission"
+      },
+      {
+        "id": "expediente-zorbo",
+        "title": "El Expediente Iregua: Zorbo el Marciano",
+        "icon": "👽",
+        "summary": "Una investigación cósmico-absurda junto a Zorbo, un marciano extraviado que confunde Nalda con una base espacial alienígena.",
+        "narrative": "¡Saludos, espécimen bípedo! Soy Zorbo, del sector estelar ZX-4. Mi nave se averió en el Valle del Iregua. Mis escáneres detectan que Nalda es un nodo de energía cósmica... ¡Ayúdame a recalibrar la nave antes de que se enteren en mi planeta!",
+        "mission": "Ayudar a Zorbo a decodificar las anomalías geológicas e históricas de Nalda para recargar los propulsores de su platillo volante.",
+        "narratorName": "Zorbo el Marciano",
+        "narratorRole": "Científico extraviado del cuadrante galáctico ZX-4",
+        "narratorTone": "Absurdo, cósmico, intrigado y perplejo por las costumbres de La Rioja",
+        "narratorAvatar": "👽",
+        "voiceName": "Zephyr",
+        "characterBio": "Extraterrestre verde con tres ojos y antena oscilante. Cree firmemente que los viñedos son paneles fotosintéticos de recarga y que el Castillo de Nalda fue una rampa de despegue medieval.",
+        "characterGreeting": "¡Bip-bop! Saludos, humano terrícola. Mis sensores marcan lecturas insólitas en este valle fluvial. ¿Eres tú mi contacto local de Nalda?",
+        "guide": {
+          "id": "zorbo-marciano",
+          "nameKey": "guide_zorbo_name",
+          "personaKey": "guide_zorbo_persona",
+          "systemPromptKey": "guide_zorbo_system_prompt",
+          "knowledgeBase": [
+            "anomalias_valle_iregua.json",
+            "tecnologia_rupestre_palomares.json",
+            "reactor_castillo_nalda.json",
+            "combustible_fermentado_rioja.json"
+          ],
+          "voice": "Zephyr",
+          "greetingKey": "guide_zorbo_greeting"
+        },
+        "durations": {
+          "30min": {
+            "pois": [
+              "castillo-nalda",
+              "arco-villa"
+            ],
+            "distance_km": 0.8,
+            "descriptionKey": "duration_30min_description"
+          },
+          "1h": {
+            "pois": [
+              "castillo-nalda",
+              "arco-villa",
+              "mirador-cameros"
+            ],
+            "distance_km": 2.5,
+            "descriptionKey": "duration_1h_description"
+          },
+          "1h30": {
+            "pois": [
+              "castillo-nalda",
+              "arco-villa",
+              "mirador-cameros",
+              "cuevas-palomares"
+            ],
+            "distance_km": 4.5,
+            "descriptionKey": "duration_1h30_description"
+          },
+          "2h": {
+            "pois": [
+              "castillo-nalda",
+              "arco-villa",
+              "mirador-cameros",
+              "cuevas-palomares",
+              "ermita-villavieja"
+            ],
+            "distance_km": 6.5,
+            "descriptionKey": "duration_2h_description"
+          }
+        },
+        "difficulties": {
+          "novato": {
+            "points_per_test": 100,
+            "free_hints": 2,
+            "easy_mode_geofence_m": 50
+          },
+          "explorador": {
+            "points_per_test": 150,
+            "free_hints": 1,
+            "easy_mode_geofence_m": 25
+          },
+          "maestro": {
+            "points_per_test": 250,
+            "free_hints": 0,
+            "easy_mode_geofence_m": 0
+          }
+        },
+        "summaryKey": "story_zorbo_summary",
+        "narrativeKey": "story_zorbo_narrative",
+        "missionKey": "story_zorbo_mission"
+      }
+    ],
+    "riddles": [
+      {
+        "id": "t1-1",
+        "poiId": "castillo-nalda",
+        "storyId": "guardian-iregua",
+        "name": "Crónica de Nalda #1",
+        "difficulty": "novato",
+        "question": "¿Quién fue el noble que estuvo prisionero aquí en 1299?",
+        "type": "multiple_choice",
+        "options": [
+          "Ramírez de Arellano",
+          "Juan Núñez de Lara",
+          "Pedro I",
+          "Enrique II"
+        ],
+        "answer": "Juan Núñez de Lara",
+        "hints": [
+          "Perdió una batalla entre Araciel y Alfaro.",
+          "Atacó tierras del obispado de Calahorra.",
+          "Su apellido empieza por Núñez."
+        ],
+        "staticHints": [
+          "Perdió una batalla entre Araciel y Alfaro.",
+          "Atacó tierras del obispado de Calahorra.",
+          "Su apellido empieza por Núñez."
+        ],
+        "points": 100,
+        "correctIndex": 1,
+        "questionKey": "t1_1_question",
+        "optionsKeys": [
+          "t1_1_opt_a",
+          "t1_1_opt_b",
+          "t1_1_opt_c",
+          "t1_1_opt_d"
+        ],
+        "hintsKeys": [
+          "t1_1_hint1",
+          "t1_1_hint2",
+          "t1_1_hint3"
+        ],
+        "metaRune": "N",
+        "metaRuneClue": "Letra 'N' del Cronicón"
+      },
+      {
+        "id": "t1-2",
+        "poiId": "castillo-nalda",
+        "storyId": "guardian-iregua",
+        "name": "Crónica de Nalda #2",
+        "difficulty": "explorador",
+        "question": "El castillo tenía un sistema de aljibes. ¿Qué función cumplían en caso de asedio?",
+        "type": "open_text",
+        "answer": "almacenar agua",
+        "acceptedAnswers": [
+          "almacenar agua",
+          "abastecer de agua",
+          "guardar agua"
+        ],
+        "hints": [
+          "Piensa en lo que necesitas para sobrevivir.",
+          "Sin agua, no hay resistencia.",
+          "Se llenaban con agua de lluvia."
+        ],
+        "staticHints": [
+          "Piensa en lo que necesitas para sobrevivir.",
+          "Sin agua, no hay resistencia.",
+          "Se llenaban con agua de lluvia."
+        ],
+        "points": 150,
+        "questionKey": "t1_2_question",
+        "hintsKeys": [
+          "t1_2_hint1",
+          "t1_2_hint2",
+          "t1_2_hint3"
+        ],
+        "answersKeys": [
+          "t1_2_ans1",
+          "t1_2_ans2",
+          "t1_2_ans3"
+        ],
+        "metaRune": "A",
+        "metaRuneClue": "Letra 'A' del Cronicón"
+      },
+      {
+        "id": "t1-3",
+        "poiId": "castillo-nalda",
+        "storyId": "guardian-iregua",
+        "name": "Crónica de Nalda #3",
+        "difficulty": "maestro",
+        "question": "¿Qué rey mató a su hermanastro con un puñal tras la batalla de Montiel?",
+        "type": "open_text",
+        "answer": "Enrique II",
+        "acceptedAnswers": [
+          "Enrique II",
+          "Enrique de Trastámara",
+          "Enrique II de Trastámara"
+        ],
+        "hints": [
+          "Fue en 1369.",
+          "El muerto era Pedro I el Cruel.",
+          "El asesino fundó la dinastía Trastámara."
+        ],
+        "staticHints": [
+          "Fue en 1369.",
+          "El muerto era Pedro I el Cruel.",
+          "El asesino fundó la dinastía Trastámara."
+        ],
+        "points": 250,
+        "questionKey": "t1_3_question",
+        "hintsKeys": [
+          "t1_3_hint1",
+          "t1_3_hint2",
+          "t1_3_hint3"
+        ],
+        "answersKeys": [
+          "t1_3_ans1",
+          "t1_3_ans2",
+          "t1_3_ans3"
+        ],
+        "metaRune": "L",
+        "metaRuneClue": "Letra 'L' del Cronicón"
+      },
+      {
+        "id": "t2-1",
+        "poiId": "arco-villa",
+        "storyId": "guardian-iregua",
+        "name": "Crónica de Nalda #4",
+        "difficulty": "novato",
+        "question": "¿Qué delimitaba el Arco de la Villa?",
+        "type": "multiple_choice",
+        "options": [
+          "El bosque",
+          "La entrada al recinto amurallado",
+          "La frontera con Navarra",
+          "El inicio del Camino de Santiago"
+        ],
+        "answer": "La entrada al recinto amurallado",
+        "hints": [
+          "Era una puerta de acceso.",
+          "Protegía la villa.",
+          "Había murallas alrededor."
+        ],
+        "staticHints": [
+          "Era una puerta de acceso.",
+          "Protegía la villa.",
+          "Había murallas alrededor."
+        ],
+        "points": 100,
+        "correctIndex": 1,
+        "questionKey": "t2_1_question",
+        "optionsKeys": [
+          "t2_1_opt_a",
+          "t2_1_opt_b",
+          "t2_1_opt_c",
+          "t2_1_opt_d"
+        ],
+        "hintsKeys": [
+          "t2_1_hint1",
+          "t2_1_hint2",
+          "t2_1_hint3"
+        ],
+        "metaRune": "D",
+        "metaRuneClue": "Letra 'D' del Cronicón"
+      },
+      {
+        "id": "t2-2",
+        "poiId": "arco-villa",
+        "storyId": "guardian-iregua",
+        "name": "Crónica de Nalda #5",
+        "difficulty": "explorador",
+        "question": "¿Qué familia noble fue señora de Cameros y Nalda desde el siglo XIV?",
+        "type": "open_text",
+        "answer": "Ramírez de Arellano",
+        "acceptedAnswers": [
+          "Ramírez de Arellano",
+          "Arellano",
+          "los Arellano"
+        ],
+        "hints": [
+          "Su nombre aparece en documentos del castillo.",
+          "Empieza por Ramírez.",
+          "Fueron señores de un territorio que llegaba hasta Soria."
+        ],
+        "staticHints": [
+          "Su nombre aparece en documentos del castillo.",
+          "Empieza por Ramírez.",
+          "Fueron señores de un territorio que llegaba hasta Soria."
+        ],
+        "points": 150,
+        "questionKey": "t2_2_question",
+        "hintsKeys": [
+          "t2_2_hint1",
+          "t2_2_hint2",
+          "t2_2_hint3"
+        ],
+        "answersKeys": [
+          "t2_2_ans1",
+          "t2_2_ans2",
+          "t2_2_ans3"
+        ],
+        "metaRune": "A",
+        "metaRuneClue": "Letra 'A' del Cronicón"
+      },
+      {
+        "id": "t2-3",
+        "poiId": "arco-villa",
+        "storyId": "guardian-iregua",
+        "name": "Crónica de Nalda #6",
+        "difficulty": "maestro",
+        "question": "Anagrama: R A L O M P A → ordena para formar el nombre de las cuevas que visitarás después.",
+        "type": "open_text",
+        "answer": "PALOMAR",
+        "acceptedAnswers": [
+          "PALOMAR",
+          "palomar"
+        ],
+        "hints": [
+          "Es el nombre de un lugar con palomas.",
+          "Empieza por P.",
+          "Tiene 7 letras."
+        ],
+        "staticHints": [
+          "Es el nombre de un lugar con palomas.",
+          "Empieza por P.",
+          "Tiene 7 letras."
+        ],
+        "points": 250,
+        "questionKey": "t2_3_question",
+        "hintsKeys": [
+          "t2_3_hint1",
+          "t2_3_hint2",
+          "t2_3_hint3"
+        ],
+        "answersKeys": [
+          "t2_3_ans1",
+          "t2_3_ans2"
+        ],
+        "metaRune": "N",
+        "metaRuneClue": "Letra 'N' del Cronicón"
+      },
+      {
+        "id": "t3-1",
+        "poiId": "mirador-cameros",
+        "storyId": "guardian-iregua",
+        "name": "Crónica de Nalda #7",
+        "difficulty": "novato",
+        "question": "¿Cómo se llama el río que atraviesa este valle?",
+        "type": "multiple_choice",
+        "options": [
+          "Ebro",
+          "Iregua",
+          "Leza",
+          "Cidacos"
+        ],
+        "answer": "Iregua",
+        "hints": [
+          "Nace en la Sierra de Cebollera.",
+          "Es afluente del Ebro.",
+          "Su nombre tiene 6 letras."
+        ],
+        "staticHints": [
+          "Nace en la Sierra de Cebollera.",
+          "Es afluente del Ebro.",
+          "Su nombre tiene 6 letras."
+        ],
+        "points": 100,
+        "correctIndex": 1,
+        "questionKey": "t3_1_question",
+        "optionsKeys": [
+          "t3_1_opt_a",
+          "t3_1_opt_b",
+          "t3_1_opt_c",
+          "t3_1_opt_d"
+        ],
+        "hintsKeys": [
+          "t3_1_hint1",
+          "t3_1_hint2",
+          "t3_1_hint3"
+        ],
+        "metaRune": "A",
+        "metaRuneClue": "Letra 'A' del Cronicón"
+      },
+      {
+        "id": "t3-2",
+        "poiId": "mirador-cameros",
+        "storyId": "guardian-iregua",
+        "name": "Crónica de Nalda #8",
+        "difficulty": "explorador",
+        "question": "Si el caudal medio es de 6,35 m³/s, ¿cuántos m³ pasan en 1 minuto?",
+        "type": "open_text",
+        "answer": "381",
+        "acceptedAnswers": [
+          "381",
+          "381 m3",
+          "381 metros cubicos"
+        ],
+        "hints": [
+          "Un minuto = 60 segundos.",
+          "Multiplica.",
+          "El resultado está entre 380 y 382."
+        ],
+        "staticHints": [
+          "Un minuto = 60 segundos.",
+          "Multiplica.",
+          "El resultado está entre 380 y 382."
+        ],
+        "points": 150,
+        "questionKey": "t3_2_question",
+        "hintsKeys": [
+          "t3_2_hint1",
+          "t3_2_hint2",
+          "t3_2_hint3"
+        ],
+        "answersKeys": [
+          "t3_2_ans1",
+          "t3_2_ans2",
+          "t3_2_ans3"
+        ],
+        "metaRune": "L",
+        "metaRuneClue": "Letra 'L' del Cronicón"
+      },
+      {
+        "id": "t3-3",
+        "poiId": "mirador-cameros",
+        "storyId": "guardian-iregua",
+        "name": "Crónica de Nalda #9",
+        "difficulty": "maestro",
+        "question": "¿A qué región histórica daba acceso esta 'puerta'?",
+        "type": "open_text",
+        "answer": "Cameros",
+        "acceptedAnswers": [
+          "Cameros",
+          "Señorío de Cameros",
+          "Tierra de Cameros"
+        ],
+        "hints": [
+          "El nombre del mirador lo dice.",
+          "Era un señorío.",
+          "Empieza por C."
+        ],
+        "staticHints": [
+          "El nombre del mirador lo dice.",
+          "Era un señorío.",
+          "Empieza por C."
+        ],
+        "points": 250,
+        "questionKey": "t3_3_question",
+        "hintsKeys": [
+          "t3_3_hint1",
+          "t3_3_hint2",
+          "t3_3_hint3"
+        ],
+        "answersKeys": [
+          "t3_3_ans1",
+          "t3_3_ans2",
+          "t3_3_ans3"
+        ],
+        "metaRune": "D",
+        "metaRuneClue": "Letra 'D' del Cronicón"
+      },
+      {
+        "id": "t4-1",
+        "poiId": "cuevas-palomares",
+        "storyId": "guardian-iregua",
+        "name": "Crónica de Nalda #10",
+        "difficulty": "novato",
+        "question": "¿Cuál era el uso principal de estas cuevas en los siglos XIV-XV?",
+        "type": "multiple_choice",
+        "options": [
+          "Vivienda de ermitaños",
+          "Criadero de palomas",
+          "Bodega",
+          "Refugio de bandoleros"
+        ],
+        "answer": "Criadero de palomas",
+        "hints": [
+          "El nombre de las cuevas te lo dice.",
+          "Las hornacinas servían para anidar.",
+          "Las palomas eran fuente de alimento."
+        ],
+        "staticHints": [
+          "El nombre de las cuevas te lo dice.",
+          "Las hornacinas servían para anidar.",
+          "Las palomas eran fuente de alimento."
+        ],
+        "points": 100,
+        "correctIndex": 1,
+        "questionKey": "t4_1_question",
+        "optionsKeys": [
+          "t4_1_opt_a",
+          "t4_1_opt_b",
+          "t4_1_opt_c",
+          "t4_1_opt_d"
+        ],
+        "hintsKeys": [
+          "t4_1_hint1",
+          "t4_1_hint2",
+          "t4_1_hint3"
+        ],
+        "metaRune": "A",
+        "metaRuneClue": "Letra 'A' del Cronicón"
+      },
+      {
+        "id": "t4-2",
+        "poiId": "cuevas-palomares",
+        "storyId": "guardian-iregua",
+        "name": "Crónica de Nalda #11",
+        "difficulty": "explorador",
+        "question": "Las cuevas tienen varios niveles conectados por escaleras talladas en la roca. ¿Qué material usaron los excavadores para tallar estas cuevas?",
+        "type": "open_text",
+        "answer": "piedra",
+        "acceptedAnswers": [
+          "piedra",
+          "roca",
+          "arenisca",
+          "piedra caliza"
+        ],
+        "hints": [
+          "Es el material del que están hechas.",
+          "Se extrae de canteras.",
+          "Las paredes son del mismo material."
+        ],
+        "staticHints": [
+          "Es el material del que están hechas.",
+          "Se extrae de canteras.",
+          "Las paredes son del mismo material."
+        ],
+        "points": 150,
+        "questionKey": "t4_2_question",
+        "hintsKeys": [
+          "t4_2_hint1",
+          "t4_2_hint2",
+          "t4_2_hint3"
+        ],
+        "answersKeys": [
+          "t4_2_ans1",
+          "t4_2_ans2",
+          "t4_2_ans3",
+          "t4_2_ans4"
+        ],
+        "metaRune": "N",
+        "metaRuneClue": "Letra 'N' del Cronicón"
+      },
+      {
+        "id": "t4-3",
+        "poiId": "cuevas-palomares",
+        "storyId": "guardian-iregua",
+        "name": "Crónica de Nalda #12",
+        "difficulty": "maestro",
+        "question": "Las palomas mensajeras llevaban mensajes en un tubo atado a la pata. ¿Cómo se llama ese tubo en español?",
+        "type": "open_text",
+        "answer": "cápsula",
+        "acceptedAnswers": [
+          "cápsula",
+          "tubo portamensajes",
+          "canuto",
+          "capsula"
+        ],
+        "hints": [
+          "Es pequeño y hueco.",
+          "Se ata con un hilo.",
+          "Empieza por c o t."
+        ],
+        "staticHints": [
+          "Es pequeño y hueco.",
+          "Se ata con un hilo.",
+          "Empieza por c o t."
+        ],
+        "points": 250,
+        "questionKey": "t4_3_question",
+        "hintsKeys": [
+          "t4_3_hint1",
+          "t4_3_hint2",
+          "t4_3_hint3"
+        ],
+        "answersKeys": [
+          "t4_3_ans1",
+          "t4_3_ans2",
+          "t4_3_ans3",
+          "t4_3_ans4"
+        ],
+        "metaRune": "A",
+        "metaRuneClue": "Letra 'A' del Cronicón"
+      },
+      {
+        "id": "t5-1",
+        "poiId": "ermita-villavieja",
+        "storyId": "guardian-iregua",
+        "name": "Crónica de Nalda #13",
+        "difficulty": "explorador",
+        "question": "Nalda es tierra de viñedos (Rioja). ¿En qué mes se vendimia tradicionalmente?",
+        "type": "open_text",
+        "answer": "septiembre",
+        "acceptedAnswers": [
+          "septiembre",
+          "setiembre",
+          "finales de septiembre",
+          "septiembre-octubre"
+        ],
+        "hints": [
+          "Después del verano.",
+          "Coincide con la Fiesta de la Ciruela Reina Claudia.",
+          "Es el noveno mes."
+        ],
+        "staticHints": [
+          "Después del verano.",
+          "Coincide con la Fiesta de la Ciruela Reina Claudia.",
+          "Es el noveno mes."
+        ],
+        "points": 150,
+        "questionKey": "t5_1_question",
+        "hintsKeys": [
+          "t5_1_hint1",
+          "t5_1_hint2",
+          "t5_1_hint3"
+        ],
+        "answersKeys": [
+          "t5_1_ans1",
+          "t5_1_ans2",
+          "t5_1_ans3",
+          "t5_1_ans4"
+        ],
+        "metaRune": "L",
+        "metaRuneClue": "Letra 'L' del Cronicón"
+      },
+      {
+        "id": "t5-2",
+        "poiId": "ermita-villavieja",
+        "storyId": "guardian-iregua",
+        "name": "Crónica de Nalda #14",
+        "difficulty": "maestro",
+        "question": "Has recogido fragmentos en cada POI. Ordénalos para formar la frase final del Cronicón: 'El Iregua guarda la memoria de N A L D A'. Escribe la palabra que falta.",
+        "type": "open_text",
+        "answer": "NALDA",
+        "acceptedAnswers": [
+          "NALDA",
+          "Nalda"
+        ],
+        "hints": [
+          "Es el nombre del pueblo.",
+          "Tiene 5 letras.",
+          "Empieza por N."
+        ],
+        "staticHints": [
+          "Es el nombre del pueblo.",
+          "Tiene 5 letras.",
+          "Empieza por N."
+        ],
+        "points": 250,
+        "questionKey": "t5_2_question",
+        "hintsKeys": [
+          "t5_2_hint1",
+          "t5_2_hint2",
+          "t5_2_hint3"
+        ],
+        "answersKeys": [
+          "t5_2_ans1",
+          "t5_2_ans2"
+        ],
+        "metaRune": "D",
+        "metaRuneClue": "Letra 'D' del Cronicón"
+      },
+      {
+        "id": "extra-foto-castillo",
+        "poiId": "castillo-nalda",
+        "storyId": "guardian-iregua",
+        "name": "El Tesoro del Castillo",
+        "difficulty": "*",
+        "question": "Fotografía una piedra con marca de cantero sin tocar nada.",
+        "type": "photo",
+        "points": 50,
+        "optional": true,
+        "isBonus": true,
+        "bonusPoints": 50,
+        "titleKey": "extra_foto_castillo_title",
+        "descriptionKey": "extra_foto_castillo_description"
+      },
+      {
+        "id": "extra-escucha-mirador",
+        "poiId": "mirador-cameros",
+        "storyId": "guardian-iregua",
+        "name": "El Concierto del Iregua",
+        "difficulty": "*",
+        "question": "30 segundos en silencio. Marca los sonidos que oyes.",
+        "type": "listen",
+        "points": 50,
+        "optional": true,
+        "isBonus": true,
+        "bonusPoints": 50,
+        "titleKey": "extra_escucha_mirador_title",
+        "descriptionKey": "extra_escucha_mirador_description"
+      },
+      {
+        "id": "extra-brujula-mirador",
+        "poiId": "mirador-cameros",
+        "storyId": "guardian-iregua",
+        "name": "Apunta al Norte",
+        "difficulty": "*",
+        "question": "Mantén el móvil orientado al Norte 3 s (±15°).",
+        "type": "compass",
+        "points": 50,
+        "optional": true,
+        "isBonus": true,
+        "bonusPoints": 50,
+        "titleKey": "extra_brujula_mirador_title",
+        "descriptionKey": "extra_brujula_mirador_description"
+      },
+      {
+        "id": "extra-ordena-camino",
+        "poiId": "castillo-nalda",
+        "storyId": "guardian-iregua",
+        "name": "El Orden del Camino",
+        "difficulty": "*",
+        "question": "Ordena: Vareia → Nalda → Viguera → Torrecilla → Puerto de Piqueras",
+        "type": "order",
+        "points": 50,
+        "optional": true,
+        "isBonus": true,
+        "bonusPoints": 50,
+        "titleKey": "extra_ordena_camino_title",
+        "descriptionKey": "extra_ordena_camino_description",
+        "options": [
+          "Vareia",
+          "Nalda",
+          "Viguera",
+          "Torrecilla",
+          "Puerto de Piqueras"
+        ],
+        "answer": "Vareia, Nalda, Viguera, Torrecilla, Puerto de Piqueras"
+      },
+      {
+        "id": "extra-escucha-cuevas",
+        "poiId": "cuevas-palomares",
+        "storyId": "guardian-iregua",
+        "name": "El Silencio de las Cuevas",
+        "difficulty": "*",
+        "question": "30 s en silencio dentro de las cuevas. ¿Qué oyes?",
+        "type": "listen",
+        "points": 50,
+        "optional": true,
+        "isBonus": true,
+        "bonusPoints": 50,
+        "titleKey": "extra_escucha_cuevas_title",
+        "descriptionKey": "extra_escucha_cuevas_description"
+      },
+      {
+        "id": "f-t1-1",
+        "poiId": "castillo-nalda",
+        "storyId": "fraile-botijo",
+        "name": "Misterio de Fray Botijo #1",
+        "difficulty": "novato",
+        "question": "A ver, chaval, aquí encerraron a un noble en 1299. ¿A quién? Pista: yo estaba borracho, pero me acuerdo de que era un poco plasta.",
+        "type": "multiple_choice",
+        "options": [
+          "El Obispo de Calahorra, que vino a cobrar el diezmo",
+          "Juan Núñez de Lara, que se pasó de listo",
+          "El Abad de San Millán, que venía a por vino",
+          "El Duque de Nájera, que se perdió de caza"
+        ],
+        "answer": "Juan Núñez de Lara, que se pasó de listo",
+        "hints": [
+          "El tío perdió una batalla entre Araciel y Alfaro. Malo, malo.",
+          "Atacó tierras del obispado de Calahorra. Se metió con los curas, chaval.",
+          "Su apellido empieza por Núñez. Y no, no es Núñez de Balboa."
+        ],
+        "staticHints": [
+          "El tío perdió una batalla entre Araciel y Alfaro. Malo, malo.",
+          "Atacó tierras del obispado de Calahorra. Se metió con los curas, chaval.",
+          "Su apellido empieza por Núñez. Y no, no es Núñez de Balboa."
+        ],
+        "points": 100,
+        "correctIndex": 1,
+        "questionKey": "f_t1_1_question",
+        "optionsKeys": [
+          "f_t1_1_opt_a",
+          "f_t1_1_opt_b",
+          "f_t1_1_opt_c",
+          "f_t1_1_opt_d"
+        ],
+        "hintsKeys": [
+          "f_t1_1_hint1",
+          "f_t1_1_hint2",
+          "f_t1_1_hint3"
+        ],
+        "metaRune": "B",
+        "metaRuneClue": "Fragmento rúnico 'B' del tonel sagrado"
+      },
+      {
+        "id": "f-t1-2",
+        "poiId": "castillo-nalda",
+        "storyId": "fraile-botijo",
+        "name": "Misterio de Fray Botijo #2",
+        "difficulty": "explorador",
+        "question": "¿En qué siglo se alzaron las defensas principales de este castillo? Piénsalo bien, que yo ya estaba muerto cuando se construyeron.",
+        "type": "open_text",
+        "answer": "XIII",
+        "acceptedAnswers": [
+          "XIII",
+          "Siglo XIII",
+          "13"
+        ],
+        "hints": [
+          "Antes de que yo me ahogara en el barril, en 1387. Así que un poquito antes.",
+          "Diez más tres en números romanos. Y no, no es el siglo XX.",
+          "Siglo XIII. Como el castillo de los documentales, chaval."
+        ],
+        "staticHints": [
+          "Antes de que yo me ahogara en el barril, en 1387. Así que un poquito antes.",
+          "Diez más tres en números romanos. Y no, no es el siglo XX.",
+          "Siglo XIII. Como el castillo de los documentales, chaval."
+        ],
+        "points": 150,
+        "questionKey": "f_t1_2_question",
+        "hintsKeys": [
+          "f_t1_2_hint1",
+          "f_t1_2_hint2",
+          "f_t1_2_hint3"
+        ],
+        "answersKeys": [
+          "f_t1_2_ans1",
+          "f_t1_2_ans2",
+          "f_t1_2_ans3"
+        ],
+        "metaRune": "O",
+        "metaRuneClue": "Fragmento rúnico 'O' del tonel sagrado"
+      },
+      {
+        "id": "f-t1-3",
+        "poiId": "castillo-nalda",
+        "storyId": "fraile-botijo",
+        "name": "Misterio de Fray Botijo #3",
+        "difficulty": "maestro",
+        "question": "¿Qué linaje señorial tomó posesión del Castillo de Nalda en el siglo XIV? Eran los jefes de la zona, vamos.",
+        "type": "open_text",
+        "answer": "Ramírez de Arellano",
+        "acceptedAnswers": [
+          "Ramírez de Arellano",
+          "Arellano",
+          "Señorío de Cameros"
+        ],
+        "hints": [
+          "Famosa casa nobiliaria de la corona castellana y navarra. Gente importante, oye.",
+          "Empieza por Ramírez de... y no, no es el de los relojes.",
+          "Ramírez de Arellano. Llegaron a mandar hasta Soria. Nada, unos humildes."
+        ],
+        "staticHints": [
+          "Famosa casa nobiliaria de la corona castellana y navarra. Gente importante, oye.",
+          "Empieza por Ramírez de... y no, no es el de los relojes.",
+          "Ramírez de Arellano. Llegaron a mandar hasta Soria. Nada, unos humildes."
+        ],
+        "points": 250,
+        "questionKey": "f_t1_3_question",
+        "hintsKeys": [
+          "f_t1_3_hint1",
+          "f_t1_3_hint2",
+          "f_t1_3_hint3"
+        ],
+        "answersKeys": [
+          "f_t1_3_ans1",
+          "f_t1_3_ans2",
+          "f_t1_3_ans3"
+        ],
+        "metaRune": "T",
+        "metaRuneClue": "Fragmento rúnico 'T' del tonel sagrado"
+      },
+      {
+        "id": "f-t2-1",
+        "poiId": "arco-villa",
+        "storyId": "fraile-botijo",
+        "name": "Misterio de Fray Botijo #4",
+        "difficulty": "novato",
+        "question": "Al cruzar el Arco de la Villa, ¿qué función defensiva tenía este portal en el medievo? Pista: no era para hacer turismo.",
+        "type": "multiple_choice",
+        "options": [
+          "Mazmorra de herejes, que aquí había mucha mano dura",
+          "Bodega comunal de diezmo, que aquí el vino es sagrado",
+          "Puerta fortificada y control de acceso a la villa",
+          "Campanario de aviso, que aquí todo se avisaba a toque de campana"
+        ],
+        "answer": "Puerta fortificada y control de acceso a la villa",
+        "hints": [
+          "Cerraba la villa amurallada por la noche. Como tu portal, pero con piedras.",
+          "Controlaba quién entraba con mercancías. Y con vino, que aquí el vino es sagrado.",
+          "Puerta fortificada de acceso. Ni mazmorra, ni campanario, ni bodega."
+        ],
+        "staticHints": [
+          "Cerraba la villa amurallada por la noche. Como tu portal, pero con piedras.",
+          "Controlaba quién entraba con mercancías. Y con vino, que aquí el vino es sagrado.",
+          "Puerta fortificada de acceso. Ni mazmorra, ni campanario, ni bodega."
+        ],
+        "points": 100,
+        "correctIndex": 2,
+        "questionKey": "f_t2_1_question",
+        "optionsKeys": [
+          "f_t2_1_opt_a",
+          "f_t2_1_opt_b",
+          "f_t2_1_opt_c",
+          "f_t2_1_opt_d"
+        ],
+        "hintsKeys": [
+          "f_t2_1_hint1",
+          "f_t2_1_hint2",
+          "f_t2_1_hint3"
+        ],
+        "metaRune": "I",
+        "metaRuneClue": "Fragmento rúnico 'I' del tonel sagrado"
+      },
+      {
+        "id": "f-t2-2",
+        "poiId": "arco-villa",
+        "storyId": "fraile-botijo",
+        "name": "Misterio de Fray Botijo #5",
+        "difficulty": "explorador",
+        "question": "¿Qué tipo de piedra arenisca característica de la cuenca del Iregua forma las dovelas del arco? Pista: la tenemos a patadas por aquí.",
+        "type": "open_text",
+        "answer": "Arenisca",
+        "acceptedAnswers": [
+          "Arenisca",
+          "Piedra de sillería",
+          "Arenisca rojiza"
+        ],
+        "hints": [
+          "Roca sedimentaria de grano fino y tacto áspero. Como mi sotana, pero más dura.",
+          "Compuesta de granos de arena prensados durante millones de años. Paciencia, chaval.",
+          "Arenisca. Ni mármol, ni granito, ni ná de eso."
+        ],
+        "staticHints": [
+          "Roca sedimentaria de grano fino y tacto áspero. Como mi sotana, pero más dura.",
+          "Compuesta de granos de arena prensados durante millones de años. Paciencia, chaval.",
+          "Arenisca. Ni mármol, ni granito, ni ná de eso."
+        ],
+        "points": 150,
+        "questionKey": "f_t2_2_question",
+        "hintsKeys": [
+          "f_t2_2_hint1",
+          "f_t2_2_hint2",
+          "f_t2_2_hint3"
+        ],
+        "answersKeys": [
+          "f_t2_2_ans1",
+          "f_t2_2_ans2",
+          "f_t2_2_ans3"
+        ],
+        "metaRune": "J",
+        "metaRuneClue": "Fragmento rúnico 'J' del tonel sagrado"
+      },
+      {
+        "id": "f-t2-3",
+        "poiId": "arco-villa",
+        "storyId": "fraile-botijo",
+        "name": "Misterio de Fray Botijo #6",
+        "difficulty": "maestro",
+        "question": "¿Qué patrona religiosa coronaba tradicionalmente la hornacina superior de esta puerta? Pista: es la jefa de la ermita del valle.",
+        "type": "open_text",
+        "answer": "Virgen de Villavieja",
+        "acceptedAnswers": [
+          "Virgen de Villavieja",
+          "San Millán",
+          "Nuestra Señora"
+        ],
+        "hints": [
+          "La patrona venerada en la ermita del valle. La que da nombre a la romería.",
+          "Villavieja. Ahí lo dejo, que si no te lo doy mascado.",
+          "Virgen de Villavieja. Y ahora vamos a por un trago, que ya está bien."
+        ],
+        "staticHints": [
+          "La patrona venerada en la ermita del valle. La que da nombre a la romería.",
+          "Villavieja. Ahí lo dejo, que si no te lo doy mascado.",
+          "Virgen de Villavieja. Y ahora vamos a por un trago, que ya está bien."
+        ],
+        "points": 250,
+        "questionKey": "f_t2_3_question",
+        "hintsKeys": [
+          "f_t2_3_hint1",
+          "f_t2_3_hint2",
+          "f_t2_3_hint3"
+        ],
+        "answersKeys": [
+          "f_t2_3_ans1",
+          "f_t2_3_ans2",
+          "f_t2_3_ans3"
+        ],
+        "metaRune": "O",
+        "metaRuneClue": "Fragmento rúnico 'O' del tonel sagrado"
+      },
+      {
+        "id": "f-t3-1",
+        "poiId": "mirador-cameros",
+        "storyId": "fraile-botijo",
+        "name": "Misterio de Fray Botijo #7",
+        "difficulty": "novato",
+        "question": "Desde el Mirador Puerta de Cameros se domina el valle. ¿Qué río vertebra todo este cauce? Pista: no es el Ebro, aunque el Ebro también mola.",
+        "type": "multiple_choice",
+        "options": [
+          "Río Ebro, el jefe de la zona",
+          "Río Iregua",
+          "Río Najerilla, el vecino de al lado",
+          "Río Leza, el primo lejano"
+        ],
+        "answer": "Río Iregua",
+        "hints": [
+          "Nace en la Sierra Cebollera y baja hacia Logroño. Como mi resaca, pero con más agua.",
+          "Nombre de seis letras que empieza por I. Y no, no es 'Iglesia'.",
+          "Río Iregua. El que da nombre al valle, chaval."
+        ],
+        "staticHints": [
+          "Nace en la Sierra Cebollera y baja hacia Logroño. Como mi resaca, pero con más agua.",
+          "Nombre de seis letras que empieza por I. Y no, no es 'Iglesia'.",
+          "Río Iregua. El que da nombre al valle, chaval."
+        ],
+        "points": 100,
+        "correctIndex": 1,
+        "questionKey": "f_t3_1_question",
+        "optionsKeys": [
+          "f_t3_1_opt_a",
+          "f_t3_1_opt_b",
+          "f_t3_1_opt_c",
+          "f_t3_1_opt_d"
+        ],
+        "hintsKeys": [
+          "f_t3_1_hint1",
+          "f_t3_1_hint2",
+          "f_t3_1_hint3"
+        ],
+        "metaRune": "B",
+        "metaRuneClue": "Fragmento rúnico 'B' del tonel sagrado"
+      },
+      {
+        "id": "f-t3-2",
+        "poiId": "mirador-cameros",
+        "storyId": "fraile-botijo",
+        "name": "Misterio de Fray Botijo #8",
+        "difficulty": "explorador",
+        "question": "¿Qué formación montañosa se divisa al fondo custodiando la entrada sur hacia las tierras altas? Pista: lleva el nombre de este mismo mirador.",
+        "type": "open_text",
+        "answer": "Sierra de Cameros",
+        "acceptedAnswers": [
+          "Sierra de Cameros",
+          "Cameros",
+          "Sierra de Cebollera"
+        ],
+        "hints": [
+          "La comarca que da nombre a este mismo mirador. Léelo otra vez, si hace falta.",
+          "Cameros. Así, sin más.",
+          "Sierra de Cameros. ¿A que no era tan difícil, chaval?"
+        ],
+        "staticHints": [
+          "La comarca que da nombre a este mismo mirador. Léelo otra vez, si hace falta.",
+          "Cameros. Así, sin más.",
+          "Sierra de Cameros. ¿A que no era tan difícil, chaval?"
+        ],
+        "points": 150,
+        "questionKey": "f_t3_2_question",
+        "hintsKeys": [
+          "f_t3_2_hint1",
+          "f_t3_2_hint2",
+          "f_t3_2_hint3"
+        ],
+        "answersKeys": [
+          "f_t3_2_ans1",
+          "f_t3_2_ans2",
+          "f_t3_2_ans3"
+        ],
+        "metaRune": "O",
+        "metaRuneClue": "Fragmento rúnico 'O' del tonel sagrado"
+      },
+      {
+        "id": "f-t3-3",
+        "poiId": "mirador-cameros",
+        "storyId": "fraile-botijo",
+        "name": "Misterio de Fray Botijo #9",
+        "difficulty": "maestro",
+        "question": "¿Qué actividad económica milenaria de trashumancia de ovejas merinas enriqueció a esta comarca? Pista: tiene que ver con lana y con pastores.",
+        "type": "open_text",
+        "answer": "La Mesta",
+        "acceptedAnswers": [
+          "La Mesta",
+          "Trashumancia",
+          "Comercio de lana"
+        ],
+        "hints": [
+          "Real Concejo de pastores fundado por Alfonso X el Sabio. Sí, el de las cantigas.",
+          "La Mesta. Cortito y al pie.",
+          "La Mesta. O trashumancia, si lo prefieres más largo."
+        ],
+        "staticHints": [
+          "Real Concejo de pastores fundado por Alfonso X el Sabio. Sí, el de las cantigas.",
+          "La Mesta. Cortito y al pie.",
+          "La Mesta. O trashumancia, si lo prefieres más largo."
+        ],
+        "points": 250,
+        "questionKey": "f_t3_3_question",
+        "hintsKeys": [
+          "f_t3_3_hint1",
+          "f_t3_3_hint2",
+          "f_t3_3_hint3"
+        ],
+        "answersKeys": [
+          "f_t3_3_ans1",
+          "f_t3_3_ans2",
+          "f_t3_3_ans3"
+        ],
+        "metaRune": "T",
+        "metaRuneClue": "Fragmento rúnico 'T' del tonel sagrado"
+      },
+      {
+        "id": "f-t4-1",
+        "poiId": "cuevas-palomares",
+        "storyId": "fraile-botijo",
+        "name": "Misterio de Fray Botijo #10",
+        "difficulty": "novato",
+        "question": "Las Cuevas de Los Palomares tienen decenas de hornacinas excavadas en la roca. ¿Cuál era su uso primitivo más documentado? Pista: no era un hotel.",
+        "type": "multiple_choice",
+        "options": [
+          "Monasterio rupestre / eremitorio medieval y cría de palomas",
+          "Depósito de pólvora castellana, que aquí hubo mucha guerra",
+          "Cárcel secreta de la Inquisición, que aquí nadie se libraba",
+          "Bodega funeraria romana, que aquí los romanos también bebían"
+        ],
+        "answer": "Monasterio rupestre / eremitorio medieval y cría de palomas",
+        "hints": [
+          "Monjes solitarios rezaban aquí antes de que llegaran las palomas. Mucho rezo y poca juerga.",
+          "Conjunto rupestre eremítico. Palabras mayores, chaval.",
+          "Eremitorio rupestre y palomar. Lo que viene siendo un monasterio de roca con palomas."
+        ],
+        "staticHints": [
+          "Monjes solitarios rezaban aquí antes de que llegaran las palomas. Mucho rezo y poca juerga.",
+          "Conjunto rupestre eremítico. Palabras mayores, chaval.",
+          "Eremitorio rupestre y palomar. Lo que viene siendo un monasterio de roca con palomas."
+        ],
+        "points": 100,
+        "correctIndex": 0,
+        "questionKey": "f_t4_1_question",
+        "optionsKeys": [
+          "f_t4_1_opt_a",
+          "f_t4_1_opt_b",
+          "f_t4_1_opt_c",
+          "f_t4_1_opt_d"
+        ],
+        "hintsKeys": [
+          "f_t4_1_hint1",
+          "f_t4_1_hint2",
+          "f_t4_1_hint3"
+        ],
+        "metaRune": "I",
+        "metaRuneClue": "Fragmento rúnico 'I' del tonel sagrado"
+      },
+      {
+        "id": "f-t4-2",
+        "poiId": "cuevas-palomares",
+        "storyId": "fraile-botijo",
+        "name": "Misterio de Fray Botijo #11",
+        "difficulty": "explorador",
+        "question": "¿En qué tipo de roca blanda conglomerada se excavaron los huecos de Los Palomares? Pista: no es mármol, tranquilo.",
+        "type": "open_text",
+        "answer": "Conglomerado",
+        "acceptedAnswers": [
+          "Conglomerado",
+          "Arenisca arcillosa",
+          "Yeso y conglomerado"
+        ],
+        "hints": [
+          "Grava y cantos rodados cementados naturalmente. Como mi estómago tras una noche de vino.",
+          "Conglomerado geológico. Palabrita que te suelta el geólogo, chaval.",
+          "Conglomerado. Ni yeso, ni arenisca, ni ná. Conglomerado y punto."
+        ],
+        "staticHints": [
+          "Grava y cantos rodados cementados naturalmente. Como mi estómago tras una noche de vino.",
+          "Conglomerado geológico. Palabrita que te suelta el geólogo, chaval.",
+          "Conglomerado. Ni yeso, ni arenisca, ni ná. Conglomerado y punto."
+        ],
+        "points": 150,
+        "questionKey": "f_t4_2_question",
+        "hintsKeys": [
+          "f_t4_2_hint1",
+          "f_t4_2_hint2",
+          "f_t4_2_hint3"
+        ],
+        "answersKeys": [
+          "f_t4_2_ans1",
+          "f_t4_2_ans2",
+          "f_t4_2_ans3"
+        ],
+        "metaRune": "J",
+        "metaRuneClue": "Fragmento rúnico 'J' del tonel sagrado"
+      },
+      {
+        "id": "f-t4-3",
+        "poiId": "cuevas-palomares",
+        "storyId": "fraile-botijo",
+        "name": "Misterio de Fray Botijo #12",
+        "difficulty": "maestro",
+        "question": "¿Aproximadamente cuántos nichos individuales u hornacinas se conservan en esta pared vertical? Pista: son unos cuantos, no te cortes.",
+        "type": "open_text",
+        "answer": "Cientos",
+        "acceptedAnswers": [
+          "Cientos",
+          "Más de cien",
+          "300"
+        ],
+        "hints": [
+          "Son varios centenares repartidos en varios niveles. Un poco como las habitaciones de un hotel, pero sin servicio de habitaciones.",
+          "Alrededor de tres centenares. Ahí lo dejo.",
+          "Cientos. Aproximadamente 300. Y ahora vamos a por un trago, chaval."
+        ],
+        "staticHints": [
+          "Son varios centenares repartidos en varios niveles. Un poco como las habitaciones de un hotel, pero sin servicio de habitaciones.",
+          "Alrededor de tres centenares. Ahí lo dejo.",
+          "Cientos. Aproximadamente 300. Y ahora vamos a por un trago, chaval."
+        ],
+        "points": 250,
+        "questionKey": "f_t4_3_question",
+        "hintsKeys": [
+          "f_t4_3_hint1",
+          "f_t4_3_hint2",
+          "f_t4_3_hint3"
+        ],
+        "answersKeys": [
+          "f_t4_3_ans1",
+          "f_t4_3_ans2",
+          "f_t4_3_ans3"
+        ],
+        "metaRune": "O",
+        "metaRuneClue": "Fragmento rúnico 'O' del tonel sagrado"
+      },
+      {
+        "id": "f-t5-1",
+        "poiId": "ermita-villavieja",
+        "storyId": "fraile-botijo",
+        "name": "Misterio de Fray Botijo #13",
+        "difficulty": "explorador",
+        "question": "En la Ermita de Villavieja, ¿qué estilo arquitectónico rural predomina en su construcción original? Pista: ni románico ni gótico, piensa en algo más tardío.",
+        "type": "open_text",
+        "answer": "Barroco popular",
+        "acceptedAnswers": [
+          "Barroco popular",
+          "Románico rural",
+          "Barroco"
+        ],
+        "hints": [
+          "Edificada entre los siglos XVII y XVIII con añadidos. Ya te estoy dando demasiado.",
+          "Estilo barroco sencillo y devocional. Como la iglesia de tu pueblo, pero con más vino.",
+          "Barroco popular. Y ya está, chaval."
+        ],
+        "staticHints": [
+          "Edificada entre los siglos XVII y XVIII con añadidos. Ya te estoy dando demasiado.",
+          "Estilo barroco sencillo y devocional. Como la iglesia de tu pueblo, pero con más vino.",
+          "Barroco popular. Y ya está, chaval."
+        ],
+        "points": 150,
+        "questionKey": "f_t5_1_question",
+        "hintsKeys": [
+          "f_t5_1_hint1",
+          "f_t5_1_hint2",
+          "f_t5_1_hint3"
+        ],
+        "answersKeys": [
+          "f_t5_1_ans1",
+          "f_t5_1_ans2",
+          "f_t5_1_ans3"
+        ],
+        "metaRune": "B",
+        "metaRuneClue": "Fragmento rúnico 'B' del tonel sagrado"
+      },
+      {
+        "id": "f-t5-2",
+        "poiId": "ermita-villavieja",
+        "storyId": "fraile-botijo",
+        "name": "Misterio de Fray Botijo #14",
+        "difficulty": "maestro",
+        "question": "¿Qué celebración popular reúne cada primavera a los vecinos de Nalda en esta ermita? Pista: se sube en procesión, con comida y vino.",
+        "type": "open_text",
+        "answer": "Romería de Villavieja",
+        "acceptedAnswers": [
+          "Romería de Villavieja",
+          "Romería"
+        ],
+        "hints": [
+          "Peregrinación campestre con comida, jotas y vino. Vamos, lo que viene siendo una fiesta.",
+          "La Romería anual. Cortito y al pie.",
+          "Romería de Villavieja. Y ahora vamos a por el trago final, que ya toca."
+        ],
+        "staticHints": [
+          "Peregrinación campestre con comida, jotas y vino. Vamos, lo que viene siendo una fiesta.",
+          "La Romería anual. Cortito y al pie.",
+          "Romería de Villavieja. Y ahora vamos a por el trago final, que ya toca."
+        ],
+        "points": 250,
+        "questionKey": "f_t5_2_question",
+        "hintsKeys": [
+          "f_t5_2_hint1",
+          "f_t5_2_hint2",
+          "f_t5_2_hint3"
+        ],
+        "answersKeys": [
+          "f_t5_2_ans1",
+          "f_t5_2_ans2"
+        ],
+        "metaRune": "O",
+        "metaRuneClue": "Fragmento rúnico 'O' del tonel sagrado"
+      },
+      {
+        "id": "f-extra-brindis",
+        "poiId": "castillo-nalda",
+        "storyId": "fraile-botijo",
+        "name": "Brindis Tabernero en el Castillo",
+        "difficulty": "*",
+        "question": "Hazte una foto alzando una bota, vaso o cantimplora brindando con las ruinas del castillo al fondo. Si es vino, +10 puntos de respeto del fraile.",
+        "type": "photo",
+        "points": 50,
+        "optional": true,
+        "isBonus": true,
+        "bonusPoints": 50,
+        "titleKey": "f_extra_brindis_title",
+        "descriptionKey": "f_extra_brindis_description"
+      },
+      {
+        "id": "f-extra-eructo",
+        "poiId": "arco-villa",
+        "storyId": "fraile-botijo",
+        "name": "Eructo Divino en el Arco",
+        "difficulty": "*",
+        "question": "Graba un sonoro suspiro, eructo o exclamación de taberna bajo la acústica de la bóveda del arco. Cuanto más gordo, mejor.",
+        "type": "audio_record",
+        "points": 50,
+        "optional": true,
+        "isBonus": true,
+        "bonusPoints": 50,
+        "titleKey": "f_extra_eructo_title",
+        "descriptionKey": "f_extra_eructo_description"
+      },
+      {
+        "id": "f-extra-confesion",
+        "poiId": "cuevas-palomares",
+        "storyId": "fraile-botijo",
+        "name": "Confesión Secreta en las Cuevas",
+        "difficulty": "*",
+        "question": "Susurra un secreto inconfesable (o un pecado gastronómico) en una de las hornacinas de Los Palomares. El fraile escucha, aunque esté borracho.",
+        "type": "audio_record",
+        "points": 50,
+        "optional": true,
+        "isBonus": true,
+        "bonusPoints": 50,
+        "titleKey": "f_extra_confesion_title",
+        "descriptionKey": "f_extra_confesion_description"
+      },
+      {
+        "id": "f-extra-pecho",
+        "poiId": "mirador-cameros",
+        "storyId": "fraile-botijo",
+        "name": "A Pecho Descubierto en el Mirador",
+        "difficulty": "*",
+        "question": "Sácate una foto abriendo los brazos al viento de Cameros como si fueras el rey del Iregua. El fraile te nombra escudero honorífico.",
+        "type": "photo",
+        "points": 50,
+        "optional": true,
+        "isBonus": true,
+        "bonusPoints": 50,
+        "titleKey": "f_extra_pecho_title",
+        "descriptionKey": "f_extra_pecho_description"
+      },
+      {
+        "id": "f-extra-siesta",
+        "poiId": "ermita-villavieja",
+        "storyId": "fraile-botijo",
+        "name": "La Siesta Eterna en Villavieja",
+        "difficulty": "*",
+        "question": "Graba un breve vídeo de 3 segundos fingiendo roncar plácidamente en el banco o prado de la ermita. La siesta es sagrada, como el vino.",
+        "type": "video",
+        "points": 50,
+        "optional": true,
+        "isBonus": true,
+        "bonusPoints": 50,
+        "titleKey": "f_extra_siesta_title",
+        "descriptionKey": "f_extra_siesta_description"
+      },
+      {
+        "id": "f-extra-baile-vino",
+        "poiId": "mirador-cameros",
+        "storyId": "fraile-botijo",
+        "name": "El Baile del Monje Achispado",
+        "difficulty": "*",
+        "question": "Imita los pasos torpes y alegres de Fray Botijo celebrando una buena cosecha de vino de Rioja. Cuanto más ridículo, mejor.",
+        "type": "mimic",
+        "points": 50,
+        "optional": true,
+        "isBonus": true,
+        "bonusPoints": 50,
+        "titleKey": "f_extra_baile_vino_title",
+        "descriptionKey": "f_extra_baile_vino_description"
+      },
+      {
+        "id": "chucho-t1-castillo",
+        "poiId": "castillo-nalda",
+        "storyId": "banda-palomar",
+        "name": "Ojo de Paloma en el Castillo",
+        "difficulty": "novato",
+        "question": "Oye, plumas: desde lo alto de la torre del castillo veo todo el valle. En 1299 encerraron aquí a un noble de postín. ¿Quién era el pájaro enjaulado?",
+        "type": "test",
+        "options": [
+          "Don Juan de Austria",
+          "Juan Alonso de Haro",
+          "El Obispo de Calahorra",
+          "El Cid Campeador"
+        ],
+        "answer": "Juan Alonso de Haro",
+        "hints": [
+          "No llevaba plumas, pero era señor de Cameros.",
+          "Su apellido tiene nombre de pueblo con mucho vino."
+        ],
+        "staticHints": [
+          "Señor de Cameros en el siglo XIII",
+          "Juan Alonso de Haro"
+        ],
+        "points": 100,
+        "correctIndex": 1
+      },
+      {
+        "id": "chucho-t2-arco",
+        "poiId": "arco-villa",
+        "storyId": "banda-palomar",
+        "name": "Aduana de Plumas en el Arco",
+        "difficulty": "explorador",
+        "question": "Mis palomas montan guardia en lo alto del Arco de la Villa. ¿Qué función histórica tenía este arco de piedra en la muralla medieval?",
+        "type": "text",
+        "answer": "Puerta defensiva de entrada a la villa",
+        "acceptedAnswers": [
+          "puerta defensiva",
+          "puerta de entrada",
+          "defensa",
+          "muralla",
+          "entrada a la villa",
+          "acceso amurallado"
+        ],
+        "hints": [
+          "Nadie pasaba sin ser visto desde arriba.",
+          "Era la puerta principal del recinto amurallado."
+        ],
+        "staticHints": [
+          "Entrada protegida",
+          "Puerta amurallada"
+        ],
+        "points": 150
+      },
+      {
+        "id": "chucho-t3-mirador",
+        "poiId": "mirador-cameros",
+        "storyId": "banda-palomar",
+        "name": "Ruta de Vuelo Cameros",
+        "difficulty": "maestro",
+        "question": "¿Qué río desciende por el cañón hacia el Ebro y es nuestra piscina favorita para remojar las plumas?",
+        "type": "text",
+        "answer": "Iregua",
+        "acceptedAnswers": [
+          "iregua",
+          "río iregua",
+          "rio iregua"
+        ],
+        "hints": [
+          "Empieza por I y tiene 6 letras.",
+          "Pasa rozando Nalda."
+        ],
+        "staticHints": [
+          "Río principal del valle",
+          "Iregua"
+        ],
+        "points": 250
+      },
+      {
+        "id": "chucho-t4-palomares",
+        "poiId": "cuevas-palomares",
+        "storyId": "banda-palomar",
+        "name": "El Cuartel General de la Banda",
+        "difficulty": "explorador",
+        "question": "¡Aquí está mi palacio! Las Cuevas de Los Palomares tienen decenas de huecos tallados en roca. ¿Qué uso religioso tuvieron antes de ser nuestro hogar?",
+        "type": "test",
+        "options": [
+          "Eremitorio medieval de monjes",
+          "Almacén de pólvora carlista",
+          "Caballerizas romanas",
+          "Molino de agua subterráneo"
+        ],
+        "answer": "Eremitorio medieval de monjes",
+        "hints": [
+          "Eran celdas de silencio y oración para ermitaños.",
+          "Siglos después vinieron las palomas."
+        ],
+        "staticHints": [
+          "Monjes ermitaños en la roca",
+          "Eremitorio medieval"
+        ],
+        "points": 150,
+        "correctIndex": 0
+      },
+      {
+        "id": "chucho-t5-ermita",
+        "poiId": "ermita-villavieja",
+        "storyId": "banda-palomar",
+        "name": "La Campana de Villavieja",
+        "difficulty": "novato",
+        "question": "En la espadaña de la Ermita de Villavieja nos posamos a tomar el sol. ¿Qué celebración tradicional reúne a los vecinos con bollos y procesión en este lugar?",
+        "type": "test",
+        "options": [
+          "La Romería de Villavieja",
+          "La Tomatina de Nalda",
+          "La Batalla del Vino de Cameros",
+          "El Desfile de Halcones"
+        ],
+        "answer": "La Romería de Villavieja",
+        "hints": [
+          "Una fiesta popular llena de cánticos y devoción.",
+          "Se sube en romería."
+        ],
+        "staticHints": [
+          "Fiesta tradicional",
+          "Romería de Villavieja"
+        ],
+        "points": 100,
+        "correctIndex": 0
+      },
+      {
+        "id": "zorbo-t1-castillo",
+        "poiId": "castillo-nalda",
+        "storyId": "expediente-zorbo",
+        "name": "La Rampa de Lanzamiento Medieval",
+        "difficulty": "novato",
+        "question": "¡Por las lunas de Júpiter! La elevación de este castillo ofrece un ángulo de reentrada orbital perfecto. ¿En qué siglo terrícola se construyó la fortaleza defensiva de Nalda?",
+        "type": "test",
+        "options": [
+          "Siglo X (Edad Media)",
+          "Siglo XIII (Edad Media)",
+          "Siglo XX (Era Espacial)",
+          "Año 3000"
+        ],
+        "answer": "Siglo XIII (Edad Media)",
+        "hints": [
+          "Fue durante la época de los Señores de Cameros en el medievo.",
+          "Alrededor del año 1200-1300."
+        ],
+        "staticHints": [
+          "Siglo XIII medieval",
+          "Época de los Haro"
+        ],
+        "points": 100,
+        "correctIndex": 1
+      },
+      {
+        "id": "zorbo-t2-arco",
+        "poiId": "arco-villa",
+        "storyId": "expediente-zorbo",
+        "name": "El Portal de Cuarzo y Caliza",
+        "difficulty": "explorador",
+        "question": "Mis escáneres registran una curvatura geométrica perfecta en este arco. En la cultura terrícola, ¿para qué servía esta compuerta de la villa amurallada?",
+        "type": "text",
+        "answer": "Control y defensa de acceso a la población",
+        "acceptedAnswers": [
+          "defensa",
+          "control de acceso",
+          "puerta de muralla",
+          "entrada a la villa",
+          "proteger la villa",
+          "portal amurallado"
+        ],
+        "hints": [
+          "Evitaba que enemigos o forasteros entraran sin permiso.",
+          "Control de paso."
+        ],
+        "staticHints": [
+          "Control de acceso defensivo",
+          "Puerta amurallada"
+        ],
+        "points": 150
+      },
+      {
+        "id": "zorbo-t3-mirador",
+        "poiId": "mirador-cameros",
+        "storyId": "expediente-zorbo",
+        "name": "Sensor Óptico Puerta de Cameros",
+        "difficulty": "maestro",
+        "question": "Desde este puesto de observación se domina el relieve de la comarca. ¿Cómo denominan los nativos a esta comarca montañosa al sur de Nalda?",
+        "type": "text",
+        "answer": "Cameros",
+        "acceptedAnswers": [
+          "cameros",
+          "tierra de cameros",
+          "valle de cameros",
+          "sierra de cameros"
+        ],
+        "hints": [
+          "El mismo mirador lleva su nombre.",
+          "Empieza por C."
+        ],
+        "staticHints": [
+          "Comarca de Cameros",
+          "Cameros"
+        ],
+        "points": 250
+      },
+      {
+        "id": "zorbo-t4-palomares",
+        "poiId": "cuevas-palomares",
+        "storyId": "expediente-zorbo",
+        "name": "Matriz Biológica de Silicio",
+        "difficulty": "explorador",
+        "question": "¡Fascinante! Cientos de hornacinas cúbicas excavadas en la pared de roca. ¿A qué bípedos con alas alberga hoy este complejo?",
+        "type": "test",
+        "options": [
+          "Palomas bravías y torcaces",
+          "Murciélagos de titanio",
+          "Drones de reconocimiento",
+          "Dragones del Iregua"
+        ],
+        "answer": "Palomas bravías y torcaces",
+        "hints": [
+          "Son aves comunes de plumas grises.",
+          "El propio nombre del sitio lo indica: Los Palomares."
+        ],
+        "staticHints": [
+          "Aves de Los Palomares",
+          "Palomas"
+        ],
+        "points": 150,
+        "correctIndex": 0
+      },
+      {
+        "id": "zorbo-t5-ermita",
+        "poiId": "ermita-villavieja",
+        "storyId": "expediente-zorbo",
+        "name": "El Transmisor de Villavieja",
+        "difficulty": "novato",
+        "question": "En las inmediaciones de esta ermita los humanos cultivan unas bayas púrpuras en espaldera para producir un combustible bebible. ¿Qué fruto es?",
+        "type": "test",
+        "options": [
+          "Uva de viñedo de Rioja",
+          "Criptonita silvestre",
+          "Naranjas lunares",
+          "Bayas de antimateria"
+        ],
+        "answer": "Uva de viñedo de Rioja",
+        "hints": [
+          "Se cosecha en la vendimia de otoño.",
+          "Da lugar al prestigioso vino riojano."
+        ],
+        "staticHints": [
+          "Fruto de la vid",
+          "Uva de Rioja"
+        ],
+        "points": 100,
+        "correctIndex": 0
+      }
+    ],
+    "sceneNarratives": {
+      "guardian-iregua_castillo-nalda": "El Cronicón contempla las piedras del castillo y te invita a recordar la memoria del siglo XIII.",
+      "guardian-iregua_arco-villa": "El arco delimitaba la frontera de protección de la villa medieval frente a incursiones.",
+      "guardian-iregua_mirador-cameros": "El sonido cantarín del Iregua asciende desde el cañón mientras contemplas la entrada a Cameros.",
+      "guardian-iregua_cuevas-palomares": "El rumor de las palomas y el eremitorio excavado guardan siglos de recogimiento en la roca.",
+      "guardian-iregua_ermita-villavieja": "Frente a la ermita, los viñedos de la Rioja susurran la historia de la vendimia y la tradición.",
+      "banda-palomar_castillo-nalda": "Chucho sobrevuela las almenas buscando migas y señalando la vista panorámica.",
+      "banda-palomar_arco-villa": "Las palomas vigilan el arco de entrada como centinelas con plumas.",
+      "banda-palomar_mirador-cameros": "El viento de Cameros levanta el vuelo de la bandada sobre el desfiladero.",
+      "banda-palomar_cuevas-palomares": "¡El hogar supremo! El arrullo de docenas de palomas resuena en los nichos de roca.",
+      "banda-palomar_ermita-villavieja": "Chucho se posa en la espadaña contemplando la tranquilidad de los viñedos.",
+      "expediente-zorbo_castillo-nalda": "Zorbo apunta su escáner con pitidos agudos hacia las murallas del siglo XIII.",
+      "expediente-zorbo_arco-villa": "Zorbo analiza la puerta de piedra sospechando un campo de contención terrícola.",
+      "expediente-zorbo_mirador-cameros": "Zorbo calibra su brújula galáctica con la cordillera de Cameros de fondo.",
+      "expediente-zorbo_cuevas-palomares": "Zorbo cree haber descubierto los camarotes de hibernación de una nave nodriza.",
+      "expediente-zorbo_ermita-villavieja": "Zorbo degusta la atmósfera tranquila y registra el néctar de las vides riojanas."
+    },
+    "bridgePhrases": {
+      "castillo-nalda_to_arco-villa": "bridge_nalda_castillo_arco",
+      "arco-villa_to_mirador-cameros": "bridge_nalda_arco_mirador",
+      "mirador-cameros_to_cuevas-palomares": "bridge_nalda_mirador_cuevas",
+      "cuevas-palomares_to_ermita-villavieja": "bridge_nalda_cuevas_ermita"
+    },
+    "metaEnigma": {
+      "keyword": "NALDA",
+      "title": "El Sello del Cronicón",
+      "description": "Al completar todos los POIs, recibes un sello digital con la frase: 'El Iregua guarda la memoria de NALDA'. Se puede compartir en redes.",
+      "hint": "El nombre de esta ilustre villa riojana a orillas del Iregua.",
+      "successNarrative": "¡Enhorabuena, aprendiz! El Cronicón asiente con solemnidad. Has completado la senda y recogido el sello sagrado: 'El Iregua guarda la memoria de NALDA'.",
+      "titleKey": "meta_enigma_title",
+      "descriptionKey": "meta_enigma_description",
+      "fragments": [
+        "N",
+        "A",
+        "L",
+        "D",
+        "A"
+      ]
+    }
+  }
+]

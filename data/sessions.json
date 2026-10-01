@@ -1,0 +1,454 @@
+{
+  "P7GGT5": {
+    "code": "P7GGT5",
+    "forestPackId": "bosque-canejan-cestas",
+    "name": "Tester",
+    "type": "individual",
+    "storyId": "guerra",
+    "difficulty": "novato",
+    "duration": "30min",
+    "currentPoiIndex": 1,
+    "routePoiIds": [
+      "moulin_rouillac",
+      "ruisseau_moulin"
+    ],
+    "points": 95,
+    "status": "active",
+    "dateStarted": "2026-09-26T09:06:45.682Z",
+    "lastActive": "2026-09-26T09:06:58.003Z",
+    "lat": 44.7645,
+    "lng": -0.6358,
+    "messages": [
+      {
+        "id": "msg-welcome",
+        "sender": "narrator",
+        "text": "¡Saludos, Tester! Soy Jean 'Le Silence'. He preparado la senda para tu expedición. Dirígete al primer punto marcado en tu mapa y prepárate a desentrañar los enigmas del bosque.",
+        "timestamp": "09:06 AM"
+      }
+    ],
+    "completedPois": [
+      "moulin_rouillac"
+    ],
+    "hintHistory": [
+      {
+        "poiId": "ruisseau_moulin",
+        "level": 1,
+        "text": "Psst, baja la cabeza y vigila la maleza... Si no quieres que los perros de la Kommandantur sigan nuestro rastro, debes buscar lo más duro y sólido que la corriente esconde bajo la superficie.",
+        "timestamp": "09:06 AM"
+      }
+    ]
+  },
+  "9CW7DS": {
+    "code": "9CW7DS",
+    "forestPackId": "bosque-canejan-cestas",
+    "name": "mari",
+    "type": "individual",
+    "storyId": "guerra",
+    "difficulty": "novato",
+    "duration": "1h",
+    "currentPoiIndex": 0,
+    "routePoiIds": [
+      "moulin_rouillac",
+      "ruisseau_moulin",
+      "chene_soupirs"
+    ],
+    "points": 0,
+    "status": "active",
+    "dateStarted": "2026-09-27T10:29:37.894Z",
+    "lastActive": "2026-09-27T10:34:24.317Z",
+    "lat": 44.7645,
+    "lng": -0.6358,
+    "messages": [
+      {
+        "id": "msg-welcome",
+        "sender": "narrator",
+        "text": "¡Saludos, mari! Soy Jean 'Le Silence'. He preparado la senda para tu expedición. Dirígete al primer punto marcado en tu mapa y prepárate a desentrañar los enigmas del bosque.",
+        "timestamp": "10:29 AM"
+      }
+    ],
+    "completedPois": [],
+    "hintHistory": []
+  },
+  "WLA3KA": {
+    "code": "WLA3KA",
+    "forestPackId": "nalda-fraybotijo",
+    "name": "Peregrino",
+    "type": "individual",
+    "storyId": "fraile-botijo",
+    "difficulty": "novato",
+    "duration": "1h",
+    "easyMode": false,
+    "currentPoiIndex": 0,
+    "routePoiIds": [
+      "castillo-nalda-f",
+      "arco-villa-f",
+      "mirador-cameros-f"
+    ],
+    "points": 0,
+    "status": "active",
+    "dateStarted": "2026-09-29T08:01:49.529Z",
+    "lastActive": "2026-09-29T08:01:49.529Z",
+    "lat": 42.3351,
+    "lng": -2.4883,
+    "messages": [
+      {
+        "id": "msg-welcome",
+        "sender": "narrator",
+        "text": "¡Saludos, Peregrino! Soy Fray Botijo. He preparado la senda para tu expedición. Dirígete al primer punto marcado en tu mapa y prepárate a desentrañar los enigmas del bosque.",
+        "timestamp": "08:01 AM"
+      }
+    ],
+    "completedPois": [],
+    "hintHistory": [],
+    "phase": "in_transit",
+    "hasArrivedAtPoi": false,
+    "collectedRunes": [],
+    "bonusCompleted": [],
+    "metaEnigmaSolved": false
+  },
+  "QU4VZN": {
+    "code": "QU4VZN",
+    "forestPackId": "nalda-fraybotijo",
+    "name": "Peregrino",
+    "type": "individual",
+    "storyId": "fraile-botijo",
+    "difficulty": "novato",
+    "duration": "1h",
+    "easyMode": false,
+    "currentPoiIndex": 0,
+    "routePoiIds": [
+      "castillo-nalda-f",
+      "arco-villa-f",
+      "mirador-cameros-f"
+    ],
+    "points": 0,
+    "status": "active",
+    "dateStarted": "2026-09-29T08:01:56.959Z",
+    "lastActive": "2026-09-29T08:01:56.979Z",
+    "lat": 42.3351,
+    "lng": -2.4883,
+    "messages": [
+      {
+        "id": "msg-welcome",
+        "sender": "narrator",
+        "text": "¡Saludos, Peregrino! Soy Fray Botijo. He preparado la senda para tu expedición. Dirígete al primer punto marcado en tu mapa y prepárate a desentrañar los enigmas del bosque.",
+        "timestamp": "08:01 AM"
+      },
+      {
+        "id": "msg-p-1790668916978",
+        "sender": "player",
+        "text": "Me ha parecido un poco de mal gusto ese chiste, me he sentido ofendido.",
+        "timestamp": "08:01 AM"
+      },
+      {
+        "id": "msg-n-1790668916979",
+        "sender": "narrator",
+        "text": "¡Ostras, chaval! ¡Mil perdones de rodillas ante la Virgen de Villavieja! *eructo* ¡Eso ha sido el Espíritu Santo pidiendo clemencia! No era mi intención molestar, tronco, que a veces a este monje de 1387 se le calienta la boca con el orujo... ¡Venga, borrón y cuenta nueva! Tómate un trago virtual de este buen vino de Rioja a mi salud 🍷, que las penas con pan y vino son menos penas. ¡Salud y seguimos la senda!",
+        "timestamp": "08:01 AM"
+      }
+    ],
+    "completedPois": [],
+    "hintHistory": [],
+    "phase": "in_transit",
+    "hasArrivedAtPoi": false,
+    "collectedRunes": [],
+    "bonusCompleted": [],
+    "metaEnigmaSolved": false
+  },
+  "GUTWEB": {
+    "code": "GUTWEB",
+    "forestPackId": "nalda",
+    "name": "Aventurero",
+    "type": "individual",
+    "storyId": "fraile-botijo",
+    "difficulty": "novato",
+    "duration": "1h",
+    "easyMode": false,
+    "currentPoiIndex": 0,
+    "routePoiIds": [
+      "castillo-nalda",
+      "arco-villa",
+      "mirador-cameros"
+    ],
+    "points": 0,
+    "status": "active",
+    "dateStarted": "2026-09-30T07:50:04.228Z",
+    "lastActive": "2026-09-30T07:50:04.228Z",
+    "lat": 42.3351,
+    "lng": -2.4883,
+    "messages": [
+      {
+        "id": "msg-welcome",
+        "sender": "narrator",
+        "text": "¡Saludos, explorador! Soy Fray Botijo. He preparado la senda para tu expedición. Dirígete al primer punto marcado en tu mapa y prepárate a desentrañar los enigmas del bosque.",
+        "timestamp": "07:50 AM"
+      }
+    ],
+    "completedPois": [],
+    "hintHistory": [],
+    "phase": "in_transit",
+    "hasArrivedAtPoi": false,
+    "collectedRunes": [],
+    "bonusCompleted": [],
+    "metaEnigmaSolved": false
+  },
+  "YAMEFG": {
+    "code": "YAMEFG",
+    "forestPackId": "nalda",
+    "name": "Aventurero",
+    "type": "individual",
+    "storyId": "fraile-botijo",
+    "difficulty": "novato",
+    "duration": "1h",
+    "easyMode": false,
+    "currentPoiIndex": 0,
+    "routePoiIds": [
+      "castillo-nalda",
+      "arco-villa",
+      "mirador-cameros"
+    ],
+    "points": 0,
+    "status": "active",
+    "dateStarted": "2026-09-30T07:50:21.415Z",
+    "lastActive": "2026-09-30T07:50:21.415Z",
+    "lat": 42.3351,
+    "lng": -2.4883,
+    "messages": [
+      {
+        "id": "msg-welcome",
+        "sender": "narrator",
+        "text": "¡Saludos, Aventurero! Soy Fray Botijo. He preparado la senda para tu expedición. Dirígete al primer punto marcado en tu mapa y prepárate a desentrañar los enigmas del bosque.",
+        "timestamp": "07:50 AM"
+      }
+    ],
+    "completedPois": [],
+    "hintHistory": [],
+    "phase": "in_transit",
+    "hasArrivedAtPoi": false,
+    "collectedRunes": [],
+    "bonusCompleted": [],
+    "metaEnigmaSolved": false
+  },
+  "EQSAXB": {
+    "code": "EQSAXB",
+    "forestPackId": "nalda",
+    "name": "Aventurero",
+    "type": "individual",
+    "storyId": "banda-palomar",
+    "difficulty": "novato",
+    "duration": "1h",
+    "easyMode": false,
+    "currentPoiIndex": 0,
+    "routePoiIds": [
+      "castillo-nalda",
+      "arco-villa",
+      "mirador-cameros"
+    ],
+    "points": 0,
+    "status": "active",
+    "dateStarted": "2026-09-30T07:50:21.427Z",
+    "lastActive": "2026-09-30T07:50:21.427Z",
+    "lat": 42.3351,
+    "lng": -2.4883,
+    "messages": [
+      {
+        "id": "msg-welcome",
+        "sender": "narrator",
+        "text": "¡Saludos, Aventurero! Soy Chucho el Palomo. He preparado la senda para tu expedición. Dirígete al primer punto marcado en tu mapa y prepárate a desentrañar los enigmas del bosque.",
+        "timestamp": "07:50 AM"
+      }
+    ],
+    "completedPois": [],
+    "hintHistory": [],
+    "phase": "in_transit",
+    "hasArrivedAtPoi": false,
+    "collectedRunes": [],
+    "bonusCompleted": [],
+    "metaEnigmaSolved": false
+  },
+  "W8N9BK": {
+    "code": "W8N9BK",
+    "forestPackId": "nalda",
+    "name": "Aventurero",
+    "type": "individual",
+    "storyId": "expediente-zorbo",
+    "difficulty": "novato",
+    "duration": "1h",
+    "easyMode": false,
+    "currentPoiIndex": 0,
+    "routePoiIds": [
+      "castillo-nalda",
+      "arco-villa",
+      "mirador-cameros"
+    ],
+    "points": 0,
+    "status": "active",
+    "dateStarted": "2026-09-30T07:50:21.434Z",
+    "lastActive": "2026-09-30T07:50:21.434Z",
+    "lat": 42.3351,
+    "lng": -2.4883,
+    "messages": [
+      {
+        "id": "msg-welcome",
+        "sender": "narrator",
+        "text": "¡Saludos, Aventurero! Soy Zorbo el Marciano. He preparado la senda para tu expedición. Dirígete al primer punto marcado en tu mapa y prepárate a desentrañar los enigmas del bosque.",
+        "timestamp": "07:50 AM"
+      }
+    ],
+    "completedPois": [],
+    "hintHistory": [],
+    "phase": "in_transit",
+    "hasArrivedAtPoi": false,
+    "collectedRunes": [],
+    "bonusCompleted": [],
+    "metaEnigmaSolved": false
+  },
+  "TBGP9U": {
+    "code": "TBGP9U",
+    "forestPackId": "nalda",
+    "name": "Aventurero",
+    "type": "individual",
+    "storyId": "fraile-botijo",
+    "difficulty": "novato",
+    "duration": "1h",
+    "easyMode": false,
+    "currentPoiIndex": 0,
+    "routePoiIds": [
+      "castillo-nalda",
+      "arco-villa",
+      "mirador-cameros"
+    ],
+    "points": 0,
+    "status": "active",
+    "dateStarted": "2026-09-30T07:50:31.355Z",
+    "lastActive": "2026-09-30T07:50:31.355Z",
+    "lat": 42.3351,
+    "lng": -2.4883,
+    "messages": [
+      {
+        "id": "msg-welcome",
+        "sender": "narrator",
+        "text": "¡Saludos, Aventurero! Soy Fray Botijo. He preparado la senda para tu expedición. Dirígete al primer punto marcado en tu mapa y prepárate a desentrañar los enigmas del bosque.",
+        "timestamp": "07:50 AM"
+      }
+    ],
+    "completedPois": [],
+    "hintHistory": [],
+    "phase": "in_transit",
+    "hasArrivedAtPoi": false,
+    "collectedRunes": [],
+    "bonusCompleted": [],
+    "metaEnigmaSolved": false
+  },
+  "85WW2K": {
+    "code": "85WW2K",
+    "forestPackId": "nalda",
+    "name": "Aventurero",
+    "type": "individual",
+    "storyId": "banda-palomar",
+    "difficulty": "novato",
+    "duration": "1h",
+    "easyMode": false,
+    "currentPoiIndex": 0,
+    "routePoiIds": [
+      "castillo-nalda",
+      "arco-villa",
+      "mirador-cameros"
+    ],
+    "points": 0,
+    "status": "active",
+    "dateStarted": "2026-09-30T07:50:31.368Z",
+    "lastActive": "2026-09-30T07:50:31.368Z",
+    "lat": 42.3351,
+    "lng": -2.4883,
+    "messages": [
+      {
+        "id": "msg-welcome",
+        "sender": "narrator",
+        "text": "¡Saludos, Aventurero! Soy Chucho el Palomo. He preparado la senda para tu expedición. Dirígete al primer punto marcado en tu mapa y prepárate a desentrañar los enigmas del bosque.",
+        "timestamp": "07:50 AM"
+      }
+    ],
+    "completedPois": [],
+    "hintHistory": [],
+    "phase": "in_transit",
+    "hasArrivedAtPoi": false,
+    "collectedRunes": [],
+    "bonusCompleted": [],
+    "metaEnigmaSolved": false
+  },
+  "REU44Z": {
+    "code": "REU44Z",
+    "forestPackId": "nalda",
+    "name": "Aventurero",
+    "type": "individual",
+    "storyId": "expediente-zorbo",
+    "difficulty": "novato",
+    "duration": "1h",
+    "easyMode": false,
+    "currentPoiIndex": 0,
+    "routePoiIds": [
+      "castillo-nalda",
+      "arco-villa",
+      "mirador-cameros"
+    ],
+    "points": 0,
+    "status": "active",
+    "dateStarted": "2026-09-30T07:50:31.377Z",
+    "lastActive": "2026-09-30T07:50:31.377Z",
+    "lat": 42.3351,
+    "lng": -2.4883,
+    "messages": [
+      {
+        "id": "msg-welcome",
+        "sender": "narrator",
+        "text": "¡Saludos, Aventurero! Soy Zorbo el Marciano. He preparado la senda para tu expedición. Dirígete al primer punto marcado en tu mapa y prepárate a desentrañar los enigmas del bosque.",
+        "timestamp": "07:50 AM"
+      }
+    ],
+    "completedPois": [],
+    "hintHistory": [],
+    "phase": "in_transit",
+    "hasArrivedAtPoi": false,
+    "collectedRunes": [],
+    "bonusCompleted": [],
+    "metaEnigmaSolved": false
+  },
+  "CABB7T": {
+    "code": "CABB7T",
+    "forestPackId": "nalda",
+    "name": "Aventurero",
+    "type": "individual",
+    "storyId": "fraile-botijo",
+    "difficulty": "novato",
+    "duration": "1h",
+    "easyMode": false,
+    "currentPoiIndex": 0,
+    "routePoiIds": [
+      "castillo-nalda",
+      "arco-villa",
+      "mirador-cameros"
+    ],
+    "points": 0,
+    "status": "active",
+    "dateStarted": "2026-09-30T07:50:34.316Z",
+    "lastActive": "2026-09-30T07:50:34.316Z",
+    "lat": 42.3351,
+    "lng": -2.4883,
+    "messages": [
+      {
+        "id": "msg-welcome",
+        "sender": "narrator",
+        "text": "¡Saludos, Aventurero! Soy Fray Botijo. He preparado la senda para tu expedición. Dirígete al primer punto marcado en tu mapa y prepárate a desentrañar los enigmas del bosque.",
+        "timestamp": "07:50 AM"
+      }
+    ],
+    "completedPois": [],
+    "hintHistory": [],
+    "phase": "in_transit",
+    "hasArrivedAtPoi": false,
+    "collectedRunes": [],
+    "bonusCompleted": [],
+    "metaEnigmaSolved": false
+  }
+}
