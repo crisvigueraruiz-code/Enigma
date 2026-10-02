@@ -130,9 +130,15 @@ export function getLocalizedForest(forest: ForestPack, lang: string): ForestPack
   // Localize Riddles
   const localizedRiddles: Riddle[] = forest.riddles.map((riddle) => {
     const rTrans = forestI18n?.[targetLang]?.riddles?.[riddle.id];
-    let question = rTrans?.question || (riddle.questionKey ? translateKey(riddle.questionKey, riddle.question) : riddle.question);
-    if (riddle.descriptionKey) {
-      question = translateKey(riddle.descriptionKey, question);
+    let question = rTrans?.question;
+    if (!question) {
+      if (riddle.questionKey) {
+        question = translateKey(riddle.questionKey, riddle.question);
+      } else if (riddle.descriptionKey) {
+        question = translateKey(riddle.descriptionKey, riddle.question);
+      } else {
+        question = riddle.question;
+      }
     }
     const name = rTrans?.name || (riddle.nameKey ? translateKey(riddle.nameKey, riddle.name) : (riddle.titleKey ? translateKey(riddle.titleKey, riddle.name) : riddle.name));
 
@@ -194,6 +200,29 @@ export function getLocalizedForest(forest: ForestPack, lang: string): ForestPack
     }
   }
 
+  const bridgeMap: Record<string, string> = {
+    'moulin_rouillac_to_ruisseau_moulin': 'bridge_moulin_ruisseau',
+    'ruisseau_moulin_to_chene_soupirs': 'bridge_ruisseau_chene',
+    'chene_soupirs_to_pont_sorciere': 'bridge_chene_pont',
+    'chene_soupirs_to_belvedere_canejan': 'bridge_chene_belvedere',
+    'pont_sorciere_to_belvedere_canejan': 'bridge_pont_belvedere',
+    'pont_sorciere_to_moulin_rouillac': 'bridge_pont_moulin',
+    'castillo-nalda_to_arco-villa': 'bridge_nalda_castillo_arco',
+    'arco-villa_to_mirador-cameros': 'bridge_nalda_arco_mirador',
+    'mirador-cameros_to_cuevas-palomares': 'bridge_nalda_mirador_cuevas',
+    'cuevas-palomares_to_ermita-villavieja': 'bridge_nalda_cuevas_ermita',
+  };
+
+  const localizedBridgePhrases: Record<string, string> = {};
+  if (forest.bridgePhrases) {
+    for (const [k, val] of Object.entries(forest.bridgePhrases)) {
+      const mappedKey = bridgeMap[k] || k;
+      const trans = translateKey(mappedKey, val) || translateKey(k, val) || val;
+      localizedBridgePhrases[k] = trans;
+      localizedBridgePhrases[mappedKey] = trans;
+    }
+  }
+
   return {
     ...forest,
     name: forestName,
@@ -203,11 +232,22 @@ export function getLocalizedForest(forest: ForestPack, lang: string): ForestPack
     stories: localizedStories,
     riddles: localizedRiddles,
     sceneNarratives: localizedSceneNarratives,
+    bridgePhrases: localizedBridgePhrases,
     metaEnigma: forest.metaEnigma
       ? {
           ...forest.metaEnigma,
-          title: forest.metaEnigma.titleKey ? translateKey(forest.metaEnigma.titleKey, forest.metaEnigma.title) : (forestI18n?.[targetLang]?.metaEnigma?.title || forest.metaEnigma.title),
-          description: forest.metaEnigma.descriptionKey ? translateKey(forest.metaEnigma.descriptionKey, forest.metaEnigma.description) : (forestI18n?.[targetLang]?.metaEnigma?.description || forest.metaEnigma.description),
+          title: forest.metaEnigma.titleKey
+            ? translateKey(forest.metaEnigma.titleKey, forest.metaEnigma.title)
+            : (forestI18n?.[targetLang]?.metaEnigma?.title || forest.metaEnigma.title),
+          description: forest.metaEnigma.descriptionKey
+            ? translateKey(forest.metaEnigma.descriptionKey, forest.metaEnigma.description)
+            : (forestI18n?.[targetLang]?.metaEnigma?.description || forest.metaEnigma.description),
+          hint: (forest.metaEnigma as any).hintKey
+            ? translateKey((forest.metaEnigma as any).hintKey, forest.metaEnigma.hint)
+            : (forestI18n?.[targetLang]?.metaEnigma?.hint || forest.metaEnigma.hint),
+          successNarrative: (forest.metaEnigma as any).successNarrativeKey
+            ? translateKey((forest.metaEnigma as any).successNarrativeKey, forest.metaEnigma.successNarrative)
+            : (forestI18n?.[targetLang]?.metaEnigma?.successNarrative || forest.metaEnigma.successNarrative),
         }
       : undefined,
   };

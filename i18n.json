@@ -25,7 +25,7 @@
   },
   "ui": {
     "es": {
-      "app.title": "Enigma del Bosque",
+      "app.title": "Enigma Vivo",
       "lang.select": "Idioma",
       "common.start": "Empezar aventura",
       "common.continue": "Continuar",
@@ -152,7 +152,7 @@
       "play.bonus": "Prueba extra (opcional)",
       "play.skipBonus": "Saltar",
       "order.hint": "Ordena las piezas arrastrándolas o tocándolas.",
-      "order.result": "{n} de {total} piezas en su sitio",
+      "order.result": "Has colocado {n} de {total} elementos en su posición correcta. ¡Sigue probando!",
       "compass.hold": "Mantén el rumbo…",
       "listen.start": "Empezar a escuchar (30 s)",
       "photo.take": "Hacer foto",
@@ -316,7 +316,7 @@
       "ar.turnRight": "Gira {deg}° a tu derecha ➔",
       "ar.turnLeft": "⬅ Gira {deg}° a tu izquierda",
       "ar.dist": "Distancia: {dist}",
-      "ar.heading": "Rumbo: {bearing}°",
+      "ar.heading": "Rumbo:",
       "ar.lockedTitle": "Aparición Protegida por Enigma",
       "ar.lockedDesc": "Este artefacto permanece velado por el misterio del bosque. Resuelve primero el acertijo de {poiName} para que la energía de la senda revele la reliquia en realidad aumentada.",
       "ar.backToRiddle": "Volver al Enigma",
@@ -1098,9 +1098,9 @@
       "f_t5_1_meta_rune_clue": "Letra 'B' de Fray Botijo: La bendición de Villavieja para el caminante.",
       "f_t5_2_meta_rune_clue": "Letra 'O' de Fray Botijo: La última letra que sella el nombre BOTIJO.",
       "howToPlay_navButton": "¿Cómo se juega?",
-      "howToPlay_title": "¿Cómo se juega a Enigma del Bosque?",
+      "howToPlay_title": "¿Cómo se juega a Enigma Vivo?",
       "howToPlay_subtitle": "Guía rápida de expedición y rastreo narrativo",
-      "howToPlay_intro": "Enigma del Bosque es un juego de rastreo narrativo al aire libre que combina senderismo real con geolocalización GPS, enigmas patrimoniales, realidad aumentada 3D y personajes interactivos con inteligencia artificial en tiempo real.",
+      "howToPlay_intro": "Enigma Vivo es un juego de rastreo narrativo al aire libre que combina senderismo real con geolocalización GPS, enigmas patrimoniales, realidad aumentada 3D y personajes interactivos con inteligencia artificial en tiempo real.",
       "howToPlay_step1Title": "1. Elige tu Bosque e Historia",
       "howToPlay_step1Desc": "Selecciona entre Canéjan-Cestas (Gironde, Francia) o Nalda (La Rioja, España). Cada bosque cuenta con 4 historias distintas guiadas por personajes únicos: maquis de la Resistencia, molineros del siglo XIX, duendes de la ribera o cronistas medievales.",
       "howToPlay_step2Title": "2. Personaliza tu Ruta",
@@ -1209,7 +1209,7 @@
       "home.storiesListTitle": "Historias ({count}):",
       "home.enterForestBtn": "Entrar al Bosque",
       "home.territoriesReady": "{count} territorios listos",
-      "home.howTitle": "¿Cómo se juega a Enigma del Bosque?",
+      "home.howTitle": "¿Cómo se juega a Enigma Vivo?",
       "home.howSubtitle": "Una experiencia pensada para disfrutar al aire libre en familia, con amigos o en solitario.",
       "home.howStep1Title": "Elige Bosque e Historia",
       "home.howStep1Desc": "Selecciona tu sendero favorito, la duración del paseo (30min a 2h) y tu nivel de desafío.",
@@ -1218,10 +1218,86 @@
       "home.howStep3Title": "Habla con tu Guía IA",
       "home.howStep3Desc": "Conversa por voz o chat en vivo con tu personaje, pide pistas sensoriales y admira reliquias en RA.",
       "home.howStep4Title": "Meta-Enigma Final",
-      "home.howStep4Desc": "Reúne las letras o runas místicas de cada hito para descifrar la clave final y obtener tu diploma."
+      "home.howStep4Desc": "Reúne las letras o runas místicas de cada hito para descifrar la clave final y obtener tu diploma.",
+      "footer.subtitle": "Rutas y acertijos al aire libre",
+      "footer.adminAccess": "Acceso organizador",
+      "chat.liveTag": "En directo",
+      "chat.travelCompanion": "Compañero de viaje",
+      "chat.talkingAt": "Hablando en:",
+      "chat.adminNotice": "🚨 Aviso de Organización",
+      "chat.guide": "Guía",
+      "chat.thinking": "{name} está meditando su respuesta...",
+      "chat.suggest": "Sugerir:",
+      "chat.quickWhere": "¿Hacia dónde miro?",
+      "chat.quickDetail": "¿Qué detalle del entorno busco?",
+      "chat.quickEncourage": "Dime una frase de aliento",
+      "chat.inputPlaceholder": "Habla con {name}...",
+      "meta.climaxChallenge": "Desafío Culminante",
+      "meta.runesFound": "Runas halladas en la ruta ({count}):",
+      "meta.completeCollection": "Colección completa",
+      "meta.keepExploring": "Sigue explorando",
+      "meta.codexClue": "Pista del códice:",
+      "meta.sealedPact": "¡Pacto Sellado: {keyword}!",
+      "meta.pointsBonus": "+200 Puntos de Bonificación Otorgados",
+      "meta.closeCodex": "Cerrar Códice",
+      "meta.inputPlaceholder": "Escribe la palabra secreta...",
+      "meta.decipher": "Descifrar",
+      "ar.close": "Cerrar Realidad Aumentada",
+      "ar.searching": "Buscando reliquia...",
+      "ar.rotate": "Rotar",
+      "ar.center": "Centrar",
+      "ar.zoomIn": "Acercar",
+      "ar.zoomOut": "Alejar",
+      "ar.pointCamera": "Apunta tu cámara hacia el punto exacto",
+      "ar.inspect3d": "Inspección 3D",
+      "ar.cameraAr": "Cámara AR",
+      "map.nextWaypoint": "Siguiente hito",
+      "map.paletteOrganic": "Paleta Orgánica de Bosque",
+      "transit.defaultBridge": "¡Buen trabajo! Ahora sigue el sendero marcado. Presta atención a las señales del bosque y camina con calma.",
+      "meta_enigma_nalda_hint": "El nombre de esta ilustre villa riojana a orillas del Iregua (5 letras).",
+      "meta_enigma_nalda_success": "¡Enhorabuena, aprendiz! El Cronicón asiente con solemnidad. Has completado la senda y recogido el sello sagrado: 'El Iregua guarda la memoria de NALDA'.",
+      "answer.correct": "¡Excelente deducción! Has resuelto el enigma del lugar.",
+      "answer.incorrect": "No es la respuesta correcta. Observa con más calma tu entorno o pide una pista al guía.",
+      "answer.bonusCorrect": "¡Reto extra completado! Has ganado puntos de bonificación.",
+      "answer.metaIncorrect": "Esa no es la palabra sagrada. Revisa las letras que has reunido en tu códice.",
+      "riddle.openCamera": "Abrir Cámara / Capturar Foto",
+      "riddle.recordingAudio": "GRABANDO SONIDO AMBIENTE...",
+      "riddle.startAudio": "Iniciar Grabación de Audio",
+      "riddle.recordVideoClip": "Grabar Clip de 3 Segundos",
+      "riddle.performMimic": "Realizar Mímica (3s)",
+      "riddle.listeningForest": "Escuchando la espesura...",
+      "riddle.codexTitle": "Códice y Descifrado Rúnico",
+      "riddle.codexEquivalence": "Clave de equivalencias:",
+      "riddle.submitAnswer": "Responder",
+      "riddle.feedbackCorrect": "¡Correcto! Enigma resuelto con éxito.",
+      "riddle.feedbackIncorrect": "No es la respuesta correcta. Vuelve a intentarlo.",
+      "ar.btnArCamera": "Cámara AR",
+      "ar.btn3dMode": "Modo Reserva 3D",
+      "ar.placeGround": "Colocar en el Suelo (AR)",
+      "ar.targetInSight": "¡Artefacto en tu campo visual!",
+      "ar.distance": "Distancia:",
+      "ar.progressNote": "Nota sobre el avance:",
+      "ar.smoothExperience": "Experiencia visual sin bloqueos:",
+      "map.reliefContrast": "Contraste de relieve:",
+      "map.greenSaturation": "Saturación de verdes:",
+      "map.activateFilter": "Activar filtro",
+      "map.arCamera": "Cámara AR",
+      "map.filterActive": "Filtro orgánico activo",
+      "map.jump25m": "+25m hacia POI",
+      "map.arriveBtn": "Llegar (<30m)",
+      "char.reportJoke": "Reportar chiste",
+      "char.currentPoint": "Punto actual:",
+      "char.liveVoice": "Voz en Vivo (Gemini 3.8 Live)",
+      "char.chatAndQuestions": "Chat de Texto y Preguntas",
+      "char.personality": "Personalidad del Personaje",
+      "char.ask": "Preguntar",
+      "setup.errorStory": "Por favor, selecciona una historia para comenzar.",
+      "setup.defaultTeam": "Equipo Forestal",
+      "setup.defaultSolo": "Explorador Solitario",
+      "briefing.acknowledge": "He leído y comprendo las normas de seguridad del bosque. Me comprometo a respetarlas."
     },
     "fr": {
-      "app.title": "Énigme de la Forêt",
+      "app.title": "Énigme Vivante",
       "lang.select": "Langue",
       "common.start": "Commencer l'aventure",
       "common.continue": "Continuer",
@@ -1348,7 +1424,7 @@
       "play.bonus": "Épreuve bonus (facultative)",
       "play.skipBonus": "Passer",
       "order.hint": "Remets les éléments dans l'ordre en les faisant glisser ou en les touchant.",
-      "order.result": "{n} éléments sur {total} bien placés",
+      "order.result": "Tu as placé {n} sur {total} éléments à la bonne place. Continue !",
       "compass.hold": "Garde le cap…",
       "listen.start": "Commencer l'écoute (30 s)",
       "photo.take": "Prendre une photo",
@@ -1441,7 +1517,7 @@
       "riddle.compassAligned": "Aligné avec le Nord ! Prêt à valider.",
       "riddle.compassRotatePrompt": "Tournez lentement jusqu'à viser le Nord (0° ±{tolerance}°).",
       "riddle.compassValidate": "Fixer et Valider le Cap Nord",
-      "riddle.listenTitle": "Écoute Attentive de la Forêt",
+      "riddle.listenTitle": "Écoute attentive de la Forêt",
       "riddle.listenRequired": "{seconds} s requises",
       "riddle.listenHoldDesc": "Restez immobile pendant {seconds} secondes téléphone baissé et cochez les sons entendus :",
       "riddle.listening": "Écoute de la nature...",
@@ -1502,17 +1578,17 @@
       "charModal.askBtn": "Demander",
       "charModal.otherCharacters": "Autres Personnages de cette Forêt :",
       "ar.title": "Réalité Augmentée",
-      "ar.mode3d": "Mode Viseur 3D",
+      "ar.mode3d": "Mode Visionneuse 3D",
       "ar.modeGeo": "Géo-Ancré",
       "ar.camButton": "Caméra RA",
       "ar.fallbackButton": "Mode Réserve 3D",
       "ar.closeTitle": "Fermer la Réalité Augmentée",
       "ar.loading": "Chargement de l'artéfact 3D...",
       "ar.inFieldOfView": "Artéfact dans votre champ de vision !",
-      "ar.turnRight": "Tournez de {deg}° vers votre droite ➔",
-      "ar.turnLeft": "⬅ Tournez de {deg}° vers votre gauche",
+      "ar.turnRight": "Tourne de {deg}° vers ta droite ➔",
+      "ar.turnLeft": "⬅ Tourne de {deg}° vers ta gauche",
       "ar.dist": "Distance : {dist}",
-      "ar.heading": "Cap : {bearing}°",
+      "ar.heading": "Cap :",
       "ar.lockedTitle": "Apparition Protégée par l'Énigme",
       "ar.lockedDesc": "Cet artéfact reste voilé par les mystères des bois. Résolvez d'abord l'énigme de {poiName} pour que le sentier révèle la relique en réalité augmentée.",
       "ar.backToRiddle": "Retour à l'Énigme",
@@ -2294,9 +2370,9 @@
       "f_t5_1_meta_rune_clue": "Lettre 'B' de Fray Botijo : La bénédiction de Villavieja pour le pèlerin.",
       "f_t5_2_meta_rune_clue": "Lettre 'O' de Fray Botijo : La dernière lettre qui scelle le mot BOTIJO.",
       "howToPlay_navButton": "Comment jouer ?",
-      "howToPlay_title": "Comment jouer à l'Énigme de la Forêt ?",
+      "howToPlay_title": "Comment jouer à Énigme Vivante ?",
       "howToPlay_subtitle": "Guide rapide d'expédition et pistage narratif",
-      "howToPlay_intro": "L'Énigme de la Forêt est un jeu de pistage narratif en plein air combinant randonnée réelle avec géolocalisation GPS, énigmes patrimoniales, réalité augmentée 3D et personnages interactifs dotés d'intelligence artificielle en temps réel.",
+      "howToPlay_intro": "Énigme Vivante est un jeu de pistage narratif en plein air combinant randonnée réelle avec géolocalisation GPS, énigmes patrimoniales, réalité augmentée 3D et personnages interactifs dotés d'intelligence artificielle en temps réel.",
       "howToPlay_step1Title": "1. Choisis ta Forêt et ton Histoire",
       "howToPlay_step1Desc": "Choisis entre Canéjan-Cestas (Gironde, France) ou Nalda (La Rioja, Espagne). Chaque forêt propose 4 histoires différentes guidées par des personnages uniques : maquisards de la Résistance, meuniers du XIXe, lutins ou chroniqueurs médiévaux.",
       "howToPlay_step2Title": "2. Personnalise ton Parcours",
@@ -2349,7 +2425,7 @@
       "chat.tapTalk": "Touche pour parler à la voix",
       "chat.suggestedQuestions": "Questions suggérées à {name} :",
       "chat.startConversation": "Démarre la conversation en posant n'importe quelle question à {name}.",
-      "chat.you": "Toi",
+      "chat.you": "Vous",
       "setup.adultWarningTitle": "Avertissement Contenu Adulte (+18)",
       "briefing.adultWarningTitle": "Avertissement Contenu Adulte (+18)",
       "game.ambientDefaultText": "Observe attentivement ce qui t'entoure dans ce recoin de la forêt.",
@@ -2405,7 +2481,7 @@
       "home.storiesListTitle": "Histoires ({count}) :",
       "home.enterForestBtn": "Entrer dans la Forêt",
       "home.territoriesReady": "{count} territoires prêts",
-      "home.howTitle": "Comment jouer à l'Énigme de la Forêt ?",
+      "home.howTitle": "Comment jouer à Énigme Vivante ?",
       "home.howSubtitle": "Une expérience conçue pour profiter du plein air en famille, entre amis ou en solo.",
       "home.howStep1Title": "Choisis Forêt et Histoire",
       "home.howStep1Desc": "Sélectionne ton sentier favori, la durée de la balade (30 min à 2 h) et ton niveau de défi.",
@@ -2414,10 +2490,86 @@
       "home.howStep3Title": "Échange avec ton Guide IA",
       "home.howStep3Desc": "Discute à la voix ou par chat en direct avec ton personnage, demande des indices et admire des reliques en RA.",
       "home.howStep4Title": "Méta-Énigme Final",
-      "home.howStep4Desc": "Rassemble les lettres ou runes mystiques de chaque jalon pour déchiffrer le mot final et obtenir ton diplôme."
+      "home.howStep4Desc": "Rassemble les lettres ou runes mystiques de chaque jalon pour déchiffrer le mot final et obtenir ton diplôme.",
+      "footer.subtitle": "Parcours et énigmes en plein air",
+      "footer.adminAccess": "Accès organisateur",
+      "chat.liveTag": "En direct",
+      "chat.travelCompanion": "Compagnon de voyage",
+      "chat.talkingAt": "En direct de :",
+      "chat.adminNotice": "🚨 Avis de l'Organisation",
+      "chat.guide": "Guide",
+      "chat.thinking": "{name} réfléchit à sa réponse...",
+      "chat.suggest": "Suggérer :",
+      "chat.quickWhere": "Dans quelle direction regarder ?",
+      "chat.quickDetail": "Quel détail dois-je chercher ?",
+      "chat.quickEncourage": "Donne-moi un mot d'encouragement",
+      "chat.inputPlaceholder": "Parle avec {name}...",
+      "meta.climaxChallenge": "Défi Ultime",
+      "meta.runesFound": "Runes trouvées sur le parcours ({count}) :",
+      "meta.completeCollection": "Collection complète",
+      "meta.keepExploring": "Continue d'explorer",
+      "meta.codexClue": "Indice du codex :",
+      "meta.sealedPact": "Pacte Scellé : {keyword} !",
+      "meta.pointsBonus": "+200 Points Bonus Attribués",
+      "meta.closeCodex": "Fermer le Codex",
+      "meta.inputPlaceholder": "Écris le mot secret...",
+      "meta.decipher": "Déchiffrer",
+      "ar.close": "Fermer la Réalité Augmentée",
+      "ar.searching": "Recherche de la relique...",
+      "ar.rotate": "Tourner",
+      "ar.center": "Centrer",
+      "ar.zoomIn": "Zoom avant",
+      "ar.zoomOut": "Zoom arrière",
+      "ar.pointCamera": "Pointe ta caméra vers le point exact",
+      "ar.inspect3d": "Inspection 3D",
+      "ar.cameraAr": "Caméra AR",
+      "map.nextWaypoint": "Prochaine étape",
+      "map.paletteOrganic": "Palette Organique Forestière",
+      "transit.defaultBridge": "Beau travail ! Suis maintenant le sentier balisé. Prête attention aux signes de la forêt et marche d'un pas serein.",
+      "meta_enigma_nalda_hint": "Le nom de cette illustre cité de La Rioja au bord de l'Iregua (5 lettres).",
+      "meta_enigma_nalda_success": "Félicitations, apprenti ! Le Cronicón hoche la tête avec solennité. Tu as terminé le parcours et obtenu le sceau sacré : 'L'Iregua garde la mémoire de NALDA'.",
+      "answer.correct": "Excellente déduction ! Tu as résolu l'énigme du lieu.",
+      "answer.incorrect": "Ce n'est pas la bonne réponse. Observe attentivement ton environnement ou demande un indice au guide.",
+      "answer.bonusCorrect": "Défi bonus accompli ! Tu as remporté des points bonus.",
+      "answer.metaIncorrect": "Ce n'est pas le mot sacré. Examine les lettres que tu as réunies dans ton codex.",
+      "riddle.openCamera": "Ouvrir l'appareil photo / Prendre la photo",
+      "riddle.recordingAudio": "ENREGISTREMENT DU SON AMBIANT...",
+      "riddle.startAudio": "Démarrer l'enregistrement audio",
+      "riddle.recordVideoClip": "Enregistrer un clip de 3 secondes",
+      "riddle.performMimic": "Faire le mime (3s)",
+      "riddle.listeningForest": "À l'écoute des bois...",
+      "riddle.codexTitle": "Codex et Déchiffrage Runique",
+      "riddle.codexEquivalence": "Table des correspondances :",
+      "riddle.submitAnswer": "Répondre",
+      "riddle.feedbackCorrect": "Correct ! Énigme résolue avec succès.",
+      "riddle.feedbackIncorrect": "Ce n'est pas la bonne réponse. Réessaie !",
+      "ar.btnArCamera": "Caméra RA",
+      "ar.btn3dMode": "Mode Réserve 3D",
+      "ar.placeGround": "Poser au sol (RA)",
+      "ar.targetInSight": "Artéfact dans ton champ de vision !",
+      "ar.distance": "Distance :",
+      "ar.progressNote": "Note d'exploration :",
+      "ar.smoothExperience": "Expérience visuelle fluide :",
+      "map.reliefContrast": "Contraste du relief :",
+      "map.greenSaturation": "Saturation des verts :",
+      "map.activateFilter": "Activer le filtre",
+      "map.arCamera": "Caméra RA",
+      "map.filterActive": "Filtre organique actif",
+      "map.jump25m": "+25m vers le jalon",
+      "map.arriveBtn": "Arriver (<30m)",
+      "char.reportJoke": "Signaler la blague",
+      "char.currentPoint": "Jalon actuel :",
+      "char.liveVoice": "Voix en Direct (Gemini 3.8 Live)",
+      "char.chatAndQuestions": "Discussion Écrite et Questions",
+      "char.personality": "Personnalité du Guide",
+      "char.ask": "Demander",
+      "setup.errorStory": "Veuillez choisir une histoire pour commencer.",
+      "setup.defaultTeam": "Équipe Sylvestre",
+      "setup.defaultSolo": "Explorateur Solitaire",
+      "briefing.acknowledge": "J'ai lu et compris les consignes de sécurité forestière. Je m'engage à les respecter."
     },
     "en": {
-      "app.title": "Enigma of the Forest",
+      "app.title": "Living Enigma",
       "lang.select": "Language",
       "common.start": "Start adventure",
       "common.continue": "Continue",
@@ -2544,7 +2696,7 @@
       "play.bonus": "Bonus challenge (optional)",
       "play.skipBonus": "Skip",
       "order.hint": "Put the pieces in order by dragging or tapping them.",
-      "order.result": "{n} of {total} pieces in place",
+      "order.result": "You placed {n} of {total} elements in the correct position. Keep trying!",
       "compass.hold": "Hold your heading…",
       "listen.start": "Start listening (30 s)",
       "photo.take": "Take photo",
@@ -2624,7 +2776,7 @@
       "sos.gpsCoords": "Your current GPS Coordinates:",
       "sos.call112": "Call 112",
       "sos.backToRoute": "Back to Route",
-      "riddle.photoTitle": "Forest Photo Verification",
+      "riddle.photoTitle": "Forest Photographic Verification",
       "riddle.photoDefaultDesc": "Photograph the indicated landmark without damaging or picking anything.",
       "riddle.photoTaken": "Photo captured ✓",
       "riddle.photoValidate": "Validate Photo",
@@ -2637,7 +2789,7 @@
       "riddle.compassAligned": "Aligned with North! Ready to validate.",
       "riddle.compassRotatePrompt": "Turn slowly until facing North (0° ±{tolerance}°).",
       "riddle.compassValidate": "Lock & Validate North Heading",
-      "riddle.listenTitle": "Attentive Forest Listening",
+      "riddle.listenTitle": "Mindful Forest Listening",
       "riddle.listenRequired": "{seconds}s required",
       "riddle.listenHoldDesc": "Stand still for {seconds} seconds with your phone down and check off the sounds you hear:",
       "riddle.listening": "Listening to the wilderness...",
@@ -2708,7 +2860,7 @@
       "ar.turnRight": "Turn {deg}° to your right ➔",
       "ar.turnLeft": "⬅ Turn {deg}° to your left",
       "ar.dist": "Distance: {dist}",
-      "ar.heading": "Heading: {bearing}°",
+      "ar.heading": "Bearing:",
       "ar.lockedTitle": "Riddle-Locked Appearance",
       "ar.lockedDesc": "This artifact remains shrouded by forest mystery. First solve the riddle of {poiName} to reveal the relic in augmented reality.",
       "ar.backToRiddle": "Back to Riddle",
@@ -2731,7 +2883,7 @@
       "map.presetNatural": "🌿 Natural",
       "map.contrastRelief": "Relief contrast:",
       "map.satGreens": "Green saturation:",
-      "map.warmth": "Earthy warmth:",
+      "map.warmth": "Earthly warmth:",
       "map.filterToggle": "Enable filter",
       "map.filterOn": "Enabled",
       "map.filterOff": "Disabled",
@@ -3490,7 +3642,7 @@
       "f_t5_1_meta_rune_clue": "Friar Botijo's letter 'B': The blessing of Villavieja for the wayfarer.",
       "f_t5_2_meta_rune_clue": "Friar Botijo's letter 'O': The final letter sealing the word BOTIJO.",
       "howToPlay_navButton": "How to play?",
-      "howToPlay_title": "How to Play Forest Enigma?",
+      "howToPlay_title": "How to play Living Enigma?",
       "howToPlay_subtitle": "Quick Expedition & Narrative Tracking Guide",
       "howToPlay_intro": "Forest Enigma is an outdoor narrative tracking game combining real hiking with GPS geolocation, heritage riddles, 3D augmented reality, and real-time AI conversational characters.",
       "howToPlay_step1Title": "1. Choose your Forest & Story",
@@ -3601,7 +3753,7 @@
       "home.storiesListTitle": "Stories ({count}):",
       "home.enterForestBtn": "Enter Forest",
       "home.territoriesReady": "{count} territories ready",
-      "home.howTitle": "How to Play Forest Enigma?",
+      "home.howTitle": "How to play Living Enigma?",
       "home.howSubtitle": "An experience designed for enjoying the outdoors with family, friends, or solo.",
       "home.howStep1Title": "Choose Forest & Story",
       "home.howStep1Desc": "Select your favorite trail, walk duration (30min to 2h), and challenge level.",
@@ -3610,7 +3762,83 @@
       "home.howStep3Title": "Talk to your AI Guide",
       "home.howStep3Desc": "Chat live by voice or text with your character, ask for sensory hints, and admire relics in AR.",
       "home.howStep4Title": "Final Meta-Enigma",
-      "home.howStep4Desc": "Gather the mystic letters or runes from each waypoint to decipher the final keyword and earn your diploma."
+      "home.howStep4Desc": "Gather the mystic letters or runes from each waypoint to decipher the final keyword and earn your diploma.",
+      "footer.subtitle": "Outdoor quests and riddles",
+      "footer.adminAccess": "Organizer access",
+      "chat.liveTag": "Live",
+      "chat.travelCompanion": "Travel companion",
+      "chat.talkingAt": "Speaking at:",
+      "chat.adminNotice": "🚨 Organizer Notice",
+      "chat.guide": "Guide",
+      "chat.thinking": "{name} is thinking...",
+      "chat.suggest": "Suggest:",
+      "chat.quickWhere": "Which direction should I look?",
+      "chat.quickDetail": "What environmental detail should I look for?",
+      "chat.quickEncourage": "Give me some encouragement",
+      "chat.inputPlaceholder": "Speak with {name}...",
+      "meta.climaxChallenge": "Climactic Challenge",
+      "meta.runesFound": "Runes found along the route ({count}):",
+      "meta.completeCollection": "Complete collection",
+      "meta.keepExploring": "Keep exploring",
+      "meta.codexClue": "Codex clue:",
+      "meta.sealedPact": "Pact Sealed: {keyword}!",
+      "meta.pointsBonus": "+200 Bonus Points Awarded",
+      "meta.closeCodex": "Close Codex",
+      "meta.inputPlaceholder": "Type the secret word...",
+      "meta.decipher": "Decipher",
+      "ar.close": "Close Augmented Reality",
+      "ar.searching": "Searching for relic...",
+      "ar.rotate": "Rotate",
+      "ar.center": "Center",
+      "ar.zoomIn": "Zoom in",
+      "ar.zoomOut": "Zoom out",
+      "ar.pointCamera": "Point your camera towards the exact point",
+      "ar.inspect3d": "3D Inspection",
+      "ar.cameraAr": "AR Camera",
+      "map.nextWaypoint": "Next waypoint",
+      "map.paletteOrganic": "Organic Forest Palette",
+      "transit.defaultBridge": "Great job! Now follow the marked trail. Pay attention to the forest signs and walk steadily.",
+      "meta_enigma_nalda_hint": "The name of this illustrious Rioja town on the banks of the Iregua (5 letters).",
+      "meta_enigma_nalda_success": "Congratulations, apprentice! The Cronicón nods with solemnity. You have completed the path and collected the sacred seal: 'The Iregua keeps the memory of NALDA'.",
+      "answer.correct": "Excellent deduction! You solved the enigma of this site.",
+      "answer.incorrect": "That is not the correct answer. Look around more closely or ask the guide for a hint.",
+      "answer.bonusCorrect": "Bonus challenge completed! You earned bonus points.",
+      "answer.metaIncorrect": "That is not the sacred word. Check the letters you have gathered in your codex.",
+      "riddle.openCamera": "Open Camera / Take Photo",
+      "riddle.recordingAudio": "RECORDING AMBIENT AUDIO...",
+      "riddle.startAudio": "Start Audio Recording",
+      "riddle.recordVideoClip": "Record a 3-Second Clip",
+      "riddle.performMimic": "Perform Mimic (3s)",
+      "riddle.listeningForest": "Listening to the woodland...",
+      "riddle.codexTitle": "Codex & Runic Decryption",
+      "riddle.codexEquivalence": "Cipher key:",
+      "riddle.submitAnswer": "Submit Answer",
+      "riddle.feedbackCorrect": "Correct! Riddle successfully solved.",
+      "riddle.feedbackIncorrect": "That is not the correct answer. Try again!",
+      "ar.btnArCamera": "AR Camera",
+      "ar.btn3dMode": "3D Backup Mode",
+      "ar.placeGround": "Place on Ground (AR)",
+      "ar.targetInSight": "Artifact in your field of view!",
+      "ar.distance": "Distance:",
+      "ar.progressNote": "Trail progress note:",
+      "ar.smoothExperience": "Smooth visual experience:",
+      "map.reliefContrast": "Relief contrast:",
+      "map.greenSaturation": "Green saturation:",
+      "map.activateFilter": "Activate filter",
+      "map.arCamera": "AR Camera",
+      "map.filterActive": "Organic filter active",
+      "map.jump25m": "+25m toward POI",
+      "map.arriveBtn": "Arrive (<30m)",
+      "char.reportJoke": "Report joke",
+      "char.currentPoint": "Current waypoint:",
+      "char.liveVoice": "Live Voice (Gemini 3.8 Live)",
+      "char.chatAndQuestions": "Text Chat & Questions",
+      "char.personality": "Character Personality",
+      "char.ask": "Ask",
+      "setup.errorStory": "Please select a story to begin.",
+      "setup.defaultTeam": "Forest Team",
+      "setup.defaultSolo": "Solo Explorer",
+      "briefing.acknowledge": "I have read and understood the forest safety rules. I pledge to respect them."
     }
   },
   "forests": {
@@ -4602,17 +4830,1883 @@
       "es": {
         "name": "Nalda (La Rioja)",
         "country": "España (La Rioja)",
-        "description": "Un bosque de historia, piedra y río en el Valle del Iregua."
+        "description": "Un bosque de historia, piedra y río en el Valle del Iregua.",
+        "riddles": {
+          "t1-1": {
+            "name": "El Noble Prisionero",
+            "question": "¿Quién fue el noble que estuvo prisionero aquí en 1299?",
+            "options": [
+              "Juan Núñez de Lara",
+              "El Cid Campeador",
+              "Alfonso X",
+              "García Sánchez"
+            ],
+            "answer": "Juan Núñez de Lara",
+            "hints": [
+              "Era un noble castellano rebelde.",
+              "Lara es su apellido."
+            ]
+          },
+          "t1-2": {
+            "name": "Los Aljibes del Castillo",
+            "question": "El castillo tenía un sistema de aljibes. ¿Para qué servían?",
+            "options": [
+              "Almacenar agua de lluvia",
+              "Mazmorras secretas",
+              "Guardar pólvora",
+              "Bodega de vino"
+            ],
+            "answer": "Almacenar agua de lluvia",
+            "hints": [
+              "El agua era vital durante un asedio.",
+              "Recogían lluvia."
+            ]
+          },
+          "t1-3": {
+            "name": "Fratricidio Real",
+            "question": "¿Qué rey mató a su hermanastro con un puñal en Montiel (1369)?",
+            "options": [
+              "Enrique II de Trastámara",
+              "Pedro I el Cruel",
+              "Fernando III",
+              "Juan I"
+            ],
+            "answer": "Enrique II de Trastámara",
+            "hints": [
+              "Inauguró la dinastía Trastámara.",
+              "Enrique el de las Mercedes."
+            ]
+          },
+          "t2-1": {
+            "name": "Límites del Arco",
+            "question": "¿Qué delimitaba el Arco de la Villa?",
+            "options": [
+              "La entrada al recinto amurallado",
+              "El puente sobre el río",
+              "El límite con Viguera",
+              "El inicio del viñedo"
+            ],
+            "answer": "La entrada al recinto amurallado",
+            "hints": [
+              "Era la puerta principal del pueblo medieval.",
+              "Paso de la muralla."
+            ]
+          },
+          "t2-2": {
+            "name": "Señorío de Cameros",
+            "question": "¿Qué familia noble fue señora de Cameros y habitó este castillo?",
+            "options": [
+              "Los Haro",
+              "Los Lara",
+              "Los Mendoza",
+              "Los Trastámara"
+            ],
+            "answer": "Los Haro",
+            "hints": [
+              "Linaje vizcaíno y riojano muy influyente.",
+              "Juan Alonso de Haro."
+            ]
+          },
+          "t2-3": {
+            "name": "Anagrama Alado",
+            "question": "Anagrama: R A L O M P A → ordena para formar una palabra relacionada con las aves de las cuevas:",
+            "options": [
+              "PALOMAR",
+              "PARMOLA",
+              "LOMAPAR",
+              "MORAPAL"
+            ],
+            "answer": "PALOMAR",
+            "hints": [
+              "Nombre de las cuevas famosas de Nalda.",
+              "Lugar de palomas."
+            ]
+          },
+          "t3-1": {
+            "name": "El Río del Valle",
+            "question": "¿Cómo se llama el río que atraviesa este valle y fertiliza los huertos de Nalda?",
+            "options": [
+              "Río Iregua",
+              "Río Najerilla",
+              "Río Leza",
+              "Río Cidacos"
+            ],
+            "answer": "Río Iregua",
+            "hints": [
+              "Nace en la Sierra Cebollera y desemboca en el Ebro.",
+              "Empieza por I."
+            ]
+          },
+          "t3-2": {
+            "name": "Caudal del Iregua",
+            "question": "Si el caudal medio es de 6,35 m³/s, ¿cuántos litros de agua pasan por segundo aproximadamente?",
+            "options": [
+              "6.350 litros",
+              "635 litros",
+              "63.500 litros",
+              "635.000 litros"
+            ],
+            "answer": "6.350 litros",
+            "hints": [
+              "1 metro cúbico equivale a 1.000 litros.",
+              "Multiplica 6,35 por 1.000."
+            ]
+          },
+          "t3-3": {
+            "name": "Puerta a la Montaña",
+            "question": "¿A qué comarca montañosa histórica daba paso natural este mirador?",
+            "options": [
+              "Tierra de Cameros",
+              "La Alcarria",
+              "Las Merindades",
+              "El Somontano"
+            ],
+            "answer": "Tierra de Cameros",
+            "hints": [
+              "El mirador se llama Puerta de Cameros.",
+              "Cameros nuevo y viejo."
+            ]
+          },
+          "t4-1": {
+            "name": "Uso de las Cuevas",
+            "question": "¿Cuál era el uso religioso y posterior de las Cuevas de Los Palomares?",
+            "options": [
+              "Eremitorio rupestre medieval y luego palomar",
+              "Cantera de mármol",
+              "Mina de plata",
+              "Almacén de grano"
+            ],
+            "answer": "Eremitorio rupestre medieval y luego palomar",
+            "hints": [
+              "Monjes en soledad y después cría de palomas.",
+              "Hornacinas en la roca."
+            ]
+          },
+          "t4-2": {
+            "name": "Arquitectura Rupestre",
+            "question": "Las cuevas tienen varios niveles tallados en la roca. ¿En qué material geológico están excavadas?",
+            "options": [
+              "Areniscas y conglomerados arcillosos",
+              "Granito volcánico",
+              "Basalto puro",
+              "Pizarra laminar"
+            ],
+            "answer": "Areniscas y conglomerados arcillosos",
+            "hints": [
+              "Roca sedimentaria fácil de tallar pero erosionable.",
+              "Arenisca rojiza."
+            ]
+          },
+          "t4-3": {
+            "name": "Mensajes Alados",
+            "question": "Las palomas mensajeras llevaban mensajes atados a sus patas. ¿Qué nombre recibe este sistema de comunicación?",
+            "options": [
+              "Colombofilia",
+              "Cetrería",
+              "Ornitología",
+              "Apicultura"
+            ],
+            "answer": "Colombofilia",
+            "hints": [
+              "Viene del latín \"columba\" (paloma).",
+              "Cría y adiestramiento de palomas."
+            ]
+          },
+          "t5-1": {
+            "name": "Tierra de Viñedos",
+            "question": "Nalda es tierra de viñedos (Rioja). ¿En qué barricas se cría tradicionalmente el vino de Rioja?",
+            "options": [
+              "Roble americano y francés",
+              "Pino silvestre",
+              "Castaño dulce",
+              "Eucalipto"
+            ],
+            "answer": "Roble americano y francés",
+            "hints": [
+              "El árbol que da la bellota.",
+              "Madera noble de roble."
+            ]
+          },
+          "t5-2": {
+            "name": "El Códice de Nalda",
+            "question": "Has recogido fragmentos en cada POI. Ordena las letras para formar el sello sagrado de 5 letras de este municipio:",
+            "options": [
+              "NALDA",
+              "ALDNA",
+              "LANDA",
+              "ADLAN"
+            ],
+            "answer": "NALDA",
+            "hints": [
+              "El nombre de esta villa riojana.",
+              "Comienza por N."
+            ]
+          },
+          "extra-foto-castillo": {
+            "name": "Marca de Cantería",
+            "question": "Fotografía una piedra con marca de cantero o sillar antiguo sin tocar nada.",
+            "answer": "Foto de marca de cantero"
+          },
+          "extra-escucha-mirador": {
+            "name": "Eco de Cameros",
+            "question": "30 segundos en silencio. Marca los sonidos que oyes desde el valle:",
+            "options": [
+              "Viento en la roca",
+              "Pájaros del valle",
+              "Campana lejana",
+              "Agua del Iregua"
+            ],
+            "answer": "Viento en la roca, Pájaros del valle, Campana lejana, Agua del Iregua"
+          },
+          "extra-brujula-mirador": {
+            "name": "Orientación Norte",
+            "question": "Mantén el móvil orientado al Norte 3 s (±15°) mirando hacia Logroño y el Ebro.",
+            "answer": "0"
+          },
+          "extra-ordena-camino": {
+            "name": "La Vía Romana del Iregua",
+            "question": "Ordena de norte a sur los hitos del Valle del Iregua: Vareia → Nalda → Viguera → Torrecilla → Puerto de Piqueras",
+            "options": [
+              "Vareia (Logroño)",
+              "Nalda",
+              "Viguera",
+              "Torrecilla en Cameros",
+              "Puerto de Piqueras"
+            ],
+            "answer": "Vareia (Logroño), Nalda, Viguera, Torrecilla en Cameros, Puerto de Piqueras"
+          },
+          "extra-escucha-cuevas": {
+            "name": "El Susurro de las Hornacinas",
+            "question": "30 s en silencio dentro de las cuevas. ¿Qué oyes en la roca?",
+            "options": [
+              "Aleteo de palomas",
+              "Goteo de humedad",
+              "Eco del viento",
+              "Silencio monacal"
+            ],
+            "answer": "Aleteo de palomas, Goteo de humedad, Eco del viento, Silencio monacal"
+          },
+          "f-t1-1": {
+            "name": "El Preso de Fray Botijo",
+            "question": "A ver, chaval, aquí encerraron a un noble en 1299. ¿A quién? Pista: yo estaba borracho, pero me acuerdo de que era un poco plasta.",
+            "options": [
+              "Juan Núñez de Lara",
+              "El Cid Campeador",
+              "El Obispo de Calahorra",
+              "El Conde Duque de Olivares"
+            ],
+            "answer": "Juan Núñez de Lara",
+            "hints": [
+              "Lara, como el apellido.",
+              "Noble de postín."
+            ]
+          },
+          "f-t1-2": {
+            "name": "Las Almenas Medievales",
+            "question": "¿En qué siglo se alzaron las defensas principales de este castillo de Nalda?",
+            "options": [
+              "Siglo XIII",
+              "Siglo XXI",
+              "Siglo V a.C.",
+              "Siglo XIX"
+            ],
+            "answer": "Siglo XIII",
+            "hints": [
+              "Plena Edad Media.",
+              "Años 1200."
+            ]
+          },
+          "f-t1-3": {
+            "name": "El Linaje de los Haro",
+            "question": "¿Qué linaje señorial tomó posesión del Castillo de Nalda en el siglo XIII?",
+            "options": [
+              "Los Señores de Cameros (familia Haro)",
+              "Los Borgia",
+              "Los Reyes Católicos",
+              "Los Templarios de París"
+            ],
+            "answer": "Los Señores de Cameros (familia Haro)",
+            "hints": [
+              "Juan Alonso de Haro.",
+              "Señorío de Cameros."
+            ]
+          },
+          "f-t2-1": {
+            "name": "La Puerta del Arco",
+            "question": "Al cruzar el Arco de la Villa, ¿qué función defensiva cumplía en la muralla?",
+            "options": [
+              "Puerta fortificada y control de paso",
+              "Túnel de escape secreto",
+              "Almacén de barriles",
+              "Torre del reloj"
+            ],
+            "answer": "Puerta fortificada y control de paso",
+            "hints": [
+              "Nadie entraba sin permiso a la villa.",
+              "Puerta de la muralla."
+            ]
+          },
+          "f-t2-2": {
+            "name": "La Piedra del Arco",
+            "question": "¿Qué tipo de piedra arenisca característica da color dorado a los sillares del Arco?",
+            "options": [
+              "Arenisca dorada de cantera local",
+              "Mármol negro pulido",
+              "Granito blanco del norte",
+              "Ladrillo cocido"
+            ],
+            "answer": "Arenisca dorada de cantera local",
+            "hints": [
+              "Piedra de la comarca.",
+              "Color miel y arena."
+            ]
+          },
+          "f-t2-3": {
+            "name": "La Hornacina Devota",
+            "question": "¿Qué patrona religiosa coronaba tradicionalmente la hornacina de protección del Arco?",
+            "options": [
+              "La Virgen protectora de los caminantes",
+              "Santa Bárbara de los truenos",
+              "San Millán de la Cogolla",
+              "San Mateo del vino"
+            ],
+            "answer": "La Virgen protectora de los caminantes",
+            "hints": [
+              "Advocación mariana que bendecía a quien cruzaba.",
+              "La Virgen."
+            ]
+          },
+          "f-t3-1": {
+            "name": "Vistas desde Cameros",
+            "question": "Desde el Mirador Puerta de Cameros se domina el paso hacia el sur. ¿Qué río labró este cañón?",
+            "options": [
+              "El río Iregua",
+              "El río Sena",
+              "El río Támesis",
+              "El río Danubio"
+            ],
+            "answer": "El río Iregua",
+            "hints": [
+              "Río emblemático de Nalda.",
+              "Iregua."
+            ]
+          },
+          "f-t3-2": {
+            "name": "Las Peñas del Valle",
+            "question": "¿Qué formación montañosa de cortados rocosos se divisa al fondo hacia Islallana y Viguera?",
+            "options": [
+              "Las Peñas del Iregua (Peña Bajenza y el Castillo)",
+              "Los Pirineos nevados",
+              "Los Alpes marítimos",
+              "El Teide volcánico"
+            ],
+            "answer": "Las Peñas del Iregua (Peña Bajenza y el Castillo)",
+            "hints": [
+              "Enormes cortados de conglomerado rojizo.",
+              "Peña Bajenza."
+            ]
+          },
+          "f-t3-3": {
+            "name": "Trasnshumancia y Lana",
+            "question": "¿Qué actividad económica milenaria de trashumancia trajo riqueza y lana fina a Cameros y Nalda?",
+            "options": [
+              "El pastoreo de ovejas merinas por cañadas reales",
+              "La pesca de trucha en alta mar",
+              "El cultivo de piña tropical",
+              "La minería de carbón"
+            ],
+            "answer": "El pastoreo de ovejas merinas por cañadas reales",
+            "hints": [
+              "La Mesta y las ovejas merinas.",
+              "Cañadas de ganado."
+            ]
+          },
+          "f-t4-1": {
+            "name": "Las Celdas del Silencio",
+            "question": "Las Cuevas de Los Palomares tienen decenas de huecos. ¿Qué hacían allí los monjes ermitaños en el medievo?",
+            "options": [
+              "Orar en retiro espiritual y penitencia",
+              "Montar fiestas clandestinas",
+              "Guardar barcos",
+              "Producir fuegos artificiales"
+            ],
+            "answer": "Orar en retiro espiritual y penitencia",
+            "hints": [
+              "Vida ascética alejada del mundo.",
+              "Oración y retiro."
+            ]
+          },
+          "f-t4-2": {
+            "name": "Geología de Palomares",
+            "question": "¿En qué tipo de roca blanda conglomerada se excavaron a mano estas galerías?",
+            "options": [
+              "Conglomerado arenoso de origen fluvial",
+              "Diamante puro",
+              "Granito impermeable",
+              "Mármol de Carrara"
+            ],
+            "answer": "Conglomerado arenoso de origen fluvial",
+            "hints": [
+              "Sedimentos que se pueden excavar con pico de hierro.",
+              "Grava y arena compacta."
+            ]
+          },
+          "f-t4-3": {
+            "name": "Censo de Hornacinas",
+            "question": "¿Aproximadamente cuántos nichos individuales tallados se conservan en la pared de Los Palomares?",
+            "options": [
+              "Más de 200 hornacinas",
+              "Exactamente 3",
+              "Tres millones",
+              "Ninguna"
+            ],
+            "answer": "Más de 200 hornacinas",
+            "hints": [
+              "Cientos de huecos que parecen un panal.",
+              "Más de dos centenas."
+            ]
+          },
+          "f-t5-1": {
+            "name": "El Estilo de Villavieja",
+            "question": "En la Ermita de Villavieja, ¿qué estilo arquitectónico sobrio y popular rural predomina?",
+            "options": [
+              "Barroco rural del siglo XVII con espadaña",
+              "Gótico radiante francés",
+              "Rascacielos art déco",
+              "Panteón romano"
+            ],
+            "answer": "Barroco rural del siglo XVII con espadaña",
+            "hints": [
+              "Edificio del siglo XVII.",
+              "Sencilla espadaña de campana."
+            ]
+          },
+          "f-t5-2": {
+            "name": "La Romería del Bollo",
+            "question": "¿Qué celebración popular reúne cada primavera a los vecinos de Nalda en la pradera de esta ermita?",
+            "options": [
+              "La Fiesta de los Gallos y Romería de Villavieja",
+              "El Carnaval de Río",
+              "El Festival de Cine de Cannes",
+              "La Fiesta de la Cerveza de Múnich"
+            ],
+            "answer": "La Fiesta de los Gallos y Romería de Villavieja",
+            "hints": [
+              "Reparto de bollos preñados y bendición popular.",
+              "Romería tradicional."
+            ]
+          },
+          "f-extra-brindis": {
+            "name": "El Brindis de Fray Botijo",
+            "question": "Hazte una foto alzando una bota, vaso o cantimplora brindando con las ruinas del castillo al fondo. Si es vino, +10 puntos de respeto del fraile.",
+            "answer": "Foto de brindis festivo"
+          },
+          "f-extra-eructo": {
+            "name": "Acústica de Taberna",
+            "question": "Graba un sonoro suspiro, eructo o exclamación de taberna bajo la acústica de la bóveda del arco. Cuanto más gordo, mejor.",
+            "answer": "Audio bajo el arco"
+          },
+          "f-extra-confesion": {
+            "name": "La Hornacina Confesionario",
+            "question": "Susurra un secreto inconfesable (o un pecado gastronómico) en una de las hornacinas de Los Palomares. El fraile escucha, aunque esté borracho.",
+            "answer": "Confesión en la roca"
+          },
+          "f-extra-pecho": {
+            "name": "El Señor del Viento",
+            "question": "Sácate una foto abriendo los brazos al viento de Cameros como si fueras el rey del Iregua. El fraile te nombra escudero honorífico.",
+            "answer": "Foto brazos abiertos"
+          },
+          "f-extra-siesta": {
+            "name": "La Siesta Sagrada",
+            "question": "Graba un breve vídeo de 3 segundos fingiendo roncar plácidamente en el banco o prado de la ermita. La siesta es sagrada, como el vino.",
+            "answer": "Vídeo de siesta"
+          },
+          "f-extra-baile-vino": {
+            "name": "El Baile Achispado",
+            "question": "Imita los pasos torpes y alegres de Fray Botijo celebrando una buena cosecha de vino de Rioja. Cuanto más ridículo, mejor.",
+            "answer": "Mímica del baile"
+          },
+          "chucho-t1-castillo": {
+            "name": "Ojo de Paloma en el Castillo",
+            "question": "Oye, plumas: desde lo alto de la torre del castillo veo todo el valle. En 1299 encerraron aquí a un noble de postín. ¿Quién era el pájaro enjaulado?",
+            "options": [
+              "Don Juan de Austria",
+              "Juan Alonso de Haro",
+              "El Obispo de Calahorra",
+              "El Cid Campeador"
+            ],
+            "answer": "Juan Alonso de Haro",
+            "hints": [
+              "No llevaba plumas, pero era señor de Cameros.",
+              "Su apellido tiene nombre de pueblo con mucho vino."
+            ]
+          },
+          "chucho-t2-arco": {
+            "name": "Aduana de Plumas en el Arco",
+            "question": "Mis palomas montan guardia en lo alto del Arco de la Villa. ¿Qué función histórica tenía este arco de piedra en la muralla medieval?",
+            "answer": "Puerta defensiva de entrada a la villa",
+            "hints": [
+              "Nadie pasaba sin ser visto desde arriba.",
+              "Era la puerta principal del recinto amurallado."
+            ]
+          },
+          "chucho-t3-mirador": {
+            "name": "Ruta de Vuelo Cameros",
+            "question": "¿Qué río desciende por el cañón hacia el Ebro y es nuestra piscina favorita para remojar las plumas?",
+            "answer": "Iregua",
+            "hints": [
+              "Empieza por I y tiene 6 letras.",
+              "Pasa rozando Nalda."
+            ]
+          },
+          "chucho-t4-palomares": {
+            "name": "El Cuartel General de la Banda",
+            "question": "¡Aquí está mi palacio! Las Cuevas de Los Palomares tienen decenas de huecos tallados en roca. ¿Qué uso religioso tuvieron antes de ser nuestro hogar?",
+            "options": [
+              "Eremitorio medieval de monjes",
+              "Almacén de pólvora carlista",
+              "Caballerizas romanas",
+              "Molino de agua subterráneo"
+            ],
+            "answer": "Eremitorio medieval de monjes",
+            "hints": [
+              "Eran celdas de silencio y oración para ermitaños.",
+              "Siglos después vinieron las palomas."
+            ]
+          },
+          "chucho-t5-ermita": {
+            "name": "La Campana de Villavieja",
+            "question": "En la espadaña de la Ermita de Villavieja nos posamos a tomar el sol. ¿Qué celebración tradicional reúne a los vecinos con bollos y procesión en este lugar?",
+            "options": [
+              "La Romería de Villavieja",
+              "La Tomatina de Nalda",
+              "La Batalla del Vino de Cameros",
+              "El Desfile de Halcones"
+            ],
+            "answer": "La Romería de Villavieja",
+            "hints": [
+              "Una fiesta popular llena de cánticos y devoción.",
+              "Se sube en romería."
+            ]
+          },
+          "zorbo-t1-castillo": {
+            "name": "La Rampa de Lanzamiento Medieval",
+            "question": "¡Por las lunas de Júpiter! La elevación de este castillo ofrece un ángulo de reentrada orbital perfecto. ¿En qué siglo terrícola se construyó la fortaleza defensiva de Nalda?",
+            "options": [
+              "Siglo X (Edad Media)",
+              "Siglo XIII (Edad Media)",
+              "Siglo XX (Era Espacial)",
+              "Año 3000"
+            ],
+            "answer": "Siglo XIII (Edad Media)",
+            "hints": [
+              "Fue durante la época de los Señores de Cameros en el medievo.",
+              "Alrededor del año 1200-1300."
+            ]
+          },
+          "zorbo-t2-arco": {
+            "name": "El Portal de Cuarzo y Caliza",
+            "question": "Mis escáneres registran una curvatura geométrica perfecta en este arco. En la cultura terrícola, ¿para qué servía esta compuerta de la villa amurallada?",
+            "answer": "Control y defensa de acceso a la población",
+            "hints": [
+              "Evitaba que enemigos o forasteros entraran sin permiso.",
+              "Control de paso."
+            ]
+          },
+          "zorbo-t3-mirador": {
+            "name": "Sensor Óptico Puerta de Cameros",
+            "question": "Desde este puesto de observación se domina el relieve de la comarca. ¿Cómo denominan los nativos a esta comarca montañosa al sur de Nalda?",
+            "answer": "Cameros",
+            "hints": [
+              "El mismo mirador lleva su nombre.",
+              "Empieza por C."
+            ]
+          },
+          "zorbo-t4-palomares": {
+            "name": "Matriz Biológica de Silicio",
+            "question": "¡Fascinante! Cientos de hornacinas cúbicas excavadas en la pared de roca. ¿A qué bípedos con alas alberga hoy este complejo?",
+            "options": [
+              "Palomas bravías y torcaces",
+              "Murciélagos de titanio",
+              "Drones de reconocimiento",
+              "Dragones del Iregua"
+            ],
+            "answer": "Palomas bravías y torcaces",
+            "hints": [
+              "Son aves comunes de plumas grises.",
+              "El propio nombre del sitio lo indica: Los Palomares."
+            ]
+          },
+          "zorbo-t5-ermita": {
+            "name": "El Transmisor de Villavieja",
+            "question": "En las inmediaciones de esta ermita los humanos cultivan unas bayas púrpuras en espaldera para producir un combustible bebible. ¿Qué fruto es?",
+            "options": [
+              "Uva de viñedo de Rioja",
+              "Criptonita silvestre",
+              "Naranjas lunares",
+              "Bayas de antimateria"
+            ],
+            "answer": "Uva de viñedo de Rioja",
+            "hints": [
+              "Se cosecha en la vendimia de otoño.",
+              "Da lugar al prestigioso vino riojano."
+            ]
+          }
+        }
       },
       "fr": {
         "name": "Nalda (La Rioja)",
         "country": "Espagne (La Rioja)",
-        "description": "Une forêt d'histoire, de pierre et de rivière dans la vallée de l'Iregua."
+        "description": "Une forêt d'histoire, de pierre et de rivière dans la vallée de l'Iregua.",
+        "riddles": {
+          "t1-1": {
+            "name": "Le Noble Prisonnier",
+            "question": "Qui était le noble emprisonné ici en 1299 ?",
+            "options": [
+              "Juan Núñez de Lara",
+              "Le Cid Campeador",
+              "Alphonse X",
+              "García Sánchez"
+            ],
+            "answer": "Juan Núñez de Lara",
+            "hints": [
+              "C’était un noble castillan rebelle.",
+              "Son nom de famille est Lara."
+            ]
+          },
+          "t1-2": {
+            "name": "Les Citernes du Château",
+            "question": "Le château possédait un système de citernes. À quoi servaient-elles ?",
+            "options": [
+              "Stocker l’eau de pluie",
+              "Oubliettes secrètes",
+              "Entreposer la poudre",
+              "Cave à vin"
+            ],
+            "answer": "Stocker l’eau de pluie",
+            "hints": [
+              "L’eau était vitale lors d’un siège.",
+              "Elles recueillaient la pluie."
+            ]
+          },
+          "t1-3": {
+            "name": "Fratricide Royal",
+            "question": "Quel roi tua son demi-frère d’un coup de poignard à Montiel (1369) ?",
+            "options": [
+              "Henri II de Trastamare",
+              "Pierre Ier le Cruel",
+              "Ferdinand III",
+              "Jean Ier"
+            ],
+            "answer": "Henri II de Trastamare",
+            "hints": [
+              "Il inaugura la dynastie de Trastamare.",
+              "Henri le Noble."
+            ]
+          },
+          "t2-1": {
+            "name": "Limites de l’Arche",
+            "question": "Que délimitait l’Arche du Village (Arco de la Villa) ?",
+            "options": [
+              "L’entrée de l’enceinte fortifiée",
+              "Le pont sur la rivière",
+              "La frontière avec Viguera",
+              "Le début des vignobles"
+            ],
+            "answer": "L’entrée de l’enceinte fortifiée",
+            "hints": [
+              "C’était la porte principale du bourg médiéval.",
+              "Passage de la muraille."
+            ]
+          },
+          "t2-2": {
+            "name": "Seigneurie de Cameros",
+            "question": "Quelle famille noble fut seigneur de Cameros et occupa ce château ?",
+            "options": [
+              "Les Haro",
+              "Les Lara",
+              "Les Mendoza",
+              "Les Trastamare"
+            ],
+            "answer": "Les Haro",
+            "hints": [
+              "Lignée très influente de Biscaye et de La Rioja.",
+              "Juan Alonso de Haro."
+            ]
+          },
+          "t2-3": {
+            "name": "Anagramme Ailé",
+            "question": "Anagramme : R A L O M P A → ordonne pour former le nom des oiseaux des grottes (en espagnol PALOMAR) :",
+            "options": [
+              "PALOMAR",
+              "PARMOLA",
+              "LOMAPAR",
+              "MORAPAL"
+            ],
+            "answer": "PALOMAR",
+            "hints": [
+              "Nom des célèbres grottes de Nalda.",
+              "Lieu où nichent les pigeons."
+            ]
+          },
+          "t3-1": {
+            "name": "La Rivière de la Vallée",
+            "question": "Comment s’appelle la rivière qui traverse cette vallée et fertilise les vergers de Nalda ?",
+            "options": [
+              "Rivière Iregua",
+              "Rivière Najerilla",
+              "Rivière Leza",
+              "Rivière Cidacos"
+            ],
+            "answer": "Rivière Iregua",
+            "hints": [
+              "Prend sa source dans la Sierra Cebollera.",
+              "Commence par I."
+            ]
+          },
+          "t3-2": {
+            "name": "Débit de l’Iregua",
+            "question": "Si le débit moyen est de 6,35 m³/s, combien de litres d’eau passent par seconde environ ?",
+            "options": [
+              "6 350 litres",
+              "635 litres",
+              "63 500 litres",
+              "635 000 litres"
+            ],
+            "answer": "6 350 litres",
+            "hints": [
+              "1 mètre cube équivaut à 1 000 litres.",
+              "Multiplie 6,35 par 1 000."
+            ]
+          },
+          "t3-3": {
+            "name": "Porte vers la Montagne",
+            "question": "Vers quelle contrée montagneuse historique ce belvédère ouvrait-il la voie ?",
+            "options": [
+              "Terre de Cameros",
+              "La Alcarria",
+              "Las Merindades",
+              "El Somontano"
+            ],
+            "answer": "Terre de Cameros",
+            "hints": [
+              "Le belvédère s’appelle Puerta de Cameros.",
+              "Cameros neuf et vieux."
+            ]
+          },
+          "t4-1": {
+            "name": "Usage des Grottes",
+            "question": "Quel fut l’usage religieux puis avicole des Grottes de Los Palomares ?",
+            "options": [
+              "Ermitage rupestre médiéval puis colombier",
+              "Carrière de marbre",
+              "Mine d’argent",
+              "Grenier à grains"
+            ],
+            "answer": "Ermitage rupestre médiéval puis colombier",
+            "hints": [
+              "Des moines dans la solitude puis élevage de pigeons.",
+              "Niches dans la roche."
+            ]
+          },
+          "t4-2": {
+            "name": "Architecture Rupestre",
+            "question": "Les grottes comptent plusieurs niveaux sculptés dans la falaise. Dans quelle roche sont-elles creusées ?",
+            "options": [
+              "Grès et conglomérats argileux",
+              "Granite volcanique",
+              "Basalte pur",
+              "Schiste lamellaire"
+            ],
+            "answer": "Grès et conglomérats argileux",
+            "hints": [
+              "Roche sédimentaire facile à tailler.",
+              "Grès rougeâtre."
+            ]
+          },
+          "t4-3": {
+            "name": "Messages Ailés",
+            "question": "Les pigeons voyageurs portaient des messages à leurs pattes. Comment nomme-t-on cette communication ?",
+            "options": [
+              "Colombophilie",
+              "Fauconnerie",
+              "Ornithologie",
+              "Apiculture"
+            ],
+            "answer": "Colombophilie",
+            "hints": [
+              "Vient du latin columba (colombe/pigeon).",
+              "Élevage et dressage de pigeons."
+            ]
+          },
+          "t5-1": {
+            "name": "Terre de Vignobles",
+            "question": "Nalda est une terre de vignobles (La Rioja). Dans quel bois élève-t-on traditionnellement le vin ?",
+            "options": [
+              "Chêne américain et français",
+              "Pin sylvestre",
+              "Châtaignier",
+              "Eucalyptus"
+            ],
+            "answer": "Chêne américain et français",
+            "hints": [
+              "L’arbre qui produit le gland.",
+              "Bois noble de chêne."
+            ]
+          },
+          "t5-2": {
+            "name": "Le Codex de Nalda",
+            "question": "Tu as recueilli des fragments à chaque étape. Ordonne les 5 lettres pour former le sceau sacré de la commune :",
+            "options": [
+              "NALDA",
+              "ALDNA",
+              "LANDA",
+              "ADLAN"
+            ],
+            "answer": "NALDA",
+            "hints": [
+              "Le nom de ce village de La Rioja.",
+              "Commence par N."
+            ]
+          },
+          "extra-foto-castillo": {
+            "name": "Marque de Tailleur de Pierre",
+            "question": "Prends en photo une pierre portant une marque de tailleur ou un bloc ancien sans rien toucher.",
+            "answer": "Photo de marque de tailleur"
+          },
+          "extra-escucha-mirador": {
+            "name": "Écho de Cameros",
+            "question": "30 secondes de silence. Coche les sons que tu perçois depuis la vallée :",
+            "options": [
+              "Vent sur la roche",
+              "Oiseaux de la vallée",
+              "Cloche lointaine",
+              "Eau de l’Iregua"
+            ],
+            "answer": "Vent sur la roche, Oiseaux de la vallée, Cloche lointaine, Eau de l’Iregua"
+          },
+          "extra-brujula-mirador": {
+            "name": "Orientation Nord",
+            "question": "Maintiens le téléphone orienté vers le Nord pendant 3 s (±15°) en regardant vers Logroño et l’Èbre.",
+            "answer": "0"
+          },
+          "extra-ordena-camino": {
+            "name": "La Voie Romaine de l’Iregua",
+            "question": "Ordonne du nord au sud les étapes de la Vallée de l’Iregua : Vareia → Nalda → Viguera → Torrecilla → Col de Piqueras",
+            "options": [
+              "Vareia (Logroño)",
+              "Nalda",
+              "Viguera",
+              "Torrecilla en Cameros",
+              "Col de Piqueras"
+            ],
+            "answer": "Vareia (Logroño), Nalda, Viguera, Torrecilla en Cameros, Col de Piqueras"
+          },
+          "extra-escucha-cuevas": {
+            "name": "Le Chuchotement des Niches",
+            "question": "30 s de silence dans les grottes. Qu’entends-tu dans la roche ?",
+            "options": [
+              "Battement d’ailes",
+              "Gouttes d’humidité",
+              "Écho du vent",
+              "Silence monastique"
+            ],
+            "answer": "Battement d’ailes, Gouttes d’humidité, Écho du vent, Silence monastique"
+          },
+          "f-t1-1": {
+            "name": "Le Prisonnier de Fray Botijo",
+            "question": "Bon, mon gars, ici on a enfermé un noble en 1299. Qui ? Indice : j’étais soûl, mais je me rappelle qu’il était un peu casse-pieds.",
+            "options": [
+              "Juan Núñez de Lara",
+              "Le Cid Campeador",
+              "L’évêque de Calahorra",
+              "Le Comte-Duc d’Olivares"
+            ],
+            "answer": "Juan Núñez de Lara",
+            "hints": [
+              "Lara, comme le nom de famille.",
+              "Grand seigneur."
+            ]
+          },
+          "f-t1-2": {
+            "name": "Les Créneaux Médiévaux",
+            "question": "En quel siècle les défenses principales de ce château de Nalda furent-elles érigées ?",
+            "options": [
+              "XIIIe siècle",
+              "XXIe siècle",
+              "Ve siècle av. J.-C.",
+              "XIXe siècle"
+            ],
+            "answer": "XIIIe siècle",
+            "hints": [
+              "Plein Moyen Âge.",
+              "Années 1200."
+            ]
+          },
+          "f-t1-3": {
+            "name": "La Lignée des Haro",
+            "question": "Quelle lignée seigneuriale prit possession du Château de Nalda au XIIIe siècle ?",
+            "options": [
+              "Les Seigneurs de Cameros (famille Haro)",
+              "Les Borgia",
+              "Les Rois Catholiques",
+              "Les Templiers de Paris"
+            ],
+            "answer": "Les Seigneurs de Cameros (famille Haro)",
+            "hints": [
+              "Juan Alonso de Haro.",
+              "Seigneurie de Cameros."
+            ]
+          },
+          "f-t2-1": {
+            "name": "La Porte de l’Arche",
+            "question": "En franchissant l’Arche de la Ville, quelle fonction défensive remplissait-elle ?",
+            "options": [
+              "Porte fortifiée et contrôle de passage",
+              "Tunnel secret d’évasion",
+              "Entrepôt de tonneaux",
+              "Tour de l’horloge"
+            ],
+            "answer": "Porte fortifiée et contrôle de passage",
+            "hints": [
+              "Nul n’entrait sans autorisation.",
+              "Porte de la muraille."
+            ]
+          },
+          "f-t2-2": {
+            "name": "La Pierre de l’Arche",
+            "question": "Quel type de grès caractéristique confère sa teinte dorée aux pierres de l’Arche ?",
+            "options": [
+              "Grès doré des carrières locales",
+              "Marbre noir poli",
+              "Granite blanc du nord",
+              "Brique cuite"
+            ],
+            "answer": "Grès doré des carrières locales",
+            "hints": [
+              "Pierre du cru.",
+              "Teinte miel et sable."
+            ]
+          },
+          "f-t2-3": {
+            "name": "La Niche Dévote",
+            "question": "Quelle sainte patronne protectrice veillait traditionnellement dans la niche de l’Arche ?",
+            "options": [
+              "La Vierge protectrice des pèlerins",
+              "Sainte Barbe du tonnerre",
+              "Saint Émilien de la Cogolla",
+              "Saint Matthieu du vin"
+            ],
+            "answer": "La Vierge protectrice des pèlerins",
+            "hints": [
+              "Figure mariale bénissant les passants.",
+              "La Vierge."
+            ]
+          },
+          "f-t3-1": {
+            "name": "Vue depuis Cameros",
+            "question": "Depuis le belvédère Puerta de Cameros, on domine le passage vers le sud. Quelle rivière a creusé ce défilé ?",
+            "options": [
+              "La rivière Iregua",
+              "La Seine",
+              "La Tamise",
+              "Le Danube"
+            ],
+            "answer": "La rivière Iregua",
+            "hints": [
+              "Rivière emblématique de Nalda.",
+              "Iregua."
+            ]
+          },
+          "f-t3-2": {
+            "name": "Les Falaises de la Vallée",
+            "question": "Quelle falaise spectaculaire aperçoit-on au fond en direction d’Islallana et Viguera ?",
+            "options": [
+              "Les Falaises de l’Iregua (Peña Bajenza)",
+              "Les Pyrénées enneigées",
+              "Les Alpes maritimes",
+              "Le Teide volcanique"
+            ],
+            "answer": "Les Falaises de l’Iregua (Peña Bajenza)",
+            "hints": [
+              "Immenses parois de conglomérat rouge.",
+              "Peña Bajenza."
+            ]
+          },
+          "f-t3-3": {
+            "name": "Transhumance et Laine",
+            "question": "Quelle activité pastorale ancestrale de transhumance apporta fortune et laine fine à Cameros et Nalda ?",
+            "options": [
+              "L’élevage des brebis mérinos sur les drailles royales",
+              "La pêche à la truite en haute mer",
+              "La culture d’ananas",
+              "L’extraction de charbon"
+            ],
+            "answer": "L’élevage des brebis mérinos sur les drailles royales",
+            "hints": [
+              "La Mesta et les brebis mérinos.",
+              "Voies de transhumance."
+            ]
+          },
+          "f-t4-1": {
+            "name": "Les Cellules du Silence",
+            "question": "Les Grottes de Los Palomares comptent des dizaines de cavités. Que faisaient là les moines ermites ?",
+            "options": [
+              "Prier dans la retraite spirituelle et le jeûne",
+              "Donner des fêtes clandestines",
+              "Entreposer des navires",
+              "Fabriquer des feux d’artifice"
+            ],
+            "answer": "Prier dans la retraite spirituelle et le jeûne",
+            "hints": [
+              "Vie ascétique loin du monde.",
+              "Prière et retraite."
+            ]
+          },
+          "f-t4-2": {
+            "name": "Géologie des Palomares",
+            "question": "Dans quelle roche meuble conglomératique ces galeries ont-elles été creusées à la main ?",
+            "options": [
+              "Conglomérat sableux d’origine fluviale",
+              "Diamant pur",
+              "Granite imperméable",
+              "Marbre de Carrare"
+            ],
+            "answer": "Conglomérat sableux d’origine fluviale",
+            "hints": [
+              "Sédiments pouvant être creusés au pic.",
+              "Gravier et sable compactés."
+            ]
+          },
+          "f-t4-3": {
+            "name": "Recensement des Niches",
+            "question": "Combien de niches individuelles taillées dénombre-t-on environ dans la paroi des Palomares ?",
+            "options": [
+              "Plus de 200 niches",
+              "Exactement 3",
+              "Trois millions",
+              "Aucune"
+            ],
+            "answer": "Plus de 200 niches",
+            "hints": [
+              "Des centaines de cavités comme une ruche.",
+              "Plus de deux cents."
+            ]
+          },
+          "f-t5-1": {
+            "name": "Le Style de Villavieja",
+            "question": "À l’Ermitage de Villavieja, quel style architectural rural et sobre prédomine ?",
+            "options": [
+              "Baroque rural du XVIIe siècle à clocheton",
+              "Gothique rayonnant français",
+              "Gratte-ciel Art déco",
+              "Panthéon romain"
+            ],
+            "answer": "Baroque rural du XVIIe siècle à clocheton",
+            "hints": [
+              "Édifice du XVIIe siècle.",
+              "Simple clocheton."
+            ]
+          },
+          "f-t5-2": {
+            "name": "Le Pèlerinage du Brioche",
+            "question": "Quelle fête populaire rassemble chaque printemps les habitants de Nalda dans le pré de cet ermitage ?",
+            "options": [
+              "La Fête des Coqs et Pèlerinage de Villavieja",
+              "Le Carnaval de Rio",
+              "Le Festival de Cannes",
+              "L’Oktoberfest de Munich"
+            ],
+            "answer": "La Fête des Coqs et Pèlerinage de Villavieja",
+            "hints": [
+              "Distribution de brioches garnies et bénédiction.",
+              "Pèlerinage traditionnel."
+            ]
+          },
+          "f-extra-brindis": {
+            "name": "Le Toast de Fray Botijo",
+            "question": "Prends une photo en levant une gourde, un verre ou une fiole en trinquant avec les ruines du château en arrière-plan.",
+            "answer": "Photo de toast festif"
+          },
+          "f-extra-eructo": {
+            "name": "Acoustique de Taverne",
+            "question": "Enregistre un soupir théâtral ou une joyeuse exclamation de taverne sous la voûte de l’Arche.",
+            "answer": "Audio sous l’arche"
+          },
+          "f-extra-confesion": {
+            "name": "La Niche Confessionnal",
+            "question": "Chuchote un petit péché gourmand dans l’une des niches de Los Palomares. Le moine pardonne tout !",
+            "answer": "Confession dans la roche"
+          },
+          "f-extra-pecho": {
+            "name": "Le Seigneur du Vent",
+            "question": "Prends une photo en ouvrant les bras au vent de Cameros comme si tu régnas sur l’Iregua. Le moine t’adoube écuyer !",
+            "answer": "Photo bras ouverts"
+          },
+          "f-extra-siesta": {
+            "name": "La Sieste Sacrée",
+            "question": "Enregistre une courte vidéo de 3 secondes mimant une sieste paisible sur l’herbe de l’ermitage. La sieste est sacrée !",
+            "answer": "Vidéo de sieste"
+          },
+          "f-extra-baile-vino": {
+            "name": "La Danse du Moine Joyeux",
+            "question": "Imite les pas joyeux de Fray Botijo fêtant une belle récolte de vin de La Rioja !",
+            "answer": "Mime de la danse"
+          },
+          "chucho-t1-castillo": {
+            "name": "Œil de Pigeon au Château",
+            "question": "Dis donc, camarade emplumé : du haut de la tour du château, je vois toute la vallée. En 1299, on a enfermé ici un noble huppé. Qui était cet oiseau en cage ?",
+            "options": [
+              "Don Juan d’Autriche",
+              "Juan Alonso de Haro",
+              "L’évêque de Calahorra",
+              "Le Cid Campeador"
+            ],
+            "answer": "Juan Alonso de Haro",
+            "hints": [
+              "Il n’avait pas d’ailes, mais c’était le seigneur de Cameros.",
+              "Son nom est celui d’une célèbre ville viticole."
+            ]
+          },
+          "chucho-t2-arco": {
+            "name": "Douane des Plumes à l’Arche",
+            "question": "Mes pigeons montent la garde au sommet de l’Arche de la Ville. Quelle fonction historique avait cette porte de pierre ?",
+            "answer": "Porte défensive d’entrée de la ville",
+            "hints": [
+              "Personne ne passait sans être repéré d’en haut.",
+              "C’était la porte d’entrée de la muraille."
+            ]
+          },
+          "chucho-t3-mirador": {
+            "name": "Couloir de Vol de Cameros",
+            "question": "Quelle rivière descend le canyon vers l’Èbre et sert de bain favori pour nos plumes ?",
+            "answer": "Iregua",
+            "hints": [
+              "Commence par un I et compte 6 lettres.",
+              "Frôle Nalda."
+            ]
+          },
+          "chucho-t4-palomares": {
+            "name": "Le Quartier Général de la Bande",
+            "question": "Voici mon palais ! Les Grottes de Los Palomares ont des dizaines d’alvéoles sculptées dans la roche. Quel usage religieux avaient-elles autrefois ?",
+            "options": [
+              "Ermitage médiéval de moines",
+              "Poudrière carliste",
+              "Écuries romaines",
+              "Moulin à eau souterrain"
+            ],
+            "answer": "Ermitage médiéval de moines",
+            "hints": [
+              "C’étaient des cellules de prière pour ermites.",
+              "Des siècles plus tard arrivèrent les pigeons."
+            ]
+          },
+          "chucho-t5-ermita": {
+            "name": "La Cloche de Villavieja",
+            "question": "Sur le clocheton de l’Ermitage de Villavieja, nous prenons le soleil. Quelle fête traditionnelle rassemble les villageois avec brioches et procession ?",
+            "options": [
+              "Le Pèlerinage de Villavieja",
+              "La Tomatina de Nalda",
+              "La Bataille du Vin de Cameros",
+              "Le Défilé des Faucons"
+            ],
+            "answer": "Le Pèlerinage de Villavieja",
+            "hints": [
+              "Une fête populaire rythmée de chants dévots.",
+              "On y monte en pèlerinage."
+            ]
+          },
+          "zorbo-t1-castillo": {
+            "name": "La Rampe de Lancement Médiévale",
+            "question": "Par les lunes de Jupiter ! L’élévation de ce château offre un angle de rentrée orbitale optimal. En quel siècle terrestre la forteresse de Nalda fut-elle bâtie ?",
+            "options": [
+              "Xe siècle (Moyen Âge)",
+              "XIIIe siècle (Moyen Âge)",
+              "XXe siècle (Ère spatiale)",
+              "An 3000"
+            ],
+            "answer": "XIIIe siècle (Moyen Âge)",
+            "hints": [
+              "Pendant l’époque des Seigneurs de Cameros.",
+              "Autour de l’an 1250."
+            ]
+          },
+          "zorbo-t2-arco": {
+            "name": "Le Portail de Quartz et Calcaire",
+            "question": "Mes capteurs détectent une courbure géométrique parfaite sur cette arche. Dans la civilisation terrestre, à quoi servait ce sas fortifié ?",
+            "answer": "Contrôle et défense d’accès à la cité",
+            "hints": [
+              "Empêchait l’intrusion d’hostiles sans accréditation.",
+              "Sas d’entrée."
+            ]
+          },
+          "zorbo-t3-mirador": {
+            "name": "Capteur Optique Porte de Cameros",
+            "question": "Depuis ce poste d’observation, on domine le relief régional. Quel nom les autochtones donnent-ils à ce massif au sud de Nalda ?",
+            "answer": "Cameros",
+            "hints": [
+              "Le belvédère porte ce même nom.",
+              "Commence par C."
+            ]
+          },
+          "zorbo-t4-palomares": {
+            "name": "Matrice Biologique de Silicium",
+            "question": "Fascinant ! Des centaines d’alvéoles cubiques taillées dans la falaise. Quels bipèdes ailés nichent aujourd’hui dans ce complexe ?",
+            "options": [
+              "Pigeons bisets et ramiers",
+              "Chauves-souris en titane",
+              "Drones de reconnaissance",
+              "Dragons de l’Iregua"
+            ],
+            "answer": "Pigeons bisets et ramiers",
+            "hints": [
+              "Oiseaux à plumes grises fort répandus.",
+              "Le toponyme l’indique : Los Palomares."
+            ]
+          },
+          "zorbo-t5-ermita": {
+            "name": "Le Transmetteur de Villavieja",
+            "question": "Aux abords de cet ermitage, les humains cultivent des baies pourpres en treille pour synthétiser un carburant buvable. De quel fruit s’agit-il ?",
+            "options": [
+              "Raisin des vignobles de La Rioja",
+              "Kryptonite sauvage",
+              "Oranges lunaires",
+              "Baies d’antimatière"
+            ],
+            "answer": "Raisin des vignobles de La Rioja",
+            "hints": [
+              "Récolté lors des vendanges d’automne.",
+              "Donne le célèbre vin de La Rioja."
+            ]
+          }
+        }
       },
       "en": {
         "name": "Nalda (La Rioja)",
         "country": "Spain (La Rioja)",
-        "description": "A forest of history, stone and river in the Iregua Valley."
+        "description": "A forest of history, stone and river in the Iregua Valley.",
+        "riddles": {
+          "t1-1": {
+            "name": "The Noble Prisoner",
+            "question": "Who was the noble imprisoned here in 1299?",
+            "options": [
+              "Juan Núñez de Lara",
+              "El Cid",
+              "Alfonso X",
+              "García Sánchez"
+            ],
+            "answer": "Juan Núñez de Lara",
+            "hints": [
+              "He was a rebellious Castilian nobleman.",
+              "His surname is Lara."
+            ]
+          },
+          "t1-2": {
+            "name": "The Castle Cisterns",
+            "question": "The castle had a cistern system. What were they used for?",
+            "options": [
+              "Store rainwater",
+              "Secret dungeons",
+              "Store gunpowder",
+              "Wine cellar"
+            ],
+            "answer": "Store rainwater",
+            "hints": [
+              "Water was crucial during sieges.",
+              "They collected rain."
+            ]
+          },
+          "t1-3": {
+            "name": "Royal Fratricide",
+            "question": "Which king killed his half-brother with a dagger at Montiel (1369)?",
+            "options": [
+              "Henry II of Trastámara",
+              "Peter I the Cruel",
+              "Ferdinand III",
+              "John I"
+            ],
+            "answer": "Henry II of Trastámara",
+            "hints": [
+              "He founded the Trastámara dynasty.",
+              "Henry of Trastámara."
+            ]
+          },
+          "t2-1": {
+            "name": "Village Arch Boundaries",
+            "question": "What did the Village Arch demarcate?",
+            "options": [
+              "Entrance to the walled town",
+              "Bridge over the river",
+              "Boundary with Viguera",
+              "Beginning of the vineyards"
+            ],
+            "answer": "Entrance to the walled town",
+            "hints": [
+              "It was the main gate of the medieval town.",
+              "Rampart gateway."
+            ]
+          },
+          "t2-2": {
+            "name": "Lords of Cameros",
+            "question": "Which noble family held the lordship of Cameros and occupied this castle?",
+            "options": [
+              "The Haro family",
+              "The Lara family",
+              "The Mendoza family",
+              "The Trastámara family"
+            ],
+            "answer": "The Haro family",
+            "hints": [
+              "Influential family of Biscay and La Rioja.",
+              "Juan Alonso de Haro."
+            ]
+          },
+          "t2-3": {
+            "name": "Winged Anagram",
+            "question": "Anagram: R A L O M P A → unscramble to reveal the Spanish word for dovecote (PALOMAR):",
+            "options": [
+              "PALOMAR",
+              "PARMOLA",
+              "LOMAPAR",
+              "MORAPAL"
+            ],
+            "answer": "PALOMAR",
+            "hints": [
+              "Name of Nalda’s famous caves.",
+              "Place where doves nest."
+            ]
+          },
+          "t3-1": {
+            "name": "The Valley River",
+            "question": "What is the name of the river that flows through this valley and waters Nalda’s orchards?",
+            "options": [
+              "Iregua River",
+              "Najerilla River",
+              "Leza River",
+              "Cidacos River"
+            ],
+            "answer": "Iregua River",
+            "hints": [
+              "Rises in the Sierra Cebollera and joins the Ebro.",
+              "Starts with I."
+            ]
+          },
+          "t3-2": {
+            "name": "Iregua Water Flow",
+            "question": "If the average flow is 6.35 m³/s, roughly how many liters of water pass per second?",
+            "options": [
+              "6,350 liters",
+              "635 liters",
+              "63,500 liters",
+              "635,000 liters"
+            ],
+            "answer": "6,350 liters",
+            "hints": [
+              "1 cubic meter equals 1,000 liters.",
+              "Multiply 6.35 by 1,000."
+            ]
+          },
+          "t3-3": {
+            "name": "Gateway to the Mountains",
+            "question": "To which historic mountainous region did this viewpoint provide a natural gateway?",
+            "options": [
+              "Land of Cameros",
+              "La Alcarria",
+              "Las Merindades",
+              "El Somontano"
+            ],
+            "answer": "Land of Cameros",
+            "hints": [
+              "The viewpoint is called Puerta de Cameros.",
+              "Cameros."
+            ]
+          },
+          "t4-1": {
+            "name": "Use of the Caves",
+            "question": "What was the religious and subsequent use of the Los Palomares Caves?",
+            "options": [
+              "Medieval rock hermitage and later dovecote",
+              "Marble quarry",
+              "Silver mine",
+              "Grain silo"
+            ],
+            "answer": "Medieval rock hermitage and later dovecote",
+            "hints": [
+              "Solitary monks, then pigeon keeping.",
+              "Niches carved in the rock."
+            ]
+          },
+          "t4-2": {
+            "name": "Cave Architecture",
+            "question": "The caves feature multiple levels carved in the cliff. What rock are they excavated into?",
+            "options": [
+              "Sandstone and clay conglomerates",
+              "Volcanic granite",
+              "Pure basalt",
+              "Lamellar slate"
+            ],
+            "answer": "Sandstone and clay conglomerates",
+            "hints": [
+              "Sedimentary rock, easy to carve.",
+              "Reddish sandstone."
+            ]
+          },
+          "t4-3": {
+            "name": "Winged Messages",
+            "question": "Carrier pigeons bore dispatches bound to their feet. What is this communication system called?",
+            "options": [
+              "Pigeon post (Colombophilia)",
+              "Falconry",
+              "Ornithology",
+              "Beekeeping"
+            ],
+            "answer": "Pigeon post (Colombophilia)",
+            "hints": [
+              "From Latin columba (dove/pigeon).",
+              "Breeding and training pigeons."
+            ]
+          },
+          "t5-1": {
+            "name": "Land of Vineyards",
+            "question": "Nalda is a land of vineyards (Rioja). In which wood barrels is Rioja wine traditionally aged?",
+            "options": [
+              "American and French oak",
+              "Scots pine",
+              "Sweet chestnut",
+              "Eucalyptus"
+            ],
+            "answer": "American and French oak",
+            "hints": [
+              "The tree that produces acorns.",
+              "Noble oak wood."
+            ]
+          },
+          "t5-2": {
+            "name": "The Codex of Nalda",
+            "question": "You gathered fragments at each waypoint. Unscramble the 5 letters to form the town’s sacred seal:",
+            "options": [
+              "NALDA",
+              "ALDNA",
+              "LANDA",
+              "ADLAN"
+            ],
+            "answer": "NALDA",
+            "hints": [
+              "The name of this town in La Rioja.",
+              "Starts with N."
+            ]
+          },
+          "extra-foto-castillo": {
+            "name": "Stonemason Mark",
+            "question": "Photograph a stone bearing an ancient stonemason mark without touching anything.",
+            "answer": "Photo of stonemason mark"
+          },
+          "extra-escucha-mirador": {
+            "name": "Echo of Cameros",
+            "question": "30 seconds in silence. Check the sounds you hear echoing from the valley:",
+            "options": [
+              "Wind on the rock",
+              "Valley birds",
+              "Distant bell",
+              "Water of the Iregua"
+            ],
+            "answer": "Wind on the rock, Valley birds, Distant bell, Water of the Iregua"
+          },
+          "extra-brujula-mirador": {
+            "name": "North Orientation",
+            "question": "Keep your phone pointed North for 3 seconds (±15°) facing Logroño and the Ebro.",
+            "answer": "0"
+          },
+          "extra-ordena-camino": {
+            "name": "Roman Road of the Iregua",
+            "question": "Order from North to South the stations of the Iregua Valley: Vareia → Nalda → Viguera → Torrecilla → Piqueras Pass",
+            "options": [
+              "Vareia (Logroño)",
+              "Nalda",
+              "Viguera",
+              "Torrecilla en Cameros",
+              "Piqueras Pass"
+            ],
+            "answer": "Vareia (Logroño), Nalda, Viguera, Torrecilla en Cameros, Piqueras Pass"
+          },
+          "extra-escucha-cuevas": {
+            "name": "Whisper of the Niches",
+            "question": "30 seconds of silence inside the caves. What do you hear in the rock?",
+            "options": [
+              "Flapping wings",
+              "Moisture drips",
+              "Wind echo",
+              "Monastic silence"
+            ],
+            "answer": "Flapping wings, Moisture drips, Wind echo, Monastic silence"
+          },
+          "f-t1-1": {
+            "name": "Fray Botijo’s Inmate",
+            "question": "Listen here, mate, they locked up a nobleman here in 1299. Who was it? Hint: I was drunk, but I remember he was a bit of a pain.",
+            "options": [
+              "Juan Núñez de Lara",
+              "El Cid",
+              "The Bishop of Calahorra",
+              "The Count-Duke of Olivares"
+            ],
+            "answer": "Juan Núñez de Lara",
+            "hints": [
+              "Lara, that is the surname.",
+              "High-born nobleman."
+            ]
+          },
+          "f-t1-2": {
+            "name": "The Medieval Battlements",
+            "question": "In which century were the main defenses of this castle of Nalda erected?",
+            "options": [
+              "13th Century",
+              "21st Century",
+              "5th Century BC",
+              "19th Century"
+            ],
+            "answer": "13th Century",
+            "hints": [
+              "High Middle Ages.",
+              "The 1200s."
+            ]
+          },
+          "f-t1-3": {
+            "name": "The House of Haro",
+            "question": "Which noble lineage took possession of Nalda Castle in the 13th century?",
+            "options": [
+              "The Lords of Cameros (Haro family)",
+              "The Borgias",
+              "The Catholic Monarchs",
+              "The Knights Templar"
+            ],
+            "answer": "The Lords of Cameros (Haro family)",
+            "hints": [
+              "Juan Alonso de Haro.",
+              "Lordship of Cameros."
+            ]
+          },
+          "f-t2-1": {
+            "name": "The Arch Gateway",
+            "question": "When passing through the Village Arch, what defensive role did it play?",
+            "options": [
+              "Fortified gate and checkpoint",
+              "Secret escape tunnel",
+              "Barrel warehouse",
+              "Clock tower"
+            ],
+            "answer": "Fortified gate and checkpoint",
+            "hints": [
+              "No one entered without permission.",
+              "Rampart gate."
+            ]
+          },
+          "f-t2-2": {
+            "name": "The Arch Stonework",
+            "question": "What characteristic sandstone gives the Arch’s ashlars their golden hue?",
+            "options": [
+              "Golden sandstone from local quarries",
+              "Polished black marble",
+              "White northern granite",
+              "Fired brick"
+            ],
+            "answer": "Golden sandstone from local quarries",
+            "hints": [
+              "Local stone.",
+              "Honey and sand color."
+            ]
+          },
+          "f-t2-3": {
+            "name": "The Devout Niche",
+            "question": "Which protective patron saint traditionally topped the protective niche of the Arch?",
+            "options": [
+              "The Virgin protecting wayfarers",
+              "Saint Barbara of thunder",
+              "Saint Emilian of Cogolla",
+              "Saint Matthew of wine"
+            ],
+            "answer": "The Virgin protecting wayfarers",
+            "hints": [
+              "Marian invocation blessing travelers.",
+              "The Virgin."
+            ]
+          },
+          "f-t3-1": {
+            "name": "Views from Cameros",
+            "question": "From the Puerta de Cameros Viewpoint, you overlook the southern pass. What river carved this canyon?",
+            "options": [
+              "The Iregua River",
+              "The Seine",
+              "The Thames",
+              "The Danube"
+            ],
+            "answer": "The Iregua River",
+            "hints": [
+              "Nalda’s iconic river.",
+              "Iregua."
+            ]
+          },
+          "f-t3-2": {
+            "name": "The Valley Crags",
+            "question": "What dramatic rock cliff formation is visible in the distance toward Islallana and Viguera?",
+            "options": [
+              "The Iregua Crags (Peña Bajenza)",
+              "The snowy Pyrenees",
+              "The Maritime Alps",
+              "Mount Teide"
+            ],
+            "answer": "The Iregua Crags (Peña Bajenza)",
+            "hints": [
+              "Giant reddish conglomerate bluffs.",
+              "Peña Bajenza."
+            ]
+          },
+          "f-t3-3": {
+            "name": "Transhumance and Wool",
+            "question": "What ancient pastoral transhumance activity brought wealth and fine wool to Cameros and Nalda?",
+            "options": [
+              "Merino sheep pastoralism along royal drover paths",
+              "Deep-sea trout fishing",
+              "Pineapple farming",
+              "Coal mining"
+            ],
+            "answer": "Merino sheep pastoralism along royal drover paths",
+            "hints": [
+              "The Mesta and Merino sheep.",
+              "Livestock drovers."
+            ]
+          },
+          "f-t4-1": {
+            "name": "Cells of Silence",
+            "question": "The Los Palomares Caves have dozens of niches. What did hermit monks do there in the Middle Ages?",
+            "options": [
+              "Pray in spiritual retreat and penance",
+              "Hold secret parties",
+              "Store ships",
+              "Manufacture fireworks"
+            ],
+            "answer": "Pray in spiritual retreat and penance",
+            "hints": [
+              "Ascetic life away from the world.",
+              "Prayer and retreat."
+            ]
+          },
+          "f-t4-2": {
+            "name": "Palomares Geology",
+            "question": "Into what soft conglomerate rock were these galleries carved by hand?",
+            "options": [
+              "Sandy conglomerate of river origin",
+              "Pure diamond",
+              "Impermeable granite",
+              "Carrara marble"
+            ],
+            "answer": "Sandy conglomerate of river origin",
+            "hints": [
+              "Sediments easily hewn with an iron pick.",
+              "Compacted gravel and sand."
+            ]
+          },
+          "f-t4-3": {
+            "name": "Census of Niches",
+            "question": "Roughly how many carved individual niches are preserved in the Los Palomares cliff wall?",
+            "options": [
+              "More than 200 niches",
+              "Exactly 3",
+              "Three million",
+              "None"
+            ],
+            "answer": "More than 200 niches",
+            "hints": [
+              "Hundreds of cavities resembling a honeycomb.",
+              "Over two hundred."
+            ]
+          },
+          "f-t5-1": {
+            "name": "Style of Villavieja",
+            "question": "At the Hermitage of Villavieja, which sober and popular rural architectural style predominates?",
+            "options": [
+              "17th-century rural Baroque with belfry",
+              "French Rayonnant Gothic",
+              "Art Deco skyscraper",
+              "Roman Pantheon"
+            ],
+            "answer": "17th-century rural Baroque with belfry",
+            "hints": [
+              "17th-century sanctuary.",
+              "Modest belfry."
+            ]
+          },
+          "f-t5-2": {
+            "name": "The Bread Pilgrimage",
+            "question": "What popular celebration gathers the townsfolk of Nalda every spring in this hermitage meadow?",
+            "options": [
+              "Feast of the Roosters & Villavieja Pilgrimage",
+              "Rio Carnival",
+              "Cannes Film Festival",
+              "Munich Oktoberfest"
+            ],
+            "answer": "Feast of the Roosters & Villavieja Pilgrimage",
+            "hints": [
+              "Sharing traditional stuffed rolls and blessing.",
+              "Traditional pilgrimage."
+            ]
+          },
+          "f-extra-brindis": {
+            "name": "Fray Botijo’s Toast",
+            "question": "Take a photo raising a canteen, cup, or glass toasting with the castle ruins in the background.",
+            "answer": "Photo of festive toast"
+          },
+          "f-extra-eructo": {
+            "name": "Tavern Acoustics",
+            "question": "Record a loud sigh or hearty tavern exclamation beneath the vaulted acoustics of the arch.",
+            "answer": "Audio under the arch"
+          },
+          "f-extra-confesion": {
+            "name": "Confessional Niche",
+            "question": "Whisper a confession (or a food craving) into one of the rock niches of Los Palomares. The friar listens!",
+            "answer": "Confession in the rock"
+          },
+          "f-extra-pecho": {
+            "name": "Lord of the Wind",
+            "question": "Take a photo opening your arms to the Cameros wind as if reigning over the Iregua valley!",
+            "answer": "Photo arms outstretched"
+          },
+          "f-extra-siesta": {
+            "name": "The Sacred Nap",
+            "question": "Record a 3-second video pretending to take a peaceful nap on the hermitage lawn. The siesta is sacred!",
+            "answer": "Video of nap"
+          },
+          "f-extra-baile-vino": {
+            "name": "The Merry Monk Dance",
+            "question": "Mimic Fray Botijo’s joyful clumsy dance steps celebrating a bountiful Rioja grape harvest!",
+            "answer": "Mimic of dance"
+          },
+          "chucho-t1-castillo": {
+            "name": "Pigeon Eye on the Castle",
+            "question": "Hey feathers: from atop the castle tower, I can spot the whole valley. In 1299 they caged a fancy noble here. Who was this bird?",
+            "options": [
+              "Don John of Austria",
+              "Juan Alonso de Haro",
+              "The Bishop of Calahorra",
+              "El Cid"
+            ],
+            "answer": "Juan Alonso de Haro",
+            "hints": [
+              "He had no wings, but was Lord of Cameros.",
+              "His name shares a famous wine town."
+            ]
+          },
+          "chucho-t2-arco": {
+            "name": "Feather Toll at the Arch",
+            "question": "My pigeons keep watch from atop the Village Arch. What historic function did this stone arch serve in the medieval walls?",
+            "answer": "Defensive town entrance gate",
+            "hints": [
+              "Nobody passed without being spotted from above.",
+              "It was the main gate in the walls."
+            ]
+          },
+          "chucho-t3-mirador": {
+            "name": "Cameros Flight Path",
+            "question": "Which river flows down the canyon toward the Ebro and is our favorite bath to ruffle our feathers?",
+            "answer": "Iregua",
+            "hints": [
+              "Starts with an I and has 6 letters.",
+              "Borders Nalda."
+            ]
+          },
+          "chucho-t4-palomares": {
+            "name": "Flock Headquarters",
+            "question": "Here is my palace! Los Palomares Caves have dozens of rock-hewn chambers. What religious purpose did they serve before becoming our roost?",
+            "options": [
+              "Medieval monk hermitage",
+              "Carlist gunpowder stash",
+              "Roman stables",
+              "Underground water mill"
+            ],
+            "answer": "Medieval monk hermitage",
+            "hints": [
+              "They were quiet cells of contemplation for hermits.",
+              "Pigeons moved in centuries later."
+            ]
+          },
+          "chucho-t5-ermita": {
+            "name": "The Bell of Villavieja",
+            "question": "On the bell gable of Villavieja Hermitage, we bask in the sun. What traditional festival gathers locals with bread rolls and procession here?",
+            "options": [
+              "The Villavieja Pilgrimage",
+              "Nalda Tomato Fight",
+              "Cameros Wine Battle",
+              "Falcon Parade"
+            ],
+            "answer": "The Villavieja Pilgrimage",
+            "hints": [
+              "A beloved local festival with hymns and devotion.",
+              "A traditional pilgrimage."
+            ]
+          },
+          "zorbo-t1-castillo": {
+            "name": "The Medieval Launchpad",
+            "question": "By the moons of Jupiter! The altitude of this castle offers a prime orbital re-entry vector. In which Earth century was Nalda’s fortress constructed?",
+            "options": [
+              "10th Century (Middle Ages)",
+              "13th Century (Middle Ages)",
+              "20th Century (Space Age)",
+              "Year 3000"
+            ],
+            "answer": "13th Century (Middle Ages)",
+            "hints": [
+              "During the era of the Lords of Cameros.",
+              "Around the 1200s."
+            ]
+          },
+          "zorbo-t2-arco": {
+            "name": "The Quartz and Limestone Portal",
+            "question": "My scanners record a precise geometric arch curvature. In Earthling civilization, what was the purpose of this gate in the walled perimeter?",
+            "answer": "Control and defense of town entry",
+            "hints": [
+              "Prevented unauthorized outsiders from entering.",
+              "Checkpoint gate."
+            ]
+          },
+          "zorbo-t3-mirador": {
+            "name": "Optical Sensor Cameros Gateway",
+            "question": "From this vantage post, the topographic sector is visible. What designation do natives give to this mountainous region south of Nalda?",
+            "answer": "Cameros",
+            "hints": [
+              "The viewpoint shares this name.",
+              "Starts with C."
+            ]
+          },
+          "zorbo-t4-palomares": {
+            "name": "Biological Silicon Matrix",
+            "question": "Fascinating! Hundreds of cubic recesses hollowed into the rock face. Which winged bipeds inhabit this complex today?",
+            "options": [
+              "Rock doves and pigeons",
+              "Titanium bats",
+              "Reconnaissance drones",
+              "Dragons of the Iregua"
+            ],
+            "answer": "Rock doves and pigeons",
+            "hints": [
+              "Common grey-feathered birds.",
+              "The site’s name says it: Los Palomares (The Dovecotes)."
+            ]
+          },
+          "zorbo-t5-ermita": {
+            "name": "The Villavieja Transmitter",
+            "question": "In the vicinity of this shrine, humans cultivate purple berries on trellises to synthesize a consumable liquid fuel. Which fruit is it?",
+            "options": [
+              "Grape of Rioja vineyards",
+              "Wild kryptonite",
+              "Lunar oranges",
+              "Antimatter berries"
+            ],
+            "answer": "Grape of Rioja vineyards",
+            "hints": [
+              "Harvested in the autumn grape harvest.",
+              "Produces renowned Rioja wine."
+            ]
+          }
+        }
       }
     }
   },
@@ -8233,9 +10327,9 @@
       "en": "How to play?"
     },
     "howToPlay_title": {
-      "es": "¿Cómo se juega a Enigma del Bosque?",
-      "fr": "Comment jouer à l'Énigme de la Forêt ?",
-      "en": "How to Play Forest Enigma?"
+      "es": "¿Cómo se juega a Enigma Vivo?",
+      "fr": "Comment jouer à Énigme Vivante ?",
+      "en": "How to play Living Enigma?"
     },
     "howToPlay_subtitle": {
       "es": "Guía rápida de expedición y rastreo narrativo",
@@ -8243,8 +10337,8 @@
       "en": "Quick Expedition & Narrative Tracking Guide"
     },
     "howToPlay_intro": {
-      "es": "Enigma del Bosque es un juego de rastreo narrativo al aire libre que combina senderismo real con geolocalización GPS, enigmas patrimoniales, realidad aumentada 3D y personajes interactivos con inteligencia artificial en tiempo real.",
-      "fr": "L'Énigme de la Forêt est un jeu de pistage narratif en plein air combinant randonnée réelle avec géolocalisation GPS, énigmes patrimoniales, réalité augmentée 3D et personnages interactifs dotés d'intelligence artificielle en temps réel.",
+      "es": "Enigma Vivo es un juego de rastreo narrativo al aire libre que combina senderismo real con geolocalización GPS, enigmas patrimoniales, realidad aumentada 3D y personajes interactivos con inteligencia artificial en tiempo real.",
+      "fr": "Énigme Vivante est un jeu de pistage narratif en plein air combinant randonnée réelle avec géolocalisation GPS, énigmes patrimoniales, réalité augmentée 3D et personnages interactifs dotés d'intelligence artificielle en temps réel.",
       "en": "Forest Enigma is an outdoor narrative tracking game combining real hiking with GPS geolocation, heritage riddles, 3D augmented reality, and real-time AI conversational characters."
     },
     "howToPlay_step1Title": {
@@ -8534,7 +10628,7 @@
     },
     "chat.you": {
       "es": "Tú",
-      "fr": "Toi",
+      "fr": "Vous",
       "en": "You"
     },
     "setup.adultWarningTitle": {
@@ -8813,9 +10907,9 @@
       "en": "{count} territories ready"
     },
     "home.howTitle": {
-      "es": "¿Cómo se juega a Enigma del Bosque?",
-      "fr": "Comment jouer à l'Énigme de la Forêt ?",
-      "en": "How to Play Forest Enigma?"
+      "es": "¿Cómo se juega a Enigma Vivo?",
+      "fr": "Comment jouer à Énigme Vivante ?",
+      "en": "How to play Living Enigma?"
     },
     "home.howSubtitle": {
       "es": "Una experiencia pensada para disfrutar al aire libre en familia, con amigos o en solitario.",
@@ -8861,6 +10955,471 @@
       "es": "Reúne las letras o runas místicas de cada hito para descifrar la clave final y obtener tu diploma.",
       "fr": "Rassemble les lettres ou runes mystiques de chaque jalon pour déchiffrer le mot final et obtenir ton diplôme.",
       "en": "Gather the mystic letters or runes from each waypoint to decipher the final keyword and earn your diploma."
+    },
+    "app.title": {
+      "es": "Enigma Vivo",
+      "fr": "Énigme Vivante",
+      "en": "Living Enigma"
+    },
+    "footer.subtitle": {
+      "es": "Rutas y acertijos al aire libre",
+      "fr": "Parcours et énigmes en plein air",
+      "en": "Outdoor quests and riddles"
+    },
+    "footer.adminAccess": {
+      "es": "Acceso organizador",
+      "fr": "Accès organisateur",
+      "en": "Organizer access"
+    },
+    "chat.liveTag": {
+      "es": "En directo",
+      "fr": "En direct",
+      "en": "Live"
+    },
+    "chat.travelCompanion": {
+      "es": "Compañero de viaje",
+      "fr": "Compagnon de voyage",
+      "en": "Travel companion"
+    },
+    "chat.talkingAt": {
+      "es": "Hablando en:",
+      "fr": "En direct de :",
+      "en": "Speaking at:"
+    },
+    "chat.adminNotice": {
+      "es": "🚨 Aviso de Organización",
+      "fr": "🚨 Avis de l'Organisation",
+      "en": "🚨 Organizer Notice"
+    },
+    "chat.guide": {
+      "es": "Guía",
+      "fr": "Guide",
+      "en": "Guide"
+    },
+    "chat.thinking": {
+      "es": "{name} está meditando su respuesta...",
+      "fr": "{name} réfléchit à sa réponse...",
+      "en": "{name} is thinking..."
+    },
+    "chat.suggest": {
+      "es": "Sugerir:",
+      "fr": "Suggérer :",
+      "en": "Suggest:"
+    },
+    "chat.quickWhere": {
+      "es": "¿Hacia dónde miro?",
+      "fr": "Dans quelle direction regarder ?",
+      "en": "Which direction should I look?"
+    },
+    "chat.quickDetail": {
+      "es": "¿Qué detalle del entorno busco?",
+      "fr": "Quel détail dois-je chercher ?",
+      "en": "What environmental detail should I look for?"
+    },
+    "chat.quickEncourage": {
+      "es": "Dime una frase de aliento",
+      "fr": "Donne-moi un mot d'encouragement",
+      "en": "Give me some encouragement"
+    },
+    "chat.inputPlaceholder": {
+      "es": "Habla con {name}...",
+      "fr": "Parle avec {name}...",
+      "en": "Speak with {name}..."
+    },
+    "meta.climaxChallenge": {
+      "es": "Desafío Culminante",
+      "fr": "Défi Ultime",
+      "en": "Climactic Challenge"
+    },
+    "meta.runesFound": {
+      "es": "Runas halladas en la ruta ({count}):",
+      "fr": "Runes trouvées sur le parcours ({count}) :",
+      "en": "Runes found along the route ({count}):"
+    },
+    "meta.completeCollection": {
+      "es": "Colección completa",
+      "fr": "Collection complète",
+      "en": "Complete collection"
+    },
+    "meta.keepExploring": {
+      "es": "Sigue explorando",
+      "fr": "Continue d'explorer",
+      "en": "Keep exploring"
+    },
+    "meta.codexClue": {
+      "es": "Pista del códice:",
+      "fr": "Indice du codex :",
+      "en": "Codex clue:"
+    },
+    "meta.sealedPact": {
+      "es": "¡Pacto Sellado: {keyword}!",
+      "fr": "Pacte Scellé : {keyword} !",
+      "en": "Pact Sealed: {keyword}!"
+    },
+    "meta.pointsBonus": {
+      "es": "+200 Puntos de Bonificación Otorgados",
+      "fr": "+200 Points Bonus Attribués",
+      "en": "+200 Bonus Points Awarded"
+    },
+    "meta.closeCodex": {
+      "es": "Cerrar Códice",
+      "fr": "Fermer le Codex",
+      "en": "Close Codex"
+    },
+    "meta.inputPlaceholder": {
+      "es": "Escribe la palabra secreta...",
+      "fr": "Écris le mot secret...",
+      "en": "Type the secret word..."
+    },
+    "meta.decipher": {
+      "es": "Descifrar",
+      "fr": "Déchiffrer",
+      "en": "Decipher"
+    },
+    "ar.close": {
+      "es": "Cerrar Realidad Aumentada",
+      "fr": "Fermer la Réalité Augmentée",
+      "en": "Close Augmented Reality"
+    },
+    "ar.searching": {
+      "es": "Buscando reliquia...",
+      "fr": "Recherche de la relique...",
+      "en": "Searching for relic..."
+    },
+    "ar.rotate": {
+      "es": "Rotar",
+      "fr": "Tourner",
+      "en": "Rotate"
+    },
+    "ar.center": {
+      "es": "Centrar",
+      "fr": "Centrer",
+      "en": "Center"
+    },
+    "ar.zoomIn": {
+      "es": "Acercar",
+      "fr": "Zoom avant",
+      "en": "Zoom in"
+    },
+    "ar.zoomOut": {
+      "es": "Alejar",
+      "fr": "Zoom arrière",
+      "en": "Zoom out"
+    },
+    "ar.pointCamera": {
+      "es": "Apunta tu cámara hacia el punto exacto",
+      "fr": "Pointe ta caméra vers le point exact",
+      "en": "Point your camera towards the exact point"
+    },
+    "ar.inspect3d": {
+      "es": "Inspección 3D",
+      "fr": "Inspection 3D",
+      "en": "3D Inspection"
+    },
+    "ar.cameraAr": {
+      "es": "Cámara AR",
+      "fr": "Caméra AR",
+      "en": "AR Camera"
+    },
+    "map.nextWaypoint": {
+      "es": "Siguiente hito",
+      "fr": "Prochaine étape",
+      "en": "Next waypoint"
+    },
+    "map.paletteOrganic": {
+      "es": "Paleta Orgánica de Bosque",
+      "fr": "Palette Organique Forestière",
+      "en": "Organic Forest Palette"
+    },
+    "transit.defaultBridge": {
+      "es": "¡Buen trabajo! Ahora sigue el sendero marcado. Presta atención a las señales del bosque y camina con calma.",
+      "fr": "Beau travail ! Suis maintenant le sentier balisé. Prête attention aux signes de la forêt et marche d'un pas serein.",
+      "en": "Great job! Now follow the marked trail. Pay attention to the forest signs and walk steadily."
+    },
+    "meta_enigma_nalda_hint": {
+      "es": "El nombre de esta ilustre villa riojana a orillas del Iregua (5 letras).",
+      "fr": "Le nom de cette illustre cité de La Rioja au bord de l'Iregua (5 lettres).",
+      "en": "The name of this illustrious Rioja town on the banks of the Iregua (5 letters)."
+    },
+    "meta_enigma_nalda_success": {
+      "es": "¡Enhorabuena, aprendiz! El Cronicón asiente con solemnidad. Has completado la senda y recogido el sello sagrado: 'El Iregua guarda la memoria de NALDA'.",
+      "fr": "Félicitations, apprenti ! Le Cronicón hoche la tête avec solennité. Tu as terminé le parcours et obtenu le sceau sacré : 'L'Iregua garde la mémoire de NALDA'.",
+      "en": "Congratulations, apprentice! The Cronicón nods with solemnity. You have completed the path and collected the sacred seal: 'The Iregua keeps the memory of NALDA'."
+    },
+    "answer.correct": {
+      "es": "¡Excelente deducción! Has resuelto el enigma del lugar.",
+      "fr": "Excellente déduction ! Tu as résolu l'énigme du lieu.",
+      "en": "Excellent deduction! You solved the enigma of this site."
+    },
+    "answer.incorrect": {
+      "es": "No es la respuesta correcta. Observa con más calma tu entorno o pide una pista al guía.",
+      "fr": "Ce n'est pas la bonne réponse. Observe attentivement ton environnement ou demande un indice au guide.",
+      "en": "That is not the correct answer. Look around more closely or ask the guide for a hint."
+    },
+    "answer.bonusCorrect": {
+      "es": "¡Reto extra completado! Has ganado puntos de bonificación.",
+      "fr": "Défi bonus accompli ! Tu as remporté des points bonus.",
+      "en": "Bonus challenge completed! You earned bonus points."
+    },
+    "answer.metaIncorrect": {
+      "es": "Esa no es la palabra sagrada. Revisa las letras que has reunido en tu códice.",
+      "fr": "Ce n'est pas le mot sacré. Examine les lettres que tu as réunies dans ton codex.",
+      "en": "That is not the sacred word. Check the letters you have gathered in your codex."
+    },
+    "riddle.photoTitle": {
+      "es": "Verificación Fotográfica en el Bosque",
+      "fr": "Vérification Photographique en Forêt",
+      "en": "Forest Photographic Verification"
+    },
+    "riddle.openCamera": {
+      "es": "Abrir Cámara / Capturar Foto",
+      "fr": "Ouvrir l'appareil photo / Prendre la photo",
+      "en": "Open Camera / Take Photo"
+    },
+    "riddle.recordingAudio": {
+      "es": "GRABANDO SONIDO AMBIENTE...",
+      "fr": "ENREGISTREMENT DU SON AMBIANT...",
+      "en": "RECORDING AMBIENT AUDIO..."
+    },
+    "riddle.startAudio": {
+      "es": "Iniciar Grabación de Audio",
+      "fr": "Démarrer l'enregistrement audio",
+      "en": "Start Audio Recording"
+    },
+    "riddle.recordVideoClip": {
+      "es": "Grabar Clip de 3 Segundos",
+      "fr": "Enregistrer un clip de 3 secondes",
+      "en": "Record a 3-Second Clip"
+    },
+    "riddle.performMimic": {
+      "es": "Realizar Mímica (3s)",
+      "fr": "Faire le mime (3s)",
+      "en": "Perform Mimic (3s)"
+    },
+    "riddle.compassTitle": {
+      "es": "Reto de Orientación: Brújula al Norte (0°)",
+      "fr": "Défi d'Orientation : Boussole vers le Nord (0°)",
+      "en": "Orientation Challenge: Compass to North (0°)"
+    },
+    "riddle.compassAligned": {
+      "es": "¡Alineado con el Norte! Listo para validar.",
+      "fr": "Aligné avec le Nord ! Prêt à valider.",
+      "en": "Aligned with North! Ready to validate."
+    },
+    "riddle.listenTitle": {
+      "es": "Escucha Atenta del Bosque",
+      "fr": "Écoute attentive de la Forêt",
+      "en": "Mindful Forest Listening"
+    },
+    "riddle.listeningForest": {
+      "es": "Escuchando la espesura...",
+      "fr": "À l'écoute des bois...",
+      "en": "Listening to the woodland..."
+    },
+    "riddle.shuffle": {
+      "es": "Barajar",
+      "fr": "Mélanger",
+      "en": "Shuffle"
+    },
+    "riddle.codexTitle": {
+      "es": "Códice y Descifrado Rúnico",
+      "fr": "Codex et Déchiffrage Runique",
+      "en": "Codex & Runic Decryption"
+    },
+    "riddle.codexEquivalence": {
+      "es": "Clave de equivalencias:",
+      "fr": "Table des correspondances :",
+      "en": "Cipher key:"
+    },
+    "riddle.submitAnswer": {
+      "es": "Responder",
+      "fr": "Répondre",
+      "en": "Submit Answer"
+    },
+    "riddle.feedbackCorrect": {
+      "es": "¡Correcto! Enigma resuelto con éxito.",
+      "fr": "Correct ! Énigme résolue avec succès.",
+      "en": "Correct! Riddle successfully solved."
+    },
+    "riddle.feedbackIncorrect": {
+      "es": "No es la respuesta correcta. Vuelve a intentarlo.",
+      "fr": "Ce n'est pas la bonne réponse. Réessaie !",
+      "en": "That is not the correct answer. Try again!"
+    },
+    "ar.mode3d": {
+      "es": "Modo Visor 3D",
+      "fr": "Mode Visionneuse 3D",
+      "en": "3D Viewer Mode"
+    },
+    "ar.modeGeo": {
+      "es": "Geo-Anclado",
+      "fr": "Géo-Ancré",
+      "en": "Geo-Anchored"
+    },
+    "ar.btnArCamera": {
+      "es": "Cámara AR",
+      "fr": "Caméra RA",
+      "en": "AR Camera"
+    },
+    "ar.btn3dMode": {
+      "es": "Modo Reserva 3D",
+      "fr": "Mode Réserve 3D",
+      "en": "3D Backup Mode"
+    },
+    "ar.placeGround": {
+      "es": "Colocar en el Suelo (AR)",
+      "fr": "Poser au sol (RA)",
+      "en": "Place on Ground (AR)"
+    },
+    "ar.targetInSight": {
+      "es": "¡Artefacto en tu campo visual!",
+      "fr": "Artéfact dans ton champ de vision !",
+      "en": "Artifact in your field of view!"
+    },
+    "ar.turnRight": {
+      "es": "Gira {deg}° a tu derecha ➔",
+      "fr": "Tourne de {deg}° vers ta droite ➔",
+      "en": "Turn {deg}° to your right ➔"
+    },
+    "ar.turnLeft": {
+      "es": "⬅ Gira {deg}° a tu izquierda",
+      "fr": "⬅ Tourne de {deg}° vers ta gauche",
+      "en": "⬅ Turn {deg}° to your left"
+    },
+    "ar.distance": {
+      "es": "Distancia:",
+      "fr": "Distance :",
+      "en": "Distance:"
+    },
+    "ar.heading": {
+      "es": "Rumbo:",
+      "fr": "Cap :",
+      "en": "Bearing:"
+    },
+    "ar.progressNote": {
+      "es": "Nota sobre el avance:",
+      "fr": "Note d'exploration :",
+      "en": "Trail progress note:"
+    },
+    "ar.smoothExperience": {
+      "es": "Experiencia visual sin bloqueos:",
+      "fr": "Expérience visuelle fluide :",
+      "en": "Smooth visual experience:"
+    },
+    "map.organicFilter": {
+      "es": "Filtro Orgánico",
+      "fr": "Filtre Organique",
+      "en": "Organic Filter"
+    },
+    "map.reliefContrast": {
+      "es": "Contraste de relieve:",
+      "fr": "Contraste du relief :",
+      "en": "Relief contrast:"
+    },
+    "map.greenSaturation": {
+      "es": "Saturación de verdes:",
+      "fr": "Saturation des verts :",
+      "en": "Green saturation:"
+    },
+    "map.warmth": {
+      "es": "Calidez terrosa:",
+      "fr": "Chaleur tellurique :",
+      "en": "Earthly warmth:"
+    },
+    "map.activateFilter": {
+      "es": "Activar filtro",
+      "fr": "Activer le filtre",
+      "en": "Activate filter"
+    },
+    "map.arCamera": {
+      "es": "Cámara AR",
+      "fr": "Caméra RA",
+      "en": "AR Camera"
+    },
+    "map.filterActive": {
+      "es": "Filtro orgánico activo",
+      "fr": "Filtre organique actif",
+      "en": "Organic filter active"
+    },
+    "map.solved": {
+      "es": "✓ Resuelto",
+      "fr": "✓ Résolu",
+      "en": "✓ Solved"
+    },
+    "map.mode": {
+      "es": "Modo:",
+      "fr": "Mode :",
+      "en": "Mode:"
+    },
+    "map.jump25m": {
+      "es": "+25m hacia POI",
+      "fr": "+25m vers le jalon",
+      "en": "+25m toward POI"
+    },
+    "map.arriveBtn": {
+      "es": "Llegar (<30m)",
+      "fr": "Arriver (<30m)",
+      "en": "Arrive (<30m)"
+    },
+    "char.reportJoke": {
+      "es": "Reportar chiste",
+      "fr": "Signaler la blague",
+      "en": "Report joke"
+    },
+    "char.currentPoint": {
+      "es": "Punto actual:",
+      "fr": "Jalon actuel :",
+      "en": "Current waypoint:"
+    },
+    "char.liveVoice": {
+      "es": "Voz en Vivo (Gemini 3.8 Live)",
+      "fr": "Voix en Direct (Gemini 3.8 Live)",
+      "en": "Live Voice (Gemini 3.8 Live)"
+    },
+    "char.chatAndQuestions": {
+      "es": "Chat de Texto y Preguntas",
+      "fr": "Discussion Écrite et Questions",
+      "en": "Text Chat & Questions"
+    },
+    "char.personality": {
+      "es": "Personalidad del Personaje",
+      "fr": "Personnalité du Guide",
+      "en": "Character Personality"
+    },
+    "char.ask": {
+      "es": "Preguntar",
+      "fr": "Demander",
+      "en": "Ask"
+    },
+    "setup.errorStory": {
+      "es": "Por favor, selecciona una historia para comenzar.",
+      "fr": "Veuillez choisir une histoire pour commencer.",
+      "en": "Please select a story to begin."
+    },
+    "setup.defaultTeam": {
+      "es": "Equipo Forestal",
+      "fr": "Équipe Sylvestre",
+      "en": "Forest Team"
+    },
+    "setup.defaultSolo": {
+      "es": "Explorador Solitario",
+      "fr": "Explorateur Solitaire",
+      "en": "Solo Explorer"
+    },
+    "briefing.acknowledge": {
+      "es": "He leído y comprendo las normas de seguridad del bosque. Me comprometo a respetarlas.",
+      "fr": "J'ai lu et compris les consignes de sécurité forestière. Je m'engage à les respecter.",
+      "en": "I have read and understood the forest safety rules. I pledge to respect them."
+    },
+    "order.result": {
+      "es": "Has colocado {n} de {total} elementos en su posición correcta. ¡Sigue probando!",
+      "fr": "Tu as placé {n} sur {total} éléments à la bonne place. Continue !",
+      "en": "You placed {n} of {total} elements in the correct position. Keep trying!"
+    },
+    "cardinal.west": {
+      "es": "Oeste",
+      "fr": "Ouest",
+      "en": "West"
     }
   }
 }

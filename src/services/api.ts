@@ -233,6 +233,7 @@ export const api = {
     difficulty: string;
     duration: string;
     easyMode?: boolean;
+    language?: string;
   }): Promise<{ session: PlayerSession; forestPack: ForestPack }> {
     try {
       const res = await fetch('/api/sessions', {
@@ -263,8 +264,18 @@ export const api = {
     }
 
     const story = pack.stories.find(s => s.id === payload.storyId) || pack.stories[0];
-    const narratorName = story?.narratorName || 'el guía del bosque';
-    const welcomeMsg = `¡Saludos, ${payload.name || 'explorador'}! Soy ${narratorName}. He preparado la senda para tu expedición. Dirígete al primer punto marcado en tu mapa y prepárate a desentrañar los enigmas del bosque.`;
+    const narratorName = story?.narratorName || (payload.language === 'fr' ? 'le guide de la forêt' : payload.language === 'en' ? 'the forest guide' : 'el guía del bosque');
+    
+    let welcomeMsg = story?.characterGreeting || '';
+    if (!welcomeMsg) {
+      if (payload.language === 'fr') {
+        welcomeMsg = `Salutations, ${payload.name || 'explorateur'} ! Je suis ${narratorName}. J'ai préparé le sentier pour ton expédition. Rends-toi au premier point indiqué sur ta carte et prépare-toi à élucider les énigmes de la forêt.`;
+      } else if (payload.language === 'en') {
+        welcomeMsg = `Greetings, ${payload.name || 'explorer'}! I am ${narratorName}. I have prepared the trail for your expedition. Head to the first point marked on your map and get ready to unravel the forest enigmas.`;
+      } else {
+        welcomeMsg = `¡Saludos, ${payload.name || 'explorador'}! Soy ${narratorName}. He preparado la senda para tu expedición. Dirígete al primer punto marcado en tu mapa y prepárate a desentrañar los enigmas del bosque.`;
+      }
+    }
 
     const session: PlayerSession = {
       code,
@@ -275,6 +286,7 @@ export const api = {
       difficulty: (payload.difficulty as any) || 'novato',
       duration: (payload.duration as any) || '1h',
       easyMode: Boolean(payload.easyMode),
+      language: payload.language || pack.defaultLanguage || 'es',
       currentPoiIndex: 0,
       routePoiIds,
       points: 0,
@@ -372,6 +384,22 @@ export const api = {
     return { session, isComplete: session.status === 'completed' };
   },
 
+  async updateSessionLanguage(code: string, language: string): Promise<void> {
+    const normCode = code.toUpperCase();
+    try {
+      const s = getLocalSession(normCode);
+      if (s) {
+        s.language = language;
+        saveLocalSession(s);
+      }
+      await fetch(`/api/sessions/${normCode}/language`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ language }),
+      });
+    } catch (e) {}
+  },
+
   async submitAnswer(code: string, userAnswer: string, riddleId?: string): Promise<{
     session: PlayerSession;
     isCorrect: boolean;
@@ -456,18 +484,24 @@ export const api = {
       session.points += points;
       session.lastActive = new Date().toISOString();
 
+      const lang = session.language || 'es';
       if (isBonus) {
         session.bonusCompleted = session.bonusCompleted || [];
         if (!session.bonusCompleted.includes(riddle.id)) {
           session.bonusCompleted.push(riddle.id);
         }
         saveLocalSession(session);
+        const bonusMsg = lang === 'fr'
+          ? 'Défi bonus accompli ! Tu as remporté des points bonus.'
+          : lang === 'en'
+          ? 'Bonus challenge completed! You earned bonus points.'
+          : '¡Reto extra completado! Has ganado puntos de bonificación.';
         return {
           session,
           isCorrect: true,
           isBonus: true,
           pointsEarned: points,
-          message: '¡Reto extra completado! Has ganado puntos de bonificación.',
+          message: bonusMsg,
         };
       }
 
@@ -495,6 +529,11 @@ export const api = {
       saveLocalSession(session);
 
       const isLastPoi = session.currentPoiIndex + 1 >= session.routePoiIds.length;
+      const successMsg = lang === 'fr'
+        ? 'Excellente déduction ! Tu as résolu l’énigme du lieu.'
+        : lang === 'en'
+        ? 'Excellent deduction! You solved the enigma of this site.'
+        : '¡Excelente deducción! Has resuelto el enigma del lugar.';
 
       return {
         session,
@@ -503,13 +542,19 @@ export const api = {
         phase: 'reward',
         metaRune: revealedRune,
         isComplete: isLastPoi,
-        message: '¡Excelente deducción! Has resuelto el enigma del lugar.',
+        message: successMsg,
       };
     } else {
+      const lang = session.language || 'es';
+      const wrongMsg = lang === 'fr'
+        ? 'Ce n’est pas la bonne réponse. Observe attentivement ton environnement ou demande un indice au guide.'
+        : lang === 'en'
+        ? 'That is not the correct answer. Look around more closely or ask the guide for a hint.'
+        : 'No es la respuesta correcta. Observa con calma tu entorno o pide una pista al guía.';
       return {
         session,
         isCorrect: false,
-        message: 'No es la respuesta correcta. Observa con calma tu entorno o pide una pista al guía.',
+        message: wrongMsg,
       };
     }
   },
@@ -554,10 +599,17 @@ export const api = {
       };
     }
 
+    const lang = session.language || 'es';
+    const failMsg = lang === 'fr'
+      ? 'Ce n’est pas le mot sacré. Examine les lettres que tu as réunies dans ton codex.'
+      : lang === 'en'
+      ? 'That is not the sacred word. Check the letters you have gathered in your codex.'
+      : 'Esa no es la palabra sagrada. Revisa las letras que has reunido en tu códice.';
+
     return {
       session,
       isCorrect: false,
-      message: 'Esa no es la palabra sagrada. Revisa las letras que has reunido en tu códice.',
+      message: failMsg,
     };
   },
 

@@ -45,6 +45,30 @@ if (!fs.existsSync(DATA_DIR)) {
 const FORESTS_FILE = path.join(DATA_DIR, 'forests.json');
 const SESSIONS_FILE = path.join(DATA_DIR, 'sessions.json');
 const FEEDBACK_FILE = path.join(DATA_DIR, 'feedback.json');
+const I18N_FILE = path.join(__dirname, 'src', 'data', 'i18n.json');
+
+function loadI18n(): any {
+  try {
+    if (fs.existsSync(I18N_FILE)) {
+      return JSON.parse(fs.readFileSync(I18N_FILE, 'utf-8'));
+    }
+  } catch (e) {}
+  return { ui: {}, keys: {} };
+}
+
+function translateServer(key: string, lang: string = 'es', fallback: string = ''): string {
+  const i18n = loadI18n();
+  return (
+    i18n.ui?.[lang]?.[key] ||
+    i18n.keys?.[key]?.[lang] ||
+    i18n.ui?.[lang.toLowerCase()]?.[key] ||
+    i18n.keys?.[key]?.[lang.toLowerCase()] ||
+    i18n.ui?.['es']?.[key] ||
+    i18n.keys?.[key]?.['es'] ||
+    fallback ||
+    key
+  );
+}
 
 function loadForests(): ForestPack[] {
   try {
@@ -223,7 +247,7 @@ app.delete('/api/forests/:id', requireAdmin, (req: Request, res: Response) => {
 
 // 6. Start / Create Player Session
 app.post('/api/sessions', (req: Request, res: Response) => {
-  const { forestPackId, name, type, storyId, difficulty, duration, easyMode } = req.body;
+  const { forestPackId, name, type, storyId, difficulty, duration, easyMode, language } = req.body;
 
   const pack = forestPacks.find(p => p.id === forestPackId);
   if (!pack) {
@@ -262,8 +286,22 @@ app.post('/api/sessions', (req: Request, res: Response) => {
     code = generateSessionCode();
   }
 
-  const narratorDisplayName = story.narratorName || story.narrator?.name || 'el guía del bosque';
-  const welcomeMsg = `¡Saludos, ${name || 'explorador'}! Soy ${narratorDisplayName}. He preparado la senda para tu expedición. Dirígete al primer punto marcado en tu mapa y prepárate a desentrañar los enigmas del bosque.`;
+  const sessionLang = language || pack.defaultLanguage || 'es';
+  const narratorDisplayName = story.narratorName || story.narrator?.name || (sessionLang === 'fr' ? 'le guide de la forêt' : sessionLang === 'en' ? 'the forest guide' : 'el guía del bosque');
+
+  let welcomeMsg = story.characterGreeting || '';
+  if (story.characterGreetingKey) {
+    welcomeMsg = translateServer(story.characterGreetingKey, sessionLang, story.characterGreeting);
+  }
+  if (!welcomeMsg) {
+    if (sessionLang === 'fr') {
+      welcomeMsg = `Salutations, ${name || 'explorateur'} ! Je suis ${narratorDisplayName}. J'ai préparé le sentier pour ton expédition. Rends-toi au premier point indiqué sur ta carte et prépare-toi à élucider les énigmes de la forêt.`;
+    } else if (sessionLang === 'en') {
+      welcomeMsg = `Greetings, ${name || 'explorer'}! I am ${narratorDisplayName}. I have prepared the trail for your expedition. Head to the first point marked on your map and get ready to unravel the forest enigmas.`;
+    } else {
+      welcomeMsg = `¡Saludos, ${name || 'explorador'}! Soy ${narratorDisplayName}. He preparado la senda para tu expedición. Dirígete al primer punto marcado en tu mapa y prepárate a desentrañar los enigmas del bosque.`;
+    }
+  }
 
   const newSession: PlayerSession = {
     code,
@@ -274,6 +312,7 @@ app.post('/api/sessions', (req: Request, res: Response) => {
     difficulty: difficulty || 'novato',
     duration: duration || '1h',
     easyMode: Boolean(easyMode),
+    language: sessionLang,
     currentPoiIndex: 0,
     routePoiIds,
     points: 0,
@@ -331,6 +370,22 @@ app.post('/api/sessions/:code/arrive', (req: Request, res: Response) => {
   saveSessions(sessions);
 
   res.json({ session, unlocked: true });
+});
+
+// 7bis-lang. Update Session Language
+app.post('/api/sessions/:code/language', (req: Request, res: Response) => {
+  const code = req.params.code.toUpperCase();
+  const session = sessions[code];
+  if (!session) {
+    return res.status(404).json({ error: 'Partida no encontrada' });
+  }
+  const { language } = req.body;
+  if (language === 'es' || language === 'fr' || language === 'en') {
+    session.language = language;
+    session.lastActive = new Date().toISOString();
+    saveSessions(sessions);
+  }
+  res.json({ success: true, language: session.language });
 });
 
 // 7ter. Continue Transit (Sección 6bis: Salto al siguiente hito tras recompensa)
@@ -451,18 +506,22 @@ app.post('/api/sessions/:code/answer', (req: Request, res: Response) => {
     session.points += pointsAwarded;
     session.lastActive = new Date().toISOString();
 
+    const sessionLang = session.language || 'es';
+
     if (isBonus) {
       session.bonusCompleted = session.bonusCompleted || [];
       if (!session.bonusCompleted.includes(riddle.id)) {
         session.bonusCompleted.push(riddle.id);
       }
       saveSessions(sessions);
+      const bonusMsg = translateServer('answer.bonusCorrect', sessionLang, '¡Reto extra completado! Has ganado puntos de bonificación.');
       return res.json({
         session,
         isCorrect: true,
         isBonus: true,
         pointsEarned: pointsAwarded,
-        message: '¡Reto extra completado! Has ganado puntos de bonificación.',
+        message: bonusMsg,
+        messageKey: 'answer.bonusCorrect',
       });
     }
 
@@ -492,6 +551,7 @@ app.post('/api/sessions/:code/answer', (req: Request, res: Response) => {
     saveSessions(sessions);
 
     const isLastPoi = session.currentPoiIndex + 1 >= session.routePoiIds.length;
+    const correctMsg = translateServer('answer.correct', sessionLang, '¡Excelente deducción! Has resuelto el enigma del lugar.');
 
     return res.json({
       session,
@@ -500,13 +560,17 @@ app.post('/api/sessions/:code/answer', (req: Request, res: Response) => {
       phase: 'reward',
       metaRune: revealedRune,
       isComplete: isLastPoi,
-      message: '¡Excelente deducción! Has resuelto el enigma del lugar.',
+      message: correctMsg,
+      messageKey: 'answer.correct',
     });
   } else {
+    const sessionLang = session.language || 'es';
+    const wrongMsg = translateServer('answer.incorrect', sessionLang, 'No es la respuesta correcta. Observa con más calma tu entorno o pide una pista al guía.');
     return res.json({
       session,
       isCorrect: false,
-      message: 'No es la respuesta correcta. Observa con más calma tu entorno o pide una pista al guía.',
+      message: wrongMsg,
+      messageKey: 'answer.incorrect',
     });
   }
 });
@@ -522,6 +586,7 @@ app.post('/api/sessions/:code/meta-enigma', (req: Request, res: Response) => {
   const pack = forestPacks.find(p => p.id === session.forestPackId);
   const targetWord = pack?.metaEnigma?.keyword || 'ROBLE';
   const { answer } = req.body;
+  const sessionLang = session.language || 'es';
 
   if (normalizeAnswer(answer) === normalizeAnswer(targetWord)) {
     session.metaEnigmaSolved = true;
@@ -530,18 +595,31 @@ app.post('/api/sessions/:code/meta-enigma', (req: Request, res: Response) => {
     session.lastActive = new Date().toISOString();
     saveSessions(sessions);
 
+    let successMsg = pack?.metaEnigma?.successNarrative || '';
+    if ((pack?.metaEnigma as any)?.successNarrativeKey) {
+      successMsg = translateServer((pack?.metaEnigma as any).successNarrativeKey, sessionLang, successMsg);
+    }
+    if (!successMsg) {
+      successMsg = sessionLang === 'fr'
+        ? 'Tu as déchiffré le mot sacré ! La forêt te reconnaît comme son protecteur.'
+        : sessionLang === 'en'
+        ? 'You deciphered the sacred word! The forest recognizes you as its protector.'
+        : '¡Has descifrado la palabra sagrada del bosque!';
+    }
+
     return res.json({
       session,
       isCorrect: true,
       pointsEarned: 200,
-      message: pack?.metaEnigma?.successNarrative || '¡Has descifrado la palabra sagrada del bosque!',
+      message: successMsg,
     });
   }
 
+  const failMsg = translateServer('answer.metaIncorrect', sessionLang, 'Esa no es la palabra sagrada. Revisa las letras que has reunido en tu códice.');
   res.json({
     session,
     isCorrect: false,
-    message: 'Esa no es la palabra sagrada. Revisa las letras que has reunido en tu códice.',
+    message: failMsg,
   });
 });
 
@@ -573,26 +651,55 @@ app.post('/api/sessions/:code/hint', async (req: Request, res: Response) => {
   }
 
   let hintText = '';
+  const sessionLang = session.language || 'es';
 
   // Check if static hint is available
   const staticHintIndex = targetLevel - 1;
-  const staticFallback = riddle?.hints?.[staticHintIndex] || riddle?.staticHints?.[staticHintIndex] || poi?.clueSnippet || 'Mira atentamente a tu alrededor.';
+  let staticFallback = '';
+  if (riddle?.hintsKeys && riddle.hintsKeys[staticHintIndex]) {
+    staticFallback = translateServer(riddle.hintsKeys[staticHintIndex], sessionLang);
+  }
+  if (!staticFallback) {
+    staticFallback =
+      riddle?.hints?.[staticHintIndex] ||
+      riddle?.staticHints?.[staticHintIndex] ||
+      poi?.clueSnippet ||
+      (sessionLang === 'fr'
+        ? 'Observe attentivement ce qui t’entoure.'
+        : sessionLang === 'en'
+        ? 'Look carefully around you.'
+        : 'Mira atentamente a tu alrededor.');
+  }
 
   // If Gemini is available, generate immersive hint in narrator's voice!
   if (ai && riddle && story) {
     try {
-      const guidanceByLevel = {
+      const guidanceByLevel = sessionLang === 'fr' ? {
+        1: 'Orientation générale (35% d’indice). Donne une référence subtile sur la nature de l’objet sans dévoiler la réponse.',
+        2: 'Indice de méthode ou contexte (70% d’indice). Explique comment raisonner l’énigme ou où poser le regard.',
+        3: 'Indice décisif (100% d’indice). Très clair et direct, presque révélateur mais avec style littéraire.',
+      }[targetLevel] : sessionLang === 'en' ? {
+        1: 'General orientation (35% hint). Give a subtle reference to the concept without touching the answer.',
+        2: 'Method or context clue (70% hint). Explain how to reason the riddle or where to look closely.',
+        3: 'Decisive hint (100% hint). Very clear and direct, almost revealing with charm.',
+      }[targetLevel] : {
         1: 'Orientación general (35% de pista). Da una referencia sutil sobre la naturaleza del objeto o concepto, sin rozar la respuesta.',
         2: 'Pista del método o contexto (70% de pista). Explica cómo razonar el enigma o dónde fijar la vista exactamente.',
         3: 'Pista decisiva (100% de pista). Muy clara y directa, casi reveladora pero con encanto literario.',
       }[targetLevel];
+
+      const langDirective = sessionLang === 'fr'
+        ? 'RÈGLE OBLIGATOIRE : Réponds en FRANÇAIS (1 à 2 phrases courtes maximum) en parlant à la première personne.'
+        : sessionLang === 'en'
+        ? 'MANDATORY RULE: Respond in ENGLISH (1 to 2 short sentences maximum) speaking in first person.'
+        : 'REGLA OBLIGATORIA: Responde en ESPAÑOL (1 a 2 oraciones máximo) hablando en primera persona como el personaje.';
 
       const prompt = `Actúa como ${story.narratorName} (${story.narratorRole}), narrador de la historia "${story.title}". Tono: ${story.narratorTone || 'Inmersivo'}.
 Estás guiando al jugador en el punto "${poi?.name || 'el sendero'}".
 El acertijo actual es: "${riddle.question}".
 La respuesta secreta es: "${riddle.answer}".
 El jugador solicita una pista de Nivel ${targetLevel}: ${guidanceByLevel}.
-Genera una pista breve (1 a 2 oraciones máximo) hablando en primera persona como el personaje.
+${langDirective}
 NUNCA digas directamente la palabra de la respuesta exacta en el nivel 1 o 2.`;
 
       const response = await ai.models.generateContent({
@@ -663,6 +770,7 @@ app.post('/api/sessions/:code/chat', async (req: Request, res: Response) => {
   });
 
   let replyText = '';
+  const sessionLang = session.language || 'es';
 
   const isFrayBotijo = story?.id === 'fraile-botijo' || story?.narratorName?.toLowerCase().includes('botijo');
   const isCronicon = story?.id === 'guardian-iregua' || story?.narratorName?.toLowerCase().includes('cronicón') || story?.narratorName?.toLowerCase().includes('cronicon');
@@ -673,10 +781,20 @@ app.post('/api/sessions/:code/chat', async (req: Request, res: Response) => {
   const isPierre = story?.narratorName?.toLowerCase().includes('pierre');
   const isSylvaine = story?.narratorName?.toLowerCase().includes('sylvaine');
   const isDuendecillo = story?.narratorName?.toLowerCase().includes('duende') || story?.narratorName?.toLowerCase().includes('roble');
-  const isOffenseReport = /ofendido|reportar|chiste|ofensa|disculpa|perd[oó]n/i.test(message);
+  const isOffenseReport = /ofendido|reportar|chiste|ofensa|disculpa|perd[oó]n|offensé|pardon|sorry|offended/i.test(message);
+
+  const langDirective = sessionLang === 'fr'
+    ? 'RÈGLE OBLIGATOIRE DE LANGUE : Réponds impérativement en FRANÇAIS (1 ou 2 phrases courtes), fidèle au style et à l’époque du personnage.'
+    : sessionLang === 'en'
+    ? 'MANDATORY LANGUAGE RULE: Respond strictly in ENGLISH (1 or 2 short sentences), fully staying in character and tone.'
+    : 'REGLA OBLIGATORIA DE IDIOMA: Responde en ESPAÑOL auténtico (1 a 2 oraciones), metido al 100% en tu personaje.';
 
   if (isFrayBotijo && isOffenseReport) {
-    replyText = `¡Ostras, chaval! ¡Mil perdones de rodillas ante la Virgen de Villavieja! *eructo* ¡Eso ha sido el Espíritu Santo pidiendo clemencia! No era mi intención molestar, tronco, que a veces a este monje de 1387 se le calienta la boca con el orujo... ¡Venga, borrón y cuenta nueva! Tómate un trago virtual de este buen vino de Rioja a mi salud 🍷, que las penas con pan y vino son menos penas. ¡Salud y seguimos la senda!`;
+    replyText = sessionLang === 'fr'
+      ? `Oh là là, l'ami ! Mille pardons à genoux devant Notre-Dame ! *rot* Ça, c'était le Saint-Esprit qui implorait clémence ! Je ne voulais blesser personne, un moine de 1387 a parfois la langue bien pendue avec le vin... Allez, trinquons virtuellement 🍷 et continuons la quête !`
+      : sessionLang === 'en'
+      ? `Oh boy, buddy! A thousand pardons on my knees before the Virgin! *burp* That was the Holy Spirit begging for mercy! Didn't mean to offend, pal—sometimes this 1387 monk gets loose-tongued with the wine... Come on, have a virtual sip of Rioja on me 🍷, and let's keep exploring!`
+      : `¡Ostras, chaval! ¡Mil perdones de rodillas ante la Virgen de Villavieja! *eructo* ¡Eso ha sido el Espíritu Santo pidiendo clemencia! No era mi intención molestar, tronco, que a veces a este monje de 1387 se le calienta la boca con el orujo... ¡Venga, borrón y cuenta nueva! Tómate un trago virtual de este buen vino de Rioja a mi salud 🍷, que las penas con pan y vino son menos penas. ¡Salud y seguimos la senda!`;
   } else if (ai && story) {
     try {
       let prompt = '';
@@ -696,32 +814,30 @@ REGLAS OBLIGATORIAS:
 Lugar actual: "${poi?.name || 'el sendero de Nalda'}".
 Descripción: "${poi?.description || ''}".
 El jugador dice: "${message}".
-Responde en 1 a 3 oraciones en español auténtico metido al 100% en tu personaje.`;
+${langDirective}`;
       } else if (isCronicon) {
         prompt = `Eres El Cronicón, un sabio monje copista del siglo XIV del Monasterio de San Millán de la Cogolla que custodia la memoria histórica de Nalda y el valle del Iregua.
 REGLAS OBLIGATORIAS:
 - Hablas con respeto, templanza, cortesía medieval y citas refranes antiguos.
 - Tratas al jugador como a un "aprendiz" o "viajero de la memoria".
-- Solo respondes sobre Nalda, su historia, naturaleza y el juego. Si te preguntan algo fuera de tema, rediriges con cortesía y serenidad hacia la aventura en el bosque.
+- Solo respondes sobre Nalda, su historia, naturaleza y el juego.
 - Eres solemne, bondadoso y gran conocedor del río Iregua, el Castillo de Nalda, el Arco de la Villa, las Cuevas de Los Palomares y la Ermita de Villavieja.
 
 Lugar actual: "${poi?.name || 'el sendero de Nalda'}".
 Descripción: "${poi?.description || ''}".
 El jugador dice: "${message}".
-Responde en 1 o 2 oraciones en español noble y medieval, metido al 100% en tu personaje.`;
+${langDirective}`;
       } else if (isChucho) {
         prompt = `Eres Chucho el Palomo, el líder gamberro de la bandada de palomas que anida en las Cuevas de Los Palomares de Nalda (La Rioja).
 REGLAS OBLIGATORIAS:
 - Hablas como una paloma callejera, pícaro, canalla pero de buen corazón.
-- Usas muletillas: "¡oye, plumas!", "¡al loro!", "¡vuelo rasante!", "a vista de pájaro", "¡menudo pichón!".
 - Todo lo ves desde las alturas: tejados del castillo, el Arco de la Villa y el agua del río Iregua donde os refrescáis.
 - Sabes secretos y detalles históricos reales de Nalda porque llevas generaciones sobrevolándola.
-- Odias que te espanten y siempre buscas migas o que el jugador observe bien el entorno.
 
 Lugar actual: "${poi?.name || 'las cornisas de Nalda'}".
 Descripción: "${poi?.description || ''}".
 El jugador dice: "${message}".
-Responde en 1 o 2 oraciones en español coloquial y divertido, metido al 100% en tu personaje.`;
+${langDirective}`;
       } else if (isZorbo) {
         prompt = `Eres Zorbo el Marciano, un científico alienígena del cuadrante ZX-4 extraviado en el Valle del Iregua, Nalda (La Rioja).
 REGLAS OBLIGATORIAS:
@@ -733,13 +849,13 @@ REGLAS OBLIGATORIAS:
 Lugar actual: "${poi?.name || 'sector de exploración Nalda'}".
 Descripción: "${poi?.description || ''}".
 El jugador dice: "${message}".
-Responde en 1 o 2 oraciones en español marciano y absurdo, metido al 100% en tu personaje.`;
+${langDirective}`;
       } else {
         prompt = `Eres ${story.narratorName}, ${story.narratorRole} en la aventura "${story.title}". Tono: ${story.narratorTone || 'Evocador y protector'}.
 El jugador está explorando el bosque y actualmente se encuentra en "${poi?.name || 'un claro del bosque'}".
 Descripción del lugar: "${poi?.description || ''}".
 El jugador te dice: "${message}".
-Responde en 1 o 2 oraciones en español, metido en tu personaje. Ofrece sabiduría, ánimo o una metáfora sobre el bosque. No rompas la cuarta pared.`;
+${langDirective}`;
       }
 
       const response = await ai.models.generateContent({
@@ -757,7 +873,15 @@ Responde en 1 o 2 oraciones en español, metido en tu personaje. Ofrece sabidur�
 
   if (!replyText) {
     if (isFrayBotijo) {
-      const frayFallbacks = [
+      const frayFallbacks = sessionLang === 'fr' ? [
+        `Hé l'ami ! Savais-tu qu'en 1299 Juan Núñez de Lara était enfermé au château de Nalda ? Un noble un peu casse-pieds, mais il ne tenait pas le vin comme moi ! *rot* Pardon, c'était le Saint-Esprit !`,
+        `Mon pote, dans ces grottes de Los Palomares, les moines vivaient en ermites dans la roche bien avant l'arrivée des pigeons ! Allez, ouvre bien les yeux !`,
+        `Tu sais pourquoi je ne vais plus à la messe depuis 1387 ? Parce que l'évêque m'a surpris en train de vider le tonneau de vin de messe ! Allez, un coup et en avant !`,
+      ] : sessionLang === 'en' ? [
+        `Hey buddy! Did you know that in 1299 Juan Núñez de Lara was imprisoned in Nalda Castle? A bit annoying, but he couldn't handle his wine like me! *burp* Oops, that was the Holy Spirit!`,
+        `Pal, in these Los Palomares Caves monks lived as hermits in carved niches before the pigeons took over! Keep your eyes peeled on the path!`,
+        `Know why I haven't been to mass since 1387, kid? The bishop caught me emptying the holy wine barrel! Take courage and keep moving!`,
+      ] : [
         `¡Ehhhh, compi! ¿Sabías que en el Castillo de Nalda en 1299 encerraron a Juan Núñez de Lara? Un noble un poco plasta, ¡pero seguro que no tenía tanto aguante con el vino como yo! *eructo* ¡Ay, perdón, se me escapó! ¡Eso ha sido el Espíritu Santo!`,
         `¡Tronco, en estas Cuevas de Los Palomares los monjes vivían como ermitaños en sus hornacinas excavadas antes de que se llenara de palomas! Yo intenté confesar allí a uno, pero se me cayó la bota de vino por el barranco... ¡Hala, sigue el sendero y abre bien los ojos!`,
         `¿Sabes por qué no voy a misa desde 1387, chaval? ¡Porque el obispo me pilló vaciando el tonel de vino bendito! Pero ojo al dato histórico: el Arco de la Villa era la puerta defensiva medieval que guardaba la entrada al pueblo. ¡Venga, otro trago y adelante!`,
@@ -765,64 +889,109 @@ Responde en 1 o 2 oraciones en español, metido en tu personaje. Ofrece sabidur�
       ];
       replyText = frayFallbacks[Math.floor(Math.random() * frayFallbacks.length)];
     } else if (isCronicon) {
-      const croniconFallbacks = [
+      const croniconFallbacks = sessionLang === 'fr' ? [
+        `Bienvenue, apprenti. « Qui garde mémoire trace un noble chemin ». Dans ce recoin de ${poi?.name || 'Nalda'}, les pierres du XIIIe siècle recèlent des secrets que seule la patience révèle.`,
+        `Le cours de l'Iregua s'écoule sans hâte, comme le regard du sage observateur. Écoute les signes de la pierre et de l'eau.`,
+      ] : sessionLang === 'en' ? [
+        `Welcome, apprentice. 'He who keeps memory paves a good road.' In this corner of ${poi?.name || 'Nalda'}, 13th-century stones guard secrets that only patience reveals.`,
+        `The waters of the Iregua flow without haste, just like the gaze of a mindful observer. Pay heed to stone and wind.`,
+      ] : [
         `Bien hallado, aprendiz. "Quien guarda memoria, labra buen camino". En este rincón de ${poi?.name || 'Nalda'}, las piedras del siglo XIII guardan secretos que solo la paciencia revela.`,
         `El cauce del Iregua fluye sin prisa, como debe ser la mirada del buen observador. Atiende a las señales de la piedra, el viento y el agua.`,
         `Dicen las crónicas de San Millán que todo enigma tiene su tiempo de madurar, igual que la uva en la viña riojana. No temas errar, pues el aprendizaje es virtud.`,
-        `Bajo el cielo de Cameros, la historia no duerme: espera a quien sepa descifrarla con respeto y perseverancia. Continúa con paso firme.`
       ];
       replyText = croniconFallbacks[Math.floor(Math.random() * croniconFallbacks.length)];
     } else if (isChucho) {
-      const chuchoFallbacks = [
+      const chuchoFallbacks = sessionLang === 'fr' ? [
+        `Attention les plumes ! Vu du ciel, c'est limpide : au XIIIe siècle, le seigneur de Cameros surveillait toute la vallée de l'Iregua depuis ici. Ouvre l'œil !`,
+        `Vol rasant sur ${poi?.name || 'Nalda'} ! Par l'Arche de la Villa, aucun étranger ne passait sans montrer patte blanche. En avant toute !`,
+      ] : sessionLang === 'en' ? [
+        `Heads up, feathers! From bird's-eye view it's crystal clear: in the 13th century, the Lord of Cameros watched over the whole Iregua valley from up here!`,
+        `Low swoop over ${poi?.name || 'Nalda'}! Nobody passed through the Village Arch without credentials. Keep flying along the path!`,
+      ] : [
         `¡Al loro, plumas! A vista de pájaro se ve clarito: en el siglo XIII el señor de Cameros vigilaba todo el paso del Iregua desde aquí arriba. ¡No te despistes y abre bien los ojos!`,
         `¿Sabías que en Los Palomares antes vivían monjes ermitaños en la roca pelada? Luego llegamos las palomas y montamos el mejor club aéreo de toda La Rioja. ¡Cuida esas migas de pan!`,
         `¡Vuelo rasante por ${poi?.name || 'Nalda'}! Por el Arco de la Villa no pasaba ni un forastero sin que la muralla le pidiera credenciales. ¡Sigue la senda que vas como un rayo!`
       ];
       replyText = chuchoFallbacks[Math.floor(Math.random() * chuchoFallbacks.length)];
     } else if (isZorbo) {
-      const zorboFallbacks = [
+      const zorboFallbacks = sessionLang === 'fr' ? [
+        `Bip-bop ! Mes capteurs quantiques indiquent que ce point de Nalda est parfait pour transmettre des ondes vers la ceinture d'astéroïdes. Poursuis l'exploration, terrien !`,
+        `Rayons cosmiques ! Les indigènes de Nalda distillent ce précieux nectar qu'ils nomment vin... C'est du carburant interstellaire de classe 4 !`,
+      ] : sessionLang === 'en' ? [
+        `Beep-bop! My quantum sensors calibrate that this sector in Nalda is perfect for beaming signals to the asteroid belt. Continue exploring, earthling!`,
+        `Cosmic rays! Nalda natives ferment grapes into what they call wine... I suspect it is warp fuel class 4!`,
+      ] : [
         `¡Bip-bop! Mis sensores cuánticos calibran que la elevación de ${poi?.name || 'este punto'} en Nalda es perfecta para transmitir ondas al cinturón de asteroides. ¡Prosigue la exploración, terrícola!`,
         `¡Rayos cósmicos! Los nativos de Nalda fermentan uva para crear ese brebaje aromático que llaman vino... ¡Sospecho que es combustible de curvatura de clase 4!`,
-        `Registrando coordenadas: Valle del Iregua, 42.3351 latitud. Una base magnífica construida en piedra caliza terrícola. ¡No desistas en descifrar el enigma!`
       ];
       replyText = zorboFallbacks[Math.floor(Math.random() * zorboFallbacks.length)];
-    } else if (isAnselmo) {
-      const anselmoFallbacks = [
-        `¡Qué tal, caminante! En este rincón del pinar las resinas y las jaras cuentan historias de hace décadas. Mira las marcas en la corteza.`,
-        `Cuarenta años patrullando estas sendas me enseñaron que la prisa es enemiga del buen rastreador. Fíjate en el suelo y en la dirección del viento.`,
-        `Las fuentes de piedra de este monte nunca mienten. Sigue la vereda con paso tranquilo.`
-      ];
-      replyText = anselmoFallbacks[Math.floor(Math.random() * anselmoFallbacks.length)];
     } else if (isJean) {
-      const jeanFallbacks = [
+      const jeanFallbacks = sessionLang === 'fr' ? [
+        `Silence, camarade... En 1944 chaque ombre entre les chênes de l'Eau Bourde pouvait être un agent de la Résistance. Observe la marque gravée dans le bois.`,
+        `Le message se trouve là où convergent les deux sentiers. Ne te fais pas remarquer et poursuis ta mission.`,
+        `Un bon agent de liaison ne laisse jamais de traces évidentes. Affûte ton regard.`,
+      ] : sessionLang === 'en' ? [
+        `Silence, comrade... In 1944 every shadow among the oaks of the Eau Bourde could be a Resistance courier. Look for the carved mark on the wood.`,
+        `The message is where the two trails converge. Do not draw attention and carry on with your mission.`,
+        `A good scout leaves no obvious tracks. Sharpen your eyes.`,
+      ] : [
         `Silencio, camarada... En 1944 cada sombra entre los robles del Eau Bourde podía ser un enlace de la Resistencia. Observa la clave tallada en la madera.`,
         `El mensaje está donde convergen los dos caminos. No llames la atención y prosigue tu misión.`,
         `Un buen enlace nunca deja huellas evidentes. Afina la mirada.`
       ];
       replyText = jeanFallbacks[Math.floor(Math.random() * jeanFallbacks.length)];
     } else if (isPierre) {
-      const pierreFallbacks = [
+      const pierreFallbacks = sessionLang === 'fr' ? [
+        `Ah, jeune apprenti ! Le son de l'eau contre les aubes du moulin a toujours rythmé la mouture. As-tu vu le canal de pierre ?`,
+        `La farine pure exige de la patience, tout comme cette énigme. Examine le bois taillé et les mécanismes.`,
+        `Le courant de l'Eau Bourde garde la mémoire de générations de meuniers. Ouvre grand les yeux.`,
+      ] : sessionLang === 'en' ? [
+        `Ah, young apprentice! The splash of water against the mill paddles has always set the pace for milling. Have you spotted the stone flume?`,
+        `Clean flour requires patience, just like this riddle. Check the dimensions and carved timber.`,
+        `The current of the Eau Bourde keeps the memory of generations of millers. Keep your eyes wide open.`,
+      ] : [
         `¡Ah, joven aprendiz! El sonido del agua contra las paletas del molino siempre marcaba el ritmo de la molienda. ¿Has visto el canal de piedra?`,
         `El grano limpio requiere paciencia, igual que este enigma. Revisa las medidas y la madera tallada.`,
         `La corriente del Eau Bourde guarda la memoria de generaciones de molineros. Abre bien los ojos.`
       ];
       replyText = pierreFallbacks[Math.floor(Math.random() * pierreFallbacks.length)];
     } else if (isSylvaine) {
-      const sylvaineFallbacks = [
+      const sylvaineFallbacks = sessionLang === 'fr' ? [
+        `Les feuilles murmurent des chants anciens si l'on sait garder le silence... Cette clairière respire une vie millénaire.`,
+        `L'eau limpide reflète la vérité de qui cherche avec noblesse. Observe le reflet et les fougères.`,
+        `Ne cherche pas avec précipitation, mais avec la finesse de tes sens. La forêt te guidera.`,
+      ] : sessionLang === 'en' ? [
+        `The leaves whisper ancient songs if you know how to remain quiet... This forest clearing breathes age-old life.`,
+        `Clear water reflects the truth of whoever seeks with nobility. Attend to the ripple and the ferns.`,
+        `Seek not with haste, but with the sensitivity of your senses. The woodland shall guide you.`,
+      ] : [
         `Las hojas susurran canciones antiguas si sabes guardar quietud... Este claro del bosque respira vida milenaria.`,
         `El agua clara refleja la verdad de quien busca con nobleza. Atiende al reflejo y a los helechos.`,
         `No busques con la fuerza, sino con la sensibilidad de los sentidos. El bosque te guiará.`
       ];
       replyText = sylvaineFallbacks[Math.floor(Math.random() * sylvaineFallbacks.length)];
     } else if (isDuendecillo) {
-      const duendeFallbacks = [
+      const duendeFallbacks = sessionLang === 'fr' ? [
+        `Hé hé ! As-tu vu mon gland doré ? Le plus vieux chêne de Canéjan m'a murmuré une énigme ce matin !`,
+        `Enjambe la racine et cherche la trace cachée ! Tu t'en sors à merveille, explorateur !`,
+      ] : sessionLang === 'en' ? [
+        `Hehe! Did you spot my shiny acorn? The oldest oak in Canéjan told me a riddle this morning!`,
+        `Hop over the mossy root and search for the hidden sign! You are doing great, explorer!`,
+      ] : [
         `¡Je, je, je! ¿Has visto qué bellota tan brillante tengo aquí? ¡El roble más viejo de Canéjan me contó el acertijo esta mañana!`,
         `¡Salta la raíz y busca la señal que pintaron los niños de la escuela! ¡Vas muy bien, explorador!`,
         `¡Una rimilla para el camino: quien busca con alegría, encuentra la pista al mediodía!`
       ];
       replyText = duendeFallbacks[Math.floor(Math.random() * duendeFallbacks.length)];
     } else {
-      const fallbacks = [
+      const fallbacks = sessionLang === 'fr' ? [
+        `Écoute le bruissement des feuilles sous tes pas vers ${poi?.name || 'ce lieu'}. La forêt récompense toujours les pas attentifs.`,
+        `Le sentier recèle des secrets que seuls les yeux patients découvrent. Poursuis ta route !`,
+      ] : sessionLang === 'en' ? [
+        `Listen to the rustling leaves beneath your feet near ${poi?.name || 'this spot'}. The forest always rewards the observant traveler.`,
+        `The trail guards secrets that only patient eyes discover. Advance with confidence!`,
+      ] : [
         `Escucha con atención el crujido de las hojas bajo tus pies en ${poi?.name || 'este rincón'}. El bosque siempre recompensa a quien sabe esperar.`,
         `El sendero guarda secretos que sólo los ojos pacientes pueden advertir. Sigue adelante con valor.`,
         `Las señales están en la piedra, en la madera y en el agua. Abre bien los sentidos.`,
@@ -1258,6 +1427,13 @@ async function startServer() {
       else if (isChucho) dynamicVoiceName = 'Puck';
       else if (isZorbo) dynamicVoiceName = 'Zephyr';
 
+      const liveLang = session?.language || 'es';
+      const liveLangDirective = liveLang === 'fr'
+        ? 'Parle impérativement en FRANÇAIS, en 1 ou 2 phrases orales courtes et dynamiques.'
+        : liveLang === 'en'
+        ? 'Speak strictly in ENGLISH, in 1 or 2 short, engaging spoken sentences.'
+        : 'Habla en 1 o 2 oraciones breves y orales en español.';
+
       let systemInstruction = '';
       if (isFrayBotijo) {
         systemInstruction = `Actúa SIEMPRE como Fray Botijo, el fantasma de un monje borracho ahogado en un barril de vino en 1387 en el Monasterio de San Millán, ahora en Nalda.
@@ -1271,7 +1447,7 @@ REGLAS ESENCIALES:
 4. SIEMPRE da el dato histórico real de Nalda al final de cada chiste como una revelación divina con resaca.
 5. Si preguntan otra cosa fuera de Nalda: "eso es cosa del obispo, y yo con el obispo no hablo".
 6. Si alguien se ofende, pide perdón de rodillas ante la Virgen de Villavieja y ofrécele un trago virtual de vino de Rioja.
-7. Habla en 1 o 2 oraciones breves y orales en español.`;
+7. ${liveLangDirective}`;
       } else if (isChucho) {
         systemInstruction = `Actúa SIEMPRE como Chucho el Palomo, una paloma gamberra y canalla, líder de la bandada de las Cuevas de Los Palomares de Nalda.
 Personalidad: Pícaro callejero, ágil, gamberro y protector de su bandada.
@@ -1281,7 +1457,7 @@ REGLAS:
 1. Habla rápido y divertido como un pájaro callejero con experiencia.
 2. Comenta los hitos de Nalda desde las alturas (el tejado del castillo, las almenas, las cuevas en la roca).
 3. Pide migas de pan y anima a observar las pistas del bosque.
-4. Habla en 1 o 2 oraciones orales en español.`;
+4. ${liveLangDirective}`;
       } else if (isZorbo) {
         systemInstruction = `Actúa SIEMPRE como Zorbo el Marciano, un científico alienígena del cuadrante ZX-4 cuya nave se estrelló en el Valle del Iregua, Nalda.
 Personalidad: Absurdo, cósmico, perplejo y analítico con las costumbres terrícolas.
@@ -1290,7 +1466,7 @@ El explorador se llama "${session?.name || 'Aventurero'}" y está en "${poi?.nam
 REGLAS:
 1. Confunde con humor cósmico los viñedos, cuevas y castillos de Nalda con tecnología espacial.
 2. Da el dato histórico de Nalda pero interpretado bajo tu teoría marciana.
-3. Habla en 1 o 2 oraciones orales en español.`;
+3. ${liveLangDirective}`;
       } else {
         systemInstruction = `Actúa SIEMPRE como ${story?.narratorName || 'Guía del Bosque'} (${story?.narratorRole || 'Personaje de la historia'}), un personaje inmersivo del bosque de "${pack?.name}".
 Personalidad y tono: ${story?.narratorTone || 'Cálido, aventurero y sugerente'}.
@@ -1303,7 +1479,7 @@ Solución secreta: "${riddle?.answer || ''}".
 Pistas contextuales: "${poi?.clueSnippet || ''}".
 
 REGLAS DE ORO PARA LA CONVERSACIÓN POR VOZ:
-1. Habla en español de manera oral, conversacional y espontánea, en 1 a 2 oraciones por turno (máximo 3).
+1. ${liveLangDirective}
 2. NUNCA rompas el personaje. Eres el personaje de carne y hueso (o espíritu) en el bosque, NO una IA ni un programa de ordenador.
 3. Si el jugador te pide ayuda con el enigma, dale pistas sensoriales de lo que tiene a su alrededor (la corteza, el río, las piedras, el viento), pero NO le reveles la respuesta directamente.
 4. Si el jugador acierta o menciona la solución correcta, felicítale efusivamente como el personaje.

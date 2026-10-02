@@ -23,7 +23,7 @@ import { ambientAudio } from './utils/audio';
 import { useI18n } from './context/I18nContext';
 
 export default function App() {
-  const { currentLanguage, localizeForest, onForestSelected } = useI18n();
+  const { currentLanguage, localizeForest, onForestSelected, t } = useI18n();
   const [forests, setForests] = useState<ForestPack[]>(SEED_FOREST_PACKS);
   const [currentView, setCurrentView] = useState<'home' | 'game' | 'admin'>('home');
   const [selectedForest, setSelectedForest] = useState<ForestPack | null>(SEED_FOREST_PACKS[0] || null);
@@ -111,10 +111,14 @@ export default function App() {
     difficulty: DifficultyType;
     duration: DurationType;
     easyMode?: boolean;
+    language?: string;
   }) => {
     setLoading(true);
     try {
-      const { session, forestPack } = await api.createSession(config);
+      const { session, forestPack } = await api.createSession({
+        ...config,
+        language: currentLanguage,
+      });
       setActiveSession(session);
       setSelectedForest(forestPack);
       localStorage.setItem('enigma_active_session', session.code);
@@ -476,11 +480,11 @@ export default function App() {
       )}
 
       {/* Pause or Abandon Modal */}
-      {selectedForest && activeSession && (
+      {localizedSelectedForest && activeSession && (
         <PauseOrAbandonModal
           isOpen={isPauseModalOpen}
           onClose={() => setIsPauseModalOpen(false)}
-          forest={selectedForest}
+          forest={localizedSelectedForest}
           session={activeSession}
           onPauseAndSave={handlePauseAndSave}
           onAbandonPermanently={handleAbandonPermanently}
@@ -496,17 +500,17 @@ export default function App() {
       {currentView !== 'admin' && (
         <footer className="py-6 px-4 text-center text-[11px] text-stone-500 border-t border-emerald-950/80 bg-[#0E150F]">
           <p className="flex items-center justify-center gap-2 flex-wrap">
-            <span>Enigma del Bosque</span>
+            <span>{t('app.title')}</span>
             <span>•</span>
-            <span>Rutas y acertijos al aire libre</span>
+            <span>{t('footer.subtitle') || 'Rutas y acertijos al aire libre'}</span>
             <span>•</span>
             <button
               type="button"
               onClick={handleOpenAdmin}
               className="text-stone-600 hover:text-stone-400 underline transition-colors cursor-pointer"
-              title="Acceso organizador"
+              title={t('footer.adminAccess') || 'Acceso organizador'}
             >
-              Acceso organizador
+              {t('footer.adminAccess') || 'Acceso organizador'}
             </button>
           </p>
         </footer>

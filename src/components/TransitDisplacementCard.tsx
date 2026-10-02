@@ -42,6 +42,7 @@ export const TransitDisplacementCard: React.FC<TransitDisplacementCardProps> = (
   const bridgeKey = previousPoi ? `${previousPoi.id}_to_${currentPoi.id}` : '';
   const bridgePhrase =
     forest.bridgePhrases?.[bridgeKey] ||
+    t('transit.defaultBridge') ||
     `¡Buen trabajo! Ahora sigue el sendero marcado hacia ${currentPoi.name}. Presta atención a las señales del bosque y camina con calma.`;
 
   const getCardinal = (deg: number): string => {

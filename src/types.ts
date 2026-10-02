@@ -171,6 +171,7 @@ export interface ForestPack {
   contentWarning?: string;
   nameKey?: string;
   descriptionKey?: string;
+  countryKey?: string;
   pois: WindmillPOI[];
   routePresets: {
     "30min"?: string[];

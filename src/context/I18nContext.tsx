@@ -13,7 +13,7 @@ interface I18nContextType {
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
 export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Initial state: defaults to 'fr' (or saved lang if user already interacted)
+  // Initial state: defaults to saved lang or 'es'
   const [currentLanguage, setCurrentLanguageState] = useState<SupportedLanguage>(() => {
     try {
       const saved = localStorage.getItem('enigma_lang');
@@ -21,25 +21,40 @@ export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return saved;
       }
     } catch (e) {}
-    return 'fr'; // Canéjan-Cestas default
+    return 'es';
   });
 
   const setLanguage = (lang: SupportedLanguage) => {
     setCurrentLanguageState(lang);
     try {
       localStorage.setItem('enigma_lang', lang);
+      localStorage.setItem('enigma_lang_user_chosen', 'true');
+      const activeCode = localStorage.getItem('enigma_active_session');
+      if (activeCode) {
+        fetch(`/api/sessions/${activeCode}/language`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ language: lang }),
+        }).catch(() => {});
+      }
     } catch (e) {}
   };
 
   /**
-   * "Al abrir un bosque por primera vez, se usa el idioma propio de ese bosque, no el del navegador."
+   * Only suggest forest default language if the user has NOT explicitly chosen a language
    */
   const onForestSelected = (forest: ForestPack) => {
     if (!forest) return;
-    const forestDefLang = (forest.defaultLanguage as SupportedLanguage) || 'es';
-    if (forestDefLang === 'fr' || forestDefLang === 'es' || forestDefLang === 'en') {
-      setLanguage(forestDefLang);
-    }
+    try {
+      const isUserChosen = localStorage.getItem('enigma_lang_user_chosen');
+      if (!isUserChosen) {
+        const forestDefLang = (forest.defaultLanguage as SupportedLanguage) || 'es';
+        if (forestDefLang === 'fr' || forestDefLang === 'es' || forestDefLang === 'en') {
+          setCurrentLanguageState(forestDefLang);
+          localStorage.setItem('enigma_lang', forestDefLang);
+        }
+      }
+    } catch (e) {}
   };
 
   const t = (key: string, params?: Record<string, string | number>): string => {

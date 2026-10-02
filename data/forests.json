@@ -3747,7 +3747,9 @@
         "L",
         "D",
         "A"
-      ]
+      ],
+      "hintKey": "meta_enigma_nalda_hint",
+      "successNarrativeKey": "meta_enigma_nalda_success"
     },
     "nameKey": "forest_nalda_name",
     "descriptionKey": "forest_nalda_description"

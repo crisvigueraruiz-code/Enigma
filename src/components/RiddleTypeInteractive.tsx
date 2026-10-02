@@ -270,7 +270,7 @@ export const RiddleTypeInteractive: React.FC<RiddleTypeInteractiveProps> = ({
         <div className="p-5 rounded-2xl bg-black/40 border border-emerald-800/80 space-y-4 text-center">
           <div className="flex items-center justify-center gap-2 text-amber-300 font-adventure font-bold text-xs uppercase tracking-wider">
             <Camera className="w-4 h-4" />
-            <span>Verificación Fotográfica en el Bosque</span>
+            <span>{t('riddle.photoTitle')}</span>
           </div>
 
           <p className="text-xs text-stone-300 max-w-md mx-auto">
@@ -302,7 +302,7 @@ export const RiddleTypeInteractive: React.FC<RiddleTypeInteractiveProps> = ({
                 className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 text-stone-950 font-adventure font-bold text-xs tracking-wider shadow-lg flex items-center justify-center gap-2 mx-auto active:scale-95 transition-all"
               >
                 <Camera className="w-4 h-4 text-stone-950" />
-                <span>Abrir Cámara / Capturar Foto</span>
+                <span>{t('riddle.openCamera')}</span>
               </button>
             </div>
           )}
@@ -344,7 +344,7 @@ export const RiddleTypeInteractive: React.FC<RiddleTypeInteractiveProps> = ({
                 <div className="p-4 rounded-xl bg-red-950/80 border border-red-500/80 space-y-3 animate-pulse">
                   <div className="flex items-center justify-center gap-2 text-red-300 text-xs font-mono font-bold">
                     <div className="w-3 h-3 rounded-full bg-red-500 animate-ping" />
-                    <span>GRABANDO SONIDO AMBIENTE...</span>
+                    <span>{t('riddle.recordingAudio')}</span>
                   </div>
                   <button
                     type="button"
@@ -372,7 +372,7 @@ export const RiddleTypeInteractive: React.FC<RiddleTypeInteractiveProps> = ({
                   className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-500 text-stone-950 font-adventure font-bold text-xs tracking-wider shadow-lg flex items-center justify-center gap-2 mx-auto active:scale-95 transition-all"
                 >
                   <Mic className="w-4 h-4 text-stone-950" />
-                  <span>Iniciar Grabación de Audio</span>
+                  <span>{t('riddle.startAudio')}</span>
                 </button>
               )}
             </div>
@@ -432,7 +432,7 @@ export const RiddleTypeInteractive: React.FC<RiddleTypeInteractiveProps> = ({
                   className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-500 text-stone-950 font-adventure font-bold text-xs tracking-wider shadow-lg flex items-center justify-center gap-2 mx-auto active:scale-95 transition-all"
                 >
                   <Video className="w-4 h-4 text-stone-950" />
-                  <span>Grabar Clip de 3 Segundos</span>
+                  <span>{t('riddle.recordVideoClip')}</span>
                 </button>
               )}
             </div>
@@ -480,7 +480,7 @@ export const RiddleTypeInteractive: React.FC<RiddleTypeInteractiveProps> = ({
               className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-500 text-stone-950 font-adventure font-bold text-xs tracking-wider shadow-lg flex items-center justify-center gap-2 mx-auto active:scale-95 transition-all"
             >
               <Award className="w-4 h-4 text-stone-950" />
-              <span>Realizar Mímica (3s)</span>
+              <span>{t('riddle.performMimic')}</span>
             </button>
           )}
         </div>
@@ -534,7 +534,7 @@ export const RiddleTypeInteractive: React.FC<RiddleTypeInteractiveProps> = ({
         <div className="p-5 rounded-2xl bg-black/40 border border-emerald-800/80 space-y-4 text-center">
           <div className="flex items-center justify-center gap-2 text-amber-300 font-adventure font-bold text-xs uppercase tracking-wider">
             <Compass className="w-4 h-4" />
-            <span>Reto de Orientación: Brújula al Norte (0°)</span>
+            <span>{t('riddle.compassTitle')}</span>
           </div>
 
           <p className="text-xs text-stone-300 max-w-sm mx-auto">
@@ -566,7 +566,7 @@ export const RiddleTypeInteractive: React.FC<RiddleTypeInteractiveProps> = ({
             </div>
             <div className="text-[11px]">
               {isCompassAligned ? (
-                <span className="text-emerald-400 font-bold">¡Alineado con el Norte! Listo para validar.</span>
+                <span className="text-emerald-400 font-bold">{t('riddle.compassAligned')}</span>
               ) : (
                 <span className="text-stone-400">Gira lentamente hasta orientarte al Norte (0° ±{tolerance}°).</span>
               )}
@@ -606,7 +606,7 @@ export const RiddleTypeInteractive: React.FC<RiddleTypeInteractiveProps> = ({
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 text-amber-300 font-adventure font-bold text-xs uppercase tracking-wider">
               <Volume2 className="w-4 h-4" />
-              <span>Escucha Atenta del Bosque</span>
+              <span>{t('riddle.listenTitle')}</span>
             </div>
 
             {riddle.config?.holdSeconds && (
@@ -628,7 +628,7 @@ export const RiddleTypeInteractive: React.FC<RiddleTypeInteractiveProps> = ({
                   <div className="w-14 h-14 rounded-full border-4 border-amber-400 border-t-transparent animate-spin flex items-center justify-center font-mono font-bold text-amber-300 text-lg">
                     {listenTimer}
                   </div>
-                  <span className="text-[11px] text-amber-300 font-serif italic">Escuchando la espesura...</span>
+                  <span className="text-[11px] text-amber-300 font-serif italic">{t('riddle.listeningForest')}</span>
                 </div>
               ) : (
                 <button
@@ -753,7 +753,7 @@ export const RiddleTypeInteractive: React.FC<RiddleTypeInteractiveProps> = ({
               title="Volver a barajar"
             >
               <Shuffle className="w-3 h-3 text-stone-400" />
-              <span>Barajar</span>
+              <span>{t('riddle.shuffle')}</span>
             </button>
           </div>
 
@@ -836,12 +836,12 @@ export const RiddleTypeInteractive: React.FC<RiddleTypeInteractiveProps> = ({
         <div className="p-5 rounded-2xl bg-black/40 border border-emerald-800/80 space-y-4">
           <div className="flex items-center gap-2 text-amber-300 font-adventure font-bold text-xs uppercase tracking-wider">
             <KeyRound className="w-4 h-4" />
-            <span>Códice y Descifrado Rúnico</span>
+            <span>{t('riddle.codexTitle')}</span>
           </div>
 
           {riddle.cipherHint && (
             <div className="p-3 rounded-xl bg-amber-950/40 border border-amber-600/40 font-mono text-xs text-amber-200">
-              <span className="font-bold text-amber-400 block mb-1">Clave de equivalencias:</span>
+              <span className="font-bold text-amber-400 block mb-1">{t('riddle.codexEquivalence')}</span>
               <span>{riddle.cipherHint}</span>
             </div>
           )}
@@ -914,7 +914,7 @@ export const RiddleTypeInteractive: React.FC<RiddleTypeInteractiveProps> = ({
               disabled={submitting || !textAnswer.trim()}
               className="px-5 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-600 disabled:opacity-40 text-white font-adventure font-bold text-xs sm:text-sm tracking-wide transition-all shadow-md active:scale-95 flex items-center gap-1.5"
             >
-              <span>Responder</span>
+              <span>{t('riddle.submitAnswer')}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

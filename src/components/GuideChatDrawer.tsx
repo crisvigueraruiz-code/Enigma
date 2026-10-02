@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { LiveMessage, StoryIntro } from '../types';
 import { X, Send, Sparkles, MessageSquare, Bot, AlertTriangle } from 'lucide-react';
+import { useI18n } from '../context/I18nContext';
 
 interface GuideChatDrawerProps {
   isOpen: boolean;
@@ -21,6 +22,7 @@ export const GuideChatDrawer: React.FC<GuideChatDrawerProps> = ({
   loading,
   currentPoiName,
 }) => {
+  const { t } = useI18n();
   const [inputText, setInputText] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -45,6 +47,8 @@ export const GuideChatDrawer: React.FC<GuideChatDrawerProps> = ({
     onSendMessage(prompt);
   };
 
+  const narratorDisplayName = story?.narratorName || story?.narrator?.name || t('chat.guide') || 'Guía del Bosque';
+
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-black/70 backdrop-blur-xs">
       <div className="w-full max-w-md bg-[#18241A] border-l border-emerald-800/60 shadow-2xl flex flex-col h-full text-stone-100 animate-in slide-in-from-right duration-200">
@@ -56,13 +60,13 @@ export const GuideChatDrawer: React.FC<GuideChatDrawerProps> = ({
             </div>
             <div>
               <div className="font-adventure text-sm font-bold text-amber-100 flex items-center gap-1.5">
-                <span>{story?.narratorName || story?.narrator?.name || 'Guía del Bosque'}</span>
+                <span>{narratorDisplayName}</span>
                 <span className="text-[10px] text-emerald-400 font-mono px-1.5 py-0.2 bg-emerald-950/80 rounded border border-emerald-800/60">
-                  En directo
+                  {t('chat.liveTag') || 'En directo'}
                 </span>
               </div>
               <p className="text-[11px] text-stone-400">
-                {story?.narratorRole || story?.narrator?.role || 'Compañero de viaje'}
+                {story?.narratorRole || story?.narrator?.role || t('chat.travelCompanion') || 'Compañero de viaje'}
               </p>
             </div>
           </div>
@@ -78,7 +82,7 @@ export const GuideChatDrawer: React.FC<GuideChatDrawerProps> = ({
         {currentPoiName && (
           <div className="px-4 py-2 bg-emerald-950/40 border-b border-emerald-900/30 text-[11px] text-emerald-300/80 flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Hablando en: <strong>{currentPoiName}</strong></span>
+            <span>{t('chat.talkingAt') || 'Hablando en:'} <strong>{currentPoiName}</strong></span>
           </div>
         )}
 
@@ -97,7 +101,11 @@ export const GuideChatDrawer: React.FC<GuideChatDrawerProps> = ({
               >
                 <div className="flex items-center gap-1 mb-1">
                   <span className="text-[10px] font-bold text-stone-400 uppercase">
-                    {isAdmin ? '🚨 Aviso de Organización' : isPlayer ? 'Tú' : story?.narratorName || 'Guía'}
+                    {isAdmin
+                      ? (t('chat.adminNotice') || '🚨 Aviso de Organización')
+                      : isPlayer
+                      ? (t('chat.you') || 'Tú')
+                      : narratorDisplayName}
                   </span>
                   <span className="text-[9px] text-stone-500">{msg.timestamp}</span>
                 </div>
@@ -120,7 +128,7 @@ export const GuideChatDrawer: React.FC<GuideChatDrawerProps> = ({
           {loading && (
             <div className="flex items-center gap-2 text-xs text-stone-400 italic py-2">
               <div className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              <span>{story?.narratorName || 'El guía'} está meditando su respuesta...</span>
+              <span>{t('chat.thinking', { name: narratorDisplayName }) || `${narratorDisplayName} está meditando su respuesta...`}</span>
             </div>
           )}
 
@@ -129,11 +137,11 @@ export const GuideChatDrawer: React.FC<GuideChatDrawerProps> = ({
 
         {/* Quick Suggestion Chips */}
         <div className="px-4 py-2 bg-[#141F16] border-t border-emerald-900/40 flex items-center gap-1.5 overflow-x-auto text-[11px]">
-          <span className="text-stone-400 shrink-0 font-medium">Sugerir:</span>
+          <span className="text-stone-400 shrink-0 font-medium">{t('chat.suggest') || 'Sugerir:'}</span>
           {[
-            '¿Hacia dónde miro?',
-            '¿Qué detalle del entorno busco?',
-            'Dime una frase de aliento',
+            t('chat.quickWhere') || '¿Hacia dónde miro?',
+            t('chat.quickDetail') || '¿Qué detalle del entorno busco?',
+            t('chat.quickEncourage') || 'Dime una frase de aliento',
           ].map((prompt, i) => (
             <button
               key={i}
@@ -153,7 +161,7 @@ export const GuideChatDrawer: React.FC<GuideChatDrawerProps> = ({
             type="text"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
-            placeholder={`Habla con ${story?.narratorName || 'el guía'}...`}
+            placeholder={t('chat.inputPlaceholder', { name: narratorDisplayName }) || `Habla con ${narratorDisplayName}...`}
             maxLength={180}
             className="flex-1 px-3.5 py-2.5 rounded-xl bg-black/40 border border-emerald-800/60 text-xs sm:text-sm text-stone-100 placeholder-stone-500 focus:outline-none focus:border-emerald-500"
           />

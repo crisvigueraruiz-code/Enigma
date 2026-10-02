@@ -3,6 +3,7 @@ import L from 'leaflet';
 import { WindmillPOI, ForestPack, PlayerSession } from '../types';
 import { calculateHaversineDistance, calculateBearing, formatDistance } from '../utils/geo';
 import { sounds } from '../utils/audio';
+import { useI18n } from '../context/I18nContext';
 import {
   Compass,
   Navigation,
@@ -69,6 +70,7 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
   isNearPoi,
   onOpenAR,
 }) => {
+  const { t } = useI18n();
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
   const tileLayerRef = useRef<L.TileLayer | null>(null);
@@ -607,7 +609,7 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                <span className="hidden sm:inline text-[11px] font-bold">Filtro Orgánico</span>
+                <span className="hidden sm:inline text-[11px] font-bold">{t('map.organicFilter')}</span>
                 <span className="text-[10px] font-mono text-emerald-400 hidden md:inline">
                   {contrast}%/{saturation}%
                 </span>
@@ -620,7 +622,7 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
                     <div className="flex items-center gap-1.5">
                       <TreePine className="w-4 h-4 text-emerald-400" />
                       <span className="text-xs font-bold text-amber-300 uppercase tracking-wider font-mono">
-                        Paleta Orgánica de Bosque
+                        {t('map.organicFilter')}
                       </span>
                     </div>
                     <button
@@ -664,7 +666,7 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
                   {/* Contrast Slider */}
                   <div className="space-y-1">
                     <div className="flex items-center justify-between text-[11px] font-mono">
-                      <span className="text-stone-300">Contraste de relieve:</span>
+                      <span className="text-stone-300">{t('map.reliefContrast')}</span>
                       <span className="text-amber-300 font-bold">{contrast}%</span>
                     </div>
                     <input
@@ -680,7 +682,7 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
                   {/* Saturation Slider */}
                   <div className="space-y-1">
                     <div className="flex items-center justify-between text-[11px] font-mono">
-                      <span className="text-stone-300">Saturación de verdes:</span>
+                      <span className="text-stone-300">{t('map.greenSaturation')}</span>
                       <span className="text-emerald-400 font-bold">{saturation}%</span>
                     </div>
                     <input
@@ -696,7 +698,7 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
                   {/* Earthy Warmth (Sepia) Slider */}
                   <div className="space-y-1">
                     <div className="flex items-center justify-between text-[11px] font-mono">
-                      <span className="text-stone-300">Calidez terrosa:</span>
+                      <span className="text-stone-300">{t('map.warmth')}</span>
                       <span className="text-amber-200 font-bold">{warmth}%</span>
                     </div>
                     <input
@@ -711,7 +713,7 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
 
                   {/* Toggle filter on/off */}
                   <div className="flex items-center justify-between pt-1 border-t border-emerald-950">
-                    <span className="text-[11px] text-stone-300 font-medium">Activar filtro</span>
+                    <span className="text-[11px] text-stone-300 font-medium">{t('map.activateFilter')}</span>
                     <button
                       type="button"
                       onClick={() => setOrganicFilterActive(!organicFilterActive)}
@@ -738,7 +740,7 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
               title="Abrir Realidad Aumentada con cámara"
             >
               <Camera className="w-4 h-4" />
-              <span className="hidden sm:inline">Cámara AR</span>
+              <span className="hidden sm:inline">{t('map.arCamera')}</span>
             </button>
           )}
 
@@ -888,7 +890,7 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
                     Hito del Sendero
                   </span>
                   {session.completedPois.includes(selectedPoi.id) && (
-                    <span className="text-[9px] font-bold text-emerald-400">✓ Resuelto</span>
+                    <span className="text-[9px] font-bold text-emerald-400">{t('map.solved')}</span>
                   )}
                 </div>
                 <h4 className="text-xs font-adventure font-bold text-white leading-tight">
@@ -928,7 +930,7 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
         <div className="flex flex-wrap items-center justify-between gap-2">
           {/* GPS Mode Badge */}
           <div className="pointer-events-auto flex items-center gap-2 bg-[#121e15]/90 backdrop-blur-md border border-emerald-700/60 px-3 py-1.5 rounded-2xl text-xs shadow-xl">
-            <span className="text-[10px] font-mono text-stone-300">Modo:</span>
+            <span className="text-[10px] font-mono text-stone-300">{t('map.mode')}</span>
             <button
               type="button"
               onClick={onToggleSimulatedGps}
@@ -962,7 +964,7 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
                 title="Avanzar caminando hacia el punto de interés"
               >
                 <Footprints className="w-3.5 h-3.5" />
-                <span>+25m hacia POI</span>
+                <span>{t('map.jump25m')}</span>
               </button>
 
               <button
@@ -971,7 +973,7 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
                 className="px-2.5 py-1.5 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-yellow-400 text-stone-950 rounded-xl text-xs font-adventure font-bold tracking-wide transition-all shadow"
                 title="Simular que has llegado a las coordenadas del enigma"
               >
-                <span>Llegar (&lt;30m)</span>
+                <span>{t('map.arriveBtn')}</span>
               </button>
 
               {/* Tactile Mini Directional Cross */}

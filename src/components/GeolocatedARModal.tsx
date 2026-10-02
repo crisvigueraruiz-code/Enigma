@@ -4,6 +4,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { WindmillPOI, ArAssetConfig } from '../types';
 import { calculateHaversineDistance, calculateBearing, formatDistance } from '../utils/geo';
 import { sounds } from '../utils/audio';
+import { useI18n } from '../context/I18nContext';
 import {
   Camera,
   Compass,
@@ -46,6 +47,7 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
   isRiddleSolved,
   simulatedGps,
 }) => {
+  const { t } = useI18n();
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
@@ -818,7 +820,7 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
               className="absolute bottom-24 right-6 px-4 py-2.5 bg-gradient-to-r from-amber-500 to-amber-400 text-stone-950 font-adventure font-bold text-xs rounded-xl shadow-2xl flex items-center gap-2 transition-transform active:scale-95"
             >
               <Move3d className="w-4 h-4 text-stone-950" />
-              <span>Colocar en el Suelo (AR)</span>
+              <span>{t('ar.placeGround')}</span>
             </button>
           )}
         </div>
@@ -842,10 +844,10 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span className="text-[10px] uppercase font-bold text-amber-300 font-mono tracking-wider">
-                Realidad Aumentada
+                {t('nav.ar')}
               </span>
               <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-700 font-semibold">
-                {fallback3DMode ? 'Modo Visor 3D' : 'Geo-Anclado'}
+                {fallback3DMode ? t('ar.mode3d') : t('ar.modeGeo')}
               </span>
             </div>
             <h3 className="font-adventure text-base font-bold text-stone-100 drop-shadow">
@@ -863,10 +865,10 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
               setFallback3DMode(!fallback3DMode);
             }}
             className="px-3 py-1.5 rounded-xl bg-black/60 hover:bg-black/80 border border-stone-600 text-stone-300 hover:text-white text-xs font-semibold flex items-center gap-1.5 backdrop-blur-md transition-all shadow"
-            title={fallback3DMode ? 'Volver a modo cámara AR con GPS' : 'Modo reserva 3D libre sin brújula'}
+            title={fallback3DMode ? (t('ar.backToAr') || 'Volver a modo cámara AR con GPS') : (t('ar.switch3d') || 'Modo reserva 3D libre sin brújula')}
           >
             <Layers className="w-3.5 h-3.5 text-amber-400" />
-            <span className="hidden sm:inline">{fallback3DMode ? 'Cámara AR' : 'Modo Reserva 3D'}</span>
+            <span className="hidden sm:inline">{fallback3DMode ? t('ar.btnArCamera') : t('ar.btn3dMode')}</span>
           </button>
 
           {/* Close AR View */}
@@ -877,7 +879,7 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
               onClose();
             }}
             className="p-2.5 rounded-xl bg-black/60 hover:bg-black/80 border border-stone-600 text-stone-300 hover:text-white backdrop-blur-md transition-colors shadow"
-            title="Cerrar Realidad Aumentada"
+            title={t('ar.close') || 'Cerrar Realidad Aumentada'}
           >
             <X className="w-5 h-5" />
           </button>
@@ -888,7 +890,7 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
       {loadingAsset && (
         <div className="absolute top-20 left-1/2 -translate-x-1/2 z-30 bg-black/75 backdrop-blur-md border border-amber-500/40 px-4 py-2 rounded-2xl flex items-center gap-2 text-xs text-amber-200 shadow-xl">
           <Loader2 className="w-4 h-4 animate-spin text-amber-400" />
-          <span>Cargando artefacto 3D / sprite...</span>
+          <span>{t('ar.loading') || 'Cargando artefacto 3D / sprite...'}</span>
         </div>
       )}
 
@@ -918,21 +920,21 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
                 {isFacingTarget ? (
                   <span className="text-emerald-300 flex items-center gap-1">
                     <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                    <span>¡Artefacto en tu campo visual!</span>
+                    <span>{t('ar.targetInSight')}</span>
                   </span>
                 ) : relativeAngle > 0 ? (
                   <span className="text-amber-300">
-                    Gira {Math.abs(Math.round(relativeAngle))}° a tu derecha ➔
+                    {t('ar.turnRight', { deg: Math.abs(Math.round(relativeAngle)) })}
                   </span>
                 ) : (
                   <span className="text-amber-300">
-                    ⬅ Gira {Math.abs(Math.round(relativeAngle))}° a tu izquierda
+                    {t('ar.turnLeft', { deg: Math.abs(Math.round(relativeAngle)) })}
                   </span>
                 )}
               </div>
               <div className="text-[11px] text-stone-300 font-mono flex items-center justify-between">
-                <span>Distancia: <strong>{formatDistance(distanceMeters)}</strong></span>
-                <span>Rumbo: {Math.round(targetBearing)}°</span>
+                <span>{t('ar.distance')} <strong>{formatDistance(distanceMeters)}</strong></span>
+                <span>{t('ar.heading')} {Math.round(targetBearing)}°</span>
               </div>
             </div>
           </div>
@@ -985,10 +987,10 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
             <div className="p-3 bg-black/40 rounded-xl border border-stone-800 text-[11px] text-stone-400 text-left space-y-1">
               <div className="flex items-center gap-1 font-semibold text-emerald-400">
                 <Info className="w-3.5 h-3.5" />
-                <span>Nota sobre el avance:</span>
+                <span>{t('ar.progressNote')}</span>
               </div>
               <p>
-                El avance en la aventura depende de resolver el enigma. El AR es una recompensa visual que se activa tras contestar correctamente.
+                {t('ar.progressNoteDesc') || 'El avance en la aventura depende de resolver el enigma. El AR es una recompensa visual que se activa tras contestar correctamente.'}
               </p>
             </div>
             <button
@@ -996,7 +998,7 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
               onClick={onClose}
               className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-700 to-green-700 hover:from-emerald-600 hover:to-green-600 text-white font-adventure text-xs font-bold tracking-wider transition-all shadow-lg"
             >
-              Volver al Enigma
+              {t('ar.backToRiddle') || 'Volver al Enigma'}
             </button>
           </div>
         </div>
@@ -1012,20 +1014,20 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
 
             <div>
               <h3 className="font-adventure text-xl sm:text-2xl font-bold text-amber-100">
-                Activar Realidad Aumentada
+                {t('ar.activateTitle') || 'Activar Realidad Aumentada'}
               </h3>
               <p className="text-xs sm:text-sm text-stone-300 mt-2 leading-relaxed">
-                Apunta con la cámara de tu móvil hacia el bosque. Superpondremos el artefacto 3D de <strong>{poi.name}</strong> anclado en sus coordenadas GPS reales.
+                {t('ar.activateDesc', { poi: poi.name }) || `Apunta con la cámara de tu móvil hacia el bosque. Superpondremos el artefacto 3D de ${poi.name} anclado en sus coordenadas GPS reales.`}
               </p>
             </div>
 
             <div className="p-3 bg-black/40 rounded-xl border border-stone-800 text-[11px] text-stone-400 text-left space-y-1">
               <div className="flex items-center gap-1.5 font-semibold text-emerald-400">
                 <Info className="w-3.5 h-3.5" />
-                <span>Experiencia visual sin bloqueos:</span>
+                <span>{t('ar.smoothExperience')}</span>
               </div>
               <p>
-                El AR es una capa visual y narrativa. Si el bosque no tiene cobertura o prefieres no encender la cámara, puedes resolver el enigma sin problemas o usar el visor 3D de reserva.
+                {t('ar.smoothExperienceDesc') || 'El AR es una capa visual y narrativa. Si el bosque no tiene cobertura o prefieres no encender la cámara, puedes resolver el enigma sin problemas o usar el visor 3D de reserva.'}
               </p>
             </div>
 
@@ -1038,7 +1040,7 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
                 }}
                 className="flex-1 py-3 px-4 rounded-xl border border-stone-700 bg-stone-900/60 hover:bg-stone-800 text-stone-300 text-xs font-bold transition-all"
               >
-                Modo 3D sin cámara
+                {t('ar.mode3dNoCam') || 'Modo 3D sin cámara'}
               </button>
               <button
                 type="button"
@@ -1046,7 +1048,7 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
                 className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-stone-950 font-adventure text-xs font-bold tracking-wider shadow-lg shadow-amber-950/60 transition-all flex items-center justify-center gap-2"
               >
                 <Camera className="w-4 h-4" />
-                <span>Iniciar Cámara AR</span>
+                <span>{t('ar.startCam') || 'Iniciar Cámara AR'}</span>
               </button>
             </div>
           </div>
@@ -1065,12 +1067,12 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
             className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-800 to-green-900 hover:from-emerald-700 hover:to-green-800 border border-emerald-500/60 text-white font-adventure text-xs font-bold shadow-lg shadow-emerald-950/80 active:scale-95 transition-all"
           >
             <Sparkles className="w-4 h-4 text-amber-300" />
-            <span>Examinar {assetConfig.title || 'Artefacto'}</span>
+            <span>{t('ar.examine') || 'Examinar'} {assetConfig.title || 'Artefacto'}</span>
           </button>
 
           {fallback3DMode && (
             <span className="text-[11px] text-stone-400 italic">
-              Arrastra para rotar • Pellizca para zoom
+              {t('ar.dragToRotate') || 'Arrastra para rotar • Pellizca para zoom'}
             </span>
           )}
         </div>
@@ -1118,20 +1120,20 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
             <div className="mt-3 p-2.5 rounded-xl bg-black/40 border border-emerald-800/60 text-xs text-amber-200 flex items-start gap-2">
               <Eye className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
               <div>
-                <strong>Pista visual para el enigma: </strong>
+                <strong>{t('ar.visualClue') || 'Pista visual para el enigma:'} </strong>
                 <span>{poi.clueSnippet}</span>
               </div>
             </div>
           )}
 
           <div className="mt-4 pt-3 border-t border-emerald-900/60 flex items-center justify-between text-[11px] text-stone-400">
-            <span>¿Lo ves flotando en el bosque?</span>
+            <span>{poi.name}</span>
             <button
               type="button"
               onClick={() => setSelectedAssetInfo(false)}
               className="font-bold text-amber-400 hover:underline"
             >
-              Seguir explorando
+              {t('ar.keepExploring') || 'Seguir explorando'}
             </button>
           </div>
         </div>
