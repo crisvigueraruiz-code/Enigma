@@ -450,5 +450,46 @@
     "collectedRunes": [],
     "bonusCompleted": [],
     "metaEnigmaSolved": false
+  },
+  "SSR49B": {
+    "code": "SSR49B",
+    "forestPackId": "nalda",
+    "name": "Los Lobos del Iregua",
+    "type": "grupo",
+    "storyId": "guardian-iregua",
+    "difficulty": "explorador",
+    "duration": "1h",
+    "easyMode": false,
+    "language": "es",
+    "currentPoiIndex": 0,
+    "routePoiIds": [
+      "castillo-nalda",
+      "arco-villa",
+      "mirador-cameros",
+      "cuevas-palomares",
+      "ermita-villavieja"
+    ],
+    "points": 0,
+    "status": "active",
+    "dateStarted": "2026-10-05T10:04:23.521Z",
+    "lastActive": "2026-10-05T10:04:23.521Z",
+    "lat": 42.3351,
+    "lng": -2.4883,
+    "messages": [
+      {
+        "id": "msg-duel-welcome",
+        "sender": "narrator",
+        "text": "⚔️ ¡Comienza la Batalla Silenciosa en Nalda (La Rioja)! Avanzad con sigilo por la senda.",
+        "timestamp": "10:04 AM"
+      }
+    ],
+    "completedPois": [],
+    "hintHistory": [],
+    "phase": "in_transit",
+    "hasArrivedAtPoi": false,
+    "collectedRunes": [],
+    "bonusCompleted": [],
+    "duelMatchCode": "DUEL-3160",
+    "duelTeamId": "team-1791194663521-1"
   }
 }

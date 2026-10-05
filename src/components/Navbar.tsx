@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trees, Compass, ArrowLeft, PauseCircle, HelpCircle } from 'lucide-react';
+import { Trees, Compass, ArrowLeft, PauseCircle, HelpCircle, Swords, BookOpen, Download } from 'lucide-react';
 import { AmbientAudioControl } from './AmbientAudioControl';
 import { LanguageSelector } from './LanguageSelector';
 import { useI18n } from '../context/I18nContext';
@@ -16,6 +16,9 @@ interface NavbarProps {
   onToggleSimulatedGps: () => void;
   onOpenPauseModal?: () => void;
   onOpenHowToPlay?: () => void;
+  onOpenDuelLobby?: () => void;
+  onOpenPassport?: () => void;
+  onOpenOffline?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -30,6 +33,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   onToggleSimulatedGps,
   onOpenPauseModal,
   onOpenHowToPlay,
+  onOpenDuelLobby,
+  onOpenPassport,
+  onOpenOffline,
 }) => {
   const { t } = useI18n();
 
@@ -66,6 +72,45 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <HelpCircle className="w-3.5 h-3.5 text-amber-300" />
               <span className="hidden sm:inline">{t('howToPlay_navButton')}</span>
+            </button>
+          )}
+
+          {/* Batalla Silenciosa (Duelo) Trigger */}
+          {onOpenDuelLobby && (
+            <button
+              type="button"
+              onClick={onOpenDuelLobby}
+              title={t('duel.title')}
+              className="flex items-center gap-1 px-2 py-1 text-xs rounded-lg border border-amber-600/50 bg-amber-950/60 hover:bg-amber-900/80 text-amber-200 hover:text-amber-100 font-bold transition-all shadow-sm active:scale-95 min-h-[32px]"
+            >
+              <Swords className="w-3.5 h-3.5 text-amber-400" />
+              <span className="hidden sm:inline">{t('duel.navButton')}</span>
+            </button>
+          )}
+
+          {/* Pasaporte de Explorador & Diplomas Trigger */}
+          {onOpenPassport && (
+            <button
+              type="button"
+              onClick={onOpenPassport}
+              title={t('passport.title')}
+              className="flex items-center gap-1 px-2 py-1 text-xs rounded-lg border border-emerald-600/50 bg-emerald-950/60 hover:bg-emerald-900/80 text-emerald-200 hover:text-white font-medium transition-all shadow-sm active:scale-95 min-h-[32px]"
+            >
+              <BookOpen className="w-3.5 h-3.5 text-amber-300" />
+              <span className="hidden md:inline">{t('passport.navButton')}</span>
+            </button>
+          )}
+
+          {/* Descarga Offline Completa (Pack Pre-salida) Trigger */}
+          {onOpenOffline && (
+            <button
+              type="button"
+              onClick={onOpenOffline}
+              title={t('offline.title')}
+              className="flex items-center gap-1 px-2 py-1 text-xs rounded-lg border border-teal-700/50 bg-teal-950/60 hover:bg-teal-900/80 text-teal-200 hover:text-white font-medium transition-all shadow-sm active:scale-95 min-h-[32px]"
+            >
+              <Download className="w-3.5 h-3.5 text-teal-300" />
+              <span className="hidden lg:inline">{t('offline.navButton')}</span>
             </button>
           )}
 

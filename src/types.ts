@@ -241,6 +241,55 @@ export interface PlayerSession {
   collectedRunes?: CollectedRune[];// Letras recolectadas para el meta-enigma final
   bonusCompleted?: string[];       // IDs de pruebas opcionales completadas
   metaEnigmaSolved?: boolean;      // Si se resolvió el meta-enigma final
+
+  // Modo Equipos / Batalla Silenciosa
+  duelMatchCode?: string;
+  duelTeamId?: string;
+}
+
+export interface DuelEffect {
+  id: string;
+  type: 'fog' | 'whisper' | 'stealth';
+  expiresAt: number;
+  sourceTeamName: string;
+}
+
+export interface DuelTeam {
+  id: string;
+  name: string;
+  color: string;
+  emblem: string; // e.g. 🐺, 🦅, 🦊, 🐗, 🦉, 🐻
+  sessionCode: string;
+  points: number;
+  completedPoiIds: string[];
+  currentPoiIndex: number;
+  totalPois: number;
+  lat: number;
+  lng: number;
+  lastActive: string;
+  activeEffects: DuelEffect[];
+  isBot?: boolean;
+}
+
+export interface DuelEvent {
+  id: string;
+  timestamp: string;
+  type: 'poi_cleared' | 'powerup_used' | 'near_presence' | 'meta_solved' | 'duel_started';
+  message: string;
+  teamId: string;
+  teamName: string;
+  icon: string;
+}
+
+export interface DuelMatch {
+  code: string;
+  forestPackId: string;
+  storyId: string;
+  status: 'waiting' | 'in_progress' | 'finished';
+  createdAt: string;
+  teams: DuelTeam[];
+  events: DuelEvent[];
+  winnerTeamId?: string;
 }
 
 export interface PlayerFeedback {

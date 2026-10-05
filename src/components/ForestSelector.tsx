@@ -20,6 +20,8 @@ import {
   Layers,
   CheckCircle2,
   HelpCircle,
+  Swords,
+  Download,
 } from 'lucide-react';
 import { CharactersGallery } from './CharactersGallery';
 
@@ -35,6 +37,9 @@ interface ForestSelectorProps {
   onContinueSavedGame?: () => void;
   onOpenPauseOrAbandon?: () => void;
   onOpenHowToPlay?: () => void;
+  onOpenDuelLobby?: () => void;
+  onOpenPassport?: () => void;
+  onOpenOffline?: () => void;
 }
 
 export const ForestSelector: React.FC<ForestSelectorProps> = ({
@@ -49,6 +54,9 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
   onContinueSavedGame,
   onOpenPauseOrAbandon,
   onOpenHowToPlay,
+  onOpenDuelLobby,
+  onOpenPassport,
+  onOpenOffline,
 }) => {
   const { t } = useI18n();
 
@@ -176,6 +184,39 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
                 <span>{t('howToPlay_title')}</span>
               </button>
             )}
+
+            {onOpenDuelLobby && (
+              <button
+                type="button"
+                onClick={onOpenDuelLobby}
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-amber-600 via-amber-500 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 text-stone-950 font-adventure text-sm font-black tracking-wider shadow-lg shadow-amber-950/80 active:scale-95 transition-all min-h-[48px]"
+              >
+                <Swords className="w-5 h-5 text-stone-950 animate-pulse" />
+                <span>{t('duel.navButton')}</span>
+              </button>
+            )}
+
+            {onOpenPassport && (
+              <button
+                type="button"
+                onClick={onOpenPassport}
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-emerald-950/70 hover:bg-emerald-900/90 border border-emerald-600/50 text-emerald-200 hover:text-white font-semibold text-sm transition-all shadow-md active:scale-95 min-h-[48px]"
+              >
+                <BookOpen className="w-5 h-5 text-amber-300" />
+                <span>{t('passport.title')}</span>
+              </button>
+            )}
+
+            {onOpenOffline && (
+              <button
+                type="button"
+                onClick={onOpenOffline}
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-teal-950/70 hover:bg-teal-900/90 border border-teal-600/50 text-teal-200 hover:text-white font-semibold text-sm transition-all shadow-md active:scale-95 min-h-[48px]"
+              >
+                <Download className="w-5 h-5 text-teal-300" />
+                <span>{t('offline.navButton')}</span>
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -294,15 +335,26 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
                   </div>
 
                   {/* CTA Buttons */}
-                  <div className="pt-2">
+                  <div className="pt-2 flex items-center gap-2">
                     <button
                       type="button"
                       onClick={() => onSelectForest(forest)}
-                      className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-800 to-green-700 hover:from-emerald-700 hover:to-green-600 text-white font-adventure font-bold text-sm tracking-wider flex items-center justify-center gap-2 shadow-md active:scale-[0.98] transition-all min-h-[46px]"
+                      className="flex-1 py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-800 to-green-700 hover:from-emerald-700 hover:to-green-600 text-white font-adventure font-bold text-sm tracking-wider flex items-center justify-center gap-2 shadow-md active:scale-[0.98] transition-all min-h-[46px]"
                     >
                       <span>{t('home.enterForestBtn')}</span>
                       <ArrowRight className="w-4 h-4 text-amber-300" />
                     </button>
+
+                    {onOpenOffline && (
+                      <button
+                        type="button"
+                        onClick={onOpenOffline}
+                        title={t('offline.download')}
+                        className="py-3.5 px-3.5 rounded-xl bg-black/40 hover:bg-teal-950/80 border border-teal-700/50 hover:border-teal-500 text-teal-300 hover:text-white transition-all shrink-0 active:scale-95 flex items-center justify-center min-h-[46px]"
+                      >
+                        <Download className="w-4 h-4" />
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

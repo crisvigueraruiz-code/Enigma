@@ -4,6 +4,8 @@ import { WindmillPOI, ForestPack, PlayerSession } from '../types';
 import { calculateHaversineDistance, calculateBearing, formatDistance } from '../utils/geo';
 import { sounds } from '../utils/audio';
 import { useI18n } from '../context/I18nContext';
+import { DuelBattleHud } from './DuelBattleHud';
+import { duelService } from '../services/duelService';
 import {
   Compass,
   Navigation,
@@ -77,6 +79,7 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
   const playerMarkerRef = useRef<L.Marker | null>(null);
   const accuracyCircleRef = useRef<L.Circle | null>(null);
   const poiMarkersLayerRef = useRef<L.LayerGroup | null>(null);
+  const rivalMarkersLayerRef = useRef<L.LayerGroup | null>(null);
   const routePolylineShadowRef = useRef<L.Polyline | null>(null);
   const routePolylineRef = useRef<L.Polyline | null>(null);
   const targetBeelineRef = useRef<L.Polyline | null>(null);
@@ -198,6 +201,10 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
     const poiLayerGroup = L.layerGroup().addTo(map);
     poiMarkersLayerRef.current = poiLayerGroup;
 
+    // Rival markers layer group (Modo Batalla Silenciosa)
+    const rivalLayerGroup = L.layerGroup().addTo(map);
+    rivalMarkersLayerRef.current = rivalLayerGroup;
+
     mapInstanceRef.current = map;
 
     // Invalidate size on initial mount
@@ -245,6 +252,56 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
       tilePane.style.filter = 'none';
     }
   }, [activeTheme, organicFilterActive, contrast, saturation, warmth]);
+
+  // Modo Equipos: Sync and Render Rival Team Marker
+  useEffect(() => {
+    if (!session.duelMatchCode) return;
+
+    const unsubscribe = duelService.subscribe((match) => {
+      const rivalGroup = rivalMarkersLayerRef.current;
+      if (!rivalGroup) return;
+      rivalGroup.clearLayers();
+
+      const rival = match.teams.find((t) => t.sessionCode !== session.code);
+      if (rival && typeof rival.lat === 'number' && typeof rival.lng === 'number') {
+        const halo = L.circle([rival.lat, rival.lng], {
+          radius: 50,
+          color: rival.color || '#f59e0b',
+          weight: 1.5,
+          dashArray: '4, 4',
+          fillColor: rival.color || '#f59e0b',
+          fillOpacity: 0.12,
+        });
+        rivalGroup.addLayer(halo);
+
+        const rivalIcon = L.divIcon({
+          className: 'custom-rival-marker',
+          html: `
+            <div style="position: relative; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px;">
+              <div style="position: absolute; width: 100%; height: 100%; border-radius: 9999px; background: ${rival.color || '#f59e0b'}33; animation: pulse 2s infinite;"></div>
+              <div style="position: relative; width: 34px; height: 34px; border-radius: 9999px; background: #162218; border: 2.5px solid ${rival.color || '#f59e0b'}; display: flex; align-items: center; justify-content: center; font-size: 17px; box-shadow: 0 4px 12px rgba(0,0,0,0.6);">
+                ${rival.emblem || '🦅'}
+              </div>
+            </div>
+          `,
+          iconSize: [44, 44],
+          iconAnchor: [22, 22],
+        });
+
+        const marker = L.marker([rival.lat, rival.lng], { icon: rivalIcon });
+        marker.bindTooltip(
+          `<div style="font-size: 11px; font-weight: bold; color: ${rival.color || '#f59e0b'}; text-align: center;">
+            ${rival.emblem} ${rival.name}<br/>
+            <span style="color: #cbd5e1; font-size: 10px;">${rival.points} pts · ${rival.completedPoiIds.length} hitos</span>
+          </div>`,
+          { permanent: false, direction: 'top' }
+        );
+        rivalGroup.addLayer(marker);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [session.duelMatchCode, session.code]);
 
   // Sync selectedPoi with currentPoi when currentPoi changes
   useEffect(() => {
@@ -544,8 +601,20 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
   };
 
   return (
-    <div
-      className={`relative rounded-3xl overflow-hidden border border-emerald-700/50 bg-[#121c15] shadow-2xl transition-all duration-300 flex flex-col ${
+    <>
+      {session.duelMatchCode && (
+        <div className="mb-3">
+          <DuelBattleHud
+            sessionCode={session.code}
+            duelMatchCode={session.duelMatchCode}
+            playerLat={playerLat}
+            playerLng={playerLng}
+            totalPois={session.routePoiIds.length || forest.pois.length}
+          />
+        </div>
+      )}
+      <div
+        className={`relative rounded-3xl overflow-hidden border border-emerald-700/50 bg-[#121c15] shadow-2xl transition-all duration-300 flex flex-col ${
         isFullscreen
           ? 'fixed inset-0 z-50 rounded-none border-none h-screen w-screen'
           : 'h-[460px] sm:h-[500px] w-full'
@@ -1016,5 +1085,6 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
         </div>
       </div>
     </div>
+    </>
   );
 };

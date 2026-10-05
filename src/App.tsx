@@ -19,8 +19,14 @@ import { AdminAuthModal } from './components/AdminAuthModal';
 import { BriefingModal } from './components/BriefingModal';
 import { PauseOrAbandonModal } from './components/PauseOrAbandonModal';
 import { HowToPlayModal } from './components/HowToPlayModal';
+import { DuelLobbyModal } from './components/DuelLobbyModal';
+import { DuelPodiumModal } from './components/DuelPodiumModal';
+import { ExplorerPassportModal } from './components/ExplorerPassportModal';
+import { OfflineManagerModal } from './components/OfflineManagerModal';
+import { duelService } from './services/duelService';
 import { ambientAudio } from './utils/audio';
 import { useI18n } from './context/I18nContext';
+import { DuelMatch } from './types';
 
 export default function App() {
   const { currentLanguage, localizeForest, onForestSelected, t } = useI18n();
@@ -36,6 +42,11 @@ export default function App() {
   const [isBriefingOpen, setIsBriefingOpen] = useState(false);
   const [isPauseModalOpen, setIsPauseModalOpen] = useState(false);
   const [isHowToPlayOpen, setIsHowToPlayOpen] = useState(false);
+  const [isDuelLobbyOpen, setIsDuelLobbyOpen] = useState(false);
+  const [isDuelPodiumOpen, setIsDuelPodiumOpen] = useState(false);
+  const [isPassportOpen, setIsPassportOpen] = useState(false);
+  const [isOfflineModalOpen, setIsOfflineModalOpen] = useState(false);
+  const [activeDuelMatch, setActiveDuelMatch] = useState<DuelMatch | null>(null);
   const [isAdminAuthOpen, setIsAdminAuthOpen] = useState(false);
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(true);
   const [activeCharacterStory, setActiveCharacterStory] = useState<StoryIntro | null>(null);
@@ -150,6 +161,36 @@ export default function App() {
       setLoading(false);
     }
   };
+
+  // Start duel game
+  const handleStartDuelGame = async (sessionCode: string, forestPackId: string) => {
+    setLoading(true);
+    try {
+      const { session, forestPack } = await api.getSession(sessionCode);
+      setActiveSession(session);
+      setSelectedForest(forestPack);
+      localStorage.setItem('enigma_active_session', session.code);
+      setIsDuelLobbyOpen(false);
+      setIsBriefingOpen(false);
+      setCurrentView('game');
+    } catch (e: any) {
+      alert(e.message || 'Error al iniciar duelo');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Listen for duel completion to open podium modal
+  useEffect(() => {
+    if (!activeSession?.duelMatchCode) return;
+    const unsub = duelService.subscribe((match) => {
+      setActiveDuelMatch(match);
+      if (match.status === 'finished') {
+        setIsDuelPodiumOpen(true);
+      }
+    });
+    return () => unsub();
+  }, [activeSession?.duelMatchCode]);
 
   // Submit Answer in Game (Supports 6ter all types & bonus)
   const handleSubmitAnswer = async (answer: string, riddleId?: string) => {
@@ -345,6 +386,9 @@ export default function App() {
         onToggleSimulatedGps={() => setSimulatedGps(!simulatedGps)}
         onOpenPauseModal={() => setIsPauseModalOpen(true)}
         onOpenHowToPlay={() => setIsHowToPlayOpen(true)}
+        onOpenDuelLobby={() => setIsDuelLobbyOpen(true)}
+        onOpenPassport={() => setIsPassportOpen(true)}
+        onOpenOffline={() => setIsOfflineModalOpen(true)}
       />
 
       {/* Main Viewport */}
@@ -377,6 +421,9 @@ export default function App() {
             onContinueSavedGame={() => setCurrentView('game')}
             onOpenPauseOrAbandon={() => setIsPauseModalOpen(true)}
             onOpenHowToPlay={() => setIsHowToPlayOpen(true)}
+            onOpenDuelLobby={() => setIsDuelLobbyOpen(true)}
+            onOpenPassport={() => setIsPassportOpen(true)}
+            onOpenOffline={() => setIsOfflineModalOpen(true)}
           />
         )}
 
@@ -457,6 +504,7 @@ export default function App() {
           forest={localizedSelectedForest}
           onFinish={handleFinishGame}
           loading={loading}
+          onOpenPassport={() => setIsPassportOpen(true)}
         />
       )}
 
@@ -495,6 +543,41 @@ export default function App() {
       <HowToPlayModal
         isOpen={isHowToPlayOpen}
         onClose={() => setIsHowToPlayOpen(false)}
+      />
+
+      {/* Duel Team Lobby Modal */}
+      <DuelLobbyModal
+        isOpen={isDuelLobbyOpen}
+        onClose={() => setIsDuelLobbyOpen(false)}
+        forests={localizedForests}
+        initialForest={localizedSelectedForest}
+        onStartDuelGame={handleStartDuelGame}
+      />
+
+      {/* Duel Victory Podium Modal */}
+      {activeSession?.duelMatchCode && activeDuelMatch && (
+        <DuelPodiumModal
+          isOpen={isDuelPodiumOpen}
+          match={activeDuelMatch}
+          sessionCode={activeSession.code}
+          onClose={() => setIsDuelPodiumOpen(false)}
+        />
+      )}
+
+      {/* Explorer Passport & Downloadable Diploma Modal */}
+      <ExplorerPassportModal
+        isOpen={isPassportOpen}
+        onClose={() => setIsPassportOpen(false)}
+        forests={localizedForests}
+        activeSession={activeSession}
+        selectedForest={localizedSelectedForest}
+      />
+
+      {/* Offline Pre-Departure Pack Manager Modal */}
+      <OfflineManagerModal
+        isOpen={isOfflineModalOpen}
+        onClose={() => setIsOfflineModalOpen(false)}
+        forests={localizedForests}
       />
       {/* Discreet Footer with subtle copyright & organizer trigger */}
       {currentView !== 'admin' && (

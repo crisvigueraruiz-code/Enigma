@@ -79,6 +79,11 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
   const [zoomLevel, setZoomLevel] = useState<number>(1.0);
   const touchStartRef = useRef<{ x: number; y: number; dist?: number } | null>(null);
 
+  // Ventana al Pasado (AR Historical Time Portal)
+  const [timePortalActive, setTimePortalActive] = useState<boolean>(false);
+  const [timePortalSlider, setTimePortalSlider] = useState<number>(65);
+  const historicGroupRef = useRef<THREE.Group | null>(null);
+
   const assetConfig: ArAssetConfig = poi.arAsset || {
     title: `Reliquia de ${poi.name}`,
     description: `Una proyección mística anclada a las coordenadas de ${poi.name}.`,
@@ -87,7 +92,7 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
     heightOffsetMeters: 1.0,
   };
 
-  const isUnlocked = assetConfig.revealTrigger === 'onArrival' || isRiddleSolved;
+  const isUnlocked = assetConfig.revealTrigger === 'onArrival' || isRiddleSolved || timePortalActive;
 
   // Haversine distance and bearing to POI
   const distanceMeters = calculateHaversineDistance(playerLat, playerLng, poi.lat, poi.lng);
@@ -572,6 +577,95 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
     return group;
   };
 
+  // Helper: Procedural 3D Medieval Reconstruction for "Ventana al Pasado"
+  const createHistoricReconstruction = (poiId: string): THREE.Group => {
+    const group = new THREE.Group();
+
+    if (poiId.includes('castillo')) {
+      // Medieval Castle Tower with battlements & banner
+      const wallMat = new THREE.MeshStandardMaterial({
+        color: 0x94806a,
+        roughness: 0.9,
+        metalness: 0.1,
+      });
+      const base = new THREE.Mesh(new THREE.BoxGeometry(2.8, 3.8, 2.8), wallMat);
+      base.position.y = 1.9;
+      group.add(base);
+
+      // Crenellations
+      const crenelMat = new THREE.MeshStandardMaterial({ color: 0x7c6955, roughness: 0.9 });
+      for (let x = -1.1; x <= 1.1; x += 0.7) {
+        const cr1 = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.5, 0.35), crenelMat);
+        cr1.position.set(x, 4.05, 1.3);
+        group.add(cr1);
+        const cr2 = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.5, 0.35), crenelMat);
+        cr2.position.set(x, 4.05, -1.3);
+        group.add(cr2);
+      }
+
+      // Flagpole and Cameros Banner
+      const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 2.2), crenelMat);
+      pole.position.set(0, 4.9, 0);
+      group.add(pole);
+
+      const flag = new THREE.Mesh(
+        new THREE.PlaneGeometry(1.1, 0.65),
+        new THREE.MeshStandardMaterial({ color: 0xb91c1c, side: THREE.DoubleSide })
+      );
+      flag.position.set(0.6, 5.5, 0);
+      group.add(flag);
+
+      // Warm torch light
+      const torch = new THREE.PointLight(0xf59e0b, 2.5, 6);
+      torch.position.set(1.4, 3.2, 1.4);
+      group.add(torch);
+    } else if (poiId.includes('palomares') || poiId.includes('cuevas')) {
+      // Cave Hermit Entrance with wooden beam scaffolding & cross
+      const rockMat = new THREE.MeshStandardMaterial({ color: 0x786754, roughness: 1.0 });
+      const arch = new THREE.Mesh(new THREE.TorusGeometry(1.6, 0.35, 8, 16, Math.PI), rockMat);
+      arch.position.y = 1.2;
+      group.add(arch);
+
+      const woodMat = new THREE.MeshStandardMaterial({ color: 0x543d2b, roughness: 0.8 });
+      const vertical = new THREE.Mesh(new THREE.BoxGeometry(0.1, 1.6, 0.1), woodMat);
+      vertical.position.set(0, 1.1, 0);
+      group.add(vertical);
+
+      const horizontal = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.1, 0.1), woodMat);
+      horizontal.position.set(0, 1.4, 0);
+      group.add(horizontal);
+
+      const candleLight = new THREE.PointLight(0xfbbf24, 2.2, 5);
+      candleLight.position.set(0, 0.8, 0.2);
+      group.add(candleLight);
+    } else {
+      // Ancient Megalithic Gate Arch with glowing runes
+      const stoneMat = new THREE.MeshStandardMaterial({ color: 0x6e6e66, roughness: 0.9 });
+      const p1 = new THREE.Mesh(new THREE.BoxGeometry(0.5, 2.8, 0.5), stoneMat);
+      p1.position.set(-1.1, 1.4, 0);
+      group.add(p1);
+
+      const p2 = new THREE.Mesh(new THREE.BoxGeometry(0.5, 2.8, 0.5), stoneMat);
+      p2.position.set(1.1, 1.4, 0);
+      group.add(p2);
+
+      const top = new THREE.Mesh(new THREE.BoxGeometry(2.9, 0.5, 0.7), stoneMat);
+      top.position.set(0, 2.9, 0);
+      group.add(top);
+
+      const runeMat = new THREE.MeshStandardMaterial({
+        color: 0xf59e0b,
+        emissive: 0xd97706,
+        emissiveIntensity: 0.7,
+      });
+      const rune = new THREE.Mesh(new THREE.OctahedronGeometry(0.4, 0), runeMat);
+      rune.position.set(0, 1.6, 0);
+      group.add(rune);
+    }
+
+    return group;
+  };
+
   // -------------------------------------------------------------
   // Three.js Scene Setup & Render Loop
   // -------------------------------------------------------------
@@ -621,6 +715,11 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
     const rootArtifactGroup = new THREE.Group();
     objectGroupRef.current = rootArtifactGroup;
     scene.add(rootArtifactGroup);
+
+    // Historic Reconstruction Group ("Ventana al Pasado")
+    const historicReconstruction = createHistoricReconstruction(poi.id);
+    historicGroupRef.current = historicReconstruction;
+    scene.add(historicReconstruction);
 
     // Initial procedural artifact as immediate representation
     let currentMesh: THREE.Object3D = createProceduralArtifact(poi.id, assetConfig.scale || 1.2, assetConfig.preset);
@@ -731,6 +830,23 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
         }
       }
 
+      if (historicGroupRef.current && rootArtifactGroup) {
+        historicGroupRef.current.visible = timePortalActive;
+        if (timePortalActive) {
+          const alpha = Math.max(0.15, timePortalSlider / 100);
+          historicGroupRef.current.traverse((child) => {
+            if ((child as THREE.Mesh).isMesh && (child as THREE.Mesh).material) {
+              const mat = (child as THREE.Mesh).material as THREE.Material;
+              mat.transparent = true;
+              mat.opacity = alpha;
+            }
+          });
+          historicGroupRef.current.position.copy(rootArtifactGroup.position);
+          historicGroupRef.current.position.y -= 0.6;
+          historicGroupRef.current.rotation.y = rootArtifactGroup.rotation.y;
+        }
+      }
+
       renderer.render(scene, camera);
     };
 
@@ -742,7 +858,7 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
       renderer.dispose();
       stopCameraStream();
     };
-  }, [isOpen, fallback3DMode, relativeAngle, distanceMeters, manualRotationY, manualRotationX, zoomLevel]);
+  }, [isOpen, fallback3DMode, relativeAngle, distanceMeters, manualRotationY, manualRotationX, zoomLevel, timePortalActive, timePortalSlider]);
 
   // Touch drag for manual 3D inspector rotation and pinch zoom
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -789,6 +905,11 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
         autoPlay
         playsInline
         muted
+        style={{
+          filter: timePortalActive
+            ? `sepia(${timePortalSlider * 0.75}%) contrast(${100 + timePortalSlider * 0.2}%) brightness(${100 - timePortalSlider * 0.05}%)`
+            : 'none',
+        }}
         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
           fallback3DMode ? 'opacity-25 blur-sm' : 'opacity-100'
         }`}
@@ -857,6 +978,25 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Ventana al Pasado Toggle Button */}
+          <button
+            type="button"
+            onClick={() => {
+              sounds.playClick();
+              setTimePortalActive(!timePortalActive);
+            }}
+            className={`px-3 py-1.5 rounded-xl border text-xs font-adventure font-bold flex items-center gap-1.5 backdrop-blur-md transition-all shadow ${
+              timePortalActive
+                ? 'bg-gradient-to-r from-amber-600 to-amber-500 text-stone-950 border-amber-300 shadow-amber-950 animate-pulse'
+                : 'bg-black/60 text-amber-200 border-amber-500/50 hover:bg-black/80'
+            }`}
+            title="Activar Ventana al Pasado (Reconstrucción Siglo XIII)"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <span className="hidden sm:inline">Ventana al Pasado</span>
+            <span className="sm:hidden">1299</span>
+          </button>
+
           {/* Toggle mode: AR Geolocated vs 3D Inspector */}
           <button
             type="button"
@@ -969,6 +1109,51 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
         </div>
       )}
 
+      {/* TIME PORTAL SLIDER PANEL (Ventana al Pasado) */}
+      {timePortalActive && isUnlocked && (
+        <div className="absolute bottom-8 left-4 right-4 z-40 max-w-md mx-auto bg-black/85 backdrop-blur-md border border-amber-500/70 rounded-3xl p-4 shadow-2xl text-stone-100 space-y-2.5 animate-in fade-in duration-300">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="text-xl">⏳</span>
+              <div>
+                <h4 className="font-adventure text-xs sm:text-sm font-bold text-amber-200">
+                  {t('ar.timePortalTitle') || 'Ventana al Pasado • Año 1299'}
+                </h4>
+                <p className="text-[10px] text-stone-400">
+                  {t('ar.timePortalDesc') || 'Reconstrucción medieval superpuesta en tu cámara'}
+                </p>
+              </div>
+            </div>
+            <span className="text-[10px] font-mono bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded border border-amber-500/40">
+              {timePortalSlider}% Pasado
+            </span>
+          </div>
+
+          <div className="space-y-1">
+            <div className="flex justify-between text-[10px] text-stone-400 font-mono">
+              <span>Presente (2026)</span>
+              <span className="text-amber-300 font-bold">Siglo XIII (1299)</span>
+            </div>
+            <input
+              type="range"
+              min={0}
+              max={100}
+              value={timePortalSlider}
+              onChange={(e) => setTimePortalSlider(Number(e.target.value))}
+              className="w-full accent-amber-400 h-2 bg-stone-800 rounded-lg cursor-pointer"
+            />
+          </div>
+
+          <p className="text-[11px] text-stone-300 leading-snug italic bg-amber-950/30 p-2.5 rounded-xl border border-amber-500/30">
+            {poi.id.includes('castillo')
+              ? 'En 1299, las almenas que enfocas vigilaban el valle del Iregua con empalizadas, foso y guardias armados del Señor de Cameros.'
+              : poi.id.includes('palomares') || poi.id.includes('cuevas')
+              ? 'En los siglos X-XIII, monjes ermitaños excavaron estas oquedades en la toba para rezar en silencio antes de poblarse de palomas.'
+              : 'En el siglo XIII, pobladores y monjes recorrían este sendero bajo encinas milenarias guiándose por las estrellas y el rumor del agua.'}
+          </p>
+        </div>
+      )}
+
       {/* CENTER LOCKED OVERLAY (If revealTrigger === 'onRiddleSolved' and not yet solved) */}
       {!isUnlocked && (
         <div className="absolute inset-0 z-20 flex items-center justify-center p-6 bg-black/65 backdrop-blur-sm pointer-events-auto">
@@ -993,13 +1178,27 @@ export const GeolocatedARModal: React.FC<GeolocatedARModalProps> = ({
                 {t('ar.progressNoteDesc') || 'El avance en la aventura depende de resolver el enigma. El AR es una recompensa visual que se activa tras contestar correctamente.'}
               </p>
             </div>
-            <button
-              type="button"
-              onClick={onClose}
-              className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-700 to-green-700 hover:from-emerald-600 hover:to-green-600 text-white font-adventure text-xs font-bold tracking-wider transition-all shadow-lg"
-            >
-              {t('ar.backToRiddle') || 'Volver al Enigma'}
-            </button>
+            <div className="flex flex-col sm:flex-row gap-2 pt-1">
+              <button
+                type="button"
+                onClick={() => {
+                  sounds.playClick();
+                  setTimePortalActive(true);
+                }}
+                className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-yellow-400 text-stone-950 font-adventure text-xs font-bold tracking-wider transition-all shadow-lg flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-stone-950" />
+                <span>{t('ar.timePortalButton') || 'Ventana al Pasado'}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={onClose}
+                className="py-3 px-4 rounded-xl bg-stone-900/80 hover:bg-stone-800 text-stone-300 font-adventure text-xs font-semibold tracking-wider transition-all border border-stone-700 cursor-pointer"
+              >
+                {t('ar.backToRiddle') || 'Volver al Enigma'}
+              </button>
+            </div>
           </div>
         </div>
       )}

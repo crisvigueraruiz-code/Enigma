@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PlayerSession, ForestPack } from '../types';
 import { useI18n } from '../context/I18nContext';
-import { Trophy, Star, Sparkles, CheckCircle2, MessageSquare, ArrowRight, Share2 } from 'lucide-react';
+import { Trophy, Star, Sparkles, CheckCircle2, MessageSquare, ArrowRight, Share2, Award, BookOpen } from 'lucide-react';
 import { sounds } from '../utils/audio';
 
 interface CompletionModalProps {
@@ -9,6 +9,7 @@ interface CompletionModalProps {
   forest: ForestPack;
   onFinish: (rating: number, comment: string) => Promise<void>;
   loading: boolean;
+  onOpenPassport?: () => void;
 }
 
 export const CompletionModal: React.FC<CompletionModalProps> = ({
@@ -16,6 +17,7 @@ export const CompletionModal: React.FC<CompletionModalProps> = ({
   forest,
   onFinish,
   loading,
+  onOpenPassport,
 }) => {
   const { t } = useI18n();
   const [rating, setRating] = useState(5);
@@ -76,6 +78,35 @@ export const CompletionModal: React.FC<CompletionModalProps> = ({
             </div>
           </div>
         </div>
+
+        {/* Explorer Passport & Official Diploma Callout */}
+        {onOpenPassport && (
+          <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-950/70 via-[#261E14] to-emerald-950/70 border border-amber-500/50 flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
+            <div className="space-y-0.5">
+              <span className="text-[10px] uppercase font-bold tracking-widest text-amber-400">
+                {t('passport.subtitle') || 'Cuaderno de Campo'}
+              </span>
+              <h4 className="font-adventure text-sm font-bold text-amber-100 flex items-center gap-1.5">
+                <Award className="w-4 h-4 text-amber-400" />
+                <span>{t('passport.diplomaPreview') || 'Pergamino Oficial del Explorador'}</span>
+              </h4>
+              <p className="text-[11px] text-stone-300">
+                {t('passport.downloadDiploma') || 'Descarga tu diploma con sellos y puntos de sabiduría'}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                sounds.playClick();
+                onOpenPassport();
+              }}
+              className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 via-amber-500 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 text-stone-950 font-adventure text-xs font-black tracking-wider flex items-center justify-center gap-1.5 shadow-lg active:scale-95 transition-all shrink-0 cursor-pointer"
+            >
+              <BookOpen className="w-4 h-4 text-stone-950" />
+              <span>{t('passport.tabDiploma') || 'Ver Diploma'}</span>
+            </button>
+          </div>
+        )}
 
         {/* Rating and Feedback Form */}
         {!submitted ? (

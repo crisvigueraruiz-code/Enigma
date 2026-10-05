@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { WebSocketServer, WebSocket } from 'ws';
 import { GoogleGenAI, LiveServerMessage, Modality } from '@google/genai';
-import { ForestPack, PlayerSession, Riddle, PlayerFeedback } from './src/types';
+import { ForestPack, PlayerSession, Riddle, PlayerFeedback, DuelMatch, DuelTeam, DuelEvent, DuelEffect } from './src/types';
 import { SEED_FOREST_PACKS } from './src/data/seedPacks';
 import { findBestRiddle } from './src/utils/difficultyFallback';
 
@@ -135,10 +135,119 @@ function saveFeedback(feedbackList: PlayerFeedback[]): void {
   }
 }
 
+const DUELS_FILE = path.join(DATA_DIR, 'duels.json');
+
+function loadDuels(): Record<string, DuelMatch> {
+  try {
+    if (fs.existsSync(DUELS_FILE)) {
+      const data = fs.readFileSync(DUELS_FILE, 'utf-8');
+      return JSON.parse(data);
+    }
+  } catch (err) {
+    console.error('Error loading duels.json:', err);
+  }
+  return {};
+}
+
+function saveDuels(duels: Record<string, DuelMatch>): void {
+  try {
+    fs.writeFileSync(DUELS_FILE, JSON.stringify(duels, null, 2), 'utf-8');
+  } catch (err) {
+    console.error('Error saving duels.json:', err);
+  }
+}
+
 // In-memory cache loaded from disk
 let forestPacks: ForestPack[] = loadForests();
 let sessions: Record<string, PlayerSession> = loadSessions();
 let feedbackList: PlayerFeedback[] = loadFeedback();
+let duelMatches: Record<string, DuelMatch> = loadDuels();
+
+// Duel WebSocket connections tracking
+const duelWss = new WebSocketServer({ noServer: true });
+const duelClients = new Map<string, Set<{ ws: WebSocket; teamId: string }>>();
+
+function broadcastDuel(matchCode: string, payload: any) {
+  const clients = duelClients.get(matchCode);
+  if (!clients) return;
+  const msg = JSON.stringify(payload);
+  for (const client of clients) {
+    if (client.ws.readyState === WebSocket.OPEN) {
+      client.ws.send(msg);
+    }
+  }
+}
+
+// Bot rival AI runner for solo duel exploration
+function startShadowRivalBot(matchCode: string) {
+  const match = duelMatches[matchCode];
+  if (!match) return;
+  const botTeam = match.teams.find((t) => t.isBot);
+  if (!botTeam) return;
+
+  const pack = forestPacks.find((p) => p.id === match.forestPackId) || forestPacks[0];
+  const poiIds = pack.pois.map((p) => p.id);
+
+  const botInterval = setInterval(() => {
+    const currentM = duelMatches[matchCode];
+    if (!currentM || currentM.status === 'finished') {
+      clearInterval(botInterval);
+      return;
+    }
+    const bTeam = currentM.teams.find((t) => t.id === botTeam.id);
+    if (!bTeam) {
+      clearInterval(botInterval);
+      return;
+    }
+
+    const targetPoiId = poiIds[bTeam.currentPoiIndex] || poiIds[0];
+    const targetPoi = pack.pois.find((p) => p.id === targetPoiId) || pack.pois[0];
+
+    // Move slightly towards target POI
+    bTeam.lat = bTeam.lat + (targetPoi.lat - bTeam.lat) * 0.25;
+    bTeam.lng = bTeam.lng + (targetPoi.lng - bTeam.lng) * 0.25;
+    bTeam.lastActive = new Date().toISOString();
+
+    // Plausible solving progression
+    if (Math.random() < 0.4 && bTeam.completedPoiIds.length < bTeam.totalPois) {
+      if (!bTeam.completedPoiIds.includes(targetPoiId)) {
+        bTeam.completedPoiIds.push(targetPoiId);
+        bTeam.points += 80;
+        bTeam.currentPoiIndex = Math.min(bTeam.currentPoiIndex + 1, bTeam.totalPois - 1);
+
+        const ev: DuelEvent = {
+          id: `evt-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
+          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          type: 'poi_cleared',
+          message: `${bTeam.emblem} ${bTeam.name} ha descubierto el enigma de ${targetPoi.name} (+80 pts)`,
+          teamId: bTeam.id,
+          teamName: bTeam.name,
+          icon: '🦉',
+        };
+        currentM.events.unshift(ev);
+        if (currentM.events.length > 25) currentM.events.pop();
+
+        if (bTeam.completedPoiIds.length >= bTeam.totalPois && !currentM.winnerTeamId) {
+          currentM.winnerTeamId = bTeam.id;
+          currentM.status = 'finished';
+          currentM.events.unshift({
+            id: `evt-${Date.now()}-botwin`,
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+            type: 'meta_solved',
+            message: `👑 ¡${bTeam.emblem} ${bTeam.name} ha completado la senda en primer lugar!`,
+            teamId: bTeam.id,
+            teamName: bTeam.name,
+            icon: '👑',
+          });
+          clearInterval(botInterval);
+        }
+      }
+    }
+
+    saveDuels(duelMatches);
+    broadcastDuel(matchCode, { type: 'duel:update', match: currentM });
+  }, 16000);
+}
 
 function generateSessionCode(): string {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -247,7 +356,7 @@ app.delete('/api/forests/:id', requireAdmin, (req: Request, res: Response) => {
 
 // 6. Start / Create Player Session
 app.post('/api/sessions', (req: Request, res: Response) => {
-  const { forestPackId, name, type, storyId, difficulty, duration, easyMode, language } = req.body;
+  const { forestPackId, name, type, storyId, difficulty, duration, easyMode, language, duelMatchCode, duelTeamId } = req.body;
 
   const pack = forestPacks.find(p => p.id === forestPackId);
   if (!pack) {
@@ -336,7 +445,19 @@ app.post('/api/sessions', (req: Request, res: Response) => {
     collectedRunes: [],
     bonusCompleted: [],
     metaEnigmaSolved: false,
+    duelMatchCode: duelMatchCode || undefined,
+    duelTeamId: duelTeamId || undefined,
   };
+
+  if (duelMatchCode && duelMatches[duelMatchCode]) {
+    const match = duelMatches[duelMatchCode];
+    const team = match.teams.find((t) => t.id === duelTeamId);
+    if (team) {
+      team.sessionCode = code;
+      saveDuels(duelMatches);
+      broadcastDuel(match.code, { type: 'duel:update', match });
+    }
+  }
 
   sessions[code] = newSession;
   saveSessions(sessions);
@@ -549,6 +670,48 @@ app.post('/api/sessions/:code/answer', (req: Request, res: Response) => {
 
     session.phase = 'reward';
     saveSessions(sessions);
+
+    if (session.duelMatchCode && duelMatches[session.duelMatchCode]) {
+      const match = duelMatches[session.duelMatchCode];
+      const team = match.teams.find((t) => t.id === session.duelTeamId || t.sessionCode === session.code);
+      if (team) {
+        team.points = session.points;
+        if (!team.completedPoiIds.includes(currentPoiId)) {
+          team.completedPoiIds.push(currentPoiId);
+        }
+        team.currentPoiIndex = session.currentPoiIndex;
+        team.lastActive = new Date().toISOString();
+
+        const poiObj = pack.pois.find((p) => p.id === currentPoiId);
+        const ev: DuelEvent = {
+          id: `evt-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
+          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          type: 'poi_cleared',
+          message: `${team.emblem} ${team.name} conquistó el enigma de ${poiObj?.name || 'la senda'} (+${pointsAwarded} pts)`,
+          teamId: team.id,
+          teamName: team.name,
+          icon: '🏆',
+        };
+        match.events.unshift(ev);
+        if (match.events.length > 25) match.events.pop();
+
+        if (session.completedPois.length >= session.routePoiIds.length && !match.winnerTeamId) {
+          match.winnerTeamId = team.id;
+          match.status = 'finished';
+          match.events.unshift({
+            id: `evt-win-${Date.now()}`,
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+            type: 'meta_solved',
+            message: `👑 ¡${team.emblem} ${team.name} HA GANADO LA BATALLA SILENCIOSA!`,
+            teamId: team.id,
+            teamName: team.name,
+            icon: '👑',
+          });
+        }
+        saveDuels(duelMatches);
+        broadcastDuel(match.code, { type: 'duel:update', match, event: ev });
+      }
+    }
 
     const isLastPoi = session.currentPoiIndex + 1 >= session.routePoiIds.length;
     const correctMsg = translateServer('answer.correct', sessionLang, '¡Excelente deducción! Has resuelto el enigma del lugar.');
@@ -1028,6 +1191,17 @@ app.post('/api/sessions/:code/location', (req: Request, res: Response) => {
     session.lng = lng;
     session.lastActive = new Date().toISOString();
     saveSessions(sessions);
+
+    if (session.duelMatchCode && duelMatches[session.duelMatchCode]) {
+      const match = duelMatches[session.duelMatchCode];
+      const team = match.teams.find((t) => t.id === session.duelTeamId || t.sessionCode === session.code);
+      if (team) {
+        team.lat = lat;
+        team.lng = lng;
+        team.lastActive = new Date().toISOString();
+        broadcastDuel(match.code, { type: 'duel:update', match });
+      }
+    }
   }
 
   res.json({ success: true });
@@ -1079,6 +1253,315 @@ app.post('/api/sessions/:code/feedback', (req: Request, res: Response) => {
   saveSessions(sessions);
 
   res.json({ success: true });
+});
+
+// -------------------------------------------------------------
+// Modo Equipos / Batalla Silenciosa Endpoints
+// -------------------------------------------------------------
+
+// Create Duel Room
+app.post('/api/duels/create', (req: Request, res: Response) => {
+  const { forestPackId, storyId, teamName, emblem, color, includeShadowRival, language } = req.body;
+  const pack = forestPacks.find((p) => p.id === forestPackId) || forestPacks[0];
+  const story = pack.stories.find((s) => s.id === storyId) || pack.stories[0];
+
+  let code = `DUEL-${Math.floor(1000 + Math.random() * 9000)}`;
+  while (duelMatches[code]) {
+    code = `DUEL-${Math.floor(1000 + Math.random() * 9000)}`;
+  }
+
+  let sessionCode = generateSessionCode();
+  while (sessions[sessionCode]) {
+    sessionCode = generateSessionCode();
+  }
+
+  const team1: DuelTeam = {
+    id: `team-${Date.now()}-1`,
+    name: teamName || (language === 'fr' ? "Les Loups d'Iregua" : language === 'en' ? 'The Iregua Wolves' : 'Los Lobos del Iregua'),
+    color: color || '#10b981',
+    emblem: emblem || '🐺',
+    sessionCode,
+    points: 0,
+    completedPoiIds: [],
+    currentPoiIndex: 0,
+    totalPois: pack.pois.length,
+    lat: pack.centerLat,
+    lng: pack.centerLng,
+    lastActive: new Date().toISOString(),
+    activeEffects: [],
+  };
+
+  const newSession: PlayerSession = {
+    code: sessionCode,
+    forestPackId: pack.id,
+    name: team1.name,
+    type: 'grupo',
+    storyId: story.id,
+    difficulty: 'explorador',
+    duration: '1h',
+    easyMode: false,
+    language: language || 'es',
+    currentPoiIndex: 0,
+    routePoiIds: pack.pois.map((p) => p.id),
+    points: 0,
+    status: 'active',
+    dateStarted: new Date().toISOString(),
+    lastActive: new Date().toISOString(),
+    lat: pack.centerLat,
+    lng: pack.centerLng,
+    messages: [
+      {
+        id: 'msg-duel-welcome',
+        sender: 'narrator',
+        text: `⚔️ ¡Comienza la Batalla Silenciosa en ${pack.name}! Avanzad con sigilo por la senda.`,
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      },
+    ],
+    completedPois: [],
+    hintHistory: [],
+    phase: 'in_transit',
+    hasArrivedAtPoi: false,
+    collectedRunes: [],
+    bonusCompleted: [],
+    duelMatchCode: code,
+    duelTeamId: team1.id,
+  };
+
+  sessions[sessionCode] = newSession;
+  saveSessions(sessions);
+
+  const teams: DuelTeam[] = [team1];
+  let status: 'waiting' | 'in_progress' = 'waiting';
+
+  if (includeShadowRival) {
+    const botTeam: DuelTeam = {
+      id: `bot-${Date.now()}`,
+      name: language === 'fr' ? 'La Fraternité du Faucon' : language === 'en' ? 'The Falcon Fellowship' : 'La Hermandad del Tejo',
+      color: '#f59e0b',
+      emblem: '🦉',
+      sessionCode: `BOT-${code}`,
+      points: 0,
+      completedPoiIds: [],
+      currentPoiIndex: 0,
+      totalPois: pack.pois.length,
+      lat: pack.centerLat + 0.0003,
+      lng: pack.centerLng + 0.0003,
+      lastActive: new Date().toISOString(),
+      activeEffects: [],
+      isBot: true,
+    };
+    teams.push(botTeam);
+    status = 'in_progress';
+  }
+
+  const match: DuelMatch = {
+    code,
+    forestPackId: pack.id,
+    storyId: story.id,
+    status,
+    createdAt: new Date().toISOString(),
+    teams,
+    events: [
+      {
+        id: `evt-start-${Date.now()}`,
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        type: 'duel_started',
+        message: `⚔️ Sala de duelo creada en ${pack.name}. ${includeShadowRival ? '¡El Guardián Fantasma ha aceptado el reto!' : 'Esperando a que el rival ingrese el código...' }`,
+        teamId: team1.id,
+        teamName: team1.name,
+        icon: '⚔️',
+      },
+    ],
+  };
+
+  duelMatches[code] = match;
+  saveDuels(duelMatches);
+
+  if (includeShadowRival) {
+    startShadowRivalBot(code);
+  }
+
+  res.json({ match, team: team1, sessionCode });
+});
+
+// Join Duel Room
+app.post('/api/duels/join', (req: Request, res: Response) => {
+  const { code, teamName, emblem, color, language } = req.body;
+  const matchCode = code ? String(code).trim().toUpperCase() : '';
+  const match = duelMatches[matchCode];
+
+  if (!match) {
+    return res.status(404).json({ error: 'Código de batalla no encontrado' });
+  }
+
+  if (match.status === 'finished') {
+    return res.status(400).json({ error: 'Esta batalla ya ha concluido' });
+  }
+
+  const pack = forestPacks.find((p) => p.id === match.forestPackId) || forestPacks[0];
+  const story = pack.stories.find((s) => s.id === match.storyId) || pack.stories[0];
+
+  let sessionCode = generateSessionCode();
+  while (sessions[sessionCode]) {
+    sessionCode = generateSessionCode();
+  }
+
+  const team2: DuelTeam = {
+    id: `team-${Date.now()}-2`,
+    name: teamName || (language === 'fr' ? 'Les Aigles de Nalda' : language === 'en' ? 'The Nalda Eagles' : 'Las Águilas de Nalda'),
+    color: color || '#3b82f6',
+    emblem: emblem || '🦅',
+    sessionCode,
+    points: 0,
+    completedPoiIds: [],
+    currentPoiIndex: 0,
+    totalPois: pack.pois.length,
+    lat: pack.centerLat,
+    lng: pack.centerLng,
+    lastActive: new Date().toISOString(),
+    activeEffects: [],
+  };
+
+  const newSession: PlayerSession = {
+    code: sessionCode,
+    forestPackId: pack.id,
+    name: team2.name,
+    type: 'grupo',
+    storyId: story.id,
+    difficulty: 'explorador',
+    duration: '1h',
+    easyMode: false,
+    language: language || 'es',
+    currentPoiIndex: 0,
+    routePoiIds: pack.pois.map((p) => p.id),
+    points: 0,
+    status: 'active',
+    dateStarted: new Date().toISOString(),
+    lastActive: new Date().toISOString(),
+    lat: pack.centerLat,
+    lng: pack.centerLng,
+    messages: [
+      {
+        id: 'msg-duel-welcome-2',
+        sender: 'narrator',
+        text: `⚔️ ¡Te has unido a la Batalla Silenciosa! Compite con sigilo frente a ${match.teams[0]?.name}.`,
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      },
+    ],
+    completedPois: [],
+    hintHistory: [],
+    phase: 'in_transit',
+    hasArrivedAtPoi: false,
+    collectedRunes: [],
+    bonusCompleted: [],
+    duelMatchCode: matchCode,
+    duelTeamId: team2.id,
+  };
+
+  sessions[sessionCode] = newSession;
+  saveSessions(sessions);
+
+  match.teams.push(team2);
+  match.status = 'in_progress';
+
+  const joinEvt: DuelEvent = {
+    id: `evt-join-${Date.now()}`,
+    timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+    type: 'duel_started',
+    message: `⚡ ¡${team2.emblem} ${team2.name} se ha unido al combate frente a ${match.teams[0]?.name}!`,
+    teamId: team2.id,
+    teamName: team2.name,
+    icon: '⚡',
+  };
+  match.events.unshift(joinEvt);
+
+  saveDuels(duelMatches);
+  broadcastDuel(matchCode, { type: 'duel:update', match, event: joinEvt });
+
+  res.json({ match, team: team2, sessionCode });
+});
+
+// Get Duel State
+app.get('/api/duels/:code', (req: Request, res: Response) => {
+  const matchCode = req.params.code.toUpperCase();
+  const match = duelMatches[matchCode];
+  if (!match) {
+    return res.status(404).json({ error: 'Duelo no encontrado' });
+  }
+  res.json({ match });
+});
+
+// Trigger Tactical Duel Powerup
+app.post('/api/duels/:code/action', (req: Request, res: Response) => {
+  const matchCode = req.params.code.toUpperCase();
+  const match = duelMatches[matchCode];
+  if (!match) {
+    return res.status(404).json({ error: 'Duelo no encontrado' });
+  }
+
+  const { teamId, actionType } = req.body;
+  const sourceTeam = match.teams.find((t) => t.id === teamId);
+  const rivalTeam = match.teams.find((t) => t.id !== teamId);
+
+  if (!sourceTeam || !rivalTeam) {
+    return res.status(400).json({ error: 'Equipos no encontrados' });
+  }
+
+  if (actionType === 'fog') {
+    rivalTeam.activeEffects.push({
+      id: `eff-fog-${Date.now()}`,
+      type: 'fog',
+      expiresAt: Date.now() + 30000,
+      sourceTeamName: sourceTeam.name,
+    });
+    const ev: DuelEvent = {
+      id: `evt-fog-${Date.now()}`,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      type: 'powerup_used',
+      message: `🌫️ ${sourceTeam.emblem} ${sourceTeam.name} invocó Niebla Mística sobre ${rivalTeam.name}!`,
+      teamId: sourceTeam.id,
+      teamName: sourceTeam.name,
+      icon: '🌫️',
+    };
+    match.events.unshift(ev);
+    if (match.events.length > 30) match.events.pop();
+  } else if (actionType === 'whisper') {
+    const ev: DuelEvent = {
+      id: `evt-whisp-${Date.now()}`,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      type: 'powerup_used',
+      message: `🦉 ${sourceTeam.emblem} ${sourceTeam.name} consultó al Búho para rastrear al rival.`,
+      teamId: sourceTeam.id,
+      teamName: sourceTeam.name,
+      icon: '🦉',
+    };
+    match.events.unshift(ev);
+    if (match.events.length > 30) match.events.pop();
+  } else if (actionType === 'echo') {
+    const ev: DuelEvent = {
+      id: `evt-echo-${Date.now()}`,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      type: 'powerup_used',
+      message: `🍃 ${sourceTeam.emblem} ${sourceTeam.name} envió un crujido misterioso por las ramas...`,
+      teamId: sourceTeam.id,
+      teamName: sourceTeam.name,
+      icon: '🍃',
+    };
+    match.events.unshift(ev);
+    if (match.events.length > 30) match.events.pop();
+  }
+
+  saveDuels(duelMatches);
+  broadcastDuel(matchCode, {
+    type: 'duel:action_received',
+    targetTeamId: rivalTeam.id,
+    actionType,
+    sourceTeamName: sourceTeam.name,
+    match,
+  });
+  broadcastDuel(matchCode, { type: 'duel:update', match });
+
+  res.json({ success: true, match });
 });
 
 // 13. Admin: Live Sessions (Admin Only)
@@ -1377,6 +1860,50 @@ async function startServer() {
     if (url.pathname === '/live' || url.pathname === '/api/live') {
       wss.handleUpgrade(request, socket, head, (ws) => {
         wss.emit('connection', ws, request);
+      });
+    } else if (url.pathname === '/duel' || url.pathname === '/api/duel') {
+      duelWss.handleUpgrade(request, socket, head, (ws) => {
+        duelWss.emit('connection', ws, request);
+      });
+    }
+  });
+
+  duelWss.on('connection', (clientWs: WebSocket, request: http.IncomingMessage) => {
+    const url = new URL(request.url || '', `http://${request.headers.host || 'localhost'}`);
+    const matchCode = url.searchParams.get('matchCode')?.toUpperCase() || '';
+    const teamId = url.searchParams.get('teamId') || '';
+
+    if (matchCode) {
+      if (!duelClients.has(matchCode)) {
+        duelClients.set(matchCode, new Set());
+      }
+      const entry = { ws: clientWs, teamId };
+      duelClients.get(matchCode)!.add(entry);
+
+      if (duelMatches[matchCode]) {
+        clientWs.send(JSON.stringify({ type: 'duel:init', match: duelMatches[matchCode] }));
+      }
+
+      clientWs.on('message', (raw) => {
+        try {
+          const data = JSON.parse(raw.toString());
+          if (data.type === 'subscribe' && data.matchCode && duelMatches[data.matchCode]) {
+            clientWs.send(JSON.stringify({ type: 'duel:init', match: duelMatches[data.matchCode] }));
+          } else if (data.type === 'duel:move' && data.matchCode && duelMatches[data.matchCode]) {
+            const m = duelMatches[data.matchCode];
+            const t = m.teams.find((tm) => tm.id === data.teamId);
+            if (t && typeof data.lat === 'number' && typeof data.lng === 'number') {
+              t.lat = data.lat;
+              t.lng = data.lng;
+              t.lastActive = new Date().toISOString();
+              broadcastDuel(data.matchCode, { type: 'duel:update', match: m });
+            }
+          }
+        } catch {}
+      });
+
+      clientWs.on('close', () => {
+        duelClients.get(matchCode)?.delete(entry);
       });
     }
   });

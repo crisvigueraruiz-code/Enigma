@@ -209,7 +209,7 @@
       "nav.pause": "Pausar",
       "nav.adminExit": "Salir Admin",
       "nav.back": "Volver",
-      "offline.download": "Descargar el bosque para jugar sin conexión",
+      "offline.download": "Descargar Pack Pre-Salida",
       "ar.view": "Ver en realidad aumentada",
       "game.pause": "Pausar",
       "game.contrastTitle": "Modo Alto Contraste (ideal bajo sol directo)",
@@ -1294,7 +1294,96 @@
       "setup.errorStory": "Por favor, selecciona una historia para comenzar.",
       "setup.defaultTeam": "Equipo Forestal",
       "setup.defaultSolo": "Explorador Solitario",
-      "briefing.acknowledge": "He leído y comprendo las normas de seguridad del bosque. Me comprometo a respetarlas."
+      "briefing.acknowledge": "He leído y comprendo las normas de seguridad del bosque. Me comprometo a respetarlas.",
+      "duel.navButton": "Batalla Silenciosa",
+      "duel.title": "Modo Equipos / Batalla Silenciosa",
+      "duel.subtitle": "Dos equipos recorren el bosque en tiempo real. Sigue el rastro del rival en el mapa, mantén el sigilo y usa tácticas del bosque.",
+      "duel.heroBadge": "Multijugador Silencioso en Tiempo Real",
+      "duel.createTab": "Crear Sala de Duelo",
+      "duel.joinTab": "Unirse con Código",
+      "duel.selectForest": "Bosque de la Batalla",
+      "duel.selectStory": "Sendero / Aventura",
+      "duel.teamNameLabel": "Nombre de tu Equipo",
+      "duel.teamNamePlaceholder": "Ej. Los Lobos del Iregua",
+      "duel.teamEmblemLabel": "Emblema del Equipo",
+      "duel.matchCodeLabel": "Código de Batalla",
+      "duel.matchCodePlaceholder": "Ej. DUEL-48",
+      "duel.createBtn": "Crear Batalla y Esperar Rival",
+      "duel.startSoloDuelBtn": "Desafiar al Guardián Fantasma (IA)",
+      "duel.startSoloDuelDesc": "¿No tienes rival presencial? Juega contra un equipo fantasma que recorre el bosque a ritmo real.",
+      "duel.joinBtn": "Unirse a la Batalla",
+      "duel.waitingRival": "Sala creada. Esperando al equipo rival...",
+      "duel.shareCodePrompt": "Comparte este código con el otro equipo para comenzar la expedición:",
+      "duel.copyCode": "Copiar Código",
+      "duel.copied": "¡Copiado al portapapeles!",
+      "duel.stealthAlert": "⚠️ ¡RIVAL A MENOS DE 60 METROS! Mantened el sigilo en el sendero...",
+      "duel.radarStealth": "Radar Silencioso",
+      "duel.distanceToRival": "Distancia al rival",
+      "duel.powerFog": "Niebla Mística",
+      "duel.powerFogDesc": "Empaña la brújula y el radar del rival durante 30s",
+      "duel.powerWhisper": "Susurro del Búho",
+      "duel.powerWhisperDesc": "Revela las coordenadas y el próximo hito del rival",
+      "duel.powerEcho": "Eco del Bosque",
+      "duel.powerEchoDesc": "Envía un crujido misterioso al teléfono rival",
+      "duel.actionReady": "Disponible",
+      "duel.actionUsed": "¡Invocado!",
+      "duel.fogActiveOnYou": "🌫️ ¡El equipo rival ha invocado Niebla Mística sobre vuestra senda!",
+      "duel.echoHeard": "🍃 ¡Un crujido resuena en las ramas! El rival os vigila de cerca...",
+      "duel.podiumTitle": "Veredicto de la Batalla Silenciosa",
+      "duel.winnerTitle": "👑 ¡VICTORIA DE LA SENDA!",
+      "duel.defeatedTitle": "Honorables Exploradores",
+      "duel.winnerDesc": "Vuestro equipo ha demostrado mayor perspicacia y maestría en el bosque.",
+      "duel.liveBadge": "DUELO EN VIVO",
+      "duel.battleFeed": "Diario del Duelo",
+      "duel.noEventsYet": "La expedición acaba de comenzar. ¡Avanzad hacia el primer hito!",
+      "duel.you": "Tu Equipo",
+      "duel.rival": "Equipo Rival",
+      "duel.poisCompleted": "Hitos Conquistados",
+      "duel.viewIntel": "Ver Inteligencia del Duelo",
+      "duel.close": "Cerrar",
+      "passport.title": "Pasaporte de Explorador & Diplomas",
+      "passport.navButton": "Pasaporte",
+      "passport.subtitle": "Cuaderno de Campo",
+      "passport.tabPassport": "Sellos",
+      "passport.tabBadges": "Medallas",
+      "passport.tabDiploma": "Diploma",
+      "passport.owner": "Titular del Pasaporte",
+      "passport.totalScore": "Puntos Totales",
+      "passport.conquered": "CONQUISTADO",
+      "passport.metaSolved": "Códice Descifrado",
+      "passport.downloadDiploma": "Descargar Diploma Oficial (PNG HD)",
+      "passport.downloading": "Generando Pergamino...",
+      "passport.shareDiploma": "Compartir Diploma",
+      "passport.namePlaceholder": "Escribe tu nombre para el diploma",
+      "passport.diplomaPreview": "Pergamino Oficial del Explorador",
+      "passport.badgeBotanist": "Botánico de Cestas",
+      "passport.badgeBotanistDesc": "Completar acertijos de flora y encinas ancestrales",
+      "passport.badgeHermit": "Ermitaño de Nalda",
+      "passport.badgeHermitDesc": "Explorar las Cuevas de Los Palomares excavadas en la roca",
+      "passport.badgeOwl": "Oído de Búho",
+      "passport.badgeOwlDesc": "Completar con éxito los 30 segundos de silencio y escucha",
+      "passport.badgeCronicon": "Custodio del Cronicón",
+      "passport.badgeCroniconDesc": "Descubrir las runas arcanas y resolver el Gran Meta-Enigma",
+      "passport.badgeDuelist": "Guerrero Silencioso",
+      "passport.badgeDuelistDesc": "Participar en una Batalla Silenciosa multijugador",
+      "passport.badgeCompass": "Orientador Magistral",
+      "passport.badgeCompassDesc": "Alcanzar el rumbo exacto con la brújula magnética",
+      "offline.title": "Descarga Offline Completa",
+      "offline.navButton": "Offline",
+      "offline.subtitle": "Pack Pre-Salida sin Cobertura",
+      "offline.desc": "Descarga mapas satelitales/topográficos, relatos, pistas y modelos 3D antes de salir a la montaña para jugar 100% sin conexión a internet.",
+      "offline.downloading": "Descargando...",
+      "offline.downloaded": "Listo Offline",
+      "offline.delete": "Liberar Espacio",
+      "offline.tilesCached": "mosaicos de mapa",
+      "offline.statusOnline": "Conectado a Internet",
+      "offline.statusOffline": "Sin Conexión (Modo Offline Activo)",
+      "offline.allPacksReady": "Packs Pre-Salida Disponibles",
+      "ar.timePortalTitle": "Ventana al Pasado • Siglo XIII",
+      "ar.timePortalDesc": "Desliza para viajar en el tiempo y superponer la reconstrucción histórica 3D medieval sobre las ruinas reales.",
+      "ar.timePortalButton": "Ventana al Pasado",
+      "ar.timePortalActive": "Portal Histórico Activo",
+      "ar.timePortalSlider": "Control Temporal"
     },
     "fr": {
       "app.title": "Énigme Vivante",
@@ -1481,7 +1570,7 @@
       "nav.pause": "Pause",
       "nav.adminExit": "Quitter Admin",
       "nav.back": "Retour",
-      "offline.download": "Télécharger la forêt pour jouer hors ligne",
+      "offline.download": "Télécharger Pack Pré-Départ",
       "ar.view": "Voir en réalité augmentée",
       "game.pause": "Pause",
       "game.contrastTitle": "Mode Contraste Élevé (idéal en plein soleil)",
@@ -2566,7 +2655,96 @@
       "setup.errorStory": "Veuillez choisir une histoire pour commencer.",
       "setup.defaultTeam": "Équipe Sylvestre",
       "setup.defaultSolo": "Explorateur Solitaire",
-      "briefing.acknowledge": "J'ai lu et compris les consignes de sécurité forestière. Je m'engage à les respecter."
+      "briefing.acknowledge": "J'ai lu et compris les consignes de sécurité forestière. Je m'engage à les respecter.",
+      "duel.navButton": "Combat Silencieux",
+      "duel.title": "Mode Équipes / Combat Silencieux",
+      "duel.subtitle": "Deux équipes parcourent la forêt en temps réel. Suivez la trace rivale sur la carte, restez discret et utilisez les ruses de la forêt.",
+      "duel.heroBadge": "Multijoueur Silencieux en Temps Réel",
+      "duel.createTab": "Créer une Salle de Duel",
+      "duel.joinTab": "Rejoindre avec Code",
+      "duel.selectForest": "Forêt du Combat",
+      "duel.selectStory": "Sentier / Aventure",
+      "duel.teamNameLabel": "Nom de votre Équipe",
+      "duel.teamNamePlaceholder": "Ex. Les Loups d'Iregua",
+      "duel.teamEmblemLabel": "Emblème de l'Équipe",
+      "duel.matchCodeLabel": "Code de Combat",
+      "duel.matchCodePlaceholder": "Ex. DUEL-48",
+      "duel.createBtn": "Créer le Combat et Attendre",
+      "duel.startSoloDuelBtn": "Défier le Gardien Fantôme (IA)",
+      "duel.startSoloDuelDesc": "Pas de rival sur place ? Jouez contre une équipe fantôme qui parcourt la forêt à rythme réel.",
+      "duel.joinBtn": "Rejoindre le Combat",
+      "duel.waitingRival": "Salle créée. En attente de l'équipe rivale...",
+      "duel.shareCodePrompt": "Partagez ce code avec l'autre équipe pour commencer l'expédition :",
+      "duel.copyCode": "Copier le Code",
+      "duel.copied": "Copié dans le presse-papier !",
+      "duel.stealthAlert": "⚠️ RIVAL À MOINS DE 60 MÈTRES ! Restez silencieux sur le sentier...",
+      "duel.radarStealth": "Radar Silencieux",
+      "duel.distanceToRival": "Distance au rival",
+      "duel.powerFog": "Brouillard Mystique",
+      "duel.powerFogDesc": "Brouille la boussole et le radar rival pendant 30s",
+      "duel.powerWhisper": "Chuchotement du Hibou",
+      "duel.powerWhisperDesc": "Révèle les coordonnées et le prochain repère rival",
+      "duel.powerEcho": "Écho de la Forêt",
+      "duel.powerEchoDesc": "Envoie un craquement mystérieux au téléphone rival",
+      "duel.actionReady": "Disponible",
+      "duel.actionUsed": "Invoqué !",
+      "duel.fogActiveOnYou": "🌫️ L'équipe rivale a invoqué un Brouillard Mystique sur votre sentier !",
+      "duel.echoHeard": "🍃 Un craquement résonne dans les branches ! Le rival vous observe...",
+      "duel.podiumTitle": "Verdict du Combat Silencieux",
+      "duel.winnerTitle": "👑 VICTOIRE DU SENTIER !",
+      "duel.defeatedTitle": "Honorables Explorateurs",
+      "duel.winnerDesc": "Votre équipe a fait preuve d'une plus grande perspicacité et maîtrise de la forêt.",
+      "duel.liveBadge": "DUEL EN DIRECT",
+      "duel.battleFeed": "Journal du Duel",
+      "duel.noEventsYet": "L'expédition vient de commencer. Avancez vers le premier repère !",
+      "duel.you": "Votre Équipe",
+      "duel.rival": "Équipe Rivale",
+      "duel.poisCompleted": "Repères Conquis",
+      "duel.viewIntel": "Voir l'Espionnage du Duel",
+      "duel.close": "Fermer",
+      "passport.title": "Passeport d'Explorateur & Diplômes",
+      "passport.navButton": "Passeport",
+      "passport.subtitle": "Carnet de Terrain",
+      "passport.tabPassport": "Tampons",
+      "passport.tabBadges": "Médailles",
+      "passport.tabDiploma": "Diplôme",
+      "passport.owner": "Titulaire du Passeport",
+      "passport.totalScore": "Points Totaux",
+      "passport.conquered": "CONQUIS",
+      "passport.metaSolved": "Codex Déchiffré",
+      "passport.downloadDiploma": "Télécharger Diplôme Officiel (PNG HD)",
+      "passport.downloading": "Génération du Parchemin...",
+      "passport.shareDiploma": "Partager le Diplôme",
+      "passport.namePlaceholder": "Écrivez votre nom pour le diplôme",
+      "passport.diplomaPreview": "Parchemin Officiel de l'Explorateur",
+      "passport.badgeBotanist": "Botaniste des Paniers",
+      "passport.badgeBotanistDesc": "Résoudre les énigmes de la flore et des chênes ancestraux",
+      "passport.badgeHermit": "Ermite de Nalda",
+      "passport.badgeHermitDesc": "Explorer les Grottes de Los Palomares taillées dans la roche",
+      "passport.badgeOwl": "Ouïe de Hibou",
+      "passport.badgeOwlDesc": "Compléter avec succès les 30 secondes d'écoute et de silence",
+      "passport.badgeCronicon": "Gardien du Chronicon",
+      "passport.badgeCroniconDesc": "Découvrir les runes mystiques et résoudre le Grand Méta-Énigme",
+      "passport.badgeDuelist": "Guerrier Silencieux",
+      "passport.badgeDuelistDesc": "Participer à une Bataille Silencieuse multijoueur",
+      "passport.badgeCompass": "Maître de l'Orientation",
+      "passport.badgeCompassDesc": "Atteindre le cap exact avec la boussole magnétique",
+      "offline.title": "Téléchargement Hors-Ligne Complet",
+      "offline.navButton": "Hors-Ligne",
+      "offline.subtitle": "Pack Pré-Départ sans Réseau",
+      "offline.desc": "Téléchargez les cartes topographiques, récits, indices et modèles 3D avant de partir en forêt pour jouer 100% hors-ligne.",
+      "offline.downloading": "Téléchargement...",
+      "offline.downloaded": "Prêt Hors-Ligne",
+      "offline.delete": "Libérer l'Espace",
+      "offline.tilesCached": "tuiles de carte",
+      "offline.statusOnline": "Connecté à Internet",
+      "offline.statusOffline": "Hors-Ligne (Mode Hors-Ligne Actif)",
+      "offline.allPacksReady": "Packs Pré-Départ Disponibles",
+      "ar.timePortalTitle": "Fenêtre sur le Passé • XIIIe Siècle",
+      "ar.timePortalDesc": "Glissez pour voyager dans le temps et superposer la reconstitution historique 3D médiévale sur les ruines réelles.",
+      "ar.timePortalButton": "Fenêtre sur le Passé",
+      "ar.timePortalActive": "Portail Historique Actif",
+      "ar.timePortalSlider": "Contrôle Temporel"
     },
     "en": {
       "app.title": "Living Enigma",
@@ -2753,7 +2931,7 @@
       "nav.pause": "Pause",
       "nav.adminExit": "Exit Admin",
       "nav.back": "Back",
-      "offline.download": "Download the forest to play offline",
+      "offline.download": "Download Pre-Departure Pack",
       "ar.view": "View in augmented reality",
       "game.pause": "Pause",
       "game.contrastTitle": "High Contrast Mode (ideal in direct sunlight)",
@@ -3838,7 +4016,96 @@
       "setup.errorStory": "Please select a story to begin.",
       "setup.defaultTeam": "Forest Team",
       "setup.defaultSolo": "Solo Explorer",
-      "briefing.acknowledge": "I have read and understood the forest safety rules. I pledge to respect them."
+      "briefing.acknowledge": "I have read and understood the forest safety rules. I pledge to respect them.",
+      "duel.navButton": "Silent Battle",
+      "duel.title": "Team Mode / Silent Battle",
+      "duel.subtitle": "Two teams explore the forest in real time. Track the rival team on the map, maintain stealth, and unleash forest tactics.",
+      "duel.heroBadge": "Real-Time Silent Multiplayer",
+      "duel.createTab": "Create Duel Room",
+      "duel.joinTab": "Join with Code",
+      "duel.selectForest": "Battle Forest",
+      "duel.selectStory": "Trail / Story",
+      "duel.teamNameLabel": "Your Team Name",
+      "duel.teamNamePlaceholder": "E.g. The Iregua Wolves",
+      "duel.teamEmblemLabel": "Team Emblem",
+      "duel.matchCodeLabel": "Battle Code",
+      "duel.matchCodePlaceholder": "E.g. DUEL-48",
+      "duel.createBtn": "Create Battle & Wait",
+      "duel.startSoloDuelBtn": "Challenge Ghost Guardian (AI)",
+      "duel.startSoloDuelDesc": "No rival nearby? Play against a phantom team navigating the forest at a realistic pace.",
+      "duel.joinBtn": "Join Battle",
+      "duel.waitingRival": "Room created. Waiting for rival team...",
+      "duel.shareCodePrompt": "Share this code with the other team to begin the expedition:",
+      "duel.copyCode": "Copy Code",
+      "duel.copied": "Copied to clipboard!",
+      "duel.stealthAlert": "⚠️ RIVAL WITHIN 60 METERS! Maintain stealth on the trail...",
+      "duel.radarStealth": "Silent Radar",
+      "duel.distanceToRival": "Distance to rival",
+      "duel.powerFog": "Mystic Fog",
+      "duel.powerFogDesc": "Blurs rival compass & radar for 30s",
+      "duel.powerWhisper": "Owl's Whisper",
+      "duel.powerWhisperDesc": "Reveals coordinates and next rival waypoint",
+      "duel.powerEcho": "Forest Echo",
+      "duel.powerEchoDesc": "Sends an eerie branch crack to rival phone",
+      "duel.actionReady": "Ready",
+      "duel.actionUsed": "Cast!",
+      "duel.fogActiveOnYou": "🌫️ The rival team summoned Mystic Fog upon your trail!",
+      "duel.echoHeard": "🍃 A snap echoes in the branches! The rival is watching you closely...",
+      "duel.podiumTitle": "Silent Battle Verdict",
+      "duel.winnerTitle": "👑 TRAIL VICTORY!",
+      "duel.defeatedTitle": "Honorable Explorers",
+      "duel.winnerDesc": "Your team demonstrated greater cunning and mastery of the forest.",
+      "duel.liveBadge": "LIVE DUEL",
+      "duel.battleFeed": "Battle Log",
+      "duel.noEventsYet": "The expedition has just begun. Advance towards the first waypoint!",
+      "duel.you": "Your Team",
+      "duel.rival": "Rival Team",
+      "duel.poisCompleted": "Waypoints Conquered",
+      "duel.viewIntel": "View Duel Intel",
+      "duel.close": "Close",
+      "passport.title": "Explorer Passport & Diplomas",
+      "passport.navButton": "Passport",
+      "passport.subtitle": "Field Notebook",
+      "passport.tabPassport": "Stamps",
+      "passport.tabBadges": "Badges",
+      "passport.tabDiploma": "Diploma",
+      "passport.owner": "Passport Holder",
+      "passport.totalScore": "Total Points",
+      "passport.conquered": "CONQUERED",
+      "passport.metaSolved": "Codex Deciphered",
+      "passport.downloadDiploma": "Download Official Diploma (HD PNG)",
+      "passport.downloading": "Generating Parchment...",
+      "passport.shareDiploma": "Share Diploma",
+      "passport.namePlaceholder": "Enter your name for the diploma",
+      "passport.diplomaPreview": "Official Explorer Parchment",
+      "passport.badgeBotanist": "Basket Botanist",
+      "passport.badgeBotanistDesc": "Complete flora and ancestral oak tree riddles",
+      "passport.badgeHermit": "Hermit of Nalda",
+      "passport.badgeHermitDesc": "Explore Los Palomares Caves carved into the rock cliff",
+      "passport.badgeOwl": "Owl Hearing",
+      "passport.badgeOwlDesc": "Successfully complete the 30-second nature silence challenge",
+      "passport.badgeCronicon": "Keeper of the Chronicon",
+      "passport.badgeCroniconDesc": "Discover arcane runes and solve the Grand Meta-Enigma",
+      "passport.badgeDuelist": "Silent Warrior",
+      "passport.badgeDuelistDesc": "Compete in a real-time Silent Battle duel",
+      "passport.badgeCompass": "Master Navigator",
+      "passport.badgeCompassDesc": "Reach precise bearing with the magnetic compass",
+      "offline.title": "Full Offline Download",
+      "offline.navButton": "Offline",
+      "offline.subtitle": "Pre-Departure Pack (No Signal)",
+      "offline.desc": "Download topographic maps, stories, clues, and 3D assets before heading into the forest to play 100% without internet connection.",
+      "offline.downloading": "Downloading...",
+      "offline.downloaded": "Offline Ready",
+      "offline.delete": "Free Space",
+      "offline.tilesCached": "map tiles",
+      "offline.statusOnline": "Connected to Internet",
+      "offline.statusOffline": "Offline (Offline Mode Active)",
+      "offline.allPacksReady": "Pre-Departure Packs Available",
+      "ar.timePortalTitle": "Window to the Past • 13th Century",
+      "ar.timePortalDesc": "Slide to travel back in time and superimpose the 3D medieval historical reconstruction over real ruins.",
+      "ar.timePortalButton": "Window to the Past",
+      "ar.timePortalActive": "Historic Time Portal Active",
+      "ar.timePortalSlider": "Time Control"
     }
   },
   "forests": {
@@ -11420,6 +11687,236 @@
       "es": "Oeste",
       "fr": "Ouest",
       "en": "West"
+    },
+    "duel.navButton": {
+      "es": "Batalla Silenciosa",
+      "fr": "Combat Silencieux",
+      "en": "Silent Battle"
+    },
+    "duel.title": {
+      "es": "Modo Equipos / Batalla Silenciosa",
+      "fr": "Mode Équipes / Combat Silencieux",
+      "en": "Team Mode / Silent Battle"
+    },
+    "duel.subtitle": {
+      "es": "Dos equipos recorren el bosque en tiempo real. Sigue el rastro del rival en el mapa, mantén el sigilo y usa tácticas del bosque.",
+      "fr": "Deux équipes parcourent la forêt en temps réel. Suivez la trace rivale sur la carte, restez discret et utilisez les ruses de la forêt.",
+      "en": "Two teams explore the forest in real time. Track the rival team on the map, maintain stealth, and unleash forest tactics."
+    },
+    "duel.heroBadge": {
+      "es": "Multijugador Silencioso en Tiempo Real",
+      "fr": "Multijoueur Silencieux en Temps Réel",
+      "en": "Real-Time Silent Multiplayer"
+    },
+    "duel.createTab": {
+      "es": "Crear Sala de Duelo",
+      "fr": "Créer une Salle de Duel",
+      "en": "Create Duel Room"
+    },
+    "duel.joinTab": {
+      "es": "Unirse con Código",
+      "fr": "Rejoindre avec Code",
+      "en": "Join with Code"
+    },
+    "duel.selectForest": {
+      "es": "Bosque de la Batalla",
+      "fr": "Forêt du Combat",
+      "en": "Battle Forest"
+    },
+    "duel.selectStory": {
+      "es": "Sendero / Aventura",
+      "fr": "Sentier / Aventure",
+      "en": "Trail / Story"
+    },
+    "duel.teamNameLabel": {
+      "es": "Nombre de tu Equipo",
+      "fr": "Nom de votre Équipe",
+      "en": "Your Team Name"
+    },
+    "duel.teamNamePlaceholder": {
+      "es": "Ej. Los Lobos del Iregua",
+      "fr": "Ex. Les Loups d'Iregua",
+      "en": "E.g. The Iregua Wolves"
+    },
+    "duel.teamEmblemLabel": {
+      "es": "Emblema del Equipo",
+      "fr": "Emblème de l'Équipe",
+      "en": "Team Emblem"
+    },
+    "duel.matchCodeLabel": {
+      "es": "Código de Batalla",
+      "fr": "Code de Combat",
+      "en": "Battle Code"
+    },
+    "duel.matchCodePlaceholder": {
+      "es": "Ej. DUEL-48",
+      "fr": "Ex. DUEL-48",
+      "en": "E.g. DUEL-48"
+    },
+    "duel.createBtn": {
+      "es": "Crear Batalla y Esperar Rival",
+      "fr": "Créer le Combat et Attendre",
+      "en": "Create Battle & Wait"
+    },
+    "duel.startSoloDuelBtn": {
+      "es": "Desafiar al Guardián Fantasma (IA)",
+      "fr": "Défier le Gardien Fantôme (IA)",
+      "en": "Challenge Ghost Guardian (AI)"
+    },
+    "duel.startSoloDuelDesc": {
+      "es": "¿No tienes rival presencial? Juega contra un equipo fantasma que recorre el bosque a ritmo real.",
+      "fr": "Pas de rival sur place ? Jouez contre une équipe fantôme qui parcourt la forêt à rythme réel.",
+      "en": "No rival nearby? Play against a phantom team navigating the forest at a realistic pace."
+    },
+    "duel.joinBtn": {
+      "es": "Unirse a la Batalla",
+      "fr": "Rejoindre le Combat",
+      "en": "Join Battle"
+    },
+    "duel.waitingRival": {
+      "es": "Sala creada. Esperando al equipo rival...",
+      "fr": "Salle créée. En attente de l'équipe rivale...",
+      "en": "Room created. Waiting for rival team..."
+    },
+    "duel.shareCodePrompt": {
+      "es": "Comparte este código con el otro equipo para comenzar la expedición:",
+      "fr": "Partagez ce code avec l'autre équipe pour commencer l'expédition :",
+      "en": "Share this code with the other team to begin the expedition:"
+    },
+    "duel.copyCode": {
+      "es": "Copiar Código",
+      "fr": "Copier le Code",
+      "en": "Copy Code"
+    },
+    "duel.copied": {
+      "es": "¡Copiado al portapapeles!",
+      "fr": "Copié dans le presse-papier !",
+      "en": "Copied to clipboard!"
+    },
+    "duel.stealthAlert": {
+      "es": "⚠️ ¡RIVAL A MENOS DE 60 METROS! Mantened el sigilo en el sendero...",
+      "fr": "⚠️ RIVAL À MOINS DE 60 MÈTRES ! Restez silencieux sur le sentier...",
+      "en": "⚠️ RIVAL WITHIN 60 METERS! Maintain stealth on the trail..."
+    },
+    "duel.radarStealth": {
+      "es": "Radar Silencioso",
+      "fr": "Radar Silencieux",
+      "en": "Silent Radar"
+    },
+    "duel.distanceToRival": {
+      "es": "Distancia al rival",
+      "fr": "Distance au rival",
+      "en": "Distance to rival"
+    },
+    "duel.powerFog": {
+      "es": "Niebla Mística",
+      "fr": "Brouillard Mystique",
+      "en": "Mystic Fog"
+    },
+    "duel.powerFogDesc": {
+      "es": "Empaña la brújula y el radar del rival durante 30s",
+      "fr": "Brouille la boussole et le radar rival pendant 30s",
+      "en": "Blurs rival compass & radar for 30s"
+    },
+    "duel.powerWhisper": {
+      "es": "Susurro del Búho",
+      "fr": "Chuchotement du Hibou",
+      "en": "Owl's Whisper"
+    },
+    "duel.powerWhisperDesc": {
+      "es": "Revela las coordenadas y el próximo hito del rival",
+      "fr": "Révèle les coordonnées et le prochain repère rival",
+      "en": "Reveals coordinates and next rival waypoint"
+    },
+    "duel.powerEcho": {
+      "es": "Eco del Bosque",
+      "fr": "Écho de la Forêt",
+      "en": "Forest Echo"
+    },
+    "duel.powerEchoDesc": {
+      "es": "Envía un crujido misterioso al teléfono rival",
+      "fr": "Envoie un craquement mystérieux au téléphone rival",
+      "en": "Sends an eerie branch crack to rival phone"
+    },
+    "duel.actionReady": {
+      "es": "Disponible",
+      "fr": "Disponible",
+      "en": "Ready"
+    },
+    "duel.actionUsed": {
+      "es": "¡Invocado!",
+      "fr": "Invoqué !",
+      "en": "Cast!"
+    },
+    "duel.fogActiveOnYou": {
+      "es": "🌫️ ¡El equipo rival ha invocado Niebla Mística sobre vuestra senda!",
+      "fr": "🌫️ L'équipe rivale a invoqué un Brouillard Mystique sur votre sentier !",
+      "en": "🌫️ The rival team summoned Mystic Fog upon your trail!"
+    },
+    "duel.echoHeard": {
+      "es": "🍃 ¡Un crujido resuena en las ramas! El rival os vigila de cerca...",
+      "fr": "🍃 Un craquement résonne dans les branches ! Le rival vous observe...",
+      "en": "🍃 A snap echoes in the branches! The rival is watching you closely..."
+    },
+    "duel.podiumTitle": {
+      "es": "Veredicto de la Batalla Silenciosa",
+      "fr": "Verdict du Combat Silencieux",
+      "en": "Silent Battle Verdict"
+    },
+    "duel.winnerTitle": {
+      "es": "👑 ¡VICTORIA DE LA SENDA!",
+      "fr": "👑 VICTOIRE DU SENTIER !",
+      "en": "👑 TRAIL VICTORY!"
+    },
+    "duel.defeatedTitle": {
+      "es": "Honorables Exploradores",
+      "fr": "Honorables Explorateurs",
+      "en": "Honorable Explorers"
+    },
+    "duel.winnerDesc": {
+      "es": "Vuestro equipo ha demostrado mayor perspicacia y maestría en el bosque.",
+      "fr": "Votre équipe a fait preuve d'une plus grande perspicacité et maîtrise de la forêt.",
+      "en": "Your team demonstrated greater cunning and mastery of the forest."
+    },
+    "duel.liveBadge": {
+      "es": "DUELO EN VIVO",
+      "fr": "DUEL EN DIRECT",
+      "en": "LIVE DUEL"
+    },
+    "duel.battleFeed": {
+      "es": "Diario del Duelo",
+      "fr": "Journal du Duel",
+      "en": "Battle Log"
+    },
+    "duel.noEventsYet": {
+      "es": "La expedición acaba de comenzar. ¡Avanzad hacia el primer hito!",
+      "fr": "L'expédition vient de commencer. Avancez vers le premier repère !",
+      "en": "The expedition has just begun. Advance towards the first waypoint!"
+    },
+    "duel.you": {
+      "es": "Tu Equipo",
+      "fr": "Votre Équipe",
+      "en": "Your Team"
+    },
+    "duel.rival": {
+      "es": "Equipo Rival",
+      "fr": "Équipe Rivale",
+      "en": "Rival Team"
+    },
+    "duel.poisCompleted": {
+      "es": "Hitos Conquistados",
+      "fr": "Repères Conquis",
+      "en": "Waypoints Conquered"
+    },
+    "duel.viewIntel": {
+      "es": "Ver Inteligencia del Duelo",
+      "fr": "Voir l'Espionnage du Duel",
+      "en": "View Duel Intel"
+    },
+    "duel.close": {
+      "es": "Cerrar",
+      "fr": "Fermer",
+      "en": "Close"
     }
   }
 }
