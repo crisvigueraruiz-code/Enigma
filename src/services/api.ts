@@ -84,32 +84,46 @@ function saveLocalSession(session: PlayerSession): void {
 }
 
 export const api = {
-  // Admin Authentication State: Contraseña desactivada temporalmente a petición del usuario
+  // Admin Authentication State
   getAdminKey(): string | null {
-    return 'open-admin';
+    return localStorage.getItem('enigma_admin_key');
   },
 
-  setAdminKey(_key: string): void {
-    localStorage.setItem('enigma_admin_key', 'open-admin');
+  setAdminKey(key: string): void {
+    localStorage.setItem('enigma_admin_key', key);
   },
 
   clearAdminKey(): void {
-    // No-op para mantener acceso libre por el momento
+    localStorage.removeItem('enigma_admin_key');
   },
 
   isAdminAuthenticated(): boolean {
-    // Acceso directo a administración sin contraseña por el momento
-    return true;
+    return !!this.getAdminKey();
   },
 
-  async verifyAdminPassword(_password: string): Promise<boolean> {
-    // Acceso siempre concedido
-    this.setAdminKey('open-admin');
-    return true;
+  async verifyAdminPassword(password: string): Promise<boolean> {
+    try {
+      const res = await fetch('/api/admin/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+      if (!res.ok) return false;
+      const data = await res.json();
+      if (data.success && data.token) {
+        this.setAdminKey(data.token);
+        return true;
+      }
+      return false;
+    } catch (e) {
+      console.error('Error verifying admin password:', e);
+      return false;
+    }
   },
 
   getAdminHeaders(): Record<string, string> {
-    return { 'x-admin-key': 'open-admin' };
+    const key = this.getAdminKey();
+    return key ? { 'x-admin-key': key } : {};
   },
 
   // Forests

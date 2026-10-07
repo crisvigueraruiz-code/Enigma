@@ -270,17 +270,24 @@ function normalizeAnswer(text: string): string {
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'bosque2026';
 
 function requireAdmin(req: Request, res: Response, next: Function) {
-  // Contraseña de admin desactivada temporalmente a petición del usuario
-  return next();
+  const key = req.headers['x-admin-key'];
+  if (key && key === ADMIN_PASSWORD) {
+    return next();
+  }
+  return res.status(401).json({ error: 'No autorizado. Se requiere contraseña de administrador.' });
 }
 
 // -------------------------------------------------------------
 // REST API Endpoints
 // -------------------------------------------------------------
 
-// Admin Password Verification (Sin contraseña requerida por el momento)
+// Admin Password Verification
 app.post('/api/admin/verify', (req: Request, res: Response) => {
-  return res.json({ success: true, token: 'open-admin' });
+  const { password } = req.body || {};
+  if (typeof password === 'string' && password === ADMIN_PASSWORD) {
+    return res.json({ success: true, token: ADMIN_PASSWORD });
+  }
+  return res.status(401).json({ success: false, error: 'Contraseña incorrecta.' });
 });
 
 // 1. Get Forests

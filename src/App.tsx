@@ -52,7 +52,7 @@ export default function App() {
   const [printingForest, setPrintingForest] = useState<ForestPack | null>(null);
   const [activeDuelMatch, setActiveDuelMatch] = useState<DuelMatch | null>(null);
   const [isAdminAuthOpen, setIsAdminAuthOpen] = useState(false);
-  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(true);
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(() => api.isAdminAuthenticated());
   const [activeCharacterStory, setActiveCharacterStory] = useState<StoryIntro | null>(null);
   const [isCharacterModalOpen, setIsCharacterModalOpen] = useState(false);
   const [selectedStoryForNewGame, setSelectedStoryForNewGame] = useState<string | undefined>(undefined);
@@ -72,7 +72,11 @@ export default function App() {
       const pathname = window.location.pathname;
       const search = window.location.search;
       if (hash === '#admin' || pathname === '/admin' || search.includes('admin=true')) {
-        setCurrentView('admin');
+        if (api.isAdminAuthenticated()) {
+          setCurrentView('admin');
+        } else {
+          setIsAdminAuthOpen(true);
+        }
       }
     };
     checkAdminRoute();
@@ -367,10 +371,13 @@ export default function App() {
     setCurrentView('home');
   };
 
-  // Admin Access Gate (Contraseña desactivada por el momento)
+  // Admin Access Gate: siempre pide contraseña antes de conceder acceso
   const handleOpenAdmin = () => {
-    setIsAdminAuthenticated(true);
-    setCurrentView('admin');
+    if (isAdminAuthenticated) {
+      setCurrentView('admin');
+    } else {
+      setIsAdminAuthOpen(true);
+    }
   };
 
   const handleAdminAuthenticated = () => {
@@ -379,6 +386,8 @@ export default function App() {
   };
 
   const handleAdminLogout = () => {
+    api.clearAdminKey();
+    setIsAdminAuthenticated(false);
     if (window.location.hash === '#admin') {
       history.replaceState(null, '', window.location.pathname);
     }
@@ -487,7 +496,7 @@ export default function App() {
           </div>
         )}
 
-        {currentView === 'admin' && (
+        {currentView === 'admin' && isAdminAuthenticated && (
           <AdminPanel
             onBackToGame={() => {
               setCurrentView(activeSession ? 'game' : 'home');

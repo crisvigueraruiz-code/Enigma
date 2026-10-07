@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ForestPack, PlayerSession, WindmillPOI, FieldPhoto } from '../types';
 import { api } from '../services/api';
 import { useI18n } from '../context/I18nContext';
@@ -201,29 +201,21 @@ export const ExpeditionPhotoAlbumModal: React.FC<ExpeditionPhotoAlbumModalProps>
 
   const sessionCode = session?.code || 'LOCAL_EXPEDITION';
 
-  // Load photos from storage whenever modal opens
-  useEffect(() => {
-    if (isOpen) {
-      const list = api.getExpeditionPhotos(sessionCode);
-      setPhotos(list);
-    } else {
-      stopLiveCamera();
+  // Camera helpers are declared up front (before any effect or early return
+  // that might reference them), and wrapped in useCallback so the closures
+  // stay stable across renders. Declaring them further down used to throw
+  // "Cannot access 'stopLiveCamera' before initialization" whenever the
+  // modal closed, because the early `if (!isOpen) return null;` below
+  // prevented that render from ever reaching their old declaration.
+  const stopLiveCamera = useCallback(() => {
+    if (mediaStreamRef.current) {
+      mediaStreamRef.current.getTracks().forEach((track) => track.stop());
+      mediaStreamRef.current = null;
     }
-    return () => {
-      stopLiveCamera();
-    };
-  }, [isOpen, sessionCode]);
-
-  // Teardown camera on unmount
-  useEffect(() => {
-    return () => {
-      stopLiveCamera();
-    };
+    setIsLiveCameraActive(false);
   }, []);
 
-  if (!isOpen) return null;
-
-  const startLiveCamera = async () => {
+  const startLiveCamera = useCallback(async () => {
     sounds.playClick();
     try {
       if (!navigator.mediaDevices?.getUserMedia) {
@@ -246,15 +238,29 @@ export const ExpeditionPhotoAlbumModal: React.FC<ExpeditionPhotoAlbumModalProps>
       setIsLiveCameraActive(false);
       fileInputRef.current?.click();
     }
-  };
+  }, []);
 
-  const stopLiveCamera = () => {
-    if (mediaStreamRef.current) {
-      mediaStreamRef.current.getTracks().forEach((track) => track.stop());
-      mediaStreamRef.current = null;
+  // Load photos from storage whenever modal opens
+  useEffect(() => {
+    if (isOpen) {
+      const list = api.getExpeditionPhotos(sessionCode);
+      setPhotos(list);
+    } else {
+      stopLiveCamera();
     }
-    setIsLiveCameraActive(false);
-  };
+    return () => {
+      stopLiveCamera();
+    };
+  }, [isOpen, sessionCode, stopLiveCamera]);
+
+  // Teardown camera on unmount
+  useEffect(() => {
+    return () => {
+      stopLiveCamera();
+    };
+  }, [stopLiveCamera]);
+
+  if (!isOpen) return null;
 
   const captureLiveFrame = () => {
     if (!videoRef.current) return;
