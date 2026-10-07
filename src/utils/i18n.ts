@@ -45,17 +45,22 @@ export function t(
 export function getLocalizedForest(forest: ForestPack, lang: string): ForestPack {
   if (!forest) return forest;
 
-  const targetLang = (lang as SupportedLanguage) || (forest.defaultLanguage as SupportedLanguage) || 'es';
-  const forestI18n = (i18nData as any).forests?.[forest.id];
-  const keys = (i18nData as any).keys || {};
+  try {
+    const targetLang = (lang as SupportedLanguage) || (forest.defaultLanguage as SupportedLanguage) || 'es';
+    const forestI18n = (i18nData as any).forests?.[forest.id];
+    const keys = (i18nData as any).keys || {};
 
-  const translateKey = (k?: string, fallbackVal?: string): string => {
-    if (!k) return fallbackVal || '';
-    return t(k, targetLang, undefined, forest.defaultLanguage || 'es');
-  };
+    const translateKey = (k?: string, fallbackVal?: string): string => {
+      if (!k) return fallbackVal || '';
+      return t(k, targetLang, undefined, forest.defaultLanguage || 'es');
+    };
 
-  // Localize POIs
-  const localizedPois: WindmillPOI[] = forest.pois.map((poi) => {
+    const poisList = Array.isArray(forest.pois) ? forest.pois : [];
+    const storiesList = Array.isArray(forest.stories) ? forest.stories : [];
+    const riddlesList = Array.isArray(forest.riddles) ? forest.riddles : [];
+
+    // Localize POIs
+    const localizedPois: WindmillPOI[] = poisList.map((poi) => {
     const poiTrans = forestI18n?.[targetLang]?.pois?.[poi.id];
     const name = poiTrans?.name || (poi.nameKey ? translateKey(poi.nameKey, poi.name) : poi.name);
     const description = poiTrans?.description || (poi.descriptionKey ? translateKey(poi.descriptionKey, poi.description) : poi.description);
@@ -83,7 +88,7 @@ export function getLocalizedForest(forest: ForestPack, lang: string): ForestPack
   });
 
   // Localize Stories
-  const localizedStories: StoryIntro[] = forest.stories.map((story) => {
+  const localizedStories: StoryIntro[] = storiesList.map((story) => {
     const storyTrans = forestI18n?.[targetLang]?.stories?.[story.id];
     const title = storyTrans?.title || (story.titleKey ? translateKey(story.titleKey, story.title) : story.title);
     const summary = storyTrans?.summary || (story.summaryKey ? translateKey(story.summaryKey, story.summary) : (story.guide?.personaKey ? translateKey(story.guide.personaKey, story.summary) : story.summary));
@@ -128,7 +133,7 @@ export function getLocalizedForest(forest: ForestPack, lang: string): ForestPack
   });
 
   // Localize Riddles
-  const localizedRiddles: Riddle[] = forest.riddles.map((riddle) => {
+  const localizedRiddles: Riddle[] = riddlesList.map((riddle) => {
     const rTrans = forestI18n?.[targetLang]?.riddles?.[riddle.id];
     let question = rTrans?.question;
     if (!question) {
@@ -251,6 +256,10 @@ export function getLocalizedForest(forest: ForestPack, lang: string): ForestPack
         }
       : undefined,
   };
+  } catch (err) {
+    console.warn('Error localizing forest pack:', err);
+    return forest;
+  }
 }
 
 /**

@@ -473,7 +473,25 @@ app.get('/api/sessions/:code', (req: Request, res: Response) => {
     return res.status(404).json({ error: 'Código de partida no encontrado' });
   }
 
-  const pack = forestPacks.find(p => p.id === session.forestPackId) || forestPacks[0];
+  let pack = forestPacks.find(p => p.id === session.forestPackId);
+  if (!pack && session.forestPackId?.startsWith('nalda')) {
+    pack = forestPacks.find(p => p.id === 'nalda');
+  }
+  if (!pack) {
+    pack = forestPacks[0];
+  }
+
+  // Ensure session.routePoiIds are compatible with pack
+  if (pack && Array.isArray(pack.pois) && pack.pois.length > 0) {
+    const validPoiIds = pack.pois.map(p => p.id);
+    const hasValidRoute = Array.isArray(session.routePoiIds) && session.routePoiIds.some(id => validPoiIds.includes(id));
+    if (!hasValidRoute) {
+      session.routePoiIds = pack.pois.slice(0, 3).map(p => p.id);
+      session.currentPoiIndex = 0;
+      saveSessions(sessions);
+    }
+  }
+
   res.json({ session, forestPack: pack });
 });
 

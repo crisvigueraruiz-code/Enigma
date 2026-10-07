@@ -107,21 +107,33 @@ export const GameView: React.FC<GameViewProps> = ({
   const [playerLat, setPlayerLat] = useState(session.lat || forest.centerLat);
   const [playerLng, setPlayerLng] = useState(session.lng || forest.centerLng);
 
-  // Current & Previous POIs
-  const currentPoiId = session.routePoiIds[session.currentPoiIndex] || session.routePoiIds[0];
-  const currentPoi = forest.pois.find((p) => p.id === currentPoiId) || forest.pois[0];
-  const previousPoiId = session.currentPoiIndex > 0 ? session.routePoiIds[session.currentPoiIndex - 1] : undefined;
-  const previousPoi = previousPoiId ? forest.pois.find((p) => p.id === previousPoiId) : undefined;
+  // Current & Previous POIs with bulletproof fallback
+  const safePois = Array.isArray(forest.pois) && forest.pois.length > 0 ? forest.pois : [
+    {
+      id: 'poi-default',
+      name: forest.name || 'Hito Principal',
+      description: 'Punto de encuentro en el sendero',
+      emoji: '🌲',
+      clueSnippet: 'Sigue el sendero marcado',
+      lat: forest.centerLat || 44.7645,
+      lng: forest.centerLng || -0.6358,
+      riddleId: '',
+    } as unknown as WindmillPOI,
+  ];
+  const currentPoiId = (session.routePoiIds && session.routePoiIds[session.currentPoiIndex]) || (session.routePoiIds && session.routePoiIds[0]) || safePois[0].id;
+  const currentPoi = safePois.find((p) => p.id === currentPoiId) || safePois[0];
+  const previousPoiId = session.currentPoiIndex > 0 && session.routePoiIds ? session.routePoiIds[session.currentPoiIndex - 1] : undefined;
+  const previousPoi = previousPoiId ? safePois.find((p) => p.id === previousPoiId) : undefined;
   const nextPoiId =
-    session.currentPoiIndex + 1 < session.routePoiIds.length
+    session.routePoiIds && session.currentPoiIndex + 1 < session.routePoiIds.length
       ? session.routePoiIds[session.currentPoiIndex + 1]
       : undefined;
-  const nextPoi = nextPoiId ? forest.pois.find((p) => p.id === nextPoiId) : undefined;
-  const story = forest.stories.find((s) => s.id === session.storyId);
+  const nextPoi = nextPoiId ? safePois.find((p) => p.id === nextPoiId) : undefined;
+  const story = Array.isArray(forest.stories) ? forest.stories.find((s) => s.id === session.storyId) || forest.stories[0] : undefined;
 
   // Starting point for return / emergency guidance
-  const startPoiId = session.routePoiIds[0];
-  const startPoi = forest.pois.find((p) => p.id === startPoiId) || forest.pois[0];
+  const startPoiId = session.routePoiIds && session.routePoiIds[0] ? session.routePoiIds[0] : safePois[0].id;
+  const startPoi = safePois.find((p) => p.id === startPoiId) || safePois[0];
   const returnDistanceMeters = startPoi
     ? calculateHaversineDistance(playerLat, playerLng, startPoi.lat, startPoi.lng)
     : 0;
@@ -548,7 +560,7 @@ export const GameView: React.FC<GameViewProps> = ({
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span className="font-semibold">
-                  {t('game.arrivalConfirmed', { poiName: currentPoi.name })}
+                  {t('game.arrivalConfirmed', { poiName: currentPoi?.name || '' })}
                 </span>
               </div>
               <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-900/60 font-mono text-emerald-200 border border-emerald-700/50">

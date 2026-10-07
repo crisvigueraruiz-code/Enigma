@@ -115,6 +115,11 @@ export default function App() {
         ) {
           throw new Error('Sesión o bosque incompleto en almacenamiento');
         }
+        if (typeof session.currentPoiIndex !== 'number' || isNaN(session.currentPoiIndex) || session.currentPoiIndex < 0) {
+          session.currentPoiIndex = 0;
+        } else if (session.currentPoiIndex >= session.routePoiIds.length) {
+          session.currentPoiIndex = session.routePoiIds.length - 1;
+        }
         setActiveSession(session);
         setSelectedForest(forestPack);
         if (session.status === 'completed') {
@@ -123,7 +128,9 @@ export default function App() {
         setCurrentView('game');
       } catch (e) {
         console.warn('Limpiando sesión previa inválida:', e);
-        localStorage.removeItem('enigma_active_session');
+        try {
+          localStorage.removeItem('enigma_active_session');
+        } catch {}
         setActiveSession(null);
         setCurrentView('home');
       }
