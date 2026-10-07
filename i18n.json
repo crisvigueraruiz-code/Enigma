@@ -1401,7 +1401,15 @@
       "album.passportLink": "Ver Pasaporte y Sellos",
       "album.viewFullCollage": "Descargar Collage (HD)",
       "passport.viewAlbum": "Álbum de Fotos",
-      "passport.viewAlbumDesc": "Ver y descargar las fotografías tomadas durante la expedición"
+      "passport.viewAlbumDesc": "Ver y descargar las fotografías tomadas durante la expedición",
+      "hub.title": "Herramientas de Expedición",
+      "hub.duelDesc": "Modo Duelo multiequipo",
+      "hub.passportDesc": "Sellos, rangos y diplomas",
+      "hub.albumDesc": "Cuaderno y fotos de hitos",
+      "hub.offlineDesc": "Mapas y datos sin cobertura",
+      "hub.howToPlayDesc": "Reglas, pistas y brújula",
+      "hub.exploreShort": "Explorar Bosques",
+      "hub.resumeShort": "Reanudar con Código"
     },
     "fr": {
       "app.title": "Énigme Vivante",
@@ -2780,7 +2788,15 @@
       "album.passportLink": "Voir Passeport & Tampons",
       "album.viewFullCollage": "Télécharger Collage (HD)",
       "passport.viewAlbum": "Album Photo",
-      "passport.viewAlbumDesc": "Voir et télécharger les photos prises pendant l'expédition"
+      "passport.viewAlbumDesc": "Voir et télécharger les photos prises pendant l'expédition",
+      "hub.title": "Outils d’Expédition",
+      "hub.duelDesc": "Mode Duel par équipes",
+      "hub.passportDesc": "Tampons, rangs & diplômes",
+      "hub.albumDesc": "Carnet & photos d’étapes",
+      "hub.offlineDesc": "Cartes et pistes hors-ligne",
+      "hub.howToPlayDesc": "Règles, indices & boussole",
+      "hub.exploreShort": "Explorer les Forêts",
+      "hub.resumeShort": "Reprendre avec Code"
     },
     "en": {
       "app.title": "Living Enigma",
@@ -4159,7 +4175,15 @@
       "album.passportLink": "View Passport & Stamps",
       "album.viewFullCollage": "Download Collage (HD)",
       "passport.viewAlbum": "Photo Album",
-      "passport.viewAlbumDesc": "View and download photos taken during the expedition"
+      "passport.viewAlbumDesc": "View and download photos taken during the expedition",
+      "hub.title": "Expedition Tools",
+      "hub.duelDesc": "Multi-team stealth duel",
+      "hub.passportDesc": "Stamps, ranks & diplomas",
+      "hub.albumDesc": "Journal & landmark photos",
+      "hub.offlineDesc": "Maps & packs without signal",
+      "hub.howToPlayDesc": "Rules, hints & compass",
+      "hub.exploreShort": "Explore Forests",
+      "hub.resumeShort": "Resume with Code"
     }
   },
   "forests": {

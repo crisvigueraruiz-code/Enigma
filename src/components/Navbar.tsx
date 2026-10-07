@@ -60,74 +60,82 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Right actions */}
-        <div className="flex items-center space-x-1.5 sm:space-x-2.5">
+        <div className="flex items-center gap-2 sm:gap-2.5">
           {/* FR · ES · EN Language Selector Always Visible */}
           <LanguageSelector />
 
-          {/* How to Play Guide Modal Trigger */}
-          {onOpenHowToPlay && (
-            <button
-              type="button"
-              onClick={onOpenHowToPlay}
-              title={t('howToPlay_title')}
-              className="flex items-center gap-1 px-2 py-1 text-xs rounded-lg border border-emerald-700/50 bg-emerald-950/60 hover:bg-emerald-900/80 text-emerald-200 hover:text-white font-medium transition-all shadow-sm active:scale-95 min-h-[32px]"
-            >
-              <HelpCircle className="w-3.5 h-3.5 text-amber-300" />
-              <span className="hidden sm:inline">{t('howToPlay_navButton')}</span>
-            </button>
-          )}
+          {/* Unified Expedition Utilities Dock */}
+          <nav className="flex items-center gap-1 sm:gap-1.5 p-1 rounded-2xl bg-stone-900/70 border border-emerald-800/40 backdrop-blur-md shadow-md" aria-label="Herramientas rápidas">
+            {/* Batalla Silenciosa (Duelo) Trigger */}
+            {onOpenDuelLobby && (
+              <button
+                type="button"
+                onClick={onOpenDuelLobby}
+                title={t('duel.title')}
+                className="flex items-center gap-1.5 px-2.5 h-8 rounded-xl border border-amber-500/40 bg-gradient-to-r from-amber-950/70 to-amber-900/40 hover:from-amber-900/80 hover:to-amber-800/60 text-amber-200 hover:text-white font-adventure text-xs font-bold transition-all shadow-sm active:scale-95 cursor-pointer shrink-0"
+              >
+                <Swords className="w-3.5 h-3.5 text-amber-400" />
+                <span className="hidden md:inline">{t('duel.navButton')}</span>
+              </button>
+            )}
 
-          {/* Batalla Silenciosa (Duelo) Trigger */}
-          {onOpenDuelLobby && (
-            <button
-              type="button"
-              onClick={onOpenDuelLobby}
-              title={t('duel.title')}
-              className="flex items-center gap-1 px-2 py-1 text-xs rounded-lg border border-amber-600/50 bg-amber-950/60 hover:bg-amber-900/80 text-amber-200 hover:text-amber-100 font-bold transition-all shadow-sm active:scale-95 min-h-[32px]"
-            >
-              <Swords className="w-3.5 h-3.5 text-amber-400" />
-              <span className="hidden sm:inline">{t('duel.navButton')}</span>
-            </button>
-          )}
+            {/* Pasaporte de Explorador & Diplomas Trigger */}
+            {onOpenPassport && (
+              <button
+                type="button"
+                onClick={onOpenPassport}
+                title={t('passport.title')}
+                className="flex items-center gap-1.5 px-2.5 h-8 rounded-xl border border-emerald-700/40 bg-[#16251A]/60 hover:bg-[#1F3424] text-stone-200 hover:text-white text-xs font-semibold transition-all shadow-sm active:scale-95 cursor-pointer shrink-0"
+              >
+                <BookOpen className="w-3.5 h-3.5 text-emerald-400" />
+                <span className="hidden lg:inline">{t('passport.navButton')}</span>
+              </button>
+            )}
 
-          {/* Pasaporte de Explorador & Diplomas Trigger */}
-          {onOpenPassport && (
-            <button
-              type="button"
-              onClick={onOpenPassport}
-              title={t('passport.title')}
-              className="flex items-center gap-1 px-2 py-1 text-xs rounded-lg border border-emerald-600/50 bg-emerald-950/60 hover:bg-emerald-900/80 text-emerald-200 hover:text-white font-medium transition-all shadow-sm active:scale-95 min-h-[32px]"
-            >
-              <BookOpen className="w-3.5 h-3.5 text-amber-300" />
-              <span className="hidden md:inline">{t('passport.navButton')}</span>
-            </button>
-          )}
+            {/* Descarga Offline Completa Trigger */}
+            {onOpenOffline && (
+              <button
+                type="button"
+                onClick={onOpenOffline}
+                title={t('offline.title')}
+                className="flex items-center gap-1.5 px-2.5 h-8 rounded-xl border border-emerald-700/40 bg-[#16251A]/60 hover:bg-[#1F3424] text-stone-200 hover:text-white text-xs font-semibold transition-all shadow-sm active:scale-95 cursor-pointer shrink-0"
+              >
+                <Download className="w-3.5 h-3.5 text-teal-300" />
+                <span className="hidden xl:inline">{t('offline.navButton')}</span>
+              </button>
+            )}
 
-          {/* Descarga Offline Completa (Pack Pre-salida) Trigger */}
-          {onOpenOffline && (
-            <button
-              type="button"
-              onClick={onOpenOffline}
-              title={t('offline.title')}
-              className="flex items-center gap-1 px-2 py-1 text-xs rounded-lg border border-teal-700/50 bg-teal-950/60 hover:bg-teal-900/80 text-teal-200 hover:text-white font-medium transition-all shadow-sm active:scale-95 min-h-[32px]"
-            >
-              <Download className="w-3.5 h-3.5 text-teal-300" />
-              <span className="hidden lg:inline">{t('offline.navButton')}</span>
-            </button>
-          )}
+            {/* Álbum de Fotos de Campo Trigger */}
+            {onOpenAlbum && (
+              <button
+                type="button"
+                onClick={onOpenAlbum}
+                title={t('album.title')}
+                className="flex items-center gap-1.5 px-2.5 h-8 rounded-xl border border-emerald-700/40 bg-[#16251A]/60 hover:bg-[#1F3424] text-stone-200 hover:text-white text-xs font-semibold transition-all shadow-sm active:scale-95 cursor-pointer shrink-0"
+              >
+                <Camera className="w-3.5 h-3.5 text-amber-300" />
+                <span className="hidden xl:inline">{t('album.navButton')}</span>
+              </button>
+            )}
 
-          {/* Álbum de Fotos de Campo Trigger */}
-          {onOpenAlbum && (
-            <button
-              type="button"
-              onClick={onOpenAlbum}
-              title={t('album.title')}
-              className="flex items-center gap-1 px-2 py-1 text-xs rounded-lg border border-amber-600/50 bg-amber-950/60 hover:bg-amber-900/80 text-amber-200 hover:text-white font-medium transition-all shadow-sm active:scale-95 min-h-[32px]"
-            >
-              <Camera className="w-3.5 h-3.5 text-amber-300" />
-              <span className="hidden xl:inline">{t('album.navButton')}</span>
-            </button>
-          )}
+            {/* How to Play Guide Modal Trigger */}
+            {onOpenHowToPlay && (
+              <button
+                type="button"
+                onClick={onOpenHowToPlay}
+                title={t('howToPlay_title')}
+                className="flex items-center gap-1.5 px-2.5 h-8 rounded-xl border border-emerald-700/40 bg-[#16251A]/60 hover:bg-[#1F3424] text-stone-200 hover:text-white text-xs font-semibold transition-all shadow-sm active:scale-95 cursor-pointer shrink-0"
+              >
+                <HelpCircle className="w-3.5 h-3.5 text-amber-300" />
+                <span className="hidden xl:inline">{t('howToPlay_navButton')}</span>
+              </button>
+            )}
+
+            {/* Audio toggle & Ambient Soundscape Control */}
+            <div className="pl-0.5 border-l border-emerald-800/40">
+              <AmbientAudioControl variant="compact" />
+            </div>
+          </nav>
 
           {currentView === 'game' && sessionCode && (
             <div className="hidden xs:flex items-center space-x-1.5 bg-emerald-950/60 border border-emerald-800/40 rounded-lg px-2 py-1">

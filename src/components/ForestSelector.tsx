@@ -161,79 +161,145 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
             <span className="font-medium text-stone-300">{t('home.statTech')}</span>
           </div>
 
-          {/* Hero Action Buttons */}
-          <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          {/* Primary Hero Actions (CTA Duo) */}
+          <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
             <a
               href="#bosques-list"
-              className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-green-500 hover:from-emerald-500 hover:to-green-400 text-white font-adventure text-sm font-bold tracking-wider shadow-lg shadow-emerald-950/80 active:scale-95 transition-all min-h-[48px]"
+              className="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-green-600 hover:from-emerald-500 hover:to-green-500 text-stone-950 font-adventure text-sm sm:text-base font-extrabold tracking-wider shadow-xl shadow-emerald-950/80 active:scale-95 transition-all cursor-pointer group"
             >
-              <Compass className="w-5 h-5 text-white" />
-              <span>{t('home.exploreBtn')}</span>
+              <Compass className="w-5 h-5 text-stone-950 group-hover:rotate-45 transition-transform duration-300" />
+              <span>{t('hub.exploreShort') || t('home.exploreBtn')}</span>
+              <ArrowRight className="w-4 h-4 text-stone-950 group-hover:translate-x-1 transition-transform" />
             </a>
 
             <button
               type="button"
               onClick={onResumeGame}
-              className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-stone-900/90 hover:bg-stone-800 border border-stone-700 text-amber-200 hover:text-white font-semibold text-sm transition-all shadow-md active:scale-95 min-h-[48px]"
+              className="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl bg-[#111A13]/90 hover:bg-[#1A281E] border border-emerald-700/50 hover:border-amber-400/60 text-amber-200 hover:text-amber-100 font-adventure text-sm font-bold tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
             >
-              <KeyRound className="w-5 h-5 text-amber-400" />
-              <span>{t('home.resumeBtn')}</span>
+              <KeyRound className="w-4 h-4 text-amber-400" />
+              <span>{t('hub.resumeShort') || t('home.resumeBtn')}</span>
             </button>
+          </div>
 
-            {onOpenHowToPlay && (
-              <button
-                type="button"
-                onClick={onOpenHowToPlay}
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-emerald-950/70 hover:bg-emerald-900/90 border border-emerald-600/50 text-emerald-200 hover:text-white font-semibold text-sm transition-all shadow-md active:scale-95 min-h-[48px]"
-              >
-                <HelpCircle className="w-5 h-5 text-amber-300" />
-                <span>{t('howToPlay_title')}</span>
-              </button>
-            )}
+          {/* Expedition Tools Hub (Herramientas de Expedición) */}
+          <div className="pt-5 border-t border-emerald-800/30">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-amber-300/80 font-mono flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                <span>{t('hub.title') || 'Herramientas de Expedición'}</span>
+              </span>
+              <span className="text-[10px] text-stone-400 hidden sm:inline font-mono">
+                5 módulos activos
+              </span>
+            </div>
 
-            {onOpenDuelLobby && (
-              <button
-                type="button"
-                onClick={onOpenDuelLobby}
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-amber-600 via-amber-500 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 text-stone-950 font-adventure text-sm font-black tracking-wider shadow-lg shadow-amber-950/80 active:scale-95 transition-all min-h-[48px]"
-              >
-                <Swords className="w-5 h-5 text-stone-950 animate-pulse" />
-                <span>{t('duel.navButton')}</span>
-              </button>
-            )}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3">
+              {/* 1. Batalla Silenciosa */}
+              {onOpenDuelLobby && (
+                <button
+                  type="button"
+                  onClick={onOpenDuelLobby}
+                  className="group p-3 rounded-2xl bg-[#121E15]/80 hover:bg-[#182C1D] border border-amber-600/30 hover:border-amber-400/60 shadow-lg hover:shadow-amber-950/40 transition-all duration-200 text-left flex items-center gap-3 cursor-pointer"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-600/30 to-amber-900/40 border border-amber-500/40 flex items-center justify-center text-amber-300 shrink-0 group-hover:scale-105 transition-transform shadow-inner">
+                    <Swords className="w-4 h-4 text-amber-400" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="font-adventure text-xs font-bold text-amber-200 group-hover:text-amber-100 truncate">
+                      {t('duel.navButton')}
+                    </div>
+                    <div className="text-[10px] text-stone-400 group-hover:text-stone-300 truncate mt-0.5">
+                      {t('hub.duelDesc') || 'Modo Duelo'}
+                    </div>
+                  </div>
+                </button>
+              )}
 
-            {onOpenPassport && (
-              <button
-                type="button"
-                onClick={onOpenPassport}
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-emerald-950/70 hover:bg-emerald-900/90 border border-emerald-600/50 text-emerald-200 hover:text-white font-semibold text-sm transition-all shadow-md active:scale-95 min-h-[48px]"
-              >
-                <BookOpen className="w-5 h-5 text-amber-300" />
-                <span>{t('passport.title')}</span>
-              </button>
-            )}
+              {/* 2. Pasaporte de Explorador */}
+              {onOpenPassport && (
+                <button
+                  type="button"
+                  onClick={onOpenPassport}
+                  className="group p-3 rounded-2xl bg-[#121E15]/80 hover:bg-[#182C1D] border border-emerald-800/40 hover:border-emerald-500/60 shadow-lg hover:shadow-emerald-950/40 transition-all duration-200 text-left flex items-center gap-3 cursor-pointer"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-300 shrink-0 group-hover:scale-105 transition-transform shadow-inner">
+                    <BookOpen className="w-4 h-4 text-emerald-400" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="font-adventure text-xs font-bold text-stone-200 group-hover:text-emerald-300 truncate">
+                      {t('passport.navButton') || 'Pasaporte'}
+                    </div>
+                    <div className="text-[10px] text-stone-400 group-hover:text-stone-300 truncate mt-0.5">
+                      {t('hub.passportDesc') || 'Sellos y diplomas'}
+                    </div>
+                  </div>
+                </button>
+              )}
 
-            {onOpenOffline && (
-              <button
-                type="button"
-                onClick={onOpenOffline}
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-teal-950/70 hover:bg-teal-900/90 border border-teal-600/50 text-teal-200 hover:text-white font-semibold text-sm transition-all shadow-md active:scale-95 min-h-[48px]"
-              >
-                <Download className="w-5 h-5 text-teal-300" />
-                <span>{t('offline.navButton')}</span>
-              </button>
-            )}
+              {/* 3. Álbum de Fotos de Campo */}
+              {onOpenAlbum && (
+                <button
+                  type="button"
+                  onClick={onOpenAlbum}
+                  className="group p-3 rounded-2xl bg-[#121E15]/80 hover:bg-[#182C1D] border border-emerald-800/40 hover:border-emerald-500/60 shadow-lg hover:shadow-emerald-950/40 transition-all duration-200 text-left flex items-center gap-3 cursor-pointer"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-300 shrink-0 group-hover:scale-105 transition-transform shadow-inner">
+                    <Camera className="w-4 h-4 text-amber-300" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="font-adventure text-xs font-bold text-stone-200 group-hover:text-amber-200 truncate">
+                      {t('album.navButton') || 'Fotos de Campo'}
+                    </div>
+                    <div className="text-[10px] text-stone-400 group-hover:text-stone-300 truncate mt-0.5">
+                      {t('hub.albumDesc') || 'Cuaderno y fotos'}
+                    </div>
+                  </div>
+                </button>
+              )}
 
-            {onOpenAlbum && (
-              <button
-                type="button"
-                onClick={onOpenAlbum}
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-amber-950/70 hover:bg-amber-900/90 border border-amber-600/50 text-amber-200 hover:text-white font-semibold text-sm transition-all shadow-md active:scale-95 min-h-[48px] cursor-pointer"
-              >
-                <Camera className="w-5 h-5 text-amber-300" />
-                <span>{t('album.title')}</span>
-              </button>
-            )}
+              {/* 4. Descarga Offline */}
+              {onOpenOffline && (
+                <button
+                  type="button"
+                  onClick={onOpenOffline}
+                  className="group p-3 rounded-2xl bg-[#121E15]/80 hover:bg-[#182C1D] border border-emerald-800/40 hover:border-emerald-500/60 shadow-lg hover:shadow-emerald-950/40 transition-all duration-200 text-left flex items-center gap-3 cursor-pointer"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-teal-500/15 border border-teal-500/30 flex items-center justify-center text-teal-300 shrink-0 group-hover:scale-105 transition-transform shadow-inner">
+                    <Download className="w-4 h-4 text-teal-300" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="font-adventure text-xs font-bold text-stone-200 group-hover:text-teal-300 truncate">
+                      {t('offline.navButton') || 'Packs Offline'}
+                    </div>
+                    <div className="text-[10px] text-stone-400 group-hover:text-stone-300 truncate mt-0.5">
+                      {t('hub.offlineDesc') || 'Sin cobertura'}
+                    </div>
+                  </div>
+                </button>
+              )}
+
+              {/* 5. ¿Cómo se juega? */}
+              {onOpenHowToPlay && (
+                <button
+                  type="button"
+                  onClick={onOpenHowToPlay}
+                  className="group p-3 rounded-2xl bg-[#121E15]/80 hover:bg-[#182C1D] border border-emerald-800/40 hover:border-emerald-500/60 shadow-lg hover:shadow-emerald-950/40 transition-all duration-200 text-left flex items-center gap-3 cursor-pointer col-span-2 sm:col-span-1"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-300 shrink-0 group-hover:scale-105 transition-transform shadow-inner">
+                    <HelpCircle className="w-4 h-4 text-amber-300" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="font-adventure text-xs font-bold text-stone-200 group-hover:text-amber-200 truncate">
+                      {t('howToPlay_navButton') || 'Guía'}
+                    </div>
+                    <div className="text-[10px] text-stone-400 group-hover:text-stone-300 truncate mt-0.5">
+                      {t('hub.howToPlayDesc') || 'Reglas y pistas'}
+                    </div>
+                  </div>
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
