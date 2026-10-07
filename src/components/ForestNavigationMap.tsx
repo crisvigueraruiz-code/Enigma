@@ -30,7 +30,8 @@ import {
   TreePine,
   Sun,
   Flame,
-  RotateCcw
+  RotateCcw,
+  QrCode,
 } from 'lucide-react';
 
 interface ForestNavigationMapProps {
@@ -44,9 +45,10 @@ interface ForestNavigationMapProps {
   onToggleSimulatedGps: () => void;
   isNearPoi: boolean;
   onOpenAR?: () => void;
+  onOpenBeaconScanner?: () => void;
 }
 
-type TileTheme = 'opentopo' | 'voyager' | 'satellite' | 'night';
+type TileTheme = 'esritopo' | 'satellite' | 'ign' | 'cyclosm' | 'osm';
 
 interface TileConfig {
   name: string;
@@ -71,6 +73,7 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
   onToggleSimulatedGps,
   isNearPoi,
   onOpenAR,
+  onOpenBeaconScanner,
 }) => {
   const { t } = useI18n();
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -85,8 +88,8 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
   const targetBeelineRef = useRef<L.Polyline | null>(null);
   const targetRadiusCircleRef = useRef<L.Circle | null>(null);
 
-  // Default to OpenTopoMap with organic forest filters
-  const [activeTheme, setActiveTheme] = useState<TileTheme>('opentopo');
+  // Default to Esri Topo with organic forest filters (100% free, no API key required)
+  const [activeTheme, setActiveTheme] = useState<TileTheme>('esritopo');
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [autoFollow, setAutoFollow] = useState(true);
   const [showSimControls, setShowSimControls] = useState(simulatedGps);
@@ -126,44 +129,52 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
     return `${d}°${m}'${s}" ${dir}`;
   };
 
-  // Curated, beautiful tile themes with OpenTopoMap as the organic base
+  // Curated, 100% FREE, unrestricted tile themes without API key requirements
   const tileThemes: Record<TileTheme, TileConfig> = {
-    opentopo: {
-      name: 'OpenTopoMap Orgánico (Bosque)',
-      shortName: 'OpenTopo Orgánico',
-      icon: '🌲',
-      url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
-      attribution: 'Map: &copy; OpenTopoMap (CC-BY-SA), &copy; OpenStreetMap',
-      maxZoom: 17,
-      subdomains: 'abc',
-      className: 'forest-opentopo-organic',
-      hasOrganicFilter: true,
-    },
-    voyager: {
-      name: 'Senda Aventura (CARTO Voyager)',
-      shortName: 'Aventura',
-      icon: '🌿',
-      url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-      attribution: '&copy; CARTO &copy; OpenStreetMap',
+    esritopo: {
+      name: 'Esri Topográfico & Relieve (Oficial)',
+      shortName: 'Topográfico',
+      icon: '🏔️',
+      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+      attribution: 'Tiles &copy; Esri &mdash; Topo Relief & Trails',
       maxZoom: 19,
-      subdomains: 'abcd',
+      hasOrganicFilter: true,
+      className: 'forest-topo-organic',
     },
     satellite: {
-      name: 'Satélite de Alta Definición',
+      name: 'Satélite HD (Esri World Imagery)',
       shortName: 'Satélite',
       icon: '🛰️',
       url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
       attribution: 'Tiles &copy; Esri &mdash; Source: Esri, Maxar',
       maxZoom: 19,
     },
-    night: {
-      name: 'Bosque Místico (Nocturno)',
-      shortName: 'Nocturno',
-      icon: '🌌',
-      url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-      attribution: '&copy; CARTO &copy; OpenStreetMap',
+    ign: {
+      name: 'IGN España MTN (Instituto Geográfico Nacional)',
+      shortName: 'IGN Nacional',
+      icon: '🇪🇸',
+      url: 'https://www.ign.es/wmts/mapa-raster?layer=MTN&style=default&tilematrixset=GoogleMapsCompatible&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/jpeg&TileMatrix={z}&TileCol={x}&TileRow={y}',
+      attribution: '&copy; Instituto Geográfico Nacional de España (IGN)',
       maxZoom: 19,
-      subdomains: 'abcd',
+    },
+    cyclosm: {
+      name: 'CyclOSM (Pistas Forestales & Senderos)',
+      shortName: 'Pistas Forestales',
+      icon: '🌲',
+      url: 'https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png',
+      attribution: '&copy; CyclOSM &copy; OpenStreetMap',
+      maxZoom: 18,
+      subdomains: 'abc',
+      hasOrganicFilter: true,
+    },
+    osm: {
+      name: 'OpenStreetMap Senda Estándar',
+      shortName: 'OSM Senda',
+      icon: '🌿',
+      url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attribution: '&copy; OpenStreetMap contributors',
+      maxZoom: 19,
+      hasOrganicFilter: true,
     },
   };
 
@@ -187,14 +198,18 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
     // Add subtle attribution control at bottom-left
     L.control.attribution({ position: 'bottomleft', prefix: false }).addTo(map);
 
-    // Initial tile layer with OpenTopoMap organic class
-    const initialCfg = tileThemes[activeTheme];
+    // Initial tile layer with Esri Topo
+    const initialCfg = tileThemes[activeTheme] || tileThemes.esritopo;
     const tileLayer = L.tileLayer(initialCfg.url, {
       attribution: initialCfg.attribution,
       maxZoom: initialCfg.maxZoom,
       subdomains: initialCfg.subdomains || 'abc',
       className: initialCfg.className || '',
-    }).addTo(map);
+    });
+    tileLayer.on('tileerror', () => {
+      // Graceful error protection - prevent crashes on network hiccups
+    });
+    tileLayer.addTo(map);
     tileLayerRef.current = tileLayer;
 
     // POI markers layer group
@@ -228,13 +243,17 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
       map.removeLayer(tileLayerRef.current);
     }
 
-    const cfg = tileThemes[activeTheme];
+    const cfg = tileThemes[activeTheme] || tileThemes.esritopo;
     const newLayer = L.tileLayer(cfg.url, {
       attribution: cfg.attribution,
       maxZoom: cfg.maxZoom,
       subdomains: cfg.subdomains || 'abc',
       className: cfg.className || '',
-    }).addTo(map);
+    });
+    newLayer.on('tileerror', () => {
+      // Graceful error protection
+    });
+    newLayer.addTo(map);
     tileLayerRef.current = newLayer;
   }, [activeTheme]);
 
@@ -245,7 +264,8 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
     const tilePane = map.getPane('tilePane');
     if (!tilePane) return;
 
-    if (activeTheme === 'opentopo' && organicFilterActive) {
+    const currentCfg = tileThemes[activeTheme];
+    if (currentCfg?.hasOrganicFilter && organicFilterActive) {
       tilePane.style.filter = `contrast(${contrast}%) saturate(${saturation}%) brightness(96%) sepia(${warmth}%) hue-rotate(-6deg)`;
       tilePane.style.transition = 'filter 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
     } else {
@@ -332,7 +352,7 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
       map.removeLayer(routePolylineShadowRef.current);
     }
     const shadowPolyline = L.polyline(routeCoords, {
-      color: activeTheme === 'night' ? '#042f2e' : '#053e2a',
+      color: activeTheme === 'satellite' ? '#042f2e' : '#053e2a',
       weight: 7,
       opacity: 0.55,
       lineCap: 'round',
@@ -345,7 +365,7 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
       map.removeLayer(routePolylineRef.current);
     }
     const polyline = L.polyline(routeCoords, {
-      color: activeTheme === 'night' ? '#2dd4bf' : '#047857',
+      color: activeTheme === 'satellite' ? '#2dd4bf' : '#047857',
       weight: 3.5,
       opacity: 0.95,
       dashArray: '8, 8',
@@ -664,8 +684,8 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
             </div>
           </div>
 
-          {/* Organic Forest CSS Filter Tuning Button (Active on OpenTopoMap) */}
-          {activeTheme === 'opentopo' && (
+          {/* Organic Forest CSS Filter Tuning Button */}
+          {tileThemes[activeTheme]?.hasOrganicFilter && (
             <div className="relative">
               <button
                 type="button"
@@ -800,6 +820,19 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
             </div>
           )}
 
+          {/* Quick Physical QR Beacon Scanner Button */}
+          {onOpenBeaconScanner && (
+            <button
+              type="button"
+              onClick={onOpenBeaconScanner}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-2xl bg-amber-950/90 hover:bg-amber-900 border border-amber-500/70 text-amber-200 hover:text-white font-adventure text-xs font-bold shadow-lg shadow-amber-950/50 active:scale-95 transition-all shrink-0 cursor-pointer"
+              title="Escanear Baliza Física QR del hito"
+            >
+              <QrCode className="w-4 h-4 text-amber-400" />
+              <span className="hidden sm:inline">Escanear Baliza</span>
+            </button>
+          )}
+
           {/* Quick AR Camera Button */}
           {onOpenAR && (
             <button
@@ -854,8 +887,8 @@ export const ForestNavigationMap: React.FC<ForestNavigationMapProps> = ({
                         <span className="text-base">{item.icon}</span>
                         <div>
                           <div>{item.name}</div>
-                          {key === 'opentopo' && (
-                            <div className="text-[9px] text-amber-200 font-mono">Filtro orgánico activo</div>
+                          {item.hasOrganicFilter && (
+                            <div className="text-[9px] text-amber-200 font-mono">Filtro orgánico disponible</div>
                           )}
                         </div>
                       </div>

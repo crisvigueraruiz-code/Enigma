@@ -22,6 +22,8 @@ import {
   HelpCircle,
   Swords,
   Download,
+  QrCode,
+  Camera,
 } from 'lucide-react';
 import { CharactersGallery } from './CharactersGallery';
 
@@ -40,6 +42,8 @@ interface ForestSelectorProps {
   onOpenDuelLobby?: () => void;
   onOpenPassport?: () => void;
   onOpenOffline?: () => void;
+  onOpenPrintBeacons?: (forest: ForestPack) => void;
+  onOpenAlbum?: () => void;
 }
 
 export const ForestSelector: React.FC<ForestSelectorProps> = ({
@@ -57,6 +61,8 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
   onOpenDuelLobby,
   onOpenPassport,
   onOpenOffline,
+  onOpenPrintBeacons,
+  onOpenAlbum,
 }) => {
   const { t } = useI18n();
 
@@ -217,6 +223,17 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
                 <span>{t('offline.navButton')}</span>
               </button>
             )}
+
+            {onOpenAlbum && (
+              <button
+                type="button"
+                onClick={onOpenAlbum}
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-amber-950/70 hover:bg-amber-900/90 border border-amber-600/50 text-amber-200 hover:text-white font-semibold text-sm transition-all shadow-md active:scale-95 min-h-[48px] cursor-pointer"
+              >
+                <Camera className="w-5 h-5 text-amber-300" />
+                <span>{t('album.title')}</span>
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -345,12 +362,23 @@ export const ForestSelector: React.FC<ForestSelectorProps> = ({
                       <ArrowRight className="w-4 h-4 text-amber-300" />
                     </button>
 
+                    {onOpenPrintBeacons && (
+                      <button
+                        type="button"
+                        onClick={() => onOpenPrintBeacons(forest)}
+                        title="Imprimir Balizas y Códigos QR para el sendero"
+                        className="py-3.5 px-3.5 rounded-xl bg-black/40 hover:bg-amber-950/80 border border-amber-700/50 hover:border-amber-500 text-amber-300 hover:text-white transition-all shrink-0 active:scale-95 flex items-center justify-center min-h-[46px] cursor-pointer"
+                      >
+                        <QrCode className="w-4 h-4" />
+                      </button>
+                    )}
+
                     {onOpenOffline && (
                       <button
                         type="button"
                         onClick={onOpenOffline}
                         title={t('offline.download')}
-                        className="py-3.5 px-3.5 rounded-xl bg-black/40 hover:bg-teal-950/80 border border-teal-700/50 hover:border-teal-500 text-teal-300 hover:text-white transition-all shrink-0 active:scale-95 flex items-center justify-center min-h-[46px]"
+                        className="py-3.5 px-3.5 rounded-xl bg-black/40 hover:bg-teal-950/80 border border-teal-700/50 hover:border-teal-500 text-teal-300 hover:text-white transition-all shrink-0 active:scale-95 flex items-center justify-center min-h-[46px] cursor-pointer"
                       >
                         <Download className="w-4 h-4" />
                       </button>

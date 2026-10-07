@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trees, Compass, ArrowLeft, PauseCircle, HelpCircle, Swords, BookOpen, Download } from 'lucide-react';
+import { Trees, Compass, ArrowLeft, PauseCircle, HelpCircle, Swords, BookOpen, Download, Camera } from 'lucide-react';
 import { AmbientAudioControl } from './AmbientAudioControl';
 import { LanguageSelector } from './LanguageSelector';
 import { useI18n } from '../context/I18nContext';
@@ -19,6 +19,7 @@ interface NavbarProps {
   onOpenDuelLobby?: () => void;
   onOpenPassport?: () => void;
   onOpenOffline?: () => void;
+  onOpenAlbum?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -36,6 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenDuelLobby,
   onOpenPassport,
   onOpenOffline,
+  onOpenAlbum,
 }) => {
   const { t } = useI18n();
 
@@ -111,6 +113,19 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <Download className="w-3.5 h-3.5 text-teal-300" />
               <span className="hidden lg:inline">{t('offline.navButton')}</span>
+            </button>
+          )}
+
+          {/* Álbum de Fotos de Campo Trigger */}
+          {onOpenAlbum && (
+            <button
+              type="button"
+              onClick={onOpenAlbum}
+              title={t('album.title')}
+              className="flex items-center gap-1 px-2 py-1 text-xs rounded-lg border border-amber-600/50 bg-amber-950/60 hover:bg-amber-900/80 text-amber-200 hover:text-white font-medium transition-all shadow-sm active:scale-95 min-h-[32px]"
+            >
+              <Camera className="w-3.5 h-3.5 text-amber-300" />
+              <span className="hidden xl:inline">{t('album.navButton')}</span>
             </button>
           )}
 

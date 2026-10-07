@@ -1,4 +1,4 @@
-import { ForestPack, PlayerSession, PlayerFeedback } from '../types';
+import { ForestPack, PlayerSession, PlayerFeedback, FieldPhoto } from '../types';
 import { SEED_FOREST_PACKS } from '../data/seedPacks';
 import { findBestRiddle } from '../utils/difficultyFallback';
 
@@ -398,6 +398,96 @@ export const api = {
         body: JSON.stringify({ language }),
       });
     } catch (e) {}
+  },
+
+  // Expedition Field Photo Journal
+  getAllExpeditionPhotos(): FieldPhoto[] {
+    const photoMap = new Map<string, FieldPhoto>();
+    try {
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('enigma_photos_')) {
+          const raw = localStorage.getItem(key);
+          if (raw) {
+            const list: FieldPhoto[] = JSON.parse(raw);
+            if (Array.isArray(list)) {
+              for (const p of list) {
+                if (p && p.id && !photoMap.has(p.id)) {
+                  photoMap.set(p.id, p);
+                }
+              }
+            }
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('Error reading all expedition photos:', e);
+    }
+    return Array.from(photoMap.values());
+  },
+
+  getExpeditionPhotos(sessionCode?: string): FieldPhoto[] {
+    if (!sessionCode || sessionCode.toUpperCase() === 'ALL' || sessionCode.toUpperCase() === 'GLOBAL_EXPEDITION') {
+      return this.getAllExpeditionPhotos();
+    }
+    try {
+      const raw = localStorage.getItem(`enigma_photos_${sessionCode.toUpperCase()}`);
+      if (raw) {
+        const list = JSON.parse(raw);
+        if (Array.isArray(list) && list.length > 0) return list;
+      }
+    } catch {}
+    // Fallback: If no photos found specifically under this code, check all stored photos
+    const all = this.getAllExpeditionPhotos();
+    return all;
+  },
+
+  saveExpeditionPhoto(sessionCode: string, photo: FieldPhoto): FieldPhoto[] {
+    const targetCode = (sessionCode || 'GLOBAL_EXPEDITION').toUpperCase();
+    const list = this.getExpeditionPhotos(targetCode);
+    // Avoid duplicates by id
+    const filtered = list.filter((p) => p.id !== photo.id);
+    filtered.unshift(photo);
+    try {
+      localStorage.setItem(`enigma_photos_${targetCode}`, JSON.stringify(filtered));
+      const sess = getLocalSession(targetCode);
+      if (sess) {
+        sess.photos = filtered;
+        saveLocalSession(sess);
+      }
+    } catch (e) {
+      console.warn('Error saving expedition photo to storage:', e);
+    }
+    return filtered;
+  },
+
+  deleteExpeditionPhoto(sessionCode: string, photoId: string): FieldPhoto[] {
+    const targetCode = (sessionCode || 'GLOBAL_EXPEDITION').toUpperCase();
+    let list: FieldPhoto[] = [];
+    try {
+      const raw = localStorage.getItem(`enigma_photos_${targetCode}`);
+      if (raw) {
+        list = JSON.parse(raw).filter((p: FieldPhoto) => p.id !== photoId);
+        localStorage.setItem(`enigma_photos_${targetCode}`, JSON.stringify(list));
+      }
+      // Also clean up across all photos keys in case photoId exists elsewhere
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('enigma_photos_')) {
+          const itemRaw = localStorage.getItem(key);
+          if (itemRaw && itemRaw.includes(photoId)) {
+            const parsed = JSON.parse(itemRaw).filter((p: FieldPhoto) => p.id !== photoId);
+            localStorage.setItem(key, JSON.stringify(parsed));
+          }
+        }
+      }
+      const sess = getLocalSession(targetCode);
+      if (sess) {
+        sess.photos = list;
+        saveLocalSession(sess);
+      }
+    } catch {}
+    return this.getExpeditionPhotos(targetCode);
   },
 
   async submitAnswer(code: string, userAnswer: string, riddleId?: string): Promise<{

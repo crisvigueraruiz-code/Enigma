@@ -1,7 +1,7 @@
 import React from 'react';
 import { WindmillPOI, StoryIntro, ForestPack, PlayerSession } from '../types';
 import { useI18n } from '../context/I18nContext';
-import { Award, ArrowRight, Sparkles, CheckCircle, KeyRound, BookmarkCheck } from 'lucide-react';
+import { Award, ArrowRight, Sparkles, CheckCircle, KeyRound, BookmarkCheck, Camera } from 'lucide-react';
 
 interface RewardScreenCardProps {
   session: PlayerSession;
@@ -10,6 +10,7 @@ interface RewardScreenCardProps {
   forest: ForestPack;
   story?: StoryIntro;
   onContinue: () => void;
+  onOpenAlbum?: () => void;
   highContrast?: boolean;
 }
 
@@ -20,6 +21,7 @@ export const RewardScreenCard: React.FC<RewardScreenCardProps> = ({
   forest,
   story,
   onContinue,
+  onOpenAlbum,
   highContrast,
 }) => {
   const { t } = useI18n();
@@ -118,6 +120,17 @@ export const RewardScreenCard: React.FC<RewardScreenCardProps> = ({
           <p className="text-[11px] text-stone-400 mt-2">
             {t('reward.nextSealed', { poiName: nextPoi.name })}
           </p>
+        )}
+
+        {onOpenAlbum && (
+          <button
+            type="button"
+            onClick={onOpenAlbum}
+            className="w-full mt-3 py-2.5 px-4 rounded-xl bg-black/40 hover:bg-black/60 border border-amber-600/50 text-amber-200 font-adventure text-xs font-bold flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95"
+          >
+            <Camera className="w-4 h-4 text-amber-400" />
+            <span>{t('album.captureBtn') || 'Tomar Foto de Campo'}</span>
+          </button>
         )}
       </div>
     </div>

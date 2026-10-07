@@ -91,10 +91,14 @@ export interface WindmillPOI {
   lat: number;
   lng: number;
   emoji: string;
+  altitudeMeters?: number;
   imageUrl?: string;
   clueSnippet?: string;
   clueSnippetKey?: string;
   arAsset?: ArAssetConfig;
+  hasPhysicalBeacon?: boolean; // Hito con baliza física QR clavada en el terreno
+  beaconCode?: string;         // Código único o firma de la baliza física QR
+  beaconHint?: string;         // Pista de dónde buscar la baliza en el hito
   _todo?: string;
   nameKey?: string;
   descriptionKey?: string;
@@ -211,6 +215,19 @@ export interface CollectedRune {
   revealedAt: string;
 }
 
+export interface FieldPhoto {
+  id: string;
+  dataUrl: string;
+  timestamp: string;
+  poiId?: string;
+  poiName?: string;
+  forestId?: string;
+  forestName?: string;
+  caption?: string;
+  lat?: number;
+  lng?: number;
+}
+
 export interface PlayerSession {
   code: string;
   forestPackId: string;
@@ -245,6 +262,7 @@ export interface PlayerSession {
   // Modo Equipos / Batalla Silenciosa
   duelMatchCode?: string;
   duelTeamId?: string;
+  photos?: FieldPhoto[];
 }
 
 export interface DuelEffect {

@@ -18,6 +18,7 @@ import {
   Star,
   Swords,
   Lock,
+  Camera,
 } from 'lucide-react';
 
 interface ExplorerPassportModalProps {
@@ -26,6 +27,7 @@ interface ExplorerPassportModalProps {
   forests: ForestPack[];
   activeSession?: PlayerSession | null;
   selectedForest?: ForestPack | null;
+  onOpenAlbum?: () => void;
 }
 
 interface PassportStamp {
@@ -42,6 +44,7 @@ export const ExplorerPassportModal: React.FC<ExplorerPassportModalProps> = ({
   forests,
   activeSession,
   selectedForest,
+  onOpenAlbum,
 }) => {
   const { t } = useI18n();
   const [activeTab, setActiveTab] = useState<'passport' | 'badges' | 'diploma'>('passport');
@@ -509,6 +512,35 @@ export const ExplorerPassportModal: React.FC<ExplorerPassportModalProps> = ({
                     <p className="text-[10px]">Recorre nuevos senderos para sellar tu pasaporte</p>
                   </div>
                 </div>
+
+                {/* Photo Album Connection */}
+                {onOpenAlbum && (
+                  <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-950/80 via-[#18261A] to-amber-950/80 border border-emerald-500/50 flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
+                    <div className="space-y-0.5">
+                      <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-400">
+                        {t('album.subtitle') || 'Cuaderno de Recuerdos'}
+                      </span>
+                      <h4 className="font-adventure text-sm font-bold text-amber-100 flex items-center gap-1.5">
+                        <Camera className="w-4 h-4 text-emerald-400" />
+                        <span>{t('album.title') || 'Álbum de Fotos de Campo'}</span>
+                      </h4>
+                      <p className="text-[11px] text-stone-300">
+                        {t('passport.viewAlbumDesc') || 'Ver y descargar las fotografías y collages tomados durante las expediciones'}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        sounds.playClick();
+                        onOpenAlbum();
+                      }}
+                      className="w-full sm:w-auto px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-green-500 hover:from-emerald-500 hover:to-green-400 text-white font-adventure text-xs font-bold tracking-wider flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition-all shrink-0 cursor-pointer"
+                    >
+                      <Camera className="w-3.5 h-3.5 text-white" />
+                      <span>{t('album.navButton') || 'Ver Fotos'}</span>
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           )}

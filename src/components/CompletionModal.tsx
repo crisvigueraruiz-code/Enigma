@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PlayerSession, ForestPack } from '../types';
 import { useI18n } from '../context/I18nContext';
-import { Trophy, Star, Sparkles, CheckCircle2, MessageSquare, ArrowRight, Share2, Award, BookOpen } from 'lucide-react';
+import { Trophy, Star, Sparkles, CheckCircle2, MessageSquare, ArrowRight, Share2, Award, BookOpen, Camera } from 'lucide-react';
 import { sounds } from '../utils/audio';
 
 interface CompletionModalProps {
@@ -10,6 +10,7 @@ interface CompletionModalProps {
   onFinish: (rating: number, comment: string) => Promise<void>;
   loading: boolean;
   onOpenPassport?: () => void;
+  onOpenAlbum?: () => void;
 }
 
 export const CompletionModal: React.FC<CompletionModalProps> = ({
@@ -18,6 +19,7 @@ export const CompletionModal: React.FC<CompletionModalProps> = ({
   onFinish,
   loading,
   onOpenPassport,
+  onOpenAlbum,
 }) => {
   const { t } = useI18n();
   const [rating, setRating] = useState(5);
@@ -104,6 +106,35 @@ export const CompletionModal: React.FC<CompletionModalProps> = ({
             >
               <BookOpen className="w-4 h-4 text-stone-950" />
               <span>{t('passport.tabDiploma') || 'Ver Diploma'}</span>
+            </button>
+          </div>
+        )}
+
+        {/* Expedition Photo Album Callout */}
+        {onOpenAlbum && (
+          <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-950/70 via-[#18261A] to-amber-950/70 border border-emerald-500/50 flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
+            <div className="space-y-0.5">
+              <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-400">
+                {t('album.subtitle') || 'Cuaderno de Recuerdos'}
+              </span>
+              <h4 className="font-adventure text-sm font-bold text-amber-100 flex items-center gap-1.5">
+                <Camera className="w-4 h-4 text-emerald-400" />
+                <span>{t('album.title') || 'Álbum de Fotos de Campo'}</span>
+              </h4>
+              <p className="text-[11px] text-stone-300">
+                {t('album.downloadCollage') || 'Genera y descarga un collage artístico con todas las fotos de tu aventura'}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                sounds.playClick();
+                onOpenAlbum();
+              }}
+              className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-green-500 hover:from-emerald-500 hover:to-green-400 text-white font-adventure text-xs font-bold tracking-wider flex items-center justify-center gap-1.5 shadow-lg active:scale-95 transition-all shrink-0 cursor-pointer"
+            >
+              <Camera className="w-4 h-4 text-white" />
+              <span>{t('album.navButton') || 'Ver Fotos'}</span>
             </button>
           </div>
         )}

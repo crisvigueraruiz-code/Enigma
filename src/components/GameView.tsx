@@ -31,6 +31,8 @@ import {
   BookOpen,
   Award,
   KeyRound,
+  Radio,
+  QrCode,
 } from 'lucide-react';
 import { GuideChatDrawer } from './GuideChatDrawer';
 import { CharacterInteractionModal } from './CharacterInteractionModal';
@@ -41,6 +43,8 @@ import { TransitDisplacementCard } from './TransitDisplacementCard';
 import { RewardScreenCard } from './RewardScreenCard';
 import { RiddleTypeInteractive } from './RiddleTypeInteractive';
 import { MetaEnigmaModal } from './MetaEnigmaModal';
+import { ExpeditionPhotoAlbumModal } from './ExpeditionPhotoAlbumModal';
+import { PhysicalBeaconScannerModal } from './PhysicalBeaconScannerModal';
 import { findBestRiddle } from '../utils/difficultyFallback';
 import { useI18n } from '../context/I18nContext';
 
@@ -84,6 +88,7 @@ export const GameView: React.FC<GameViewProps> = ({
   // Accessibility modes (10bis: Alto Contraste & Modo Atardecer)
   const [highContrast, setHighContrast] = useState(false);
   const [sunsetMode, setSunsetMode] = useState(false);
+  const [eyesOnTrailMode, setEyesOnTrailMode] = useState(false);
 
   // Modals and drawers
   const [chatDrawerOpen, setChatDrawerOpen] = useState(false);
@@ -91,6 +96,8 @@ export const GameView: React.FC<GameViewProps> = ({
   const [hintDrawerOpen, setHintDrawerOpen] = useState(false);
   const [isArModalOpen, setIsArModalOpen] = useState(false);
   const [isCodexModalOpen, setIsCodexModalOpen] = useState(false);
+  const [isAlbumModalOpen, setIsAlbumModalOpen] = useState(false);
+  const [isBeaconScannerOpen, setIsBeaconScannerOpen] = useState(false);
   const [showEmergencyModal, setShowEmergencyModal] = useState(false);
   const [showVisualConfirmModal, setShowVisualConfirmModal] = useState(false);
   const [hintLoading, setHintLoading] = useState(false);
@@ -176,6 +183,37 @@ export const GameView: React.FC<GameViewProps> = ({
       onArriveAtPoi();
     }
   }, [isNearPoi, effectivePhase]);
+
+  // "Modo Ojos en el Sendero" (Proximity Haptic/Acoustic Sonar)
+  useEffect(() => {
+    if (!eyesOnTrailMode || effectivePhase !== 'in_transit') return;
+
+    // Interval adapts based on proximity
+    let intervalMs = 6000;
+    let intensity: 'far' | 'medium' | 'near' | 'arrival' = 'far';
+
+    if (distanceMeters <= arrivalRadiusMeters) {
+      intensity = 'arrival';
+      intervalMs = 2000;
+    } else if (distanceMeters <= 50) {
+      intensity = 'near';
+      intervalMs = 1200;
+    } else if (distanceMeters <= 120) {
+      intensity = 'medium';
+      intervalMs = 2800;
+    } else if (distanceMeters <= 250) {
+      intensity = 'far';
+      intervalMs = 5000;
+    } else {
+      intervalMs = 8000;
+    }
+
+    const timer = setInterval(() => {
+      sounds.playProximityPulse(intensity);
+    }, intervalMs);
+
+    return () => clearInterval(timer);
+  }, [eyesOnTrailMode, effectivePhase, distanceMeters, arrivalRadiusMeters]);
 
   // Ambient Audio Sync
   useEffect(() => {
@@ -326,6 +364,56 @@ export const GameView: React.FC<GameViewProps> = ({
               {sunsetMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
 
+            {/* Ojos en el Sendero Radar Toggle */}
+            <button
+              type="button"
+              onClick={() => {
+                sounds.playClick();
+                const next = !eyesOnTrailMode;
+                setEyesOnTrailMode(next);
+                if (next) {
+                  sounds.playProximityPulse('near');
+                }
+              }}
+              className={`px-2 py-1.5 rounded-xl border font-adventure text-[11px] font-bold flex items-center gap-1 transition-all cursor-pointer ${
+                eyesOnTrailMode
+                  ? 'bg-gradient-to-r from-emerald-600 to-teal-500 text-stone-950 border-emerald-300 shadow-md animate-pulse'
+                  : 'bg-stone-900/80 border-stone-700 text-stone-300 hover:text-white'
+              }`}
+              title="Modo Ojos en el Sendero: Radar háptico/sonoro para caminar sin mirar la pantalla"
+            >
+              <Radio className={`w-3.5 h-3.5 ${eyesOnTrailMode ? 'text-stone-950' : 'text-emerald-400'}`} />
+              <span className="hidden md:inline">Ojos en Sendero</span>
+            </button>
+
+            {/* Photo Album Trigger */}
+            <button
+              type="button"
+              onClick={() => {
+                sounds.playClick();
+                setIsAlbumModalOpen(true);
+              }}
+              className="px-2 py-1.5 rounded-xl bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-600/70 text-emerald-200 font-adventure text-[11px] font-bold flex items-center gap-1 cursor-pointer transition-all active:scale-95"
+              title={t('album.title') || 'Álbum de Fotos de Campo'}
+            >
+              <Camera className="w-3.5 h-3.5 text-amber-300" />
+              <span className="hidden sm:inline">{t('album.navButton') || 'Fotos'}</span>
+            </button>
+
+            {/* QR Beacon Scanner Trigger */}
+            <button
+              type="button"
+              onClick={() => {
+                sounds.playClick();
+                setIsBeaconScannerOpen(true);
+              }}
+              className="px-2 py-1.5 rounded-xl bg-amber-950/80 hover:bg-amber-900 border border-amber-600/70 text-amber-200 font-adventure text-[11px] font-bold flex items-center gap-1 cursor-pointer transition-all active:scale-95"
+              title="Escanear Baliza Física QR del terreno"
+            >
+              <QrCode className="w-3.5 h-3.5 text-amber-400" />
+              <span className="hidden sm:inline">Baliza</span>
+            </button>
+
             {/* Pause Expedition Button */}
             {onOpenPauseModal && (
               <button
@@ -409,6 +497,29 @@ export const GameView: React.FC<GameViewProps> = ({
         {/* MAIN GAME VIEW: 3-PHASE RHYTHM (SECCIÓN 6bis)                             */}
         {/* ========================================================================= */}
 
+        {/* Ojos en el Sendero Active Floating Banner */}
+        {eyesOnTrailMode && effectivePhase === 'in_transit' && (
+          <div className="bg-gradient-to-r from-emerald-950 via-[#162B1D] to-teal-950 border border-emerald-500/50 rounded-2xl p-3.5 px-4 flex items-center justify-between gap-3 text-xs shadow-lg animate-in fade-in">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <span className="relative flex h-3 w-3 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500" />
+              </span>
+              <div className="truncate">
+                <span className="text-emerald-300 font-bold block truncate">
+                  Radar &quot;Ojos en el Sendero&quot; Activo
+                </span>
+                <span className="text-stone-300 text-[11px] block truncate">
+                  Guarda el móvil en la mano: vibrará más rápido al acercarte a {currentPoi?.name} ({formatDistance(distanceMeters)})
+                </span>
+              </div>
+            </div>
+            <span className="font-mono text-amber-300 font-bold text-xs shrink-0 px-2.5 py-1 rounded-lg bg-black/40 border border-emerald-500/30">
+              {distanceMeters <= 50 ? '¡Muy Cerca!' : distanceMeters <= 120 ? 'Aproximándote' : 'En Ruta'}
+            </span>
+          </div>
+        )}
+
         {/* FASE 1: DESPLAZAMIENTO / EN TRÁNSITO AL SIGUIENTE PUNTO */}
         {activeTab === 'route' && effectivePhase === 'in_transit' && (
           <TransitDisplacementCard
@@ -424,6 +535,7 @@ export const GameView: React.FC<GameViewProps> = ({
             isNearPoi={isNearPoi}
             onConfirmArrival={handleConfirmArrivalManual}
             onOpenVisualConfirm={() => setShowVisualConfirmModal(true)}
+            onOpenBeaconScanner={() => setIsBeaconScannerOpen(true)}
             highContrast={highContrast}
           />
         )}
@@ -464,17 +576,45 @@ export const GameView: React.FC<GameViewProps> = ({
                 </div>
               </div>
 
-              <button
-                type="button"
-                onClick={() => {
-                  sounds.playClick();
-                  setIsArModalOpen(true);
-                }}
-                className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 to-yellow-500 text-stone-950 font-adventure text-xs font-bold tracking-wider flex items-center justify-center gap-1.5 shadow active:scale-95 transition-all shrink-0"
-              >
-                <Camera className="w-4 h-4 text-stone-950" />
-                <span>{t('game.arViewButton')}</span>
-              </button>
+              <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
+                <button
+                  type="button"
+                  onClick={() => {
+                    sounds.playClick();
+                    setIsBeaconScannerOpen(true);
+                  }}
+                  className="w-full sm:w-auto px-3.5 py-2.5 rounded-xl bg-amber-950/90 hover:bg-amber-900 border border-amber-500/60 text-amber-200 font-adventure text-xs font-bold tracking-wider flex items-center justify-center gap-1.5 shadow active:scale-95 transition-all shrink-0 cursor-pointer"
+                  title="Escanear baliza física QR del terreno"
+                >
+                  <QrCode className="w-4 h-4 text-amber-400" />
+                  <span>Baliza QR</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    sounds.playClick();
+                    setIsAlbumModalOpen(true);
+                  }}
+                  className="w-full sm:w-auto px-3.5 py-2.5 rounded-xl bg-emerald-950/90 hover:bg-emerald-900 border border-emerald-500/60 text-emerald-200 font-adventure text-xs font-bold tracking-wider flex items-center justify-center gap-1.5 shadow active:scale-95 transition-all shrink-0 cursor-pointer"
+                  title="Tomar foto de este hito para el álbum"
+                >
+                  <Camera className="w-4 h-4 text-emerald-400" />
+                  <span>{t('album.captureBtn') || 'Foto de Campo'}</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    sounds.playClick();
+                    setIsArModalOpen(true);
+                  }}
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 to-yellow-500 text-stone-950 font-adventure text-xs font-bold tracking-wider flex items-center justify-center gap-1.5 shadow active:scale-95 transition-all shrink-0 cursor-pointer"
+                >
+                  <Sparkles className="w-4 h-4 text-stone-950" />
+                  <span>{t('game.arViewButton')}</span>
+                </button>
+              </div>
             </div>
 
             {/* Scene Narrative Atmospheric Card */}
@@ -661,6 +801,7 @@ export const GameView: React.FC<GameViewProps> = ({
             forest={forest}
             story={story}
             onContinue={handleContinueTransitNext}
+            onOpenAlbum={() => setIsAlbumModalOpen(true)}
             highContrast={highContrast}
           />
         )}
@@ -685,6 +826,10 @@ export const GameView: React.FC<GameViewProps> = ({
               onOpenAR={() => {
                 sounds.playClick();
                 setIsArModalOpen(true);
+              }}
+              onOpenBeaconScanner={() => {
+                sounds.playClick();
+                setIsBeaconScannerOpen(true);
               }}
             />
           </div>
@@ -967,6 +1112,31 @@ export const GameView: React.FC<GameViewProps> = ({
             </div>
           </div>
         </div>
+      )}
+
+      {/* 6. Expedition Photo Journal Modal */}
+      <ExpeditionPhotoAlbumModal
+        isOpen={isAlbumModalOpen}
+        onClose={() => setIsAlbumModalOpen(false)}
+        forest={forest}
+        session={session}
+        currentPoi={currentPoi}
+      />
+
+      {/* 7. Physical Beacon QR Scanner Modal */}
+      {currentPoi && (
+        <PhysicalBeaconScannerModal
+          isOpen={isBeaconScannerOpen}
+          onClose={() => setIsBeaconScannerOpen(false)}
+          currentPoi={currentPoi}
+          forest={forest}
+          session={session}
+          onBeaconVerified={async () => {
+            if (onArriveAtPoi) {
+              await onArriveAtPoi();
+            }
+          }}
+        />
       )}
     </div>
   );

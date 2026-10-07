@@ -2,7 +2,7 @@ import React from 'react';
 import { WindmillPOI, StoryIntro, ForestPack } from '../types';
 import { formatDistance, calculateHaversineDistance, calculateBearing } from '../utils/geo';
 import { useI18n } from '../context/I18nContext';
-import { Compass, Footprints, Clock, CheckCircle2, MapPin, Eye, Sparkles, AlertCircle } from 'lucide-react';
+import { Compass, Footprints, Clock, CheckCircle2, MapPin, Eye, Sparkles, AlertCircle, QrCode } from 'lucide-react';
 
 interface TransitDisplacementCardProps {
   currentPoi: WindmillPOI;
@@ -17,6 +17,7 @@ interface TransitDisplacementCardProps {
   isNearPoi: boolean;
   onConfirmArrival: () => void;
   onOpenVisualConfirm: () => void;
+  onOpenBeaconScanner?: () => void;
   highContrast?: boolean;
 }
 
@@ -31,6 +32,7 @@ export const TransitDisplacementCard: React.FC<TransitDisplacementCardProps> = (
   isNearPoi,
   onConfirmArrival,
   onOpenVisualConfirm,
+  onOpenBeaconScanner,
   highContrast,
 }) => {
   const { t } = useI18n();
@@ -188,23 +190,60 @@ export const TransitDisplacementCard: React.FC<TransitDisplacementCardProps> = (
             </div>
           ) : (
             <div className="space-y-3">
+              {/* Physical Beacon Indicator if configured */}
+              {currentPoi.hasPhysicalBeacon && (
+                <div className="p-3 rounded-2xl bg-gradient-to-r from-amber-950/60 to-[#221A10] border border-amber-500/50 flex items-center justify-between gap-3 text-xs">
+                  <div className="flex items-center gap-2">
+                    <QrCode className="w-4 h-4 text-amber-400 shrink-0" />
+                    <div>
+                      <span className="font-bold text-amber-200 block">Baliza Física QR en el Terreno</span>
+                      <span className="text-[11px] text-stone-300">
+                        {currentPoi.beaconHint || 'Busca la placa con código QR en este hito'}
+                      </span>
+                    </div>
+                  </div>
+                  {onOpenBeaconScanner && (
+                    <button
+                      type="button"
+                      onClick={onOpenBeaconScanner}
+                      className="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-adventure text-xs font-bold tracking-wider shrink-0 cursor-pointer shadow active:scale-95 transition-all"
+                    >
+                      Escanear
+                    </button>
+                  )}
+                </div>
+              )}
+
               <div className="flex flex-col sm:flex-row items-center gap-3">
                 {/* Fallback "Estoy aquí" Button without penalty */}
                 <button
                   type="button"
                   onClick={onConfirmArrival}
-                  className="flex-1 w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-800 to-green-700 hover:from-emerald-700 hover:to-green-600 text-amber-100 hover:text-white font-adventure font-bold text-xs sm:text-sm tracking-wider flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all"
+                  className="flex-1 w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-800 to-green-700 hover:from-emerald-700 hover:to-green-600 text-amber-100 hover:text-white font-adventure font-bold text-xs sm:text-sm tracking-wider flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all cursor-pointer"
                   title={t('transit.imHereConfirm')}
                 >
                   <MapPin className="w-4 h-4 text-amber-300" />
                   <span>{t('transit.imHere')}</span>
                 </button>
 
+                {/* QR Beacon Scanner Button */}
+                {onOpenBeaconScanner && (
+                  <button
+                    type="button"
+                    onClick={onOpenBeaconScanner}
+                    className="w-full sm:w-auto py-3.5 px-4 rounded-xl bg-amber-950/80 hover:bg-amber-900 border border-amber-500/60 text-amber-200 hover:text-white text-xs font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-all cursor-pointer shadow-md"
+                    title="Escanear la placa o baliza QR física del terreno"
+                  >
+                    <QrCode className="w-4 h-4 text-amber-400" />
+                    <span>Escanear Baliza</span>
+                  </button>
+                )}
+
                 {/* Double verification by image */}
                 <button
                   type="button"
                   onClick={onOpenVisualConfirm}
-                  className="w-full sm:w-auto py-3.5 px-4 rounded-xl bg-stone-900/90 hover:bg-stone-800 border border-stone-700 text-stone-200 text-xs font-semibold flex items-center justify-center gap-1.5 active:scale-95 transition-all"
+                  className="w-full sm:w-auto py-3.5 px-4 rounded-xl bg-stone-900/90 hover:bg-stone-800 border border-stone-700 text-stone-200 text-xs font-semibold flex items-center justify-center gap-1.5 active:scale-95 transition-all cursor-pointer"
                 >
                   <Eye className="w-4 h-4 text-emerald-400" />
                   <span>{t('transit.viewLandmarks')}</span>

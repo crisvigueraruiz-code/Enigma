@@ -153,6 +153,29 @@ class SoundSystem {
     } catch (e) {}
   }
 
+  // Play warning / caution tone
+  public playWarning() {
+    if (!this.soundEnabled) return;
+    try {
+      this.initCtx();
+      if (!this.ctx) return;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(320, this.ctx.currentTime);
+      osc.frequency.setValueAtTime(280, this.ctx.currentTime + 0.1);
+      gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.28);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.3);
+      if (typeof navigator !== 'undefined' && navigator.vibrate) {
+        navigator.vibrate(100);
+      }
+    } catch {}
+  }
+
   // Play duel action powerup sound
   public playDuelAction() {
     if (!this.soundEnabled) return;
@@ -194,6 +217,42 @@ class SoundSystem {
         navigator.vibrate(200);
       }
     } catch (e) {}
+  }
+
+  // Play proximity radar pulse for "Ojos en el Sendero" (haptic & sonar blip)
+  public playProximityPulse(intensity: 'far' | 'medium' | 'near' | 'arrival') {
+    if (this.soundEnabled) {
+      try {
+        this.initCtx();
+        if (this.ctx) {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          const freq = intensity === 'arrival' ? 880 : intensity === 'near' ? 660 : intensity === 'medium' ? 520 : 420;
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(freq * 1.2, this.ctx.currentTime + 0.08);
+          gain.gain.setValueAtTime(intensity === 'near' ? 0.12 : 0.07, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.1);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.12);
+        }
+      } catch (e) {}
+    }
+
+    // Gentle tactile haptic pulse
+    if (typeof navigator !== 'undefined' && navigator.vibrate) {
+      if (intensity === 'arrival') {
+        navigator.vibrate([200, 100, 200]);
+      } else if (intensity === 'near') {
+        navigator.vibrate([70, 40, 70]);
+      } else if (intensity === 'medium') {
+        navigator.vibrate([60]);
+      } else {
+        navigator.vibrate([35]);
+      }
+    }
   }
 
   // Text-To-Speech for scene reading

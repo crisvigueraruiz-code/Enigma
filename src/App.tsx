@@ -23,6 +23,8 @@ import { DuelLobbyModal } from './components/DuelLobbyModal';
 import { DuelPodiumModal } from './components/DuelPodiumModal';
 import { ExplorerPassportModal } from './components/ExplorerPassportModal';
 import { OfflineManagerModal } from './components/OfflineManagerModal';
+import { ExpeditionPhotoAlbumModal } from './components/ExpeditionPhotoAlbumModal';
+import { PrintableTrailBeaconsModal } from './components/PrintableTrailBeaconsModal';
 import { duelService } from './services/duelService';
 import { ambientAudio } from './utils/audio';
 import { useI18n } from './context/I18nContext';
@@ -46,6 +48,8 @@ export default function App() {
   const [isDuelPodiumOpen, setIsDuelPodiumOpen] = useState(false);
   const [isPassportOpen, setIsPassportOpen] = useState(false);
   const [isOfflineModalOpen, setIsOfflineModalOpen] = useState(false);
+  const [isAlbumModalOpen, setIsAlbumModalOpen] = useState(false);
+  const [printingForest, setPrintingForest] = useState<ForestPack | null>(null);
   const [activeDuelMatch, setActiveDuelMatch] = useState<DuelMatch | null>(null);
   const [isAdminAuthOpen, setIsAdminAuthOpen] = useState(false);
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(true);
@@ -101,6 +105,16 @@ export default function App() {
     if (savedCode) {
       try {
         const { session, forestPack } = await api.getSession(savedCode);
+        if (
+          !session ||
+          !forestPack ||
+          !Array.isArray(forestPack.pois) ||
+          forestPack.pois.length === 0 ||
+          !Array.isArray(session.routePoiIds) ||
+          session.routePoiIds.length === 0
+        ) {
+          throw new Error('Sesión o bosque incompleto en almacenamiento');
+        }
         setActiveSession(session);
         setSelectedForest(forestPack);
         if (session.status === 'completed') {
@@ -108,7 +122,10 @@ export default function App() {
         }
         setCurrentView('game');
       } catch (e) {
+        console.warn('Limpiando sesión previa inválida:', e);
         localStorage.removeItem('enigma_active_session');
+        setActiveSession(null);
+        setCurrentView('home');
       }
     }
   };
@@ -389,6 +406,7 @@ export default function App() {
         onOpenDuelLobby={() => setIsDuelLobbyOpen(true)}
         onOpenPassport={() => setIsPassportOpen(true)}
         onOpenOffline={() => setIsOfflineModalOpen(true)}
+        onOpenAlbum={() => setIsAlbumModalOpen(true)}
       />
 
       {/* Main Viewport */}
@@ -424,6 +442,8 @@ export default function App() {
             onOpenDuelLobby={() => setIsDuelLobbyOpen(true)}
             onOpenPassport={() => setIsPassportOpen(true)}
             onOpenOffline={() => setIsOfflineModalOpen(true)}
+            onOpenAlbum={() => setIsAlbumModalOpen(true)}
+            onOpenPrintBeacons={(f) => setPrintingForest(f)}
           />
         )}
 
@@ -444,6 +464,20 @@ export default function App() {
             onOpenPauseModal={() => setIsPauseModalOpen(true)}
             onFinishGame={handleFinishGame}
           />
+        )}
+
+        {currentView === 'game' && (!activeSession || !localizedSelectedForest) && (
+          <div className="flex flex-col items-center justify-center p-12 text-center max-w-md mx-auto my-12 bg-stone-900/80 border border-emerald-900/60 rounded-3xl space-y-4">
+            <p className="text-amber-300 font-bold font-adventure text-lg">No hay ninguna expedición activa seleccionada</p>
+            <p className="text-stone-300 text-sm">Elige un bosque o aventura para comenzar a explorar.</p>
+            <button
+              type="button"
+              onClick={() => setCurrentView('home')}
+              className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold font-adventure cursor-pointer shadow-lg transition-all"
+            >
+              Ir al Explorador de Bosques
+            </button>
+          </div>
         )}
 
         {currentView === 'admin' && (
@@ -505,6 +539,7 @@ export default function App() {
           onFinish={handleFinishGame}
           loading={loading}
           onOpenPassport={() => setIsPassportOpen(true)}
+          onOpenAlbum={() => setIsAlbumModalOpen(true)}
         />
       )}
 
@@ -571,6 +606,10 @@ export default function App() {
         forests={localizedForests}
         activeSession={activeSession}
         selectedForest={localizedSelectedForest}
+        onOpenAlbum={() => {
+          setIsPassportOpen(false);
+          setIsAlbumModalOpen(true);
+        }}
       />
 
       {/* Offline Pre-Departure Pack Manager Modal */}
@@ -579,6 +618,33 @@ export default function App() {
         onClose={() => setIsOfflineModalOpen(false)}
         forests={localizedForests}
       />
+
+      {/* Expedition Field Photo Album Modal */}
+      <ExpeditionPhotoAlbumModal
+        isOpen={isAlbumModalOpen}
+        onClose={() => setIsAlbumModalOpen(false)}
+        forest={localizedSelectedForest || localizedForests[0]}
+        forests={localizedForests}
+        session={activeSession}
+        currentPoi={
+          activeSession && localizedSelectedForest
+            ? localizedSelectedForest.pois.find((p) => p.id === activeSession.routePoiIds[activeSession.currentPoiIndex])
+            : null
+        }
+        onOpenPassport={() => {
+          setIsAlbumModalOpen(false);
+          setIsPassportOpen(true);
+        }}
+      />
+
+      {/* Printable Trail Beacons & Signpost QR Modal */}
+      {printingForest && (
+        <PrintableTrailBeaconsModal
+          isOpen={Boolean(printingForest)}
+          onClose={() => setPrintingForest(null)}
+          forest={printingForest}
+        />
+      )}
       {/* Discreet Footer with subtle copyright & organizer trigger */}
       {currentView !== 'admin' && (
         <footer className="py-6 px-4 text-center text-[11px] text-stone-500 border-t border-emerald-950/80 bg-[#0E150F]">

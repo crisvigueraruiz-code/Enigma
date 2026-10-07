@@ -25,9 +25,11 @@ import {
   Lock,
   Camera,
   Upload,
-  Image as ImageIcon
+  Image as ImageIcon,
+  QrCode
 } from 'lucide-react';
 import { GeolocatedARModal } from './GeolocatedARModal';
+import { PrintableTrailBeaconsModal } from './PrintableTrailBeaconsModal';
 
 interface AdminPanelProps {
   onBackToGame: () => void;
@@ -49,6 +51,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onBackToGame, onLogoutAd
   const [aiPrompt, setAiPrompt] = useState('');
   const [aiGenerating, setAiGenerating] = useState(false);
   const [previewArPoi, setPreviewArPoi] = useState<WindmillPOI | null>(null);
+  const [printingForest, setPrintingForest] = useState<ForestPack | null>(null);
 
   // Broadcast message input
   const [broadcastText, setBroadcastText] = useState('');
@@ -374,9 +377,17 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onBackToGame, onLogoutAd
                   </button>
 
                   <button
+                    onClick={() => setPrintingForest(f)}
+                    title="Exportar e Imprimir Balizas y Códigos QR para el sendero"
+                    className="p-2 rounded-lg bg-amber-950/60 hover:bg-amber-900 border border-amber-600/50 text-amber-300 hover:text-white text-xs font-semibold flex items-center justify-center cursor-pointer"
+                  >
+                    <QrCode className="w-4 h-4" />
+                  </button>
+
+                  <button
                     onClick={() => handleDuplicate(f.id)}
                     title="Duplicar como plantilla"
-                    className="p-2 rounded-lg bg-stone-800 hover:bg-stone-700 border border-stone-700 text-stone-300 hover:text-white text-xs font-semibold flex items-center justify-center"
+                    className="p-2 rounded-lg bg-stone-800 hover:bg-stone-700 border border-stone-700 text-stone-300 hover:text-white text-xs font-semibold flex items-center justify-center cursor-pointer"
                   >
                     <Copy className="w-4 h-4" />
                   </button>
@@ -1082,6 +1093,79 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onBackToGame, onLogoutAd
                             </div>
                           </div>
                         </div>
+
+                        {/* Physical QR Beacon Section */}
+                        <div className="p-3.5 rounded-xl bg-gradient-to-r from-amber-950/40 to-[#1F2B1C]/50 border border-amber-600/40 space-y-3">
+                          <div className="flex items-center justify-between flex-wrap gap-2">
+                            <label className="flex items-center gap-2 cursor-pointer">
+                              <input
+                                type="checkbox"
+                                checked={Boolean(poi.hasPhysicalBeacon)}
+                                onChange={(e) => {
+                                  const copy = [...editingPack.pois];
+                                  copy[idx].hasPhysicalBeacon = e.target.checked;
+                                  if (e.target.checked && !copy[idx].beaconCode) {
+                                    copy[idx].beaconCode = `BEACON-${poi.id.toUpperCase()}`;
+                                  }
+                                  setEditingPack({ ...editingPack, pois: copy });
+                                }}
+                                className="w-4 h-4 rounded text-amber-500 focus:ring-amber-400 bg-black/40 border-amber-600"
+                              />
+                              <span className="text-xs font-bold text-amber-300 font-adventure flex items-center gap-1.5">
+                                <QrCode className="w-4 h-4 text-amber-400" />
+                                <span>Baliza Física QR en el Terreno</span>
+                              </span>
+                            </label>
+
+                            <button
+                              type="button"
+                              onClick={() => setPrintingForest(editingPack)}
+                              className="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 text-[11px] font-bold flex items-center gap-1 cursor-pointer"
+                              title="Imprimir placas o carteles con código QR para las balizas"
+                            >
+                              <QrCode className="w-3.5 h-3.5" />
+                              <span>Ver / Imprimir Placas QR</span>
+                            </button>
+                          </div>
+
+                          {poi.hasPhysicalBeacon && (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 border-t border-amber-900/40">
+                              <div>
+                                <span className="text-[10px] text-stone-400 block mb-1">
+                                  Código Único de la Baliza:
+                                </span>
+                                <input
+                                  type="text"
+                                  value={poi.beaconCode || `BEACON-${poi.id.toUpperCase()}`}
+                                  onChange={(e) => {
+                                    const copy = [...editingPack.pois];
+                                    copy[idx].beaconCode = e.target.value.toUpperCase();
+                                    setEditingPack({ ...editingPack, pois: copy });
+                                  }}
+                                  placeholder="Ej: BEACON-MOLINO-01"
+                                  className="w-full px-2.5 py-1.5 rounded-lg bg-black/50 border border-amber-700/60 text-xs font-mono text-amber-200 placeholder:text-stone-600 uppercase"
+                                />
+                              </div>
+
+                              <div>
+                                <span className="text-[10px] text-stone-400 block mb-1">
+                                  Pista de Dónde Buscar la Placa en el Hito:
+                                </span>
+                                <input
+                                  type="text"
+                                  value={poi.beaconHint || ''}
+                                  onChange={(e) => {
+                                    const copy = [...editingPack.pois];
+                                    copy[idx].beaconHint = e.target.value;
+                                    setEditingPack({ ...editingPack, pois: copy });
+                                  }}
+                                  placeholder="Ej: Clavada en el poste de madera del mirador"
+                                  className="w-full px-2.5 py-1.5 rounded-lg bg-black/50 border border-amber-700/60 text-xs text-stone-200 placeholder:text-stone-600"
+                                />
+                              </div>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -1387,6 +1471,15 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onBackToGame, onLogoutAd
           playerLng={previewArPoi.lng - 0.0001}
           isRiddleSolved={true}
           simulatedGps={true}
+        />
+      )}
+
+      {/* Printable Beacons Modal */}
+      {printingForest && (
+        <PrintableTrailBeaconsModal
+          isOpen={Boolean(printingForest)}
+          onClose={() => setPrintingForest(null)}
+          forest={printingForest}
         />
       )}
     </div>
