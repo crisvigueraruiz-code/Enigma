@@ -33,6 +33,8 @@ import {
   KeyRound,
   Radio,
   QrCode,
+  Briefcase,
+  Share2,
 } from 'lucide-react';
 import { GuideChatDrawer } from './GuideChatDrawer';
 import { CharacterInteractionModal } from './CharacterInteractionModal';
@@ -63,6 +65,8 @@ interface GameViewProps {
   loading: boolean;
   onOpenPauseModal?: () => void;
   onFinishGame?: (rating: number, comment: string) => void;
+  onOpenBackpack?: () => void;
+  onOpenShareTrail?: () => void;
 }
 
 export const GameView: React.FC<GameViewProps> = ({
@@ -80,6 +84,8 @@ export const GameView: React.FC<GameViewProps> = ({
   loading,
   onOpenPauseModal,
   onFinishGame,
+  onOpenBackpack,
+  onOpenShareTrail,
 }) => {
   const { t } = useI18n();
   // Navigation tabs (10bis: pestañas inferiores)
@@ -814,6 +820,8 @@ export const GameView: React.FC<GameViewProps> = ({
             story={story}
             onContinue={handleContinueTransitNext}
             onOpenAlbum={() => setIsAlbumModalOpen(true)}
+            onOpenBackpack={onOpenBackpack}
+            onOpenShareTrail={onOpenShareTrail}
             highContrast={highContrast}
           />
         )}
@@ -907,7 +915,25 @@ export const GameView: React.FC<GameViewProps> = ({
             <span>{t('nav.map')}</span>
           </button>
 
-          {/* Códice / Mochila (Meta-Enigma) */}
+          {/* Mochila de Expedición */}
+          {onOpenBackpack && (
+            <button
+              type="button"
+              onClick={onOpenBackpack}
+              className="relative flex flex-col items-center justify-center gap-1 py-1.5 px-3 rounded-xl text-xs font-semibold text-amber-200 hover:text-white transition-all min-h-[48px] min-w-[56px] cursor-pointer"
+              title="Abrir Mochila de Expedición"
+            >
+              <Briefcase className="w-5 h-5 text-amber-400" />
+              <span>Mochila</span>
+              {session.inventory && session.inventory.length > 0 && (
+                <span className="absolute top-0 right-1 w-4 h-4 rounded-full bg-amber-500 text-stone-950 text-[10px] font-bold flex items-center justify-center font-mono">
+                  {session.inventory.length}
+                </span>
+              )}
+            </button>
+          )}
+
+          {/* Códice (Meta-Enigma) */}
           <button
             type="button"
             onClick={() => setIsCodexModalOpen(true)}

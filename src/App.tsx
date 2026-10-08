@@ -25,10 +25,12 @@ import { ExplorerPassportModal } from './components/ExplorerPassportModal';
 import { OfflineManagerModal } from './components/OfflineManagerModal';
 import { ExpeditionPhotoAlbumModal } from './components/ExpeditionPhotoAlbumModal';
 import { PrintableTrailBeaconsModal } from './components/PrintableTrailBeaconsModal';
+import { ExpeditionBackpackModal } from './components/ExpeditionBackpackModal';
+import { ShareableTrailCardModal } from './components/ShareableTrailCardModal';
 import { duelService } from './services/duelService';
 import { ambientAudio } from './utils/audio';
 import { useI18n } from './context/I18nContext';
-import { DuelMatch } from './types';
+import { DuelMatch, BackpackItem } from './types';
 
 export default function App() {
   const { currentLanguage, localizeForest, onForestSelected, t } = useI18n();
@@ -49,6 +51,8 @@ export default function App() {
   const [isPassportOpen, setIsPassportOpen] = useState(false);
   const [isOfflineModalOpen, setIsOfflineModalOpen] = useState(false);
   const [isAlbumModalOpen, setIsAlbumModalOpen] = useState(false);
+  const [isBackpackOpen, setIsBackpackOpen] = useState(false);
+  const [isShareTrailOpen, setIsShareTrailOpen] = useState(false);
   const [printingForest, setPrintingForest] = useState<ForestPack | null>(null);
   const [activeDuelMatch, setActiveDuelMatch] = useState<DuelMatch | null>(null);
   const [isAdminAuthOpen, setIsAdminAuthOpen] = useState(false);
@@ -371,6 +375,14 @@ export default function App() {
     setCurrentView('home');
   };
 
+  // Update inventory in active session & storage
+  const handleUpdateInventory = (newInventory: BackpackItem[]) => {
+    if (activeSession) {
+      api.updateSessionInventory(activeSession.code, newInventory);
+      setActiveSession((prev) => (prev ? { ...prev, inventory: newInventory } : null));
+    }
+  };
+
   // Admin Access Gate: siempre pide contraseña antes de conceder acceso
   const handleOpenAdmin = () => {
     if (isAdminAuthenticated) {
@@ -423,6 +435,9 @@ export default function App() {
         onOpenPassport={() => setIsPassportOpen(true)}
         onOpenOffline={() => setIsOfflineModalOpen(true)}
         onOpenAlbum={() => setIsAlbumModalOpen(true)}
+        onOpenBackpack={() => setIsBackpackOpen(true)}
+        inventoryCount={activeSession?.inventory?.length || 3}
+        onOpenShareTrail={() => setIsShareTrailOpen(true)}
       />
 
       {/* Main Viewport */}
@@ -479,6 +494,8 @@ export default function App() {
             loading={loading}
             onOpenPauseModal={() => setIsPauseModalOpen(true)}
             onFinishGame={handleFinishGame}
+            onOpenBackpack={() => setIsBackpackOpen(true)}
+            onOpenShareTrail={() => setIsShareTrailOpen(true)}
           />
         )}
 
@@ -556,6 +573,7 @@ export default function App() {
           loading={loading}
           onOpenPassport={() => setIsPassportOpen(true)}
           onOpenAlbum={() => setIsAlbumModalOpen(true)}
+          onOpenShareTrail={() => setIsShareTrailOpen(true)}
         />
       )}
 
@@ -626,6 +644,10 @@ export default function App() {
           setIsPassportOpen(false);
           setIsAlbumModalOpen(true);
         }}
+        onOpenShareTrail={() => {
+          setIsPassportOpen(false);
+          setIsShareTrailOpen(true);
+        }}
       />
 
       {/* Offline Pre-Departure Pack Manager Modal */}
@@ -652,6 +674,33 @@ export default function App() {
           setIsPassportOpen(true);
         }}
       />
+
+      {/* Expedition Backpack Satchel Modal */}
+      <ExpeditionBackpackModal
+        isOpen={isBackpackOpen}
+        onClose={() => setIsBackpackOpen(false)}
+        session={activeSession}
+        forest={localizedSelectedForest}
+        onUpdateInventory={handleUpdateInventory}
+      />
+
+      {/* Shareable Trail Card Modal (Strava / Instagram Stories) */}
+      {localizedSelectedForest && (
+        <ShareableTrailCardModal
+          isOpen={isShareTrailOpen}
+          onClose={() => setIsShareTrailOpen(false)}
+          forest={localizedSelectedForest}
+          session={activeSession}
+          onOpenAlbum={() => {
+            setIsShareTrailOpen(false);
+            setIsAlbumModalOpen(true);
+          }}
+          onOpenBackpack={() => {
+            setIsShareTrailOpen(false);
+            setIsBackpackOpen(true);
+          }}
+        />
+      )}
 
       {/* Printable Trail Beacons & Signpost QR Modal */}
       {printingForest && (

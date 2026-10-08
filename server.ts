@@ -6,9 +6,10 @@ import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { WebSocketServer, WebSocket } from 'ws';
 import { GoogleGenAI, LiveServerMessage, Modality } from '@google/genai';
-import { ForestPack, PlayerSession, Riddle, PlayerFeedback, DuelMatch, DuelTeam, DuelEvent, DuelEffect } from './src/types';
+import { ForestPack, PlayerSession, Riddle, PlayerFeedback, DuelMatch, DuelTeam, DuelEvent, DuelEffect, BackpackItem } from './src/types';
 import { SEED_FOREST_PACKS } from './src/data/seedPacks';
 import { findBestRiddle } from './src/utils/difficultyFallback';
+import { STARTER_BACKPACK_ITEMS, getRelicForPoi } from './src/data/backpackArtifacts';
 
 dotenv.config();
 
@@ -452,6 +453,7 @@ app.post('/api/sessions', (req: Request, res: Response) => {
     collectedRunes: [],
     bonusCompleted: [],
     metaEnigmaSolved: false,
+    inventory: JSON.parse(JSON.stringify(STARTER_BACKPACK_ITEMS)),
     duelMatchCode: duelMatchCode || undefined,
     duelTeamId: duelTeamId || undefined,
   };
@@ -513,9 +515,38 @@ app.post('/api/sessions/:code/arrive', (req: Request, res: Response) => {
   session.hasArrivedAtPoi = true;
   session.phase = 'at_poi';
   session.lastActive = new Date().toISOString();
-  saveSessions(sessions);
 
+  // Award POI Relic to inventory if not yet collected
+  const pack = forestPacks.find(p => p.id === session.forestPackId) || forestPacks[0];
+  const currentPoiId = session.routePoiIds[session.currentPoiIndex];
+  const poi = pack?.pois?.find(p => p.id === currentPoiId);
+  if (poi) {
+    const inv: BackpackItem[] = session.inventory || JSON.parse(JSON.stringify(STARTER_BACKPACK_ITEMS));
+    session.inventory = inv;
+    if (!inv.some(it => it.foundAtPoiId === poi.id)) {
+      const relic = getRelicForPoi(poi, pack.name);
+      inv.unshift(relic);
+    }
+  }
+
+  saveSessions(sessions);
   res.json({ session, unlocked: true });
+});
+
+// 7bis-inv. Update Session Inventory (Mochila de Expedición)
+app.post('/api/sessions/:code/inventory', (req: Request, res: Response) => {
+  const code = req.params.code.toUpperCase();
+  const session = sessions[code];
+  if (!session) {
+    return res.status(404).json({ error: 'Partida no encontrada' });
+  }
+  const { inventory } = req.body;
+  if (Array.isArray(inventory)) {
+    session.inventory = inventory;
+    session.lastActive = new Date().toISOString();
+    saveSessions(sessions);
+  }
+  res.json({ success: true, inventory: session.inventory });
 });
 
 // 7bis-lang. Update Session Language
@@ -691,6 +722,17 @@ app.post('/api/sessions/:code/answer', (req: Request, res: Response) => {
         riddleName: riddle.name,
         revealedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       });
+    }
+
+    // Award POI Relic to inventory if not yet collected
+    const currentPoiObj = pack.pois.find(p => p.id === currentPoiId);
+    if (currentPoiObj) {
+      const inv: BackpackItem[] = session.inventory || JSON.parse(JSON.stringify(STARTER_BACKPACK_ITEMS));
+      session.inventory = inv;
+      if (!inv.some(it => it.foundAtPoiId === currentPoiObj.id)) {
+        const relic = getRelicForPoi(currentPoiObj, pack.name);
+        inv.unshift(relic);
+      }
     }
 
     session.phase = 'reward';

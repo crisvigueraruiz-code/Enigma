@@ -228,6 +228,25 @@ export interface FieldPhoto {
   lng?: number;
 }
 
+export type ItemCategory = 'tool' | 'relic' | 'document' | 'curio';
+
+export interface BackpackItem {
+  id: string;
+  name: string;
+  category: ItemCategory;
+  iconEmoji: string;
+  shortDesc: string;
+  lore: string;
+  foundAtPoiId?: string;
+  foundAtPoiName?: string;
+  acquiredAt?: string;
+  canInspect?: boolean;
+  inspectClue?: string;
+  isInspected?: boolean;
+  canCombineWith?: string;
+  combinesIntoName?: string;
+}
+
 export interface PlayerSession {
   code: string;
   forestPackId: string;
@@ -258,6 +277,9 @@ export interface PlayerSession {
   collectedRunes?: CollectedRune[];// Letras recolectadas para el meta-enigma final
   bonusCompleted?: string[];       // IDs de pruebas opcionales completadas
   metaEnigmaSolved?: boolean;      // Si se resolvió el meta-enigma final
+
+  // Mochila de Inventario de Expedición
+  inventory?: BackpackItem[];
 
   // Modo Equipos / Batalla Silenciosa
   duelMatchCode?: string;

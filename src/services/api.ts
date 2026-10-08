@@ -1,6 +1,7 @@
-import { ForestPack, PlayerSession, PlayerFeedback, FieldPhoto } from '../types';
+import { ForestPack, PlayerSession, PlayerFeedback, FieldPhoto, BackpackItem } from '../types';
 import { SEED_FOREST_PACKS } from '../data/seedPacks';
 import { findBestRiddle } from '../utils/difficultyFallback';
+import { STARTER_BACKPACK_ITEMS, getRelicForPoi } from '../data/backpackArtifacts';
 
 function normalizeAnswer(text: string): string {
   return text
@@ -324,6 +325,7 @@ export const api = {
       collectedRunes: [],
       bonusCompleted: [],
       metaEnigmaSolved: false,
+      inventory: [...STARTER_BACKPACK_ITEMS],
     };
 
     saveLocalSession(session);
@@ -336,6 +338,9 @@ export const api = {
       const res = await fetch(`/api/sessions/${normCode}`);
       if (res.ok) {
         const data = await res.json();
+        if (!data.session.inventory || data.session.inventory.length === 0) {
+          data.session.inventory = [...STARTER_BACKPACK_ITEMS];
+        }
         saveLocalSession(data.session);
         return data;
       }
@@ -343,6 +348,9 @@ export const api = {
 
     const localSess = getLocalSession(normCode);
     if (localSess) {
+      if (!localSess.inventory || localSess.inventory.length === 0) {
+        localSess.inventory = [...STARTER_BACKPACK_ITEMS];
+      }
       const pack = await this.getForest(localSess.forestPackId);
       return { session: localSess, forestPack: pack };
     }
@@ -367,8 +375,39 @@ export const api = {
     session.hasArrivedAtPoi = true;
     session.phase = 'at_poi';
     session.lastActive = new Date().toISOString();
+
+    // Check if relic for this POI should be awarded
+    const currentPoiId = session.routePoiIds[session.currentPoiIndex];
+    if (currentPoiId) {
+      const pack = await this.getForest(session.forestPackId);
+      const poi = pack.pois.find((p) => p.id === currentPoiId);
+      if (poi) {
+        session.inventory = session.inventory || [...STARTER_BACKPACK_ITEMS];
+        const alreadyHas = session.inventory.some((it) => it.foundAtPoiId === poi.id);
+        if (!alreadyHas) {
+          const relic = getRelicForPoi(poi, pack.name);
+          session.inventory.unshift(relic);
+        }
+      }
+    }
+
     saveLocalSession(session);
     return { session, unlocked: true };
+  },
+
+  updateSessionInventory(code: string, newInventory: BackpackItem[]): void {
+    const normCode = code.toUpperCase();
+    const session = getLocalSession(normCode);
+    if (session) {
+      session.inventory = newInventory;
+      session.lastActive = new Date().toISOString();
+      saveLocalSession(session);
+    }
+    fetch(`/api/sessions/${normCode}/inventory`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ inventory: newInventory }),
+    }).catch(() => {});
   },
 
   async continueTransit(code: string): Promise<{ session: PlayerSession; isComplete: boolean }> {
@@ -627,6 +666,17 @@ export const api = {
           riddleName: riddle.name,
           revealedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         });
+      }
+
+      // Check if relic for this POI should be awarded to inventory
+      const poiObj = pack.pois.find((p) => p.id === currentPoiId);
+      if (poiObj) {
+        session.inventory = session.inventory || [...STARTER_BACKPACK_ITEMS];
+        const alreadyHas = session.inventory.some((it) => it.foundAtPoiId === poiObj.id);
+        if (!alreadyHas) {
+          const relic = getRelicForPoi(poiObj, pack.name);
+          session.inventory.unshift(relic);
+        }
       }
 
       session.phase = 'reward';

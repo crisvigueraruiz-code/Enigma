@@ -1,7 +1,8 @@
 import React from 'react';
 import { WindmillPOI, StoryIntro, ForestPack, PlayerSession } from '../types';
 import { useI18n } from '../context/I18nContext';
-import { Award, ArrowRight, Sparkles, CheckCircle, KeyRound, BookmarkCheck, Camera } from 'lucide-react';
+import { Award, ArrowRight, Sparkles, CheckCircle, KeyRound, BookmarkCheck, Camera, Briefcase, Search, Share2 } from 'lucide-react';
+import { getRelicForPoi } from '../data/backpackArtifacts';
 
 interface RewardScreenCardProps {
   session: PlayerSession;
@@ -11,6 +12,8 @@ interface RewardScreenCardProps {
   story?: StoryIntro;
   onContinue: () => void;
   onOpenAlbum?: () => void;
+  onOpenBackpack?: () => void;
+  onOpenShareTrail?: () => void;
   highContrast?: boolean;
 }
 
@@ -22,12 +25,18 @@ export const RewardScreenCard: React.FC<RewardScreenCardProps> = ({
   story,
   onContinue,
   onOpenAlbum,
+  onOpenBackpack,
+  onOpenShareTrail,
   highContrast,
 }) => {
   const { t } = useI18n();
   const currentRune = session.collectedRunes?.find((r) => r.poiId === currentPoi.id);
   const totalPois = session.routePoiIds.length;
   const isFinalPoi = session.currentPoiIndex + 1 >= totalPois;
+
+  // Find or compute unlocked relic for this POI
+  const currentRelic = session.inventory?.find((it) => it.foundAtPoiId === currentPoi.id) ||
+    getRelicForPoi(currentPoi, forest.name);
 
   return (
     <div
@@ -58,6 +67,46 @@ export const RewardScreenCard: React.FC<RewardScreenCardProps> = ({
           {t('reward.desc')}
         </p>
       </div>
+
+      {/* Relic Unlocked Discovery Card */}
+      {currentRelic && (
+        <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-950/70 via-[#272013] to-emerald-950/60 border border-amber-500/60 max-w-md mx-auto space-y-3 text-left shadow-lg">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] uppercase font-bold tracking-wider text-amber-300 font-mono flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <span>Nueva Reliquia en tu Mochila</span>
+            </span>
+            <span className="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 font-mono font-bold">
+              {currentRelic.category === 'relic' ? '🏺 Reliquia' : currentRelic.category === 'tool' ? '🔍 Herramienta' : '📜 Manuscrito'}
+            </span>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <div className="w-13 h-13 rounded-2xl bg-black/40 border border-amber-400/50 flex items-center justify-center text-3xl shadow-inner shrink-0">
+              {currentRelic.iconEmoji}
+            </div>
+            <div className="min-w-0 flex-1">
+              <h3 className="font-adventure text-sm sm:text-base font-bold text-amber-100 leading-tight">
+                {currentRelic.name}
+              </h3>
+              <p className="text-xs text-stone-300 line-clamp-2 mt-0.5 italic">
+                "{currentRelic.shortDesc}"
+              </p>
+            </div>
+          </div>
+
+          {onOpenBackpack && (
+            <button
+              type="button"
+              onClick={onOpenBackpack}
+              className="w-full py-2 px-3 rounded-xl bg-amber-900/60 hover:bg-amber-800 border border-amber-500/50 text-amber-200 hover:text-white font-adventure text-xs font-bold tracking-wide flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 shadow"
+            >
+              <Briefcase className="w-3.5 h-3.5 text-amber-400" />
+              <span>Examinar en la Mochila de Expedición</span>
+            </button>
+          )}
+        </div>
+      )}
 
       {/* Meta-Enigma Rune Reveal Box */}
       {currentRune && (
@@ -122,16 +171,29 @@ export const RewardScreenCard: React.FC<RewardScreenCardProps> = ({
           </p>
         )}
 
-        {onOpenAlbum && (
-          <button
-            type="button"
-            onClick={onOpenAlbum}
-            className="w-full mt-3 py-2.5 px-4 rounded-xl bg-black/40 hover:bg-black/60 border border-amber-600/50 text-amber-200 font-adventure text-xs font-bold flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95"
-          >
-            <Camera className="w-4 h-4 text-amber-400" />
-            <span>{t('album.captureBtn') || 'Tomar Foto de Campo'}</span>
-          </button>
-        )}
+        <div className="mt-3 flex flex-col sm:flex-row gap-2">
+          {onOpenAlbum && (
+            <button
+              type="button"
+              onClick={onOpenAlbum}
+              className="flex-1 py-2.5 px-3 rounded-xl bg-black/40 hover:bg-black/60 border border-amber-600/50 text-amber-200 font-adventure text-xs font-bold flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95"
+            >
+              <Camera className="w-4 h-4 text-amber-400" />
+              <span>{t('album.captureBtn') || 'Foto de Campo'}</span>
+            </button>
+          )}
+
+          {onOpenShareTrail && (
+            <button
+              type="button"
+              onClick={onOpenShareTrail}
+              className="flex-1 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#FC5200]/25 to-amber-950/40 hover:from-[#FC5200]/40 hover:to-amber-900/60 border border-[#FC5200]/50 text-[#FC5200] font-adventure text-xs font-bold flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95"
+            >
+              <Share2 className="w-4 h-4 text-[#FC5200]" />
+              <span>Ficha Strava</span>
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

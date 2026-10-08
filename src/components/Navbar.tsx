@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trees, Compass, ArrowLeft, PauseCircle, HelpCircle, Swords, BookOpen, Download, Camera } from 'lucide-react';
+import { Trees, Compass, ArrowLeft, PauseCircle, HelpCircle, Swords, BookOpen, Download, Camera, Briefcase, Share2 } from 'lucide-react';
 import { AmbientAudioControl } from './AmbientAudioControl';
 import { LanguageSelector } from './LanguageSelector';
 import { useI18n } from '../context/I18nContext';
@@ -20,6 +20,9 @@ interface NavbarProps {
   onOpenPassport?: () => void;
   onOpenOffline?: () => void;
   onOpenAlbum?: () => void;
+  onOpenBackpack?: () => void;
+  inventoryCount?: number;
+  onOpenShareTrail?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -38,6 +41,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenPassport,
   onOpenOffline,
   onOpenAlbum,
+  onOpenBackpack,
+  inventoryCount,
+  onOpenShareTrail,
 }) => {
   const { t } = useI18n();
 
@@ -66,6 +72,37 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Unified Expedition Utilities Dock */}
           <nav className="flex items-center gap-1 sm:gap-1.5 p-1 rounded-2xl bg-stone-900/70 border border-emerald-800/40 backdrop-blur-md shadow-md" aria-label="Herramientas rápidas">
+            {/* Mochila de Expedición (Zurrón de Campo) Trigger */}
+            {onOpenBackpack && (
+              <button
+                type="button"
+                onClick={onOpenBackpack}
+                title={t('backpack.title') || 'Mochila de Expedición & Reliquias'}
+                className="flex items-center gap-1.5 px-2.5 h-8 rounded-xl border border-amber-500/50 bg-gradient-to-r from-amber-950/70 to-emerald-950/60 hover:from-amber-900/80 hover:to-emerald-900/70 text-amber-200 hover:text-white font-adventure text-xs font-bold transition-all shadow-sm active:scale-95 cursor-pointer shrink-0"
+              >
+                <Briefcase className="w-3.5 h-3.5 text-amber-400" />
+                <span className="hidden sm:inline">{t('backpack.navButton') || 'Mochila'}</span>
+                {typeof inventoryCount === 'number' && inventoryCount > 0 && (
+                  <span className="ml-0.5 px-1.5 py-0.2 rounded-full bg-amber-500/30 text-amber-300 border border-amber-500/40 text-[10px] font-mono font-bold">
+                    {inventoryCount}
+                  </span>
+                )}
+              </button>
+            )}
+
+            {/* Ficha de Ruta Compartible (Strava / Instagram Stories) Trigger */}
+            {onOpenShareTrail && (
+              <button
+                type="button"
+                onClick={onOpenShareTrail}
+                title="Ficha de Ruta Compartible (Estilo Strava / Instagram)"
+                className="flex items-center gap-1.5 px-2.5 h-8 rounded-xl border border-[#FC5200]/50 bg-gradient-to-r from-[#FC5200]/25 to-amber-950/60 hover:from-[#FC5200]/40 hover:to-amber-900/70 text-[#FC5200] hover:text-white font-adventure text-xs font-bold transition-all shadow-sm active:scale-95 cursor-pointer shrink-0"
+              >
+                <Share2 className="w-3.5 h-3.5 text-[#FC5200]" />
+                <span className="hidden sm:inline">Ficha Strava</span>
+              </button>
+            )}
+
             {/* Batalla Silenciosa (Duelo) Trigger */}
             {onOpenDuelLobby && (
               <button
@@ -177,9 +214,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="hidden md:inline">{t('nav.pause')}</span>
             </button>
           )}
-
-          {/* Audio toggle & Ambient Soundscape Control */}
-          <AmbientAudioControl variant="compact" />
 
           {/* Admin Header Controls (only shown when in admin view) */}
           {currentView === 'admin' && (

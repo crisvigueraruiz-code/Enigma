@@ -28,6 +28,7 @@ interface ExplorerPassportModalProps {
   activeSession?: PlayerSession | null;
   selectedForest?: ForestPack | null;
   onOpenAlbum?: () => void;
+  onOpenShareTrail?: () => void;
 }
 
 interface PassportStamp {
@@ -45,6 +46,7 @@ export const ExplorerPassportModal: React.FC<ExplorerPassportModalProps> = ({
   activeSession,
   selectedForest,
   onOpenAlbum,
+  onOpenShareTrail,
 }) => {
   const { t } = useI18n();
   const [activeTab, setActiveTab] = useState<'passport' | 'badges' | 'diploma'>('passport');
@@ -635,19 +637,33 @@ export const ExplorerPassportModal: React.FC<ExplorerPassportModalProps> = ({
                   type="button"
                   onClick={handleDownloadDiploma}
                   disabled={downloadingDiploma}
-                  className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-600 via-amber-500 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 text-stone-950 font-adventure text-xs sm:text-sm font-black tracking-wider shadow-xl shadow-amber-950 flex items-center justify-center gap-2 transition-all active:scale-95"
+                  className="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-gradient-to-r from-amber-600 via-amber-500 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 text-stone-950 font-adventure text-xs sm:text-sm font-black tracking-wider shadow-xl shadow-amber-950 flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer"
                 >
                   <Download className="w-4 h-4 text-stone-950" />
                   <span>{downloadingDiploma ? 'Generando PNG 300DPI...' : 'Descargar Diploma (PNG)'}</span>
                 </button>
 
+                {onOpenShareTrail && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      sounds.playClick();
+                      onOpenShareTrail();
+                    }}
+                    className="w-full sm:w-auto px-4 py-3.5 rounded-xl bg-gradient-to-r from-[#FC5200]/30 to-amber-950/60 hover:from-[#FC5200]/50 hover:to-amber-900 border border-[#FC5200]/60 text-[#FC5200] hover:text-white font-adventure text-xs font-bold flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer"
+                  >
+                    <Share2 className="w-4 h-4 text-[#FC5200]" />
+                    <span>Ficha Strava / Stories</span>
+                  </button>
+                )}
+
                 <button
                   type="button"
                   onClick={handleShare}
-                  className="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-stone-900/90 hover:bg-stone-800 text-stone-200 border border-stone-700 text-xs font-bold flex items-center justify-center gap-2 transition-all active:scale-95"
+                  className="w-full sm:w-auto px-4 py-3.5 rounded-xl bg-stone-900/90 hover:bg-stone-800 text-stone-200 border border-stone-700 text-xs font-bold flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer"
                 >
                   <Share2 className="w-4 h-4 text-amber-400" />
-                  <span>Compartir Expedición</span>
+                  <span>Compartir</span>
                 </button>
               </div>
             </div>

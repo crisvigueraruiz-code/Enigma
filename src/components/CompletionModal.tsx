@@ -11,6 +11,7 @@ interface CompletionModalProps {
   loading: boolean;
   onOpenPassport?: () => void;
   onOpenAlbum?: () => void;
+  onOpenShareTrail?: () => void;
 }
 
 export const CompletionModal: React.FC<CompletionModalProps> = ({
@@ -20,6 +21,7 @@ export const CompletionModal: React.FC<CompletionModalProps> = ({
   loading,
   onOpenPassport,
   onOpenAlbum,
+  onOpenShareTrail,
 }) => {
   const { t } = useI18n();
   const [rating, setRating] = useState(5);
@@ -80,6 +82,35 @@ export const CompletionModal: React.FC<CompletionModalProps> = ({
             </div>
           </div>
         </div>
+
+        {/* Ficha de Ruta Compartible (Strava / Instagram Stories) Callout */}
+        {onOpenShareTrail && (
+          <div className="p-4 rounded-2xl bg-gradient-to-r from-[#FC5200]/25 via-[#23150F] to-amber-950/40 border border-[#FC5200]/50 flex flex-col sm:flex-row items-center justify-between gap-3 text-left shadow-lg">
+            <div className="space-y-0.5">
+              <span className="text-[10px] uppercase font-bold tracking-widest text-[#FC5200] font-mono">
+                Redes Sociales & Strava
+              </span>
+              <h4 className="font-adventure text-sm font-bold text-amber-100 flex items-center gap-1.5">
+                <Share2 className="w-4 h-4 text-[#FC5200]" />
+                <span>Ficha de Ruta Compartible (9:16 & 1:1)</span>
+              </h4>
+              <p className="text-[11px] text-stone-300">
+                Genera tu tarjeta con trazado GPS, kilómetros, desnivel y puntos de honor para Instagram Stories o Strava
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                sounds.playClick();
+                onOpenShareTrail();
+              }}
+              className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#FC5200] to-amber-500 hover:from-[#E04800] hover:to-amber-400 text-stone-950 font-adventure text-xs font-black tracking-wider flex items-center justify-center gap-1.5 shadow-lg active:scale-95 transition-all shrink-0 cursor-pointer"
+            >
+              <Share2 className="w-4 h-4 text-stone-950" />
+              <span>Crear Ficha</span>
+            </button>
+          </div>
+        )}
 
         {/* Explorer Passport & Official Diploma Callout */}
         {onOpenPassport && (
